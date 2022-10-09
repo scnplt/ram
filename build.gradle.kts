@@ -1,6 +1,8 @@
 plugins {
     id(Plugins.ANDROID_APPLICATION).version(Versions.AGP).apply(false)
     id(Plugins.KOTLIN).version(Versions.KOTLIN).apply(false)
+    id(Plugins.HILT).version(Versions.HILT).apply(false)
+    id(Plugins.SAFE_ARGS).version(Versions.NAVIGATION).apply(false)
     id(Plugins.DETEKT).version(Versions.DETEKT).apply(false)
 }
 

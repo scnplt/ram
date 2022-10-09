@@ -1,6 +1,9 @@
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     id(Plugins.KOTLIN)
+    id(Plugins.KAPT)
+    id(Plugins.HILT)
+    id(Plugins.SAFE_ARGS)
 }
 
 android {
@@ -52,6 +55,12 @@ dependencies {
     implementation(Libs.coreKtx)
     implementation(Libs.appcompat)
     implementation(Libs.material)
+
+    kapt(ProcessingTools.hiltCompiler)
+    implementation(Libs.hiltAndroid)
+
+    implementation(Libs.navigationUiKtx)
+    implementation(Libs.navigationFragmentKtx)
 
     testImplementation(TestLibs.junit)
 
