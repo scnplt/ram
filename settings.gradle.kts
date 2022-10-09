@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Template"
+rootProject.name = "RAM"
 include(":app")
