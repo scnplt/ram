@@ -13,6 +13,7 @@ plugins {
     id(Plugins.KAPT)
     id(Plugins.HILT)
     id(Plugins.SAFE_ARGS)
+    id(Plugins.GOOGLE_SERVICES)
 }
 
 android {
@@ -48,7 +49,7 @@ android {
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_9
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -64,15 +65,30 @@ dependencies {
     implementation(Libs.coreKtx)
     implementation(Libs.appcompat)
     implementation(Libs.material)
+    implementation(Libs.coroutinesPlayServices)
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("com.google.android.material:material:1.4.0")
 
     kapt(ProcessingTools.hiltCompiler)
     implementation(Libs.hiltAndroid)
 
+    kapt(ProcessingTools.roomCompiler)
+    implementation(Libs.roomRuntime)
+    implementation(Libs.roomKtx)
+
+    implementation(platform(Libs.Platform.firebaseBom))
+    implementation(Libs.firebaseAnalyticsKtx)
+    implementation(Libs.firebaseStorageKtx)
+    implementation(Libs.firebaseFirestoreKtx)
+
     implementation(Libs.navigationUiKtx)
     implementation(Libs.navigationFragmentKtx)
 
-    testImplementation(TestLibs.junit)
+    kapt(ProcessingTools.moshiKotlinCodegen)
+    implementation(Libs.moshiKotlin)
+    implementation(Libs.retrofit)
 
+    testImplementation(TestLibs.junit)
     androidTestImplementation(TestLibs.extJunit)
     androidTestImplementation(TestLibs.espressoCore)
 }

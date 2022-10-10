@@ -13,6 +13,7 @@ plugins {
     id(Plugins.HILT).version(Versions.HILT).apply(false)
     id(Plugins.SAFE_ARGS).version(Versions.NAVIGATION).apply(false)
     id(Plugins.DETEKT).version(Versions.DETEKT).apply(false)
+    id(Plugins.GOOGLE_SERVICES).version(Versions.GOOGLE_SERVICES).apply(false)
 }
 
 allprojects {
