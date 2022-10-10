@@ -23,5 +23,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "RAM"
-include(":app")
+rootProject.name = 'RAM'
+include ':app'
