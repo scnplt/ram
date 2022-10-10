@@ -16,8 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.data.database.dao.LessonDao
-import dev.sertan.android.ram.data.database.dao.LessonDatabase
+import dev.sertan.android.ram.data.database.LocalDatabase
 import javax.inject.Singleton
 
 @Module
@@ -26,18 +25,11 @@ internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideLessonDatabase(@ApplicationContext context: Context): LessonDatabase {
+    fun provideLocalDatabase(@ApplicationContext context: Context): LocalDatabase {
         return Room.databaseBuilder(
             context,
-            LessonDatabase::class.java,
-            LessonDatabase::class.java.name
+            LocalDatabase::class.java,
+            LocalDatabase::class.java.name
         ).build()
     }
-
-    @Provides
-    @Singleton
-    fun provideLessonDao(lessonDatabase: LessonDatabase): LessonDao {
-        return lessonDatabase.lessonDao()
-    }
 }
-

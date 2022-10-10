@@ -9,20 +9,12 @@
 
 package dev.sertan.android.ram.data.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-private const val DEFAULT_LESSON_TIME_IN_SECONDS = 300
-
 @Entity(tableName = "lessons")
 internal data class LessonEntity(
-
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
-
+    @PrimaryKey(autoGenerate = true) val lessonId: Long,
     val name: String,
-
-    @ColumnInfo(defaultValue = "$DEFAULT_LESSON_TIME_IN_SECONDS")
-    val lessonTimeInSeconds: Int
+    val lessonDurationInSeconds: Long
 )

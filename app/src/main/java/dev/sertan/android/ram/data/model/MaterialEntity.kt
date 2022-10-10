@@ -10,15 +10,25 @@
 package dev.sertan.android.ram.data.model
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "materials")
+@Entity(
+    tableName = "materials",
+    foreignKeys = [ForeignKey(
+        entity = LessonEntity::class,
+        parentColumns = arrayOf("lessonId"),
+        childColumns = arrayOf("ownerLessonId"),
+        onDelete = CASCADE,
+        onUpdate = CASCADE
+    )]
+)
 internal data class MaterialEntity(
-
-    @PrimaryKey(autoGenerate = true)
-    val id: Int,
-
+    @PrimaryKey(autoGenerate = true) val materialId: Long,
+    val ownerLessonId: Long,
+    val questionId: Long?,
     val description: String,
-
-    val mediaUrl: String
+    val mediaUrl: String,
+    val attribution: String?
 )

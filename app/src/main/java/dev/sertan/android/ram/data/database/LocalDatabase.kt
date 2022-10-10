@@ -7,27 +7,27 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.data.database.dao
+package dev.sertan.android.ram.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import dev.sertan.android.ram.data.model.AnswerEntity
+import dev.sertan.android.ram.data.database.dao.LessonDao
+import dev.sertan.android.ram.data.database.dao.MaterialDao
+import dev.sertan.android.ram.data.database.dao.QuestionDao
 import dev.sertan.android.ram.data.model.LessonEntity
 import dev.sertan.android.ram.data.model.MaterialEntity
 import dev.sertan.android.ram.data.model.QuestionEntity
-import dev.sertan.android.ram.data.model.QuestionOptionEntity
 
 @Database(
     version = 1,
-    exportSchema = false,
     entities = [
         LessonEntity::class,
-        MaterialEntity::class,
         QuestionEntity::class,
-        QuestionOptionEntity::class,
-        AnswerEntity::class
+        MaterialEntity::class
     ]
 )
-internal abstract class LessonDatabase : RoomDatabase() {
+internal abstract class LocalDatabase : RoomDatabase() {
     abstract fun lessonDao(): LessonDao
+    abstract fun questionDao(): QuestionDao
+    abstract fun materialDao(): MaterialDao
 }
