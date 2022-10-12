@@ -11,23 +11,24 @@ package dev.sertan.android.ram.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import dev.sertan.android.ram.data.database.dao.LessonDao
 import dev.sertan.android.ram.data.database.dao.MaterialDao
 import dev.sertan.android.ram.data.database.dao.QuestionDao
-import dev.sertan.android.ram.data.model.LessonEntity
+import dev.sertan.android.ram.data.database.dao.QuestionWithMaterialsDao
 import dev.sertan.android.ram.data.model.MaterialEntity
 import dev.sertan.android.ram.data.model.QuestionEntity
+import dev.sertan.android.ram.data.model.QuestionWithMaterialsEntity
 
 @Database(
     version = 1,
+    exportSchema = false,
     entities = [
-        LessonEntity::class,
         QuestionEntity::class,
-        MaterialEntity::class
+        MaterialEntity::class,
+        QuestionWithMaterialsEntity::class
     ]
 )
-internal abstract class LocalDatabase : RoomDatabase() {
-    abstract fun lessonDao(): LessonDao
+internal abstract class RamDatabase : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
     abstract fun materialDao(): MaterialDao
+    abstract fun questionWithMaterialsDao(): QuestionWithMaterialsDao
 }

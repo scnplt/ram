@@ -12,9 +12,10 @@ package dev.sertan.android.ram.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "lessons")
-internal data class LessonEntity(
-    @PrimaryKey(autoGenerate = true) val lessonId: Long,
-    val name: String,
-    val lessonDurationInSeconds: Long
+@Entity(tableName = "materials")
+internal data class MaterialEntity(
+    @PrimaryKey(autoGenerate = true) val materialId: Long,
+    val description: String,
+    val mediaUrl: String,
+    val attribution: String?
 )

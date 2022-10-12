@@ -14,18 +14,24 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import dev.sertan.android.ram.data.datasource.QuestionDataSource
+import androidx.room.Update
 import dev.sertan.android.ram.data.model.QuestionEntity
 
 @Dao
-internal interface QuestionDao : QuestionDataSource {
+internal interface QuestionDao {
 
-    @Query("SELECT * FROM questions WHERE :lessonId == ownerLessonId")
-    override suspend fun getQuestions(lessonId: Long): List<QuestionEntity>
+    @Query("SELECT * FROM questions")
+    suspend fun getAll(): List<QuestionEntity>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    override suspend fun createQuestion(vararg questionEntity: QuestionEntity)
+    @Query("SELECT * FROM questions WHERE :questionId == questionId")
+    suspend fun getById(questionId: Long): QuestionEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(vararg questionEntityArray: QuestionEntity)
 
     @Delete
-    override suspend fun deleteQuestion(vararg questionEntity: QuestionEntity)
+    suspend fun delete(vararg questionEntityArray: QuestionEntity)
+
+    @Update
+    suspend fun update(questionEntity: QuestionEntity)
 }
