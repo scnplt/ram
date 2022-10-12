@@ -26,3 +26,4 @@ dependencyResolutionManagement {
 rootProject.name = 'RAM'
 include ':app'
 include ':data'
+include ':domain'

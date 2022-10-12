@@ -21,6 +21,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RAM"
-        tools:targetApi="32">
+        tools:targetApi="32" />
 
 </manifest>
