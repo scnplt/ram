@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.data.model.mapper
 
-import dev.sertan.android.ram.data.model.MaterialEntity
 import dev.sertan.android.ram.coredomain.model.MaterialDto
+import dev.sertan.android.ram.data.model.MaterialEntity
 
 internal fun MaterialEntity.toDomainModel(): MaterialDto {
     return MaterialDto(

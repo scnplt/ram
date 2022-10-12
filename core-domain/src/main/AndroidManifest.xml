@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ RAM (c) by Sertan Canpolat
   ~
   ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
@@ -7,11 +8,7 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<resources>
-    <dimen name="gap_xxsmall">2dp</dimen>
-    <dimen name="gap_xsmall">6dp</dimen>
-    <dimen name="gap_small">10dp</dimen>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dev.sertan.android.ram.coredomain">
 
-    <dimen name="size_xsmall">60dp</dimen>
-    <dimen name="size_small">80dp</dimen>
-</resources>
+</manifest>

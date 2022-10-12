@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.data.model.mapper
 
-import dev.sertan.android.ram.data.model.QuestionEntity
 import dev.sertan.android.ram.coredomain.model.QuestionDto
+import dev.sertan.android.ram.data.model.QuestionEntity
 
 internal fun QuestionEntity.toDomainModel(): QuestionDto {
     return QuestionDto(

@@ -11,7 +11,6 @@ package dev.sertan.android.ram.data.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.sqlite.db.SupportSQLiteOpenHelper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

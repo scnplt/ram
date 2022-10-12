@@ -9,18 +9,13 @@
 
 package dev.sertan.android.ram.data.repository.local
 
+import dev.sertan.android.ram.coredomain.model.QuestionDto
+import dev.sertan.android.ram.coredomain.repository.QuestionRepository
 import dev.sertan.android.ram.data.database.dao.QuestionDao
 import dev.sertan.android.ram.data.model.mapper.toDataModel
 import dev.sertan.android.ram.data.model.mapper.toDomainModel
-import dev.sertan.android.ram.coredomain.di.LocalDataSource
-import dev.sertan.android.ram.coredomain.model.QuestionDto
-import dev.sertan.android.ram.coredomain.repository.QuestionRepository
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-@LocalDataSource
-internal class LocalQuestionRepository @Inject constructor(
+internal class LocalQuestionRepository(
     private val questionDao: QuestionDao
 ) : QuestionRepository {
 

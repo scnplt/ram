@@ -46,6 +46,9 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':core-ui')
+    implementation project(path: ':core-domain')
+    implementation project(path: ':data')
     implementation libs.coreKtx
 
     // Hilt

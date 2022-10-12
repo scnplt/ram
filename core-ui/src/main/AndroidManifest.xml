@@ -9,6 +9,6 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="dev.sertan.android.ram.domain">
+    package="dev.sertan.android.ram.coreui">
 
 </manifest>

@@ -10,7 +10,6 @@
 ext {
     configs = [
             applicationId            : "dev.sertan.android.ram",
-            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner",
             compileSdk               : 32,
             minSdk                   : 24,
             targetSdk                : 32,
