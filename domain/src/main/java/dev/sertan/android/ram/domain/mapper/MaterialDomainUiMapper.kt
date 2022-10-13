@@ -9,7 +9,7 @@
 
 package dev.sertan.android.ram.domain.mapper
 
-import dev.sertan.android.ram.coredomain.model.MaterialDto
+import dev.sertan.android.ram.corecommon.model.MaterialDto
 import dev.sertan.android.ram.coreui.model.Material
 
 fun MaterialDto.toUiModel(): Material {

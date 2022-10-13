@@ -7,9 +7,9 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredomain.repository
+package dev.sertan.android.ram.corecommon.repository
 
-import dev.sertan.android.ram.coredomain.model.MaterialDto
+import dev.sertan.android.ram.corecommon.model.MaterialDto
 
 interface MaterialRepository {
 

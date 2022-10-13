@@ -46,8 +46,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core-domain')
-
+    implementation project(path: ':core-common')
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid

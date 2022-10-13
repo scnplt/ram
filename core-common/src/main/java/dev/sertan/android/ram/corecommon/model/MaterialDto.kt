@@ -7,10 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredomain.model
+package dev.sertan.android.ram.corecommon.model
 
-data class QuestionDto(
+data class MaterialDto(
     val id: Long,
-    val content: String,
-    val answerMaterialId: Long
+    val description: String,
+    val mediaUrl: String,
+    val attribution: String?
 )

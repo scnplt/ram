@@ -15,6 +15,7 @@ plugins {
 }
 
 android {
+    namespace "${configs.applicationId}.corecommon"
     compileSdk configs.compileSdk
 
     defaultConfig {

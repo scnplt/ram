@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.data.repository.local
 
-import dev.sertan.android.ram.coredomain.model.QuestionDto
-import dev.sertan.android.ram.coredomain.repository.QuestionRepository
+import dev.sertan.android.ram.corecommon.model.QuestionDto
+import dev.sertan.android.ram.corecommon.repository.QuestionRepository
 import dev.sertan.android.ram.data.database.dao.QuestionDao
 import dev.sertan.android.ram.data.model.mapper.toDataModel
 import dev.sertan.android.ram.data.model.mapper.toDomainModel

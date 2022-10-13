@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.data.repository.local
 
-import dev.sertan.android.ram.coredomain.model.MaterialDto
-import dev.sertan.android.ram.coredomain.repository.MaterialRepository
+import dev.sertan.android.ram.corecommon.model.MaterialDto
+import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.data.database.dao.MaterialDao
 import dev.sertan.android.ram.data.database.dao.QuestionWithMaterialsDao
 import dev.sertan.android.ram.data.model.mapper.toDataModel

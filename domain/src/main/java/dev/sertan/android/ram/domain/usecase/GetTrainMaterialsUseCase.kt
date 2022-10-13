@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.domain.usecase
 
-import dev.sertan.android.ram.coredomain.di.LocalDataSource
-import dev.sertan.android.ram.coredomain.repository.MaterialRepository
+import dev.sertan.android.ram.corecommon.di.LocalDataSource
+import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.coreui.model.Material
 import dev.sertan.android.ram.domain.mapper.toUiModel
 import javax.inject.Inject
