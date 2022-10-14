@@ -1,4 +1,4 @@
-name: Android
+name: Code Analysis
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - 'releases/**'
 
 jobs:
-  build:
+  scan:
 
     runs-on: ubuntu-latest
 
@@ -27,8 +27,6 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle
-      run: ./gradlew build
-
-    - name: Run Unit Tests
-      run: ./gradlew testDebugUnitTest
+    - name: Scan with Detekt
+      run: ./gradlew detekt
+      

@@ -37,5 +37,5 @@ allprojects {
         }
     }
 
-    tasks.whenTaskAdded { if (name == "preBuild") dependsOn("detekt") }
+    // tasks.whenTaskAdded { if (name == "preBuild") dependsOn("detekt") }
 }
