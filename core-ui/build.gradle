@@ -16,6 +16,7 @@ plugins {
 }
 
 android {
+    namespace "${configs.applicationId}.coreui"
     compileSdk configs.compileSdk
 
     defaultConfig {

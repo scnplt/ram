@@ -15,6 +15,7 @@ plugins {
 }
 
 android {
+    namespace "${configs.applicationId}.data"
     compileSdk configs.compileSdk
 
     defaultConfig {
