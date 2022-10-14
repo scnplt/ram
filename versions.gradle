@@ -9,15 +9,15 @@
 
 ext {
     configs = [
-            applicationId            : "dev.sertan.android.ram",
-            compileSdk               : 32,
-            minSdk                   : 24,
-            targetSdk                : 32,
-            versionCode              : 1,
-            versionName              : "1.0.0",
-            sourceCompatibility      : JavaVersion.VERSION_1_8,
-            targetCompatibility      : JavaVersion.VERSION_1_8,
-            jvmTarget                : "1.8"
+            applicationId      : "dev.sertan.android.ram",
+            compileSdk         : 32,
+            minSdk             : 24,
+            targetSdk          : 32,
+            versionCode        : 1,
+            versionName        : "1.0.0",
+            sourceCompatibility: JavaVersion.VERSION_1_8,
+            targetCompatibility: JavaVersion.VERSION_1_8,
+            jvmTarget          : "1.8"
     ]
 
     versions = [
