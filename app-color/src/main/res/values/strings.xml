@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<!--
   ~ RAM (c) by Sertan Canpolat
   ~
   ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
@@ -8,6 +8,7 @@
   -->
 
 <resources>
-    <string name="start">Start</string>
-    <string name="help_button">Help Button</string>
+    <string name="app_name">Colors</string>
+    <string name="cat_image">Cat Image</string>
+    <string name="let_get_to_know_colors">Let\'s Get to Know the Colors</string>
 </resources>

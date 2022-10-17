@@ -10,6 +10,7 @@
 package dev.sertan.android.ram.coreui.extension
 
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -43,4 +44,8 @@ fun <VB : ViewBinding> Fragment.provideBinding(
 
 fun Fragment.navigateTo(navDirections: NavDirections) {
     findNavController().navigate(navDirections)
+}
+
+fun Fragment.showToast(message: String) {
+    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 }

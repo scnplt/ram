@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ RAM (c) by Sertan Canpolat
   ~
   ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
@@ -8,6 +9,9 @@
   -->
 
 <resources>
-    <string name="start">Start</string>
-    <string name="help_button">Help Button</string>
+    <color name="green">#52ff97</color>
+    <color name="lavender">#c059ff</color>
+    <color name="lightOrange">#f9f0e4</color>
+    <color name="turquoise">#4dc9ff</color>
+    <color name="lightBlue">#82cef1</color>
 </resources>

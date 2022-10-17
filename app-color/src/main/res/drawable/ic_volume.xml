@@ -7,7 +7,7 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<resources>
-    <string name="start">Start</string>
-    <string name="help_button">Help Button</string>
-</resources>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_volume_up" android:state_activated="true" />
+    <item android:drawable="@drawable/ic_volume_off" android:state_activated="false" />
+</selector>

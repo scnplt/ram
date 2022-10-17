@@ -1,0 +1,71 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace "${configs.applicationId}.appcolor"
+    compileSdk configs.compileSdk
+
+    defaultConfig {
+        applicationId configs.applicationId
+        minSdk configs.minSdk
+        targetSdk configs.targetSdk
+        versionCode configs.versionCode
+        versionName configs.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility configs.sourceCompatibility
+        targetCompatibility configs.targetCompatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = configs.jvmTarget
+    }
+}
+
+dependencies {
+    implementation project(path: ':core-ui')
+    implementation project(path: ':core-common')
+    implementation project(path: ':domain')
+    implementation libs.coreKtx
+    implementation libs.appcompat
+
+    // Navigation
+    implementation libs.navigationUiKtx
+    implementation libs.navigationFragmentKtx
+
+    // Hilt
+    kapt kapts.hiltCompiler
+    implementation libs.hiltAndroid
+}

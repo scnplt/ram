@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.sertan.android.ram.appcolor.screen.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_trainFragment"
+            app:destination="@id/trainFragment"
+            app:popUpTo="@id/nav_main"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trainFragment"
+        android:name="dev.sertan.android.ram.appcolor.screen.train.TrainFragment"
+        android:label="TrainFragment"
+        tools:layout="@layout/fragment_train" />
+
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="dev.sertan.android.ram.appcolor.screen.question.QuestionFragment"
+        android:label="QuestionFragment"
+        tools:layout="@layout/fragment_question" />
+</navigation>
