@@ -25,15 +25,11 @@ internal object DaoModule {
 
     @Provides
     @Singleton
-    fun provideQuestionDao(ramDatabase: RamDatabase): QuestionDao {
-        return ramDatabase.questionDao()
-    }
+    fun provideQuestionDao(ramDatabase: RamDatabase): QuestionDao = ramDatabase.questionDao()
 
     @Provides
     @Singleton
-    fun provideMaterialDao(ramDatabase: RamDatabase): MaterialDao {
-        return ramDatabase.materialDao()
-    }
+    fun provideMaterialDao(ramDatabase: RamDatabase): MaterialDao = ramDatabase.materialDao()
 
     @Provides
     @Singleton
