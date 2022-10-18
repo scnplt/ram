@@ -9,5 +9,7 @@
 
 <resources>
     <string name="start">Start</string>
+    <string name="training">Training</string>
+    <string name="questions">Questions</string>
     <string name="help_button">Help Button</string>
 </resources>

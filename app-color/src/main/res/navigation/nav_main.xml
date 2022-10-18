@@ -18,12 +18,15 @@
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appcolor.screen.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_trainFragment"
             app:destination="@id/trainFragment"
             app:popUpTo="@id/nav_main"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
     </fragment>
 
     <fragment
