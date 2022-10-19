@@ -9,7 +9,7 @@
 
 <resources>
 
-    <style name="Theme.ColorApp" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.ColorApp" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_main</item>
         <item name="android:statusBarColor">@color/lightBlue</item>
         <item name="android:navigationBarColor">@color/lightBlue</item>

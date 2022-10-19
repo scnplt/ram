@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appcolor.screen.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,9 +19,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
-import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToQuestionFragment
-import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainFragment
-import dev.sertan.android.ram.coreui.extension.navigateTo
 import dev.sertan.android.ram.coreui.extension.provideBinding
 import dev.sertan.android.ram.coreui.extension.showToast
 import kotlinx.coroutines.flow.FlowCollector
@@ -35,10 +31,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val homeUiStateCollector = FlowCollector<HomeUiState> {
         it.errorMessage.data?.let { message -> showToast(message) }
-        with(binding) {
-            volumeImageView.isActivated = it.isVolumeActive
-            questionsButton.isVisible = it.isQuestionButtonVisible
-        }
+        binding.volumeButton.isActivated = it.isVolumeActive
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -52,12 +45,15 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUpListeners(): Unit = with(binding) {
-        volumeImageView.setOnClickListener { homeViewModel.changeVolumeState() }
-        helpImageView.setOnClickListener {
-            // TODO delete this
-            showToast("Help Button Clicked!")
+        volumeButton.setOnClickListener {
+            homeViewModel.changeVolumeState()
+            showToast("Volume Button Clicked!") // TODO delete this
         }
-        trainButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainFragment()) }
-        questionsButton.setOnClickListener { navigateTo(actionHomeFragmentToQuestionFragment()) }
+        helpButton.setOnClickListener {
+            showToast("Help Button Clicked!") // TODO delete this
+        }
+        startButton.setOnClickListener {
+            showToast("Start Button Clicked!") // TODO delete this
+        }
     }
 }

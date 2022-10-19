@@ -9,82 +9,66 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/small_gap_4">
 
-    <!-- TODO Set content description (volumeImageView) -->
-
-    <ImageView
-        android:id="@+id/volumeImageView"
-        style="@style/Widget.ColorApp.IconButton"
-        android:layout_width="@dimen/icon_size_medium"
-        android:layout_height="@dimen/icon_size_medium"
-        android:layout_marginEnd="@dimen/small_gap_3"
-        android:src="@drawable/ic_volume"
-        app:layout_constraintEnd_toStartOf="@id/helpImageView"
-        app:layout_constraintTop_toTopOf="@id/helpImageView"
-        tools:ignore="ContentDescription" />
-
-    <ImageView
-        android:id="@+id/helpImageView"
-        style="@style/Widget.ColorApp.IconButton"
-        android:layout_width="@dimen/icon_size_medium"
-        android:layout_height="@dimen/icon_size_medium"
-        android:contentDescription="@string/help_button"
-        android:src="@drawable/ic_help_outline"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/helpButton"
+        style="@style/Widget.ColorApp.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_help_outline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/fluffyImageView"
+    <Button
+        android:id="@+id/volumeButton"
+        style="@style/Widget.ColorApp.Button.Icon"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/small_gap_2"
-        android:contentDescription="@string/cat_image"
-        android:src="@drawable/fluffy_cat"
-        app:layout_constraintBottom_toTopOf="@id/titleTextView"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_volume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/helpImageView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titleTextView"
         style="@style/Widget.ColorApp.TextView.Title"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:text="@string/let_get_to_know_colors"
-        app:layout_constraintBottom_toTopOf="@id/trainButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/trainButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/medium_gap_1"
-        android:layout_marginTop="@dimen/small_gap_8"
+        android:layout_marginTop="@dimen/small_gap_2"
         android:layout_marginBottom="@dimen/small_gap_6"
-        android:text="@string/training"
-        app:layout_constraintBottom_toTopOf="@id/questionsButton"
+        android:text="@string/let_get_to_know_colors"
+        app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@id/helpButton" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/questionsButton"
+    <Button
+        android:id="@+id/startButton"
+        style="@style/Widget.ColorApp.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/questions"
-        android:visibility="gone"
+        android:layout_marginBottom="@dimen/small_gap_2"
+        app:backgroundTint="@color/green"
+        app:icon="@drawable/ic_play"
+        app:iconSize="@dimen/size_button_icon_large"
+        app:layout_constraintBottom_toTopOf="@id/catImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintWidth_max="@dimen/size_button_width_max"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <ImageView
+        android:id="@+id/catImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/cat_image"
+        android:src="@drawable/fluffy_cat"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/trainButton"
-        app:layout_constraintStart_toStartOf="@id/trainButton"
-        app:layout_constraintTop_toBottomOf="@id/trainButton"
-        tools:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
