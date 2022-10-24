@@ -15,16 +15,28 @@ plugins {
     id 'com.google.gms.google-services' version '4.3.13' apply false
     id 'io.gitlab.arturbosch.detekt' version '1.22.0-RC1' apply false
     id 'com.android.library' version '7.2.2' apply false
+    id 'org.jlleitschuh.gradle.ktlint' version '11.0.0' apply false
 }
 
 allprojects {
     apply plugin: 'io.gitlab.arturbosch.detekt'
+    apply plugin: 'org.jlleitschuh.gradle.ktlint'
+
     apply from: rootProject.file('versions.gradle')
 
     detekt {
         allRules = false
         debug = true
         parallel = true
+    }
+
+    ktlint {
+        android = true
+        debug = true
+        reporters {
+            reporter "plain"
+            reporter "html"
+        }
     }
 
     tasks.named("detekt").configure {
