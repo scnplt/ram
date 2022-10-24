@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.appcolor.screen.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -16,44 +17,50 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
-import dev.sertan.android.ram.coreui.extension.provideBinding
-import dev.sertan.android.ram.coreui.extension.showToast
+import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDetailBottomSheet
+import dev.sertan.android.ram.coreui.util.navigateTo
+import dev.sertan.android.ram.coreui.util.showToast
+import dev.sertan.android.ram.coreui.util.startAnimation
+import dev.sertan.android.ram.coreui.util.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val homeViewModel by viewModels<HomeViewModel>()
-    private val binding by provideBinding(FragmentHomeBinding::bind)
+    private val binding by viewBinding(FragmentHomeBinding::bind)
+    private val viewModel by viewModels<HomeViewModel>()
 
-    private val homeUiStateCollector = FlowCollector<HomeUiState> {
-        it.errorMessage.data?.let { message -> showToast(message) }
-        binding.volumeButton.isActivated = it.isVolumeActive
+    private val uiStateCollector = FlowCollector<HomeUiState> { uiState ->
+        context?.showToast(uiState.message.data)
+        binding.volumeButton.isActivated = uiState.isVolumeActive
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpComponents()
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                homeViewModel.homeUiState.collect(homeUiStateCollector)
+                viewModel.uiState.collect(uiStateCollector)
             }
         }
-        setUpListeners()
     }
 
-    private fun setUpListeners(): Unit = with(binding) {
-        volumeButton.setOnClickListener {
-            homeViewModel.changeVolumeState()
-            showToast("Volume Button Clicked!") // TODO delete this
-        }
+    private fun setUpComponents(): Unit = with(binding) {
         helpButton.setOnClickListener {
-            showToast("Help Button Clicked!") // TODO delete this
+            startActivity(Intent(activity, OssLicensesMenuActivity::class.java))
         }
+        volumeButton.setOnClickListener { viewModel.changeVoiceSupportState() }
+        startButton.startAnimation(R.anim.anim_shake)
         startButton.setOnClickListener {
-            showToast("Start Button Clicked!") // TODO delete this
+            navigateTo(
+                actionHomeFragmentToDetailBottomSheet(
+                    isQuestionButtonActive = viewModel.isTrainingCompletedBefore
+                )
+            )
         }
     }
 }

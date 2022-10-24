@@ -13,6 +13,6 @@ import dev.sertan.android.ram.coreui.util.OneTimeState
 
 internal data class HomeUiState(
     val isVolumeActive: Boolean = true,
-    val isQuestionButtonVisible: Boolean = false,
-    val errorMessage: OneTimeState<String> = OneTimeState()
+    val isTrainingCompletedBefore: Boolean = false,
+    val message: OneTimeState<String> = OneTimeState()
 )

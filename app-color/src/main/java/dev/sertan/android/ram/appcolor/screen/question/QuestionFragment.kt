@@ -7,10 +7,9 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appcolor
+package dev.sertan.android.ram.appcolor.screen.question
 
-import androidx.appcompat.app.AppCompatActivity
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.fragment.app.Fragment
+import dev.sertan.android.ram.appcolor.R
 
-@AndroidEntryPoint
-internal class MainActivity : AppCompatActivity(R.layout.activity_main)
+internal class QuestionFragment : Fragment(R.layout.fragment_question)

@@ -30,12 +30,7 @@
     </style>
 
     <!-- TextAppearance -->
-
-    <style name="TextAppearance.ColorApp" parent="TextAppearance.AppCompat">
-        <item name="android:textColor">@color/lightOrange</item>
-    </style>
-
-    <style name="TextAppearance.ColorApp.Title" parent="TextAppearance.ColorApp">
+    <style name="TextAppearance.ColorApp.Title" parent="TextAppearance.AppCompat">
         <item name="android:autoSizeMaxTextSize">@dimen/text_size_title_max</item>
         <item name="android:autoSizeMinTextSize">@dimen/text_size_title_min</item>
     </style>

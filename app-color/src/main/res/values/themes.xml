@@ -13,9 +13,11 @@
         <item name="android:windowBackground">@drawable/bg_main</item>
         <item name="android:statusBarColor">@color/lightBlue</item>
         <item name="android:navigationBarColor">@color/lightBlue</item>
-        <item name="android:textAppearance">@style/TextAppearance.ColorApp</item>
         <item name="fontFamily">@font/courgette</item>
         <item name="materialButtonStyle">@style/Widget.ColorApp.Button</item>
+        <item name="android:textColor">@color/lightOrange</item>
+        <item name="android:scrollbarSize">@dimen/size_scrollbar</item>
+        <item name="android:scrollbarStyle">insideInset</item>
     </style>
 
 </resources>
