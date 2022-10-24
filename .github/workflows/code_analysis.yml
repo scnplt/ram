@@ -30,3 +30,6 @@ jobs:
     - name: Scan with Detekt
       run: ./gradlew detekt
       
+    - name: Scan with Ktlint
+      run: ./gradlew ktlintCheck
+      
