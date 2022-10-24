@@ -11,6 +11,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.android.gms.oss-licenses-plugin'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
 }
@@ -20,6 +21,7 @@ android {
     compileSdk configs.compileSdk
 
     defaultConfig {
+        applicationIdSuffix 'colorapp'
         applicationId configs.applicationId
         minSdk configs.minSdk
         targetSdk configs.targetSdk
@@ -58,7 +60,10 @@ dependencies {
     implementation project(path: ':core-ui')
     implementation project(path: ':core-common')
     implementation project(path: ':domain')
+
     implementation libs.coreKtx
+
+    // UI
     implementation libs.appcompat
 
     // Navigation
@@ -68,4 +73,6 @@ dependencies {
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+
+    implementation libs.ossLicenses
 }

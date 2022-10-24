@@ -11,4 +11,19 @@
     <string name="app_name">Renkler</string>
     <string name="cat_image">Kedi Resmi</string>
     <string name="let_get_to_know_colors">Renkleri Tanıyalım</string>
+    <string name="start">Başla</string>
+    <string name="training">Eğitim</string>
+    <string name="questions">Sorular</string>
+    <string name="help_button">Yardım Butonu</string>
+    <string name="detail">Ayrıntılar</string>
+    <string name="device_lang_not_supported">Cihazınızın dili desteklenmiyor.</string>
+
+    <plurals name="duration_value">
+        <item quantity="one">Süre: %d dakika</item>
+        <item quantity="other">Süre: %d dakika</item>
+    </plurals>
+    <string name="technical">Teknik</string>
+    <string name="send_feedback">Geribildirim gönder</string>
+    <string name="licenses">Lisanslar</string>
+    <string name="report_technical_issues">Teknik sorunları bildirin veya öneri yapın</string>
 </resources>

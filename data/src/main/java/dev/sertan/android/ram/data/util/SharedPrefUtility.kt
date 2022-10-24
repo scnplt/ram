@@ -15,6 +15,7 @@ import dev.sertan.android.ram.corecommon.util.JsonConverter
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.onStart
 
 internal class SharedPrefUtility<T>(
     private val sharedPreferences: SharedPreferences,
@@ -38,7 +39,7 @@ internal class SharedPrefUtility<T>(
             registerOnSharedPreferenceChangeListener(sharedPrefListener)
             awaitClose { unregisterOnSharedPreferenceChangeListener(sharedPrefListener) }
         }
-    }
+    }.onStart { getJson()?.let { emit(jsonConverter.fromJson(it)) } }
 
     private fun getJson(): String? = sharedPreferences.getString(dataKey, null)
 

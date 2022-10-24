@@ -16,3 +16,8 @@ fun UserConfigsDto.toUiModel(): UserConfigs = UserConfigs(
     isVoiceSupportActive = isVoiceSupportActive,
     trainingCompletedBefore = trainingCompletedBefore
 )
+
+fun UserConfigs.toDomainModel(): UserConfigsDto = UserConfigsDto(
+    isVoiceSupportActive = isVoiceSupportActive,
+    trainingCompletedBefore = trainingCompletedBefore
+)

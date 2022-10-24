@@ -10,6 +10,6 @@
 package dev.sertan.android.ram.coreui.model
 
 data class UserConfigs(
-    val isVoiceSupportActive: Boolean,
-    val trainingCompletedBefore: Boolean
+    val isVoiceSupportActive: Boolean = true,
+    val trainingCompletedBefore: Boolean = false
 )

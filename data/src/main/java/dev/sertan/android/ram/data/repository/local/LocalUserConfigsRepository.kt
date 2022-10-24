@@ -20,16 +20,12 @@ internal class LocalUserConfigsRepository(
     private val sharedPrefUtility: SharedPrefUtility<UserConfigsDto>
 ) : UserConfigsRepository {
 
-    override suspend fun getUserConfigs(): Result<UserConfigsDto?> = runCatching {
-        sharedPrefUtility.getData()
-    }
-
-    override suspend fun getUserConfigsAsStream(): Flow<Result<UserConfigsDto?>> {
+    override fun getUserConfigsAsStream(): Flow<Result<UserConfigsDto?>> {
         return sharedPrefUtility.getDataAsStream().map { Result.success(it) }
             .catch { exception -> Result.failure<UserConfigsDto?>(exception) }
     }
 
-    override suspend fun updateUserConfigs(userConfigsDto: UserConfigsDto): Result<Unit> {
+    override suspend fun setUserConfigs(userConfigsDto: UserConfigsDto): Result<Unit> {
         return runCatching { sharedPrefUtility.putData(data = userConfigsDto) }
     }
 }

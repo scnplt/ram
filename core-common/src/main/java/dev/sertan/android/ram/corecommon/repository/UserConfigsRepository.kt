@@ -14,9 +14,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserConfigsRepository {
 
-    suspend fun getUserConfigs(): Result<UserConfigsDto?>
+    fun getUserConfigsAsStream(): Flow<Result<UserConfigsDto?>>
 
-    suspend fun getUserConfigsAsStream(): Flow<Result<UserConfigsDto?>>
-
-    suspend fun updateUserConfigs(userConfigsDto: UserConfigsDto): Result<Unit>
+    suspend fun setUserConfigs(userConfigsDto: UserConfigsDto): Result<Unit>
 }
