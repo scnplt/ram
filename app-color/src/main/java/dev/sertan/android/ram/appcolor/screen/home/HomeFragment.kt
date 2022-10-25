@@ -12,7 +12,6 @@ package dev.sertan.android.ram.appcolor.screen.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
@@ -22,7 +21,6 @@ import dev.sertan.android.ram.coreui.util.viewBinding
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val viewModel by viewModels<HomeViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
