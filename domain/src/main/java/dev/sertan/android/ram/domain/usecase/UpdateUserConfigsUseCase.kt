@@ -15,7 +15,7 @@ import dev.sertan.android.ram.coreui.model.UserConfigs
 import dev.sertan.android.ram.domain.mapper.toDomainModel
 import javax.inject.Inject
 
-class UpdateUserSettingsUseCase @Inject constructor(
+class UpdateUserConfigsUseCase @Inject constructor(
     @LocalDataSource private val userConfigsRepository: UserConfigsRepository
 ) {
 

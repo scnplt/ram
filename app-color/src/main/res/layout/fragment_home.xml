@@ -9,66 +9,116 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/constraintLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/small_gap_4">
+    tools:context=".screen.home.HomeFragment">
 
     <Button
         android:id="@+id/helpButton"
         style="@style/Widget.ColorApp.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_gap_4"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:contentDescription="@string/help_button"
         app:icon="@drawable/ic_help_outline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/volumeButton"
+        android:id="@+id/changeVoiceSupportButton"
         style="@style/Widget.ColorApp.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_gap_4"
+        android:contentDescription="@string/change_voice_support_button"
         app:icon="@drawable/ic_volume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/helpButton" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/small_gap_7"
+        android:contentDescription="@string/application_logo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeVoiceSupportButton"
+        tools:src="@tools:sample/avatars"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/titleTextView"
-        style="@style/Widget.ColorApp.TextView.Title"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/small_gap_2"
-        android:layout_marginBottom="@dimen/small_gap_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_gap_4"
+        android:layout_marginTop="@dimen/small_gap_7"
+        android:gravity="center_horizontal"
         android:text="@string/let_get_to_know_colors"
-        app:layout_constraintBottom_toTopOf="@id/startButton"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceDisplaySmall"
+        app:layout_constraintBottom_toTopOf="@id/trainingButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/helpButton" />
+        app:layout_constraintTop_toBottomOf="@id/logoImageView"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/startButton"
-        style="@style/Widget.ColorApp.Button.Icon"
+        android:id="@+id/trainingButton"
+        style="@style/Widget.ColorApp.Button.Selection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_gap_2"
-        app:backgroundTint="@color/green"
+        android:layout_marginTop="@dimen/small_gap_9"
+        android:text="@string/training"
         app:icon="@drawable/ic_play"
-        app:iconSize="@dimen/size_button_icon_large"
-        app:layout_constraintBottom_toTopOf="@id/catImageView"
+        app:layout_constraintBottom_toTopOf="@id/practiceButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
-        app:layout_constraintWidth_max="@dimen/size_button_width_max"
-        app:layout_constraintWidth_percent="0.75" />
+        app:layout_constraintWidth_percent="0.6" />
 
-    <ImageView
-        android:id="@+id/catImageView"
+    <Button
+        android:id="@+id/practiceButton"
+        style="@style/Widget.ColorApp.Button.Selection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/practice"
+        app:icon="@drawable/ic_pen"
+        app:layout_constraintBottom_toTopOf="@id/drawButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trainingButton"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <Button
+        android:id="@+id/drawButton"
+        style="@style/Widget.ColorApp.Button.Selection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_gap_9"
+        android:text="@string/drawing"
+        app:icon="@drawable/ic_brush"
+        app:layout_constraintBottom_toTopOf="@id/sendFeedbackTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/practiceButton"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/sendFeedbackTextView"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:contentDescription="@string/cat_image"
-        android:src="@drawable/fluffy_cat"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/small_gap_4"
+        android:text="@string/send_feedback"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceLabelLarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

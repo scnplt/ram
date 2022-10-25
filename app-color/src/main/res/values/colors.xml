@@ -8,15 +8,7 @@
   -->
 
 <resources>
-    <color name="green">#63d97c</color>
-    <color name="dark_green">#418b51</color>
-
-    <color name="lavender">#c059ff</color>
-    <color name="lavender_alpha_50">#80c059ff</color>
 
     <color name="lightOrange">#f9f0e4</color>
 
-    <color name="turquoise">#4dc9ff</color>
-
-    <color name="lightBlue">#82cef1</color>
 </resources>
