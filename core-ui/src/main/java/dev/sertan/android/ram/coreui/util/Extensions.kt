@@ -10,7 +10,6 @@
 package dev.sertan.android.ram.coreui.util
 
 import android.content.Context
-import android.speech.tts.TextToSpeech
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -33,10 +32,8 @@ fun Fragment.navigateTo(navDirections: NavDirections) {
     findNavController().navigate(navDirections)
 }
 
+fun Fragment.showToast(message: String?): Unit = requireContext().showToast(message)
+
 fun View.startAnimation(@AnimRes animationId: Int) {
     startAnimation(AnimationUtils.loadAnimation(context, animationId))
-}
-
-fun TextToSpeech.speak(message: CharSequence) {
-    speak(message, TextToSpeech.QUEUE_FLUSH, null, "")
 }

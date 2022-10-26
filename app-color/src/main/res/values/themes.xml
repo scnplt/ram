@@ -9,15 +9,13 @@
 
 <resources>
 
-    <style name="Theme.ColorApp" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/bg_main</item>
-        <item name="android:statusBarColor">@color/lightBlue</item>
-        <item name="android:navigationBarColor">@color/lightBlue</item>
-        <item name="fontFamily">@font/courgette</item>
+    <style name="Theme.ColorApp" parent="Theme.ColorApp.Base">
         <item name="materialButtonStyle">@style/Widget.ColorApp.Button</item>
-        <item name="android:textColor">@color/lightOrange</item>
         <item name="android:scrollbarSize">@dimen/size_scrollbar</item>
         <item name="android:scrollbarStyle">insideInset</item>
+        <item name="fontFamily">@font/heebo</item>
     </style>
+
+    <style name="Theme.ColorApp.Base" parent="Theme.Material3.Light.NoActionBar" />
 
 </resources>

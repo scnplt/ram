@@ -7,32 +7,16 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<!--
-  ~ RAM (c) by Sertan Canpolat
-  ~
-  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
-  ~
-  ~ You should have received a copy of the license along with this work.
-  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
-  -->
-
 <resources>
-    <string name="app_name">Colors</string>
-    <string name="cat_image">Cat Image</string>
-    <string name="let_get_to_know_colors">Let\'s Get to Know the Colors</string>
-    <string name="start">Start</string>
-    <string name="training">Training</string>
-    <string name="questions">Questions</string>
-    <string name="help_button">Help Button</string>
-    <string name="detail">Detail</string>
-    <string name="device_lang_not_supported">Your device language is not supported.</string>
-    <string name="technical">Technical</string>
-    <string name="send_feedback">Send feedback</string>
-    <string name="licenses">Licenses</string>
-    <string name="report_technical_issues">Report technical issues or suggest new features</string>
 
-    <plurals name="duration_value">
-        <item quantity="one">Duration: %d minute</item>
-        <item quantity="other">Duration: %d minutes</item>
-    </plurals>
+    <string name="app_name">Colors</string>
+    <string name="let_get_to_know_colors">Let\'s Get to Know the Colors</string>
+    <string name="application_logo">Application logo</string>
+    <string name="send_feedback">Send feedback</string>
+    <string name="training">Training</string>
+    <string name="practice">Practice</string>
+    <string name="help_button">Help Button</string>
+    <string name="change_voice_support_button">Change Voice Support Button</string>
+    <string name="drawing">Drawing</string>
+
 </resources>

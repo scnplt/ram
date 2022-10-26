@@ -9,15 +9,9 @@
 
 package dev.sertan.android.ram.appcolor.screen
 
-import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
-import javax.inject.Inject
 
 @AndroidEntryPoint
-internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
-
-    @Inject
-    lateinit var textToSpeech: TextToSpeech
-}
+internal class MainActivity : AppCompatActivity(R.layout.activity_main)
