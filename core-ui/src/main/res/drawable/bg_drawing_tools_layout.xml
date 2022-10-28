@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ RAM (c) by Sertan Canpolat
   ~
   ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
@@ -7,7 +7,9 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
 
-    <style name="Theme.RAM" parent="Theme.Material3.DynamicColors.Dark" />
-</resources>
+    <corners android:radius="@dimen/small_gap_2" />
+    <solid android:color="?attr/colorSecondaryContainer" />
+</shape>

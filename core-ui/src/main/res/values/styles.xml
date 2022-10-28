@@ -9,7 +9,6 @@
 
 <resources>
 
-    <!-- Widget -->
     <style name="Widget.ColorApp.Button" parent="Widget.Material3.Button.TonalButton">
         <item name="android:textSize">@dimen/text_size_button</item>
         <item name="android:padding">@dimen/small_gap_4</item>
@@ -25,17 +24,17 @@
         <item name="iconSize">@dimen/size_button_icon_medium</item>
     </style>
 
-    <style name="Widget.ColorApp.Button.Selection" parent="Widget.ColorApp.Button">
-        <item name="android:paddingStart">@dimen/small_gap_8</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.ColorApp.Button.Selection</item>
-    </style>
-
     <style name="ShapeAppearance.ColorApp.Button.Selection" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">cut</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">50%</item>
         <item name="cornerSizeTopLeft">50%</item>
+    </style>
+
+    <style name="Widget.ColorApp.Button.Selection" parent="Widget.ColorApp.Button">
+        <item name="android:paddingStart">@dimen/small_gap_8</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.ColorApp.Button.Selection</item>
     </style>
 
 </resources>

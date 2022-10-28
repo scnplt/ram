@@ -11,9 +11,11 @@ package dev.sertan.android.ram.coreui.util
 
 import android.content.Context
 import android.view.View
+import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.AnimRes
+import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -34,6 +36,12 @@ fun Fragment.navigateTo(navDirections: NavDirections) {
 
 fun Fragment.showToast(message: String?): Unit = requireContext().showToast(message)
 
+fun Fragment.getColor(@ColorRes colorId: Int): Int = requireContext().getColor(colorId)
+
 fun View.startAnimation(@AnimRes animationId: Int) {
-    startAnimation(AnimationUtils.loadAnimation(context, animationId))
+    startAnimation(context.getAnimation(animationId))
+}
+
+fun Context.getAnimation(@AnimRes animationId: Int): Animation {
+    return AnimationUtils.loadAnimation(this, animationId)
 }

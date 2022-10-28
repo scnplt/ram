@@ -51,4 +51,6 @@
     <dimen name="size_button_width_max">600dp</dimen>
     <dimen name="size_scrollbar">2dp</dimen>
 
+    <dimen name="size_drawing_tools_color">30dp</dimen>
+
 </resources>

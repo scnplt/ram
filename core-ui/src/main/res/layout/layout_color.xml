@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/colorView"
+    android:layout_width="@dimen/size_drawing_tools_color"
+    android:layout_height="@dimen/size_drawing_tools_color"
+    android:layout_marginBottom="@dimen/small_gap_2"
+    android:background="@drawable/bg_drawing_colors"
+    tools:backgroundTint="@android:color/holo_red_dark" />
