@@ -10,17 +10,21 @@
 package dev.sertan.android.ram.coreui.util
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.AnimRes
+import androidx.annotation.ArrayRes
 import androidx.annotation.ColorRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
+
+private const val NO_COLOR = -1
 
 fun Context.showToast(message: String?) {
     message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
@@ -45,3 +49,10 @@ fun View.startAnimation(@AnimRes animationId: Int) {
 fun Context.getAnimation(@AnimRes animationId: Int): Animation {
     return AnimationUtils.loadAnimation(this, animationId)
 }
+
+fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> = obtainTypedArray(colorListId)
+    .use {
+        (0 until it.length()).mapNotNull { colorIndex ->
+            it.getColor(colorIndex, NO_COLOR).takeIf { color -> color != NO_COLOR }
+        }
+    }

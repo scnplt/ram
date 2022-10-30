@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.coreui.R
 import dev.sertan.android.ram.coreui.databinding.LayoutColorBinding
 
-internal class ColorItemViewHolder(
+class ColorItemViewHolder(
     private val binding: LayoutColorBinding,
     private val listener: OnColorClickedListener?
 ) : RecyclerView.ViewHolder(binding.root) {

@@ -120,6 +120,12 @@ class DrawingView @JvmOverloads constructor(
         }
     }
 
+    fun clearCanvas() {
+        currentLine = currentLine.copy(path = Path())
+        previousLines.clear()
+        invalidate()
+    }
+
     interface Listener {
         fun onModeChanged(mode: Mode) {}
         fun onPenColorChanged(color: Int) {}

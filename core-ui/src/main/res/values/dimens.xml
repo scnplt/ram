@@ -44,6 +44,7 @@
     <dimen name="text_size_title_max">64sp</dimen>
     <dimen name="text_size_button">24sp</dimen>
 
+    <dimen name="size_button_icon_small">32dp</dimen>
     <dimen name="size_button_icon_medium">40dp</dimen>
     <dimen name="size_button_icon_large">60dp</dimen>
 

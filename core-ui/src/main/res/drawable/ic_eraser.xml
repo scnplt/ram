@@ -20,7 +20,7 @@
         android:strokeColor="@android:color/black" />
 
     <path
-        android:pathData="M6.6,12 L15.5,15 L12,21 L3,18Z"
         android:fillColor="@android:color/black"
+        android:pathData="M6.6,12 L15.5,15 L12,21 L3,18Z"
         android:strokeWidth="1" />
 </vector>

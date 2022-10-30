@@ -21,7 +21,12 @@
         <item name="android:padding">@dimen/small_gap_2</item>
         <item name="backgroundTint">?attr/colorPrimary</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconSize">@dimen/size_button_icon_medium</item>
+        <item name="iconSize">@dimen/size_button_icon_small</item>
+    </style>
+
+    <style name="Widget.ColorApp.Button.Selection" parent="Widget.ColorApp.Button">
+        <item name="android:paddingStart">@dimen/small_gap_8</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.ColorApp.Button.Selection</item>
     </style>
 
     <style name="ShapeAppearance.ColorApp.Button.Selection" parent="ShapeAppearance.MaterialComponents.SmallComponent">
@@ -30,11 +35,6 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">50%</item>
         <item name="cornerSizeTopLeft">50%</item>
-    </style>
-
-    <style name="Widget.ColorApp.Button.Selection" parent="Widget.ColorApp.Button">
-        <item name="android:paddingStart">@dimen/small_gap_8</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.ColorApp.Button.Selection</item>
     </style>
 
 </resources>

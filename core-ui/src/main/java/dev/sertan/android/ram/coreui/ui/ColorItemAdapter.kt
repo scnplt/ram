@@ -13,10 +13,13 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.scopes.FragmentScoped
 import dev.sertan.android.ram.coreui.databinding.LayoutColorBinding
 import dev.sertan.android.ram.coreui.ui.ColorItemViewHolder.OnColorClickedListener
+import javax.inject.Inject
 
-internal class ColorItemAdapter : RecyclerView.Adapter<ColorItemViewHolder>() {
+@FragmentScoped
+class ColorItemAdapter @Inject constructor() : RecyclerView.Adapter<ColorItemViewHolder>() {
 
     private var colors: MutableList<Int> = mutableListOf()
 
