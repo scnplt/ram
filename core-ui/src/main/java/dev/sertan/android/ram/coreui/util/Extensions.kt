@@ -24,7 +24,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import kotlin.properties.ReadOnlyProperty
 
-private const val NO_COLOR = -1
+private const val NO_COLOR = Int.MIN_VALUE
 
 fun Context.showToast(message: String?) {
     message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
