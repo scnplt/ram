@@ -14,7 +14,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.scopes.FragmentScoped
-import dev.sertan.android.ram.coreui.databinding.LayoutColorBinding
+import dev.sertan.android.ram.coreui.databinding.ItemLayoutColorBinding
 import dev.sertan.android.ram.coreui.ui.ColorItemViewHolder.OnColorClickedListener
 import javax.inject.Inject
 
@@ -32,7 +32,8 @@ class ColorItemAdapter @Inject constructor() : RecyclerView.Adapter<ColorItemVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorItemViewHolder {
-        val binding = LayoutColorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemLayoutColorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ColorItemViewHolder(binding, listener)
     }
 

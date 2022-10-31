@@ -24,49 +24,52 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteAllButton"
-        style="@style/Widget.ColorApp.Button.Icon"
+        style="?attr/materialIconButtonFilledTonalStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_gap_1"
+        android:layout_marginBottom="@dimen/small_gap_1"
+        app:icon="@drawable/ic_delete_forever"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/eraserButton"
+        style="?attr/materialIconButtonFilledTonalStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_1"
         android:layout_marginEnd="@dimen/small_gap_1"
-        app:icon="@drawable/ic_delete_forever"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/eraserButton"
-        style="@style/Widget.ColorApp.Button.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_4"
-        app:backgroundTint="@color/color_bg_button_icon"
         app:icon="@drawable/ic_eraser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/deleteAllButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/color_stroke_draw_tool"
+        app:strokeWidth="@dimen/size_icon_button_stroke" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/brushButton"
-        style="@style/Widget.ColorApp.Button.Icon"
+        style="?attr/materialIconButtonFilledTonalStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_1"
-        app:backgroundTint="@color/color_bg_button_icon"
+        android:layout_marginEnd="@dimen/small_gap_2"
         app:icon="@drawable/ic_brush"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/eraserButton" />
+        app:layout_constraintEnd_toStartOf="@id/eraserButton"
+        app:layout_constraintTop_toTopOf="@id/eraserButton"
+        app:strokeColor="@color/color_stroke_draw_tool"
+        app:strokeWidth="@dimen/size_icon_button_stroke" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/colorPaletteRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/small_gap_2"
+        android:layout_marginVertical="@dimen/small_gap_7"
         android:background="@drawable/bg_drawing_tools_layout"
         android:padding="@dimen/small_gap_1"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/deleteAllButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brushButton"
+        app:layout_constraintTop_toBottomOf="@id/eraserButton"
         tools:itemCount="10"
-        tools:listitem="@layout/layout_color" />
+        tools:listitem="@layout/item_layout_color" />
 </androidx.constraintlayout.widget.ConstraintLayout>

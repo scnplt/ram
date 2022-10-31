@@ -7,8 +7,8 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
 
-    <item android:color="?attr/colorPrimary" android:state_activated="true" />
-    <item android:alpha="0.7" android:color="?attr/colorPrimary" android:state_activated="false" />
-</selector>
+    <style name="Theme.RAM.Base" parent="Theme.Material3.DynamicColors.Dark" />
+
+</resources>

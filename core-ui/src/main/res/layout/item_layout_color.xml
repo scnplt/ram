@@ -7,11 +7,13 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<View xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.button.MaterialButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/colorView"
+    style="?attr/materialIconButtonFilledStyle"
     android:layout_width="@dimen/size_drawing_tools_color"
     android:layout_height="@dimen/size_drawing_tools_color"
     android:layout_marginBottom="@dimen/small_gap_2"
-    android:background="@drawable/bg_drawing_colors"
-    tools:backgroundTint="@android:color/holo_red_dark" />
+    android:insetLeft="0dp"
+    android:insetTop="0dp"
+    android:insetRight="0dp"
+    android:insetBottom="0dp" />

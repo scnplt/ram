@@ -9,19 +9,17 @@
 
 package dev.sertan.android.ram.coreui.ui
 
-import androidx.appcompat.content.res.AppCompatResources
+import android.content.res.ColorStateList
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.coreui.R
-import dev.sertan.android.ram.coreui.databinding.LayoutColorBinding
+import dev.sertan.android.ram.coreui.databinding.ItemLayoutColorBinding
 
 class ColorItemViewHolder(
-    private val binding: LayoutColorBinding,
+    private val binding: ItemLayoutColorBinding,
     private val listener: OnColorClickedListener?
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(color: Int): Unit = with(binding.colorView) {
-        background = AppCompatResources.getDrawable(itemView.context, R.drawable.bg_drawing_colors)
-            ?.apply { setTint(color) }
+        backgroundTintList = ColorStateList.valueOf(color)
         setOnClickListener { listener?.onColorClicked(color) }
     }
 

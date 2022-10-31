@@ -7,6 +7,13 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval"
-    android:tint="?attr/colorOnSurface" />
+<resources>
+
+    <style name="Theme.RAM.NoActionBar" parent="Theme.RAM.Base">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.RAM.Base" parent="Theme.Material3.DynamicColors.Light" />
+
+</resources>

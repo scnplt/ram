@@ -9,7 +9,6 @@
 
 package dev.sertan.android.ram.coreui.ui.drawing
 
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,13 +22,15 @@ import dev.sertan.android.ram.coreui.databinding.FragmentDrawingBinding
 import dev.sertan.android.ram.coreui.ui.ColorItemAdapter
 import dev.sertan.android.ram.coreui.ui.ColorItemViewHolder
 import dev.sertan.android.ram.coreui.util.getColorList
+import dev.sertan.android.ram.coreui.util.setIconTint
 import dev.sertan.android.ram.coreui.util.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DrawingFragment : Fragment(R.layout.fragment_drawing),
+class DrawingFragment :
+    Fragment(R.layout.fragment_drawing),
     ColorItemViewHolder.OnColorClickedListener,
     DrawingView.Listener {
 
@@ -51,9 +52,7 @@ class DrawingFragment : Fragment(R.layout.fragment_drawing),
         binding.drawingView.penColor = color
     }
 
-    override fun onPenColorChanged(color: Int) {
-        binding.brushButton.iconTint = ColorStateList.valueOf(color)
-    }
+    override fun onPenColorChanged(color: Int): Unit = binding.brushButton.setIconTint(color)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
