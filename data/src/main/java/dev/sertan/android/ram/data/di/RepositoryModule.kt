@@ -1,25 +1,26 @@
 package dev.sertan.android.ram.data.di
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.corecommon.di.LocalDataSource
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
-import dev.sertan.android.ram.data.database.dao.MaterialDao
-import dev.sertan.android.ram.data.database.dao.QuestionWithMaterialsDao
+import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.data.repository.local.LocalMaterialRepository
-import javax.inject.Singleton
+import dev.sertan.android.ram.data.repository.local.LocalUserSettingsRepository
 
+@Suppress("UnnecessaryAbstractClass")
 @Module
 @InstallIn(SingletonComponent::class)
-internal object RepositoryModule {
+internal abstract class RepositoryModule {
 
-    @Provides
-    @Singleton
-    @LocalDataSource
-    fun provideLocalMaterialRepository(
-        materialDao: MaterialDao,
-        questionWithMaterialsDao: QuestionWithMaterialsDao
-    ): MaterialRepository = LocalMaterialRepository(materialDao, questionWithMaterialsDao)
+    @Binds
+    abstract fun bindMaterialRepository(
+        materialRepository: LocalMaterialRepository
+    ): MaterialRepository
+
+    @Binds
+    abstract fun bindUserSettingsRepository(
+        userSettingsRepository: LocalUserSettingsRepository
+    ): UserSettingsRepository
 }

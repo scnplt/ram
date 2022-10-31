@@ -15,8 +15,9 @@ import dev.sertan.android.ram.data.database.dao.MaterialDao
 import dev.sertan.android.ram.data.database.dao.QuestionWithMaterialsDao
 import dev.sertan.android.ram.data.model.mapper.toDataModel
 import dev.sertan.android.ram.data.model.mapper.toDomainModel
+import javax.inject.Inject
 
-internal class LocalMaterialRepository(
+internal class LocalMaterialRepository @Inject constructor(
     private val materialDao: MaterialDao,
     private val questionWithMaterialsDao: QuestionWithMaterialsDao
 ) : MaterialRepository {
