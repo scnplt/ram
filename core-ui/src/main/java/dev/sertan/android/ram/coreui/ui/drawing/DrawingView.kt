@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.ui.customview
+package dev.sertan.android.ram.coreui.ui.drawing
 
 import android.annotation.SuppressLint
 import android.content.Context

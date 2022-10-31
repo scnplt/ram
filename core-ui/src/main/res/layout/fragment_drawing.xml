@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <dev.sertan.android.ram.coreui.ui.customview.DrawingView
+    <dev.sertan.android.ram.coreui.ui.drawing.DrawingView
         android:id="@+id/drawingView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"
+        app:backgroundTint="@color/color_bg_button_icon"
         app:icon="@drawable/ic_eraser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/deleteAllButton" />
@@ -49,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_1"
+        app:backgroundTint="@color/color_bg_button_icon"
         app:icon="@drawable/ic_brush"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/eraserButton" />

@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/drawingFragment"
-        android:name="dev.sertan.android.ram.coreui.ui.DrawingFragment"
+        android:name="dev.sertan.android.ram.coreui.ui.drawing.DrawingFragment"
         android:label="DrawingFragment"
         tools:layout="@layout/fragment_drawing" />
 </navigation>
