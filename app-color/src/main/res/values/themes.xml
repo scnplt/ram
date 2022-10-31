@@ -9,13 +9,13 @@
 
 <resources>
 
-    <style name="Theme.ColorApp" parent="Theme.ColorApp.Base">
+    <style name="Theme.ColorApp" parent="Theme.Material3.DynamicColors.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
         <item name="materialButtonStyle">@style/Widget.ColorApp.Button</item>
         <item name="android:scrollbarSize">@dimen/size_scrollbar</item>
         <item name="android:scrollbarStyle">insideInset</item>
         <item name="fontFamily">@font/heebo</item>
     </style>
-
-    <style name="Theme.ColorApp.Base" parent="Theme.Material3.Light.NoActionBar" />
 
 </resources>
