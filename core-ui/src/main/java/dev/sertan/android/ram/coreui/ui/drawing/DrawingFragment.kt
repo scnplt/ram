@@ -74,7 +74,7 @@ class DrawingFragment : Fragment(R.layout.fragment_drawing),
     private fun setUpComponents(): Unit = with(binding) {
         drawingView.listener = this@DrawingFragment
         colorPaletteRecyclerView.adapter = adapter
-        adapter.submitList(newColors = resources.getColorList(R.array.colors))
+        adapter.submitList(newColors = resources.getColorList(R.array.palette_colors))
         deleteAllButton.setOnClickListener { drawingView.clearCanvas() }
         eraserButton.setOnClickListener { viewModel.setToErasingMode() }
         brushButton.setOnClickListener { viewModel.setToDrawingMode() }

@@ -9,7 +9,7 @@
 
 <resources>
 
-    <integer-array name="colors">
+    <integer-array name="palette_colors">
         <item>@color/purple</item>
         <item>@color/orange</item>
         <item>@color/pink</item>
