@@ -10,13 +10,13 @@
 <resources>
 
     <color name="lightOrange">#f9f0e4</color>
-    <color name="purple">#A020F0</color>
-    <color name="orange">#FFA500</color>
-    <color name="pink">#FFC0CB</color>
+    <color name="purple">#673AB7</color>
+    <color name="orange">#FF9800</color>
+    <color name="pink">#E91E63</color>
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
-    <color name="blue">#0000FF</color>
+    <color name="blue">#0027FF</color>
     <color name="gray">#808080</color>
-    <color name="yellow">#FFFF00</color>
+    <color name="yellow">#FFD600</color>
 
 </resources>
