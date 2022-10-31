@@ -8,48 +8,19 @@
   -->
 
 <resources>
+
     <dimen name="small_gap_1">4dp</dimen>
     <dimen name="small_gap_2">8dp</dimen>
-    <dimen name="small_gap_3">12dp</dimen>
     <dimen name="small_gap_4">16dp</dimen>
-    <dimen name="small_gap_5">20dp</dimen>
-    <dimen name="small_gap_6">24dp</dimen>
     <dimen name="small_gap_7">28dp</dimen>
     <dimen name="small_gap_8">32dp</dimen>
     <dimen name="small_gap_9">36dp</dimen>
 
-    <dimen name="medium_gap_1">40dp</dimen>
-    <dimen name="medium_gap_2">60dp</dimen>
-    <dimen name="medium_gap_3">80dp</dimen>
-    <dimen name="medium_gap_4">100dp</dimen>
-    <dimen name="medium_gap_5">120dp</dimen>
-    <dimen name="medium_gap_6">140dp</dimen>
-    <dimen name="medium_gap_7">160dp</dimen>
-    <dimen name="medium_gap_8">180dp</dimen>
-    <dimen name="medium_gap_9">200dp</dimen>
-
-    <dimen name="large_gap_1">220dp</dimen>
-    <dimen name="large_gap_2">240dp</dimen>
-    <dimen name="large_gap_3">260dp</dimen>
-    <dimen name="large_gap_4">280dp</dimen>
-    <dimen name="large_gap_5">300dp</dimen>
-    <dimen name="large_gap_6">320dp</dimen>
-    <dimen name="large_gap_7">340dp</dimen>
-    <dimen name="large_gap_8">360dp</dimen>
-    <dimen name="large_gap_9">380dp</dimen>
-
-    <dimen name="size_title_text_min">60dp</dimen>
-    <dimen name="size_title_text_max">120dp</dimen>
-    <dimen name="text_size_title_min">24sp</dimen>
-    <dimen name="text_size_title_max">64sp</dimen>
     <dimen name="text_size_button">24sp</dimen>
 
     <dimen name="size_button_icon_small">32dp</dimen>
     <dimen name="size_button_icon_medium">40dp</dimen>
-    <dimen name="size_button_icon_large">60dp</dimen>
 
-    <!-- New -->
-    <dimen name="size_button_width_max">600dp</dimen>
     <dimen name="size_scrollbar">2dp</dimen>
 
     <dimen name="size_drawing_tools_color">30dp</dimen>
