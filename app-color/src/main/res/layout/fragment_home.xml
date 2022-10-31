@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImageView"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_goneMarginTop="0dp" />
 
     <Button
         android:id="@+id/trainingButton"
@@ -76,9 +76,6 @@
         app:icon="@drawable/ic_play"
         app:layout_constraintBottom_toTopOf="@id/practiceButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView"
         app:layout_constraintWidth_percent="0.6" />
 
     <Button
@@ -88,37 +85,19 @@
         android:layout_height="wrap_content"
         android:text="@string/practice"
         app:icon="@drawable/ic_pen"
-        app:layout_constraintBottom_toTopOf="@id/drawButton"
+        app:layout_constraintBottom_toTopOf="@id/drawingButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/trainingButton"
         app:layout_constraintWidth_percent="0.7" />
 
     <Button
-        android:id="@+id/drawButton"
+        android:id="@+id/drawingButton"
         style="@style/Widget.ColorApp.Button.Selection"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_gap_9"
+        android:layout_marginBottom="@dimen/small_gap_4"
         android:text="@string/drawing"
         app:icon="@drawable/ic_brush"
-        app:layout_constraintBottom_toTopOf="@id/sendFeedbackTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/practiceButton"
-        app:layout_constraintWidth_percent="0.8" />
-
-    <TextView
-        android:id="@+id/sendFeedbackTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/small_gap_4"
-        android:text="@string/send_feedback"
-        android:textAlignment="center"
-        android:textAppearance="?textAppearanceLabelLarge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintWidth_percent="0.8" />
 </androidx.constraintlayout.widget.ConstraintLayout>
