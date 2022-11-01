@@ -11,6 +11,7 @@ package dev.sertan.android.ram.coredomain.usecase
 
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +21,7 @@ import kotlinx.coroutines.flow.stateIn
 
 private const val VOICE_SUPPORT_DEFAULT_STATE = true
 
+@Singleton
 class VoiceSupportUseCase @Inject constructor(
     private val userSettingsRepository: UserSettingsRepository
 ) {
