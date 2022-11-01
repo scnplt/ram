@@ -73,6 +73,4 @@ dependencies {
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-
-    implementation libs.ossLicenses
 }
