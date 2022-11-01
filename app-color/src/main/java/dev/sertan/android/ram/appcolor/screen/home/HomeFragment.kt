@@ -22,6 +22,7 @@ import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.coreui.util.navigateTo
+import dev.sertan.android.ram.coreui.util.navigateToOssLicensesActivity
 import dev.sertan.android.ram.coreui.util.showToast
 import dev.sertan.android.ram.coreui.util.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
@@ -46,7 +47,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUpComponents(): Unit = with(binding) {
-        helpButton.setOnClickListener { showToast("Not yet implemented") }
+        helpButton.setOnClickListener { navigateToOssLicensesActivity() }
         changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
         trainingButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainingFragment()) }
         practiceButton.setOnClickListener { showToast("Not yet implemented") }
