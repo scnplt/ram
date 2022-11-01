@@ -31,7 +31,6 @@ allprojects {
     apply from: rootProject.file('versions.gradle')
 
     detekt {
-        allRules = false
         debug = true
         parallel = true
     }
@@ -40,7 +39,6 @@ allprojects {
         android = true
         debug = true
         reporters {
-            reporter "plain"
             reporter "html"
         }
     }
@@ -50,7 +48,7 @@ allprojects {
             html.required.set(true)
             md.required.set(false)
             sarif.required.set(false)
-            txt.required.set(true)
+            txt.required.set(false)
             xml.required.set(false)
         }
     }
