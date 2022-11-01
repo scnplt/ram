@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
     </fragment>
 
     <fragment
@@ -28,4 +31,10 @@
         android:name="dev.sertan.android.ram.coreui.ui.drawing.DrawingFragment"
         android:label="DrawingFragment"
         tools:layout="@layout/fragment_drawing" />
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="dev.sertan.android.ram.appcolor.screen.training.TrainingFragment"
+        android:label="TrainingFragment"
+        tools:layout="@layout/fragment_training" />
 </navigation>
