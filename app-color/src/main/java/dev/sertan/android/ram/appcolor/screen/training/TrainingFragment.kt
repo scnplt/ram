@@ -20,7 +20,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
-import dev.sertan.android.ram.coreui.util.loadFromUrl
 import dev.sertan.android.ram.coreui.util.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
@@ -34,7 +33,9 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
         with(binding) {
             it.material?.let { material ->
                 descriptionTextView.text = material.description
-                mediaImageView.loadFromUrl(material.mediaUrl)
+                mediaImageView.contentDescription = material.description
+                // mediaImageView.loadFromUrl(material.mediaUrl)
+                // TODO: Uncomment previous line
             }
             backButton.isVisible = it.isBackButtonVisible
             forwardButton.isVisible = it.isForwardButtonVisible

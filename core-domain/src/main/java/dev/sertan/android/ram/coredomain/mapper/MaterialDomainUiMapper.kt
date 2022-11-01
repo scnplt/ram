@@ -19,4 +19,14 @@ fun MaterialDto.toUiModel(): Material = Material(
     attribution = attribution
 )
 
+fun Material.toDomainModel(): MaterialDto = MaterialDto(
+    id = id,
+    description = description,
+    mediaUrl = mediaUrl,
+    attribution = attribution
+)
+
 fun List<MaterialDto>.toUiModel(): List<Material> = map(MaterialDto::toUiModel)
+
+fun List<Material>.toDomainModel(): Array<out MaterialDto> =
+    map(Material::toDomainModel).toTypedArray()

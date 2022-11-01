@@ -10,25 +10,42 @@
 package dev.sertan.android.ram.appcolor.screen.training
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.coredomain.usecase.GetMaterialsUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class TrainingViewModel @Inject constructor(
     private val getMaterialsUseCase: GetMaterialsUseCase
 ) : ViewModel() {
 
+    private val materialIndex = MutableStateFlow(0)
+
     private val _uiState = MutableStateFlow(TrainingUiState())
     val uiState get() = _uiState.asStateFlow()
 
-    fun goToNextMaterial() {
-        // TODO: Not yet implemented
+    init {
+        viewModelScope.launch {
+            val materials = getMaterialsUseCase().also { if (it.isEmpty()) return@launch }
+            materialIndex.collect { index ->
+                _uiState.update {
+                    it.copy(
+                        material = materials[index],
+                        isBackButtonVisible = index > 0,
+                        isForwardButtonVisible = index in 0 until materials.lastIndex,
+                        isFinishButtonVisible = index == materials.lastIndex
+                    )
+                }
+            }
+        }
     }
 
-    fun goToPreviousMaterial() {
-        // TODO: Not yet implemented
-    }
+    fun goToNextMaterial(): Unit = materialIndex.update { it + 1 }
+
+    fun goToPreviousMaterial(): Unit = materialIndex.update { it - 1 }
 }

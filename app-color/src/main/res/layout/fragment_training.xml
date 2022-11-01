@@ -15,63 +15,79 @@
     android:padding="@dimen/small_gap_2"
     tools:context=".screen.training.TrainingFragment">
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        style="?materialCardViewElevatedStyle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="10"
-        android:textAlignment="center"
-        android:textAppearance="?textAppearanceHeadlineMedium"
-        app:layout_constraintBottom_toTopOf="@id/mediaImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@tools:sample/lorem/random" />
-
-    <ImageView
-        android:id="@+id/mediaImageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginVertical="@dimen/small_gap_4"
-        app:layout_constraintBottom_toTopOf="@id/finishButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
-        tools:src="@tools:sample/avatars" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/finishButton"
-        style="?materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:icon="@drawable/ic_done"
+        android:layout_marginVertical="@dimen/small_gap_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/mediaImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="?colorSecondaryContainer"
+                android:contentDescription="@string/material_image"
+                android:scaleType="fitCenter"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/small_gap_2"
+                android:maxLines="10"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceHeadlineMedium"
+                tools:text="@tools:sample/lorem[10]" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:text="@string/previous"
+        android:visibility="gone"
+        app:icon="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="@id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
         tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/forwardButton"
-        style="?materialIconButtonFilledStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:text="@string/next"
         android:visibility="gone"
         app:icon="@drawable/ic_forward"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/finishButton"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="@id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
         tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/backButton"
-        style="?materialIconButtonFilledStyle"
+        android:id="@+id/finishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:text="@string/finish"
         android:visibility="gone"
-        app:icon="@drawable/ic_back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/forwardButton"
+        app:icon="@drawable/ic_done"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="@id/materialCardView"
+        app:layout_constraintTop_toBottomOf="@id/materialCardView"
         tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

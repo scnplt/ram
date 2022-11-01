@@ -17,5 +17,9 @@
     <string name="help_button">Help Button</string>
     <string name="change_voice_support_button">Change Voice Support Button</string>
     <string name="drawing">Drawing</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish</string>
+    <string name="material_image">Material Image</string>
 
 </resources>
