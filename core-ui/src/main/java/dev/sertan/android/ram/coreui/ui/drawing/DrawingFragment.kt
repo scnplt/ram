@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.coreui.ui.drawing
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -74,8 +75,19 @@ class DrawingFragment :
         drawingView.listener = this@DrawingFragment
         colorPaletteRecyclerView.adapter = adapter
         adapter.submitList(newColors = resources.getColorList(R.array.palette_colors))
-        deleteAllButton.setOnClickListener { drawingView.clearCanvas() }
+        deleteAllButton.setOnClickListener { showClearCanvasDialog() }
         eraserButton.setOnClickListener { viewModel.setToErasingMode() }
         brushButton.setOnClickListener { viewModel.setToDrawingMode() }
+    }
+
+    // TODO: Refactor this function, create a custom alert dialog class and use it
+    private fun showClearCanvasDialog() {
+        AlertDialog.Builder(requireContext()).apply {
+            setCancelable(true)
+            setMessage(R.string.do_you_want_clear_canvas)
+            setTitle(android.R.string.dialog_alert_title)
+            setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
+            setPositiveButton(android.R.string.ok) { _, _ -> binding.drawingView.clearCanvas() }
+        }.show()
     }
 }
