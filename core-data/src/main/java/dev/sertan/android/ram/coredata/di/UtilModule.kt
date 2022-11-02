@@ -11,8 +11,6 @@ package dev.sertan.android.ram.coredata.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,11 +24,6 @@ internal object UtilModule {
 
     @Provides
     @Singleton
-    fun provideMoshi(): Moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-
-    @Provides
-    @Singleton
-    fun provideSharedPref(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
-    }
+    fun provideSharedPref(@ApplicationContext context: Context): SharedPreferences =
+        context.getSharedPreferences(context.packageName, Context.MODE_PRIVATE)
 }

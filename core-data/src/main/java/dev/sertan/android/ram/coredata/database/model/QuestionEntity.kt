@@ -7,14 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredata.model
+package dev.sertan.android.ram.coredata.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "questions")
 internal data class QuestionEntity(
-    @PrimaryKey(autoGenerate = true) val questionId: Long,
+    @PrimaryKey val questionUid: String,
     val content: String,
     val answerMaterialId: Long,
 )

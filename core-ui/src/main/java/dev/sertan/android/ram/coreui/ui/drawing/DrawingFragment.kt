@@ -80,8 +80,8 @@ class DrawingFragment :
         brushButton.setOnClickListener { viewModel.setToDrawingMode() }
     }
 
-    // TODO: Refactor this function, create a custom alert dialog class and use it
     private fun showClearCanvasDialog() {
+        // TODO: Refactor this function, create a custom alert dialog class and use it
         AlertDialog.Builder(requireContext()).apply {
             setCancelable(true)
             setMessage(R.string.do_you_want_clear_canvas)

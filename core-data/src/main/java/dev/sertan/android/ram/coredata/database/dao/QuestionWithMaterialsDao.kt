@@ -15,15 +15,15 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import dev.sertan.android.ram.coredata.model.QuestionWithMaterialsEntity
+import dev.sertan.android.ram.coredata.database.model.QuestionWithMaterialsEntity
 
 @Dao
 internal interface QuestionWithMaterialsDao {
 
-    @Query("SELECT * FROM question_materials WHERE :questionId == questionId")
-    suspend fun getAllById(questionId: Long): List<QuestionWithMaterialsEntity>
+    @Query("SELECT * FROM question_materials WHERE :questionUid == questionUid")
+    suspend fun getAllByUid(questionUid: String): List<QuestionWithMaterialsEntity>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(vararg questionWithMaterialsEntityArray: QuestionWithMaterialsEntity)
 
     @Delete

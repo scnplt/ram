@@ -57,10 +57,6 @@ dependencies {
     implementation libs.roomRuntime
     implementation libs.roomKtx
 
-    // Moshi
-    kapt kapts.moshiCodegen
-    implementation libs.moshiKotlin
-
     // Retrofit
     implementation libs.retrofit
 

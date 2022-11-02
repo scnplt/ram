@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.corecommon.model
 
 data class MaterialDto(
-    val id: Long,
+    val uid: String,
     val description: String,
     val mediaUrl: String,
     val attribution: String?

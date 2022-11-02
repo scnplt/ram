@@ -9,13 +9,18 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
+import dev.sertan.android.ram.corecommon.di.LocalDataSource
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.coredomain.mapper.toUiModel
 import dev.sertan.android.ram.coreui.model.Material
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class GetMaterialsUseCase @Inject constructor(private val materialRepository: MaterialRepository) {
+@Singleton
+class GetMaterialsUseCase @Inject constructor(
+    @LocalDataSource private val materialRepository: MaterialRepository
+) {
 
-    suspend operator fun invoke(): List<Material> = materialRepository.getAllMaterials()
-        .getOrNull()?.toUiModel().orEmpty()
+    suspend operator fun invoke(): List<Material> =
+        materialRepository.getAllMaterials().getOrNull()?.toUiModel().orEmpty()
 }

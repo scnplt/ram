@@ -10,7 +10,23 @@
 package dev.sertan.android.ram.appcolor
 
 import android.app.Application
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
+import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
+import javax.inject.Inject
 
 @HiltAndroidApp
-internal class ColorApp : Application()
+internal class ColorApp : Application(), Configuration.Provider {
+
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
+
+    override fun getWorkManagerConfiguration(): Configuration =
+        Configuration.Builder().setWorkerFactory(workerFactory).build()
+
+    override fun onCreate() {
+        super.onCreate()
+        UpdateLocalMaterialsWorker.uniqueStart(applicationContext)
+    }
+}

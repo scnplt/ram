@@ -7,9 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.model
+package dev.sertan.android.ram.coredata.service.model
 
-data class UserConfigs(
-    val isVoiceSupportActive: Boolean = true,
-    val trainingCompletedBefore: Boolean = false
+import java.util.UUID
+
+internal data class NetworkMaterial(
+    val materialUid: String = UUID.randomUUID().toString(),
+    val description: String = "",
+    val mediaUrl: String = "",
+    val attribution: String? = null
 )

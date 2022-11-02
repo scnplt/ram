@@ -7,6 +7,4 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<manifest package="dev.sertan.android.ram.coredomain">
-
-</manifest>
+<manifest package="dev.sertan.android.ram.coredomain" />

@@ -15,7 +15,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import dev.sertan.android.ram.coredata.model.QuestionEntity
+import dev.sertan.android.ram.coredata.database.model.QuestionEntity
 
 @Dao
 internal interface QuestionDao {
@@ -23,10 +23,10 @@ internal interface QuestionDao {
     @Query("SELECT * FROM questions")
     suspend fun getAll(): List<QuestionEntity>
 
-    @Query("SELECT * FROM questions WHERE :questionId == questionId")
-    suspend fun getById(questionId: Long): QuestionEntity?
+    @Query("SELECT * FROM questions WHERE :questionUid == questionUid")
+    suspend fun getByUid(questionUid: String): QuestionEntity?
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(vararg questionEntityArray: QuestionEntity)
 
     @Delete

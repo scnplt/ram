@@ -15,9 +15,9 @@ interface QuestionRepository {
 
     suspend fun getAllQuestions(): Result<List<QuestionDto>>
 
-    suspend fun saveQuestion(vararg questionDtoArray: QuestionDto): Result<Unit>
+    suspend fun saveQuestion(vararg questionArray: QuestionDto): Result<Unit>
 
-    suspend fun deleteQuestion(vararg questionDtoArray: QuestionDto): Result<Unit>
+    suspend fun deleteQuestion(vararg questionArray: QuestionDto): Result<Unit>
 
     suspend fun updateQuestion(questionDto: QuestionDto): Result<Unit>
 }

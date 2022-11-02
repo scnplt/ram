@@ -12,21 +12,11 @@ package dev.sertan.android.ram.coredomain.mapper
 import dev.sertan.android.ram.corecommon.model.MaterialDto
 import dev.sertan.android.ram.coreui.model.Material
 
-fun MaterialDto.toUiModel(): Material = Material(
-    id = id,
-    description = description,
+internal fun MaterialDto.toUiModel(): Material = Material(
+    uid = uid,
+    description = description.replaceFirstChar { it.titlecase() },
     mediaUrl = mediaUrl,
     attribution = attribution
 )
 
-fun Material.toDomainModel(): MaterialDto = MaterialDto(
-    id = id,
-    description = description,
-    mediaUrl = mediaUrl,
-    attribution = attribution
-)
-
-fun List<MaterialDto>.toUiModel(): List<Material> = map(MaterialDto::toUiModel)
-
-fun List<Material>.toDomainModel(): Array<out MaterialDto> =
-    map(Material::toDomainModel).toTypedArray()
+internal fun List<MaterialDto>.toUiModel(): List<Material> = map(MaterialDto::toUiModel)

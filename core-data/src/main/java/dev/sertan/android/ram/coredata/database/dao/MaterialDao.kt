@@ -15,7 +15,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import dev.sertan.android.ram.coredata.model.MaterialEntity
+import dev.sertan.android.ram.coredata.database.model.MaterialEntity
 
 @Dao
 internal interface MaterialDao {
@@ -23,13 +23,10 @@ internal interface MaterialDao {
     @Query("SELECT * FROM materials")
     suspend fun getAll(): List<MaterialEntity>
 
-    @Query("SELECT * FROM materials WHERE materialId IN (:materialIds)")
-    suspend fun getAllWithIds(materialIds: List<Long>): List<MaterialEntity>
+    @Query("SELECT * FROM materials WHERE :materialUid == materialUid")
+    suspend fun getByUid(materialUid: String): MaterialEntity
 
-    @Query("SELECT * FROM materials WHERE :materialId == materialId")
-    suspend fun getById(materialId: Long): MaterialEntity
-
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(vararg materialEntityArray: MaterialEntity)
 
     @Delete

@@ -12,14 +12,13 @@ package dev.sertan.android.ram.coredata.repository.local
 import android.content.SharedPreferences
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.corecommon.util.getStringAsStream
-import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
 private const val USER_SETTINGS_SHARED_PREF_KEY = "user-settings"
 
-internal class LocalUserSettingsRepository @Inject constructor(
+internal class LocalUserSettingsRepository(
     private val sharedPreferences: SharedPreferences
 ) : UserSettingsRepository {
 

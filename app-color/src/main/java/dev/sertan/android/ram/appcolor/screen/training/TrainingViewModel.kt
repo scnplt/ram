@@ -45,7 +45,7 @@ internal class TrainingViewModel @Inject constructor(
         }
     }
 
-    fun goToNextMaterial(): Unit = materialIndex.update { it + 1 }
+    fun goToNextMaterial(): Unit = materialIndex.update { it.inc() }
 
-    fun goToPreviousMaterial(): Unit = materialIndex.update { it - 1 }
+    fun goToPreviousMaterial(): Unit = materialIndex.update { it.dec() }
 }

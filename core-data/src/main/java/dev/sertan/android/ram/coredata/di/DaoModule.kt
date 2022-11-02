@@ -33,7 +33,6 @@ internal object DaoModule {
 
     @Provides
     @Singleton
-    fun provideQuestionWithMaterialsDao(ramDatabase: RamDatabase): QuestionWithMaterialsDao {
-        return ramDatabase.questionWithMaterialsDao()
-    }
+    fun provideQuestionWithMaterialsDao(ramDatabase: RamDatabase): QuestionWithMaterialsDao =
+        ramDatabase.questionWithMaterialsDao()
 }

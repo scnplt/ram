@@ -15,13 +15,11 @@ interface MaterialRepository {
 
     suspend fun getAllMaterials(): Result<List<MaterialDto>>
 
-    suspend fun getMaterialById(materialId: Long): Result<MaterialDto?>
+    suspend fun getMaterialByUid(materialUid: String): Result<MaterialDto?>
 
-    suspend fun getQuestionMaterials(questionId: Long): Result<List<MaterialDto>>
+    suspend fun saveMaterial(vararg materialArray: MaterialDto): Result<Unit>
 
-    suspend fun saveMaterial(vararg materialDtoArray: MaterialDto): Result<Unit>
+    suspend fun deleteMaterial(vararg materialArray: MaterialDto): Result<Unit>
 
-    suspend fun deleteMaterial(vararg materialDtoArray: MaterialDto): Result<Unit>
-
-    suspend fun updateMaterial(materialDto: MaterialDto): Result<Unit>
+    suspend fun updateMaterial(material: MaterialDto): Result<Unit>
 }

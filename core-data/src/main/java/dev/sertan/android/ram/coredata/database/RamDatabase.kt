@@ -14,9 +14,9 @@ import androidx.room.RoomDatabase
 import dev.sertan.android.ram.coredata.database.dao.MaterialDao
 import dev.sertan.android.ram.coredata.database.dao.QuestionDao
 import dev.sertan.android.ram.coredata.database.dao.QuestionWithMaterialsDao
-import dev.sertan.android.ram.coredata.model.MaterialEntity
-import dev.sertan.android.ram.coredata.model.QuestionEntity
-import dev.sertan.android.ram.coredata.model.QuestionWithMaterialsEntity
+import dev.sertan.android.ram.coredata.database.model.MaterialEntity
+import dev.sertan.android.ram.coredata.database.model.QuestionEntity
+import dev.sertan.android.ram.coredata.database.model.QuestionWithMaterialsEntity
 
 @Database(
     version = 1,

@@ -7,28 +7,34 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredata.repository.local
+package dev.sertan.android.ram.coredata.repository.remote
 
 import dev.sertan.android.ram.corecommon.model.MaterialDto
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
-import dev.sertan.android.ram.coredata.database.dao.MaterialDao
 import dev.sertan.android.ram.coredata.mapper.toDomainModel
-import dev.sertan.android.ram.coredata.mapper.toEntityModel
+import dev.sertan.android.ram.coredata.mapper.toNetworkModel
+import dev.sertan.android.ram.coredata.service.MaterialService
 
-internal class LocalMaterialRepository(private val materialDao: MaterialDao) : MaterialRepository {
+internal class RemoteMaterialRepository(
+    private val materialService: MaterialService
+) : MaterialRepository {
 
     override suspend fun getAllMaterials(): Result<List<MaterialDto>> =
-        runCatching { materialDao.getAll().toDomainModel() }
+        runCatching { materialService.getAllMaterials().toDomainModel() }
 
     override suspend fun getMaterialByUid(materialUid: String): Result<MaterialDto?> =
-        runCatching { materialDao.getByUid(materialUid).toDomainModel() }
+        runCatching { materialService.getMaterialById(materialUid)?.toDomainModel() }
 
     override suspend fun saveMaterial(vararg materialArray: MaterialDto): Result<Unit> =
-        runCatching { materialDao.insert(materialEntityArray = materialArray.toEntityModel()) }
+        runCatching {
+            materialService.saveMaterial(materialArray = materialArray.toNetworkModel())
+        }
 
     override suspend fun deleteMaterial(vararg materialArray: MaterialDto): Result<Unit> =
-        runCatching { materialDao.delete(materialEntityArray = materialArray.toEntityModel()) }
+        runCatching {
+            materialService.deleteMaterial(materialArray = materialArray.toNetworkModel())
+        }
 
     override suspend fun updateMaterial(material: MaterialDto): Result<Unit> =
-        runCatching { materialDao.update(materialEntity = material.toEntityModel()) }
+        runCatching { materialService.updateMaterial(material = material.toNetworkModel()) }
 }

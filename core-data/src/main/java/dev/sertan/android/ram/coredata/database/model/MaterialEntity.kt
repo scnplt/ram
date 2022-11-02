@@ -7,14 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredata.model
+package dev.sertan.android.ram.coredata.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "materials")
 internal data class MaterialEntity(
-    @PrimaryKey(autoGenerate = true) val materialId: Long,
+    @PrimaryKey val materialUid: String,
     val description: String,
     val mediaUrl: String,
     val attribution: String?

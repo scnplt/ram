@@ -13,7 +13,7 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dev.sertan.android.ram.coredata.model.QuestionEntity
+import dev.sertan.android.ram.coredata.database.model.QuestionEntity
 import javax.inject.Inject
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -89,14 +89,14 @@ internal class QuestionDaoTest {
         with(questionDao) {
             insert(testQuestion)
             update(questionEntity = expectedQuestion)
-            val actualQuestion = getById(questionId = testQuestion.questionId)
+            val actualQuestion = getByUid(questionUid = testQuestion.questionUid)
             assertThat(actualQuestion).isEqualTo(expectedQuestion)
         }
     }
 
     private fun getTestQuestions(size: Int): Array<QuestionEntity> = (1..size).map {
         QuestionEntity(
-            questionId = it.toLong(),
+            questionUid = it.toString(),
             content = it.toString(),
             0
         )

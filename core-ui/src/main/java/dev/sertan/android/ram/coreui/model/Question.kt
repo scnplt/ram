@@ -10,8 +10,8 @@
 package dev.sertan.android.ram.coreui.model
 
 data class Question(
-    val id: Long,
+    val uid: String,
     val content: String,
     val materials: List<Material>,
-    val correctMaterialId: Long
+    val correctMaterialId: String
 )

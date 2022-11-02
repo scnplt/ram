@@ -13,7 +13,7 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import dev.sertan.android.ram.coredata.model.MaterialEntity
+import dev.sertan.android.ram.coredata.database.model.MaterialEntity
 import javax.inject.Inject
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -89,14 +89,14 @@ internal class MaterialDaoTest {
         with(materialDao) {
             insert(testMaterial)
             update(materialEntity = expectedMaterial)
-            val actualMaterial = getById(materialId = testMaterial.materialId)
+            val actualMaterial = getByUid(materialUid = testMaterial.materialUid)
             assertThat(actualMaterial).isEqualTo(expectedMaterial)
         }
     }
 
     private fun getTestMaterials(size: Int): Array<MaterialEntity> = (1..size).map {
         MaterialEntity(
-            materialId = it.toLong(),
+            materialUid = it.toString(),
             description = it.toString(),
             mediaUrl = "",
             attribution = null

@@ -7,11 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredata.model
+package dev.sertan.android.ram.coredata.database.model
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
@@ -20,23 +19,23 @@ import androidx.room.PrimaryKey
     foreignKeys = [
         ForeignKey(
             entity = QuestionEntity::class,
-            parentColumns = arrayOf("questionId"),
-            childColumns = arrayOf("questionId"),
-            onDelete = CASCADE,
-            onUpdate = CASCADE
+            parentColumns = arrayOf("questionUid"),
+            childColumns = arrayOf("questionUid"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         ),
         ForeignKey(
             entity = MaterialEntity::class,
-            parentColumns = arrayOf("materialId"),
-            childColumns = arrayOf("materialId"),
-            onDelete = CASCADE,
-            onUpdate = CASCADE
+            parentColumns = arrayOf("materialUid"),
+            childColumns = arrayOf("materialUid"),
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE
         ),
     ],
-    indices = [Index("questionId"), Index("materialId")]
+    indices = [Index("questionUid"), Index("materialUid")]
 )
 internal data class QuestionWithMaterialsEntity(
-    @PrimaryKey(autoGenerate = true) val id: Long,
-    val questionId: Long,
-    val materialId: Long
+    @PrimaryKey val uid: String,
+    val questionUid: String,
+    val materialUid: String
 )

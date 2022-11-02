@@ -25,7 +25,6 @@ internal object FakeDatabaseModule {
 
     @Provides
     @Singleton
-    fun provideRamDatabase(@ApplicationContext context: Context): RamDatabase {
-        return Room.inMemoryDatabaseBuilder(context, RamDatabase::class.java).build()
-    }
+    fun provideRamDatabase(@ApplicationContext context: Context): RamDatabase =
+        Room.inMemoryDatabaseBuilder(context, RamDatabase::class.java).build()
 }

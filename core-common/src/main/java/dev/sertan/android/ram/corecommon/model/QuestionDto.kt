@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.corecommon.model
 
 data class QuestionDto(
-    val id: Long,
+    val uid: String,
     val content: String,
     val answerMaterialId: Long
 )

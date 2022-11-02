@@ -37,6 +37,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/helpButton" />
 
+    <!-- TODO: Change layout_height and layout_width -->
     <ImageView
         android:id="@+id/logoImageView"
         android:layout_width="200dp"
@@ -102,9 +103,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/drawingButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_marginHorizontal="@dimen/small_gap_4"
         android:layout_marginBottom="@dimen/small_gap_4"
         android:text="@string/drawing"
