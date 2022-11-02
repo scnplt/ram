@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_gap_4"
         android:layout_marginTop="@dimen/small_gap_4"
+        android:contentDescription="@string/help"
         app:icon="@drawable/ic_help_outline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_gap_4"
+        android:contentDescription="@string/change_voice_support"
         app:icon="@drawable/ic_volume"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/helpButton" />
@@ -45,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/changeVoiceSupportButton"
+        tools:ignore="ImageContrastCheck"
         tools:src="@tools:sample/avatars"
         tools:visibility="visible" />
 
@@ -67,12 +70,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/trainingButton"
-        style="@style/Widget.Material3.Button.ElevatedButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/small_gap_4"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.4"
         android:layout_marginBottom="@dimen/small_gap_4"
         android:text="@string/training"
         app:icon="@drawable/ic_play"
@@ -80,11 +81,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_percent="0.5" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/practiceButton"
-        style="@style/Widget.Material3.Button.ElevatedButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/small_gap_4"
@@ -99,9 +102,9 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/drawingButton"
-        style="@style/Widget.Material3.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_marginHorizontal="@dimen/small_gap_4"
         android:layout_marginBottom="@dimen/small_gap_4"
         android:text="@string/drawing"

@@ -56,5 +56,8 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
     private fun setUpComponents(): Unit = with(binding) {
         forwardButton.setOnClickListener { viewModel.goToNextMaterial() }
         backButton.setOnClickListener { viewModel.goToPreviousMaterial() }
+        materialCardView.setOnClickListener {
+            // TODO: material description speech
+        }
     }
 }

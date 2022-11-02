@@ -9,7 +9,7 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:color="?attr/colorPrimary" android:state_activated="true" />
-    <item android:color="?attr/colorOnPrimary" />
+    <item android:color="?attr/colorPrimaryVariant" android:state_activated="true" />
+    <item android:color="?attr/colorSecondaryContainer" />
 
 </selector>

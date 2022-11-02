@@ -16,7 +16,9 @@
     <dimen name="small_gap_8">32dp</dimen>
     <dimen name="small_gap_9">36dp</dimen>
 
-    <dimen name="size_drawing_tools_color">28dp</dimen>
+    <dimen name="size_drawing_tools_color">30dp</dimen>
+
     <dimen name="size_icon_button_stroke">4dp</dimen>
+    <dimen name="size_icon_button_content">32dp</dimen>
 
 </resources>

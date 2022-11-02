@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_gap_1"
         android:layout_marginBottom="@dimen/small_gap_1"
+        android:contentDescription="@string/clear_canvas"
         app:icon="@drawable/ic_delete_forever"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_1"
         android:layout_marginEnd="@dimen/small_gap_1"
+        android:contentDescription="@string/eraser"
         app:icon="@drawable/ic_eraser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -52,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_gap_2"
+        android:contentDescription="@string/brush"
         app:icon="@drawable/ic_brush"
         app:layout_constraintEnd_toStartOf="@id/eraserButton"
         app:layout_constraintTop_toTopOf="@id/eraserButton"

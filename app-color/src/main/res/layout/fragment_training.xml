@@ -38,6 +38,7 @@
                 android:background="?colorSecondaryContainer"
                 android:contentDescription="@string/material_image"
                 android:scaleType="fitCenter"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
