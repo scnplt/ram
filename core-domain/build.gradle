@@ -31,8 +31,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
         }
     }
 
@@ -50,11 +49,18 @@ dependencies {
     implementation project(path: ':core-ui')
     implementation project(path: ':core-common')
     implementation project(path: ':core-data')
+
     implementation libs.coreKtx
+    implementation libs.work
 
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+
+    kapt kapts.androidHiltCompiler
+    implementation libs.hiltWork
+
+    // Test
     kaptAndroidTest kaptAndroidTests.hiltAndroidTesting
     androidTestImplementation androidTestLibs.hiltAndroidTesting
 }

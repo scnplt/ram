@@ -31,8 +31,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
         }
     }
 
@@ -48,11 +47,10 @@ android {
 
 dependencies {
     implementation project(path: ':core-common')
+
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-    kaptAndroidTest kaptAndroidTests.hiltAndroidTesting
-    androidTestImplementation androidTestLibs.hiltAndroidTesting
 
     // Room
     kapt kapts.roomCompiler
@@ -66,7 +64,17 @@ dependencies {
     // Retrofit
     implementation libs.retrofit
 
+    // Firebase
+    implementation platform(platforms.firebaseBom)
+    implementation libs.firebaseFirestoreKtx
+
+    // Coroutines
+    implementation libs.coroutinesPlayServices
+
     // Test
+    kaptAndroidTest kaptAndroidTests.hiltAndroidTesting
+    androidTestImplementation androidTestLibs.hiltAndroidTesting
+
     testImplementation testLibs.junit
     androidTestImplementation androidTestLibs.espressoCore
     androidTestImplementation androidTestLibs.truth
