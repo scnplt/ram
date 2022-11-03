@@ -16,6 +16,6 @@ import androidx.room.PrimaryKey
 internal data class MaterialEntity(
     @PrimaryKey val materialUid: String,
     val description: String,
-    val mediaUrl: String,
+    val mediaUriString: String,
     val attribution: String?
 )

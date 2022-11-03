@@ -18,24 +18,12 @@ import kotlinx.coroutines.tasks.await
 
 @Singleton
 internal class MaterialService @Inject constructor(
-    @MaterialCollection private val materialCollection: CollectionReference
+    @MaterialCollection private val collectionRef: CollectionReference
 ) {
 
     suspend fun getAllMaterials(): List<NetworkMaterial> =
-        materialCollection.get().await().toObjects(NetworkMaterial::class.java)
+        collectionRef.get().await().toObjects(NetworkMaterial::class.java)
 
-    suspend fun getMaterialById(materialId: String): NetworkMaterial? =
-        materialCollection.document(materialId).get().await().toObject(NetworkMaterial::class.java)
-
-    suspend fun saveMaterial(vararg materialArray: NetworkMaterial) {
-        materialArray.forEach { materialCollection.document(it.materialUid).set(it).await() }
-    }
-
-    suspend fun deleteMaterial(vararg materialArray: NetworkMaterial) {
-        materialArray.forEach { materialCollection.document(it.materialUid).delete().await() }
-    }
-
-    suspend fun updateMaterial(material: NetworkMaterial) {
-        materialCollection.document(material.materialUid).set(material).await()
-    }
+    suspend fun getMaterialByUid(materialId: String): NetworkMaterial? =
+        collectionRef.document(materialId).get().await().toObject(NetworkMaterial::class.java)
 }

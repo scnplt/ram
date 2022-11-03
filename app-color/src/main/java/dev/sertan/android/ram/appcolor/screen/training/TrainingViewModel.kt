@@ -15,9 +15,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.coredomain.usecase.GetMaterialsUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class TrainingViewModel @Inject constructor(
@@ -26,24 +28,14 @@ internal class TrainingViewModel @Inject constructor(
 
     private val materialIndex = MutableStateFlow(0)
 
-    private val _uiState = MutableStateFlow(TrainingUiState())
-    val uiState get() = _uiState.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            val materials = getMaterialsUseCase().also { if (it.isEmpty()) return@launch }
-            materialIndex.collect { index ->
-                _uiState.update {
-                    it.copy(
-                        material = materials[index],
-                        isBackButtonVisible = index > 0,
-                        isForwardButtonVisible = index in 0 until materials.lastIndex,
-                        isFinishButtonVisible = index == materials.lastIndex
-                    )
-                }
-            }
-        }
-    }
+    val uiState: StateFlow<TrainingUiState> = flow {
+        val materials = getMaterialsUseCase()
+        materialIndex.collect { emit(TrainingUiState.getState(materials = materials, index = it)) }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(),
+        initialValue = TrainingUiState.initialState()
+    )
 
     fun goToNextMaterial(): Unit = materialIndex.update { it.inc() }
 

@@ -13,13 +13,17 @@ import dev.sertan.android.ram.corecommon.model.MaterialDto
 
 interface MaterialRepository {
 
-    suspend fun getAllMaterials(): Result<List<MaterialDto>>
+    suspend fun getMaterialsFromLocal(): Result<List<MaterialDto>>
 
-    suspend fun getMaterialByUid(materialUid: String): Result<MaterialDto?>
+    suspend fun getMaterialsFromRemote(): Result<List<MaterialDto>>
 
-    suspend fun saveMaterial(vararg materialArray: MaterialDto): Result<Unit>
+    suspend fun getMaterialFromLocalByUid(uid: String): Result<MaterialDto?>
 
-    suspend fun deleteMaterial(vararg materialArray: MaterialDto): Result<Unit>
+    suspend fun getMaterialFromRemoteByUid(uid: String): Result<MaterialDto?>
 
-    suspend fun updateMaterial(material: MaterialDto): Result<Unit>
+    suspend fun saveMaterialToLocal(vararg materialArray: MaterialDto): Result<Unit>
+
+    suspend fun deleteMaterialFromLocal(vararg materialArray: MaterialDto): Result<Unit>
+
+    suspend fun updateLocalMaterial(material: MaterialDto): Result<Unit>
 }

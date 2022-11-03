@@ -12,8 +12,26 @@ package dev.sertan.android.ram.appcolor.screen.training
 import dev.sertan.android.ram.coreui.model.Material
 
 internal data class TrainingUiState(
-    val material: Material? = null,
-    val isBackButtonVisible: Boolean = false,
-    val isForwardButtonVisible: Boolean = false,
-    val isFinishButtonVisible: Boolean = false
-)
+    val material: Material?,
+    val isBackButtonVisible: Boolean,
+    val isForwardButtonVisible: Boolean,
+    val isFinishButtonVisible: Boolean
+) {
+
+    companion object {
+
+        fun initialState(): TrainingUiState = TrainingUiState(
+            material = null,
+            isBackButtonVisible = false,
+            isForwardButtonVisible = false,
+            isFinishButtonVisible = false
+        )
+
+        fun getState(materials: List<Material>, index: Int): TrainingUiState = TrainingUiState(
+            material = if (materials.isNotEmpty()) materials[index] else null,
+            isBackButtonVisible = index > 0,
+            isForwardButtonVisible = index in 0 until materials.lastIndex,
+            isFinishButtonVisible = index == materials.lastIndex
+        )
+    }
+}

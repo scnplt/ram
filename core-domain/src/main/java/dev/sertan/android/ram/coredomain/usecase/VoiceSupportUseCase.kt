@@ -9,7 +9,6 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
-import dev.sertan.android.ram.corecommon.di.LocalDataSource
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -24,7 +23,7 @@ private const val VOICE_SUPPORT_DEFAULT_STATE = true
 
 @Singleton
 class VoiceSupportUseCase @Inject constructor(
-    @LocalDataSource private val userSettingsRepository: UserSettingsRepository
+    private val userSettingsRepository: UserSettingsRepository
 ) {
 
     fun getVoiceSupportStateAsStream(coroutineScope: CoroutineScope): StateFlow<Boolean> =

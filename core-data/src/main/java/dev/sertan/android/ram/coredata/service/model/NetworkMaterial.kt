@@ -9,11 +9,9 @@
 
 package dev.sertan.android.ram.coredata.service.model
 
-import java.util.UUID
-
 internal data class NetworkMaterial(
-    val materialUid: String = UUID.randomUUID().toString(),
-    val description: String = "",
-    val mediaUrl: String = "",
+    val materialUid: String? = null,
+    val description: String? = null,
+    val mediaPath: String? = null,
     val attribution: String? = null
 )

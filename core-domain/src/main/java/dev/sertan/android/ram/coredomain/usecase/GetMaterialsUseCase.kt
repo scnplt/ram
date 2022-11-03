@@ -9,18 +9,29 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
-import dev.sertan.android.ram.corecommon.di.LocalDataSource
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.coredomain.mapper.toUiModel
+import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
 import dev.sertan.android.ram.coreui.model.Material
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 @Singleton
 class GetMaterialsUseCase @Inject constructor(
-    @LocalDataSource private val materialRepository: MaterialRepository
+    @ApplicationContext private val context: Context,
+    private val materialRepository: MaterialRepository,
 ) {
 
-    suspend operator fun invoke(): List<Material> =
-        materialRepository.getAllMaterials().getOrNull()?.toUiModel().orEmpty()
+    suspend operator fun invoke(): List<Material> = withContext(Dispatchers.IO) {
+        materialRepository.getMaterialsFromLocal().getOrNull()?.toUiModel()
+            .takeUnless { it.isNullOrEmpty() }
+            ?: run {
+                UpdateLocalMaterialsWorker.uniqueStart(context)
+                emptyList()
+            }
+    }
 }

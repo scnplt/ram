@@ -1,41 +1,34 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
 package dev.sertan.android.ram.coredata.di
 
-import android.content.SharedPreferences
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.corecommon.di.LocalDataSource
-import dev.sertan.android.ram.corecommon.di.RemoteDataSource
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
-import dev.sertan.android.ram.coredata.database.dao.MaterialDao
-import dev.sertan.android.ram.coredata.repository.local.LocalMaterialRepository
-import dev.sertan.android.ram.coredata.repository.local.LocalUserSettingsRepository
-import dev.sertan.android.ram.coredata.repository.remote.RemoteMaterialRepository
-import dev.sertan.android.ram.coredata.service.MaterialService
-import javax.inject.Singleton
+import dev.sertan.android.ram.coredata.repository.MaterialRepositoryImpl
+import dev.sertan.android.ram.coredata.repository.UserSettingsRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object RepositoryModule {
+internal abstract class RepositoryModule {
 
-    @Provides
-    @Singleton
-    @LocalDataSource
-    fun provideLocalMaterialRepository(materialDao: MaterialDao): MaterialRepository =
-        LocalMaterialRepository(materialDao)
+    @Binds
+    abstract fun provideMaterialRepository(
+        materialRepository: MaterialRepositoryImpl
+    ): MaterialRepository
 
-    @Provides
-    @Singleton
-    @RemoteDataSource
-    fun provideRemoteMaterialRepository(materialService: MaterialService): MaterialRepository =
-        RemoteMaterialRepository(materialService)
-
-    @Provides
-    @Singleton
-    @LocalDataSource
-    fun provideLocalUserSettingsRepository(
-        sharedPreferences: SharedPreferences
-    ): UserSettingsRepository = LocalUserSettingsRepository(sharedPreferences)
+    @Binds
+    abstract fun provideUserSettingsRepository(
+        userSettingsRepository: UserSettingsRepositoryImpl
+    ): UserSettingsRepository
 }

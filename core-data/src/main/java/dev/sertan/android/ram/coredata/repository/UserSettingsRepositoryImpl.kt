@@ -7,18 +7,21 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coredata.repository.local
+package dev.sertan.android.ram.coredata.repository
 
 import android.content.SharedPreferences
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.corecommon.util.getStringAsStream
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
 private const val USER_SETTINGS_SHARED_PREF_KEY = "user-settings"
 
-internal class LocalUserSettingsRepository(
+@Singleton
+internal class UserSettingsRepositoryImpl @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) : UserSettingsRepository {
 

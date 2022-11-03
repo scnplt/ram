@@ -9,22 +9,15 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
-import dev.sertan.android.ram.corecommon.di.LocalDataSource
-import dev.sertan.android.ram.corecommon.di.RemoteDataSource
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import javax.inject.Inject
 
 class UpdateLocalMaterialsUseCase @Inject constructor(
-    @LocalDataSource private val localMaterialRepository: MaterialRepository,
-    @RemoteDataSource private val remoteMaterialRepository: MaterialRepository
+    private val materialRepository: MaterialRepository
 ) {
 
-    suspend operator fun invoke(): Boolean {
-        val remoteResult = remoteMaterialRepository.getAllMaterials()
-        if (remoteResult.isFailure) return false
-
-        return remoteResult.getOrNull()?.let {
-            localMaterialRepository.saveMaterial(materialArray = it.toTypedArray()).isSuccess
-        } ?: true
+    suspend operator fun invoke(): Boolean = with(materialRepository) {
+        getMaterialsFromRemote().getOrNull()
+            ?.let { saveMaterialToLocal(materialArray = it.toTypedArray()).isSuccess } ?: false
     }
 }

@@ -23,6 +23,10 @@ android {
         targetSdk configs.targetSdk
 
         testInstrumentationRunner "dev.sertan.android.ram.coredata.HiltTestRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+        buildConfigField "String", "FIREBASE_STORAGE_BUCKET", properties.getProperty("FIREBASE_FIRESTORE_BUCKET")
     }
 
     buildTypes {
@@ -63,6 +67,7 @@ dependencies {
     // Firebase
     implementation platform(platforms.firebaseBom)
     implementation libs.firebaseFirestoreKtx
+    implementation libs.firebaseStorageKtx
 
     // Coroutines
     implementation libs.coroutinesPlayServices

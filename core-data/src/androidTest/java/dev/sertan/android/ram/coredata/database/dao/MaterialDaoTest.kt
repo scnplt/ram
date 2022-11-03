@@ -98,7 +98,7 @@ internal class MaterialDaoTest {
         MaterialEntity(
             materialUid = it.toString(),
             description = it.toString(),
-            mediaUrl = "",
+            mediaUriString = "",
             attribution = null
         )
     }.toTypedArray()

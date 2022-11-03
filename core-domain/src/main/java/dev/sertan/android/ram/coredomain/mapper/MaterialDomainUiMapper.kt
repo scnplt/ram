@@ -15,7 +15,7 @@ import dev.sertan.android.ram.coreui.model.Material
 internal fun MaterialDto.toUiModel(): Material = Material(
     uid = uid,
     description = description.replaceFirstChar { it.titlecase() },
-    mediaUrl = mediaUrl,
+    mediaUri = mediaUri,
     attribution = attribution
 )
 

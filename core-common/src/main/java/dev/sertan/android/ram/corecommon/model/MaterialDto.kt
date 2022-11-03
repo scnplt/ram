@@ -9,9 +9,11 @@
 
 package dev.sertan.android.ram.corecommon.model
 
+import android.net.Uri
+
 data class MaterialDto(
     val uid: String,
     val description: String,
-    val mediaUrl: String,
+    val mediaUri: Uri?,
     val attribution: String?
 )
