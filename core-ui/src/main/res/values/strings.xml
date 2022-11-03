@@ -9,10 +9,11 @@
 
 <resources>
 
-    <string name="do_you_want_clear_canvas">Do you want to clear the canvas?</string>
-    <string name="eraser">Eraser</string>
-    <string name="clear_canvas">Clear canvas</string>
-    <string name="brush">Brush</string>
-    <string name="color">Color</string>
+    <string name="do_you_want_clear_canvas">Tuvali temizlemek istiyor musunuz?</string>
+    <string name="eraser">Silgi</string>
+    <string name="clear_canvas">Tuvali temizle</string>
+    <string name="brush">Fırça</string>
+    <string name="color">Renk</string>
+    <string name="this_project_is_financed">Bu proje Avrupa Birliği ve Türkiye Cumhuriyeti\ntarafından finanse edilmektedir.</string>
 
 </resources>

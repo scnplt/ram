@@ -13,4 +13,10 @@
         <item name="fontFamily">@font/heebo</item>
     </style>
 
+    <style name="Theme.ColorApp.Splash" parent="Theme.SplashScreen">
+        <item name="postSplashScreenTheme">@style/Theme.ColorApp</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="windowSplashScreenBackground">@android:color/white</item>
+    </style>
+
 </resources>

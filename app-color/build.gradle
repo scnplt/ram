@@ -66,6 +66,7 @@ dependencies {
 
     // UI
     implementation libs.appcompat
+    implementation libs.splash
 
     // Navigation
     implementation libs.navigationUiKtx
