@@ -27,7 +27,7 @@ class GetMaterialsUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): List<Material> = withContext(Dispatchers.IO) {
-        materialRepository.getMaterialsFromLocal().getOrNull()?.toUiModel()
+        materialRepository.getMaterialsFromLocal().getOrNull()?.shuffled()?.toUiModel()
             .takeUnless { it.isNullOrEmpty() }
             ?: run {
                 UpdateLocalMaterialsWorker.uniqueStart(context)
