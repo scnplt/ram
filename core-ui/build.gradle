@@ -53,7 +53,10 @@ android {
 dependencies {
     implementation libs.coreKtx
     implementation libs.ossLicenses
-    implementation libs.picasso
+
+    // Glide
+    kapt kapts.glide
+    implementation libs.glide
 
     // UI
     implementation libs.appcompat

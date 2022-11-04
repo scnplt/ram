@@ -14,16 +14,11 @@ import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import com.google.android.material.button.MaterialButton
-import com.squareup.picasso.Picasso
-import dev.sertan.android.ram.coreui.R
 
 fun MaterialButton.setIconTint(@ColorInt color: Int) {
     iconTint = ColorStateList.valueOf(color)
 }
 
 fun ImageView.loadFromUrl(uri: Uri?) {
-    Picasso.get().load(uri ?: return).noFade()
-        .error(R.drawable.ic_warning)
-        .placeholder(R.drawable.ic_refresh)
-        .into(this)
+    GlideApp.with(this).load(uri).into(this)
 }
