@@ -69,6 +69,7 @@ ext {
             firebaseAnalyticsKts  : "com.google.firebase:firebase-analytics-ktx",
             firebaseStorageKtx    : "com.google.firebase:firebase-storage-ktx",
             firebaseFirestoreKtx  : "com.google.firebase:firebase-firestore-ktx",
+            firebasePerfKtx       : "com.google.firebase:firebase-perf-ktx",
             navigationUiKtx       : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
             navigationFragmentKtx : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
             retrofit              : "com.squareup.retrofit2:retrofit:${versions.retrofit}",

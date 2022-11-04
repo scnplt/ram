@@ -30,8 +30,8 @@
 
         <activity
             android:name=".screen.MainActivity"
-            android:theme="@style/Theme.ColorApp.Splash"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.ColorApp.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -49,6 +49,9 @@
                 tools:node="remove" />
         </provider>
 
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="${isPerformanceMonitoringActive}" />
     </application>
 
 </manifest>
