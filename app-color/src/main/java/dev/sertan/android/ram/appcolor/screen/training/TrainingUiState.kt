@@ -15,7 +15,8 @@ internal data class TrainingUiState(
     val material: Material?,
     val isBackButtonVisible: Boolean,
     val isForwardButtonVisible: Boolean,
-    val isFinishButtonVisible: Boolean
+    val isFinishButtonVisible: Boolean,
+    val progress: Int
 ) {
 
     companion object {
@@ -24,14 +25,16 @@ internal data class TrainingUiState(
             material = null,
             isBackButtonVisible = false,
             isForwardButtonVisible = false,
-            isFinishButtonVisible = false
+            isFinishButtonVisible = false,
+            progress = 0
         )
 
         fun getState(materials: List<Material>, index: Int): TrainingUiState = TrainingUiState(
             material = if (materials.isNotEmpty()) materials[index] else null,
             isBackButtonVisible = index > 0,
             isForwardButtonVisible = index in 0 until materials.lastIndex,
-            isFinishButtonVisible = index == materials.lastIndex
+            isFinishButtonVisible = index == materials.lastIndex,
+            progress = ((index + 1).toFloat() / materials.size * 100).toInt()
         )
     }
 }

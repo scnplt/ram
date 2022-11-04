@@ -15,5 +15,7 @@
     <string name="brush">Fırça</string>
     <string name="color">Renk</string>
     <string name="this_project_is_financed">Bu proje Avrupa Birliği ve Türkiye Cumhuriyeti\ntarafından finanse edilmektedir.</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
 
 </resources>

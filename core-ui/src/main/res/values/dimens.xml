@@ -21,4 +21,6 @@
     <dimen name="size_icon_button_stroke">4dp</dimen>
     <dimen name="size_icon_button_content">32dp</dimen>
 
+    <dimen name="size_progress_indicator">42dp</dimen>
+
 </resources>

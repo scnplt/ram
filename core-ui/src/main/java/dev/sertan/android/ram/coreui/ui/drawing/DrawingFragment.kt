@@ -85,9 +85,8 @@ class DrawingFragment :
         AlertDialog.Builder(requireContext()).apply {
             setCancelable(true)
             setMessage(R.string.do_you_want_clear_canvas)
-            setTitle(android.R.string.dialog_alert_title)
-            setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
-            setPositiveButton(android.R.string.ok) { _, _ -> binding.drawingView.clearCanvas() }
+            setNegativeButton(R.string.no) { dialog, _ -> dialog.cancel() }
+            setPositiveButton(R.string.yes) { _, _ -> binding.drawingView.clearCanvas() }
         }.show()
     }
 }

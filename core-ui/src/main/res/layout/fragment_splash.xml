@@ -107,19 +107,19 @@
         android:id="@+id/ramImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/ram"/>
+        android:src="@drawable/ram" />
 
     <ImageView
         android:id="@+id/mtaImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/mta"/>
+        android:src="@drawable/mta" />
 
     <ImageView
         android:id="@+id/omlImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/oml"/>
+        android:src="@drawable/oml" />
 
     <ImageView
         android:id="@+id/esobImageView"

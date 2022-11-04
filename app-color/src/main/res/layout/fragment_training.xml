@@ -7,105 +7,137 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/materialCardView"
-    style="?materialCardViewElevatedStyle"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="@dimen/small_gap_4"
+    android:layout_height="match_parent"
     tools:context=".screen.training.TrainingFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/exitButton"
+        style="?materialIconButtonFilledTonalStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_gap_2"
+        android:contentDescription="@string/exit"
+        app:icon="@drawable/ic_exit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        style="?materialCardViewElevatedStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/small_gap_4"
+        app:layout_constraintBottom_toTopOf="@id/progressIndicator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exitButton"
+        app:layout_constraintVertical_bias="0.4">
 
-        <ImageView
-            android:id="@+id/mediaImageView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="?colorSecondaryContainer"
-            android:contentDescription="@string/material_image"
-            android:paddingHorizontal="@dimen/small_gap_2"
-            android:paddingTop="@dimen/small_gap_2"
-            android:scaleType="fitCenter"
-            app:layout_constraintDimensionRatio="1:0.75"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ImageContrastCheck"
-            tools:src="@tools:sample/avatars" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/attributionTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_material_media"
-            android:maxLines="2"
-            android:padding="@dimen/small_gap_2"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mediaImageView"
-            tools:text="@tools:sample/lorem/random" />
+            <ImageView
+                android:id="@+id/mediaImageView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="?colorSecondaryContainer"
+                android:contentDescription="@string/material_image"
+                android:paddingHorizontal="@dimen/small_gap_2"
+                android:paddingTop="@dimen/small_gap_2"
+                android:scaleType="fitCenter"
+                app:layout_constraintDimensionRatio="1:0.6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck"
+                tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_gap_4"
-            android:maxLines="10"
-            android:textAlignment="center"
-            android:textAppearance="?textAppearanceHeadlineMedium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/attributionTextView"
-            tools:text="@tools:sample/lorem[10]" />
+            <TextView
+                android:id="@+id/attributionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_material_media"
+                android:maxLines="2"
+                android:padding="@dimen/small_gap_2"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceLabelSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mediaImageView"
+                tools:text="@tools:sample/lorem/random" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/small_gap_2"
-            android:layout_marginTop="@dimen/small_gap_4"
-            android:layout_marginBottom="@dimen/small_gap_2"
-            android:text="@string/previous"
-            android:visibility="invisible"
-            app:icon="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
-            tools:visibility="visible" />
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_4"
+                android:maxLines="10"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceHeadlineMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/attributionTextView"
+                tools:text="@tools:sample/lorem[10]" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/forwardButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/small_gap_2"
-            android:text="@string/next"
-            android:visibility="invisible"
-            app:icon="@drawable/ic_forward"
-            app:iconGravity="end"
-            app:layout_constraintBottom_toBottomOf="@id/backButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/backButton"
-            tools:visibility="visible" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/small_gap_2"
+                android:layout_marginTop="@dimen/small_gap_4"
+                android:layout_marginBottom="@dimen/small_gap_2"
+                android:text="@string/previous"
+                android:visibility="invisible"
+                app:icon="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+                tools:visibility="visible" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/finishButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/finish"
-            android:visibility="invisible"
-            app:icon="@drawable/ic_done"
-            app:iconGravity="end"
-            app:layout_constraintBottom_toBottomOf="@id/forwardButton"
-            app:layout_constraintEnd_toEndOf="@id/forwardButton"
-            app:layout_constraintTop_toTopOf="@id/forwardButton"
-            tools:visibility="visible" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/forwardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_gap_2"
+                android:text="@string/next"
+                android:visibility="invisible"
+                app:icon="@drawable/ic_forward"
+                app:iconGravity="end"
+                app:layout_constraintBottom_toBottomOf="@id/backButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/backButton"
+                tools:visibility="visible" />
 
-</com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/finishButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/finish"
+                android:visibility="invisible"
+                app:icon="@drawable/ic_done"
+                app:iconGravity="end"
+                app:layout_constraintBottom_toBottomOf="@id/forwardButton"
+                app:layout_constraintEnd_toEndOf="@id/forwardButton"
+                app:layout_constraintTop_toTopOf="@id/forwardButton"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:trackThickness="@dimen/small_gap_2"
+        tools:progress="10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

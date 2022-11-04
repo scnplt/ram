@@ -21,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
 import dev.sertan.android.ram.coreui.util.loadFromUrl
+import dev.sertan.android.ram.coreui.util.popBackStack
 import dev.sertan.android.ram.coreui.util.showToast
 import dev.sertan.android.ram.coreui.util.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
@@ -43,6 +44,7 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
             backButton.isInvisible = !it.isBackButtonVisible
             forwardButton.isInvisible = !it.isForwardButtonVisible
             finishButton.isInvisible = !it.isFinishButtonVisible
+            progressIndicator.progress = it.progress
         }
     }
 
@@ -59,6 +61,11 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
     private fun setUpComponents(): Unit = with(binding) {
         forwardButton.setOnClickListener { viewModel.goToNextMaterial() }
         backButton.setOnClickListener { viewModel.goToPreviousMaterial() }
+        exitButton.setOnClickListener {
+            // TODO: Create an alert dialog for confirmation
+            popBackStack()
+        }
         materialCardView.setOnClickListener { showToast("Not yet implemented") }
+        finishButton.setOnClickListener { showToast("Not yet implemented") }
     }
 }

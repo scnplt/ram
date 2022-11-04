@@ -22,5 +22,6 @@
     <string name="finish">Bitir</string>
     <string name="material_image">Materyal resmi</string>
     <string name="this_icon_was_created_by">Bu ikon %s tarafından oluşturulmuştur.</string>
+    <string name="exit">Çık</string>
 
 </resources>

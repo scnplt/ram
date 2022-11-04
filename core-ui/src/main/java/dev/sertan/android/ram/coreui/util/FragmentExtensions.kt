@@ -21,6 +21,10 @@ import kotlin.properties.ReadOnlyProperty
 fun Fragment.navigateTo(navDirections: NavDirections): Unit =
     findNavController().navigate(navDirections)
 
+fun Fragment.popBackStack() {
+    findNavController().popBackStack()
+}
+
 fun <VB : ViewBinding> Fragment.viewBinding(
     viewBindingFactory: (View) -> VB
 ): ReadOnlyProperty<Fragment, VB> = FragmentViewBindingDelegate(viewBindingFactory)
