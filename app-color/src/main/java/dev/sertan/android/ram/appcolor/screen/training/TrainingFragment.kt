@@ -23,9 +23,7 @@ import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
 import dev.sertan.android.ram.coreui.util.extension.loadFromUrl
 import dev.sertan.android.ram.coreui.util.extension.popBackStack
 import dev.sertan.android.ram.coreui.util.extension.showToast
-import dev.sertan.android.ram.coreui.util.extension.speak
 import dev.sertan.android.ram.coreui.util.extension.viewBinding
-import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
