@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.util
+package dev.sertan.android.ram.coreui.util.extension
 
 import android.content.Intent
 import android.view.View
@@ -16,6 +16,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import dev.sertan.android.ram.coreui.util.FragmentViewBindingDelegate
 import kotlin.properties.ReadOnlyProperty
 
 fun Fragment.navigateTo(navDirections: NavDirections): Unit =

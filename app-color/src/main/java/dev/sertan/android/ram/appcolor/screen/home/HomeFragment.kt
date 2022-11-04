@@ -21,10 +21,10 @@ import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
-import dev.sertan.android.ram.coreui.util.navigateTo
-import dev.sertan.android.ram.coreui.util.navigateToOssLicensesActivity
-import dev.sertan.android.ram.coreui.util.showToast
-import dev.sertan.android.ram.coreui.util.viewBinding
+import dev.sertan.android.ram.coreui.util.extension.navigateTo
+import dev.sertan.android.ram.coreui.util.extension.navigateToOssLicensesActivity
+import dev.sertan.android.ram.coreui.util.extension.showToast
+import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 
 @AndroidEntryPoint

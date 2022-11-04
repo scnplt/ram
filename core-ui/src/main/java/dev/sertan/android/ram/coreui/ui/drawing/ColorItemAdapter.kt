@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.ui
+package dev.sertan.android.ram.coreui.ui.drawing
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.scopes.FragmentScoped
 import dev.sertan.android.ram.coreui.databinding.ItemLayoutColorBinding
-import dev.sertan.android.ram.coreui.ui.ColorItemViewHolder.OnColorClickedListener
+import dev.sertan.android.ram.coreui.ui.drawing.ColorItemViewHolder.OnColorClickedListener
 import javax.inject.Inject
 
 @FragmentScoped

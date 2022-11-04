@@ -9,9 +9,9 @@
 
 package dev.sertan.android.ram.coreui.ui.drawing
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -20,11 +20,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.coreui.R
 import dev.sertan.android.ram.coreui.databinding.FragmentDrawingBinding
-import dev.sertan.android.ram.coreui.ui.ColorItemAdapter
-import dev.sertan.android.ram.coreui.ui.ColorItemViewHolder
-import dev.sertan.android.ram.coreui.util.getColorList
-import dev.sertan.android.ram.coreui.util.setIconTint
-import dev.sertan.android.ram.coreui.util.viewBinding
+import dev.sertan.android.ram.coreui.util.extension.getColorList
+import dev.sertan.android.ram.coreui.util.extension.setIconTint
+import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
@@ -81,7 +79,6 @@ class DrawingFragment :
     }
 
     private fun showClearCanvasDialog() {
-        // TODO: Refactor this function, create a custom alert dialog class and use it
         AlertDialog.Builder(requireContext()).apply {
             setCancelable(true)
             setMessage(R.string.do_you_want_clear_canvas)

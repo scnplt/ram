@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.util
+package dev.sertan.android.ram.coreui.util.extension
 
 import android.content.Context
 import android.content.res.Resources

@@ -7,13 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.coreui.util
+package dev.sertan.android.ram.coreui.util.extension
 
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import com.google.android.material.button.MaterialButton
+import dev.sertan.android.ram.coreui.util.GlideApp
 
 fun MaterialButton.setIconTint(@ColorInt color: Int) {
     iconTint = ColorStateList.valueOf(color)
