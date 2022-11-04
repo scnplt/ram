@@ -29,6 +29,7 @@ internal data class TrainingUiState(
             progress = 0
         )
 
+        @Suppress("MagicNumber")
         fun getState(materials: List<Material>, index: Int): TrainingUiState = TrainingUiState(
             material = if (materials.isNotEmpty()) materials[index] else null,
             isBackButtonVisible = index > 0,

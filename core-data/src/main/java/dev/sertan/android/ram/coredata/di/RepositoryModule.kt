@@ -18,6 +18,7 @@ import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.coredata.repository.MaterialRepositoryImpl
 import dev.sertan.android.ram.coredata.repository.UserSettingsRepositoryImpl
 
+@Suppress("UnnecessaryAbstractClass")
 @Module
 @InstallIn(SingletonComponent::class)
 internal abstract class RepositoryModule {
