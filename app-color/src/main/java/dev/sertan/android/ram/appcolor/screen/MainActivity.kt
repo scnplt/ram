@@ -15,8 +15,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appcolor.NavMainDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appcolor.R
-import dev.sertan.android.ram.coreui.ui.SplashFragmentDirections.Companion.actionSplashFragmentToHomeFragment
 import kotlinx.coroutines.delay
 
 private const val SPLASH_FRAGMENT_DURATION_MS = 3000L
@@ -34,7 +34,7 @@ internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         lifecycleScope.launchWhenStarted {
             delay(SPLASH_FRAGMENT_DURATION_MS)
-            navController.navigate(actionSplashFragmentToHomeFragment())
+            navController.navigate(actionGlobalHomeFragment())
         }
     }
 }

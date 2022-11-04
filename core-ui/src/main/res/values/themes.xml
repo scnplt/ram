@@ -9,14 +9,17 @@
 
 <resources>
 
-    <style name="Theme.RAM.NoActionBar" parent="Theme.RAM.Base">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Theme.RAM" parent="Theme.RAM.Base">
         <item name="materialButtonStyle">@style/Widget.RAM.Button</item>
         <item name="materialIconButtonFilledStyle">@style/Widget.RAM.IconButton.Filled</item>
         <item name="materialIconButtonFilledTonalStyle">
             @style/Widget.RAM.IconButton.Filled.Tonal
         </item>
+    </style>
+
+    <style name="Theme.RAM.NoActionBar" parent="Theme.RAM">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="Theme.RAM.Base" parent="Theme.Material3.DynamicColors.Light" />
