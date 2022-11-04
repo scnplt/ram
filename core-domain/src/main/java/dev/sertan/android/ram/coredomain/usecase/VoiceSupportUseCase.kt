@@ -40,6 +40,9 @@ class VoiceSupportUseCase @Inject constructor(
                 )
         }
 
+    suspend fun getVoiceSupportState(): Boolean =
+        userSettingsRepository.getVoiceSupportState().getOrNull() == true
+
     suspend fun change() {
         val currentState = userSettingsRepository.getVoiceSupportState().getOrNull() ?: return
         userSettingsRepository.setVoiceSupportState(isActive = !currentState)

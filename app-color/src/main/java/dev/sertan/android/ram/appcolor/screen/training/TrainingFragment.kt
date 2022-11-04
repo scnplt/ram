@@ -20,10 +20,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
-import dev.sertan.android.ram.coreui.util.loadFromUrl
-import dev.sertan.android.ram.coreui.util.popBackStack
-import dev.sertan.android.ram.coreui.util.showToast
-import dev.sertan.android.ram.coreui.util.viewBinding
+import dev.sertan.android.ram.coreui.util.extension.loadFromUrl
+import dev.sertan.android.ram.coreui.util.extension.popBackStack
+import dev.sertan.android.ram.coreui.util.extension.showToast
+import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
@@ -59,13 +59,17 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
     }
 
     private fun setUpComponents(): Unit = with(binding) {
-        forwardButton.setOnClickListener { viewModel.goToNextMaterial() }
-        backButton.setOnClickListener { viewModel.goToPreviousMaterial() }
-        exitButton.setOnClickListener {
-            // TODO: Create an alert dialog for confirmation
-            popBackStack()
+        with(viewModel) {
+            forwardButton.setOnClickListener { goToNextMaterial() }
+            backButton.setOnClickListener { goToPreviousMaterial() }
+            exitButton.setOnClickListener { popBackStack() }
+            materialCardView.setOnClickListener { speakCurrentMaterialDescription() }
+            finishButton.setOnClickListener { showToast("Not yet implemented") }
         }
-        materialCardView.setOnClickListener { showToast("Not yet implemented") }
-        finishButton.setOnClickListener { showToast("Not yet implemented") }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopSpeech()
     }
 }

@@ -11,6 +11,7 @@ package dev.sertan.android.ram.coreui.util
 
 import android.content.Context
 import android.content.res.Resources
+import android.speech.tts.TextToSpeech
 import android.widget.Toast
 import androidx.annotation.ArrayRes
 
@@ -26,3 +27,7 @@ fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> = obtainTypedA
             it.getColor(colorIndex, NO_COLOR).takeIf { color -> color != NO_COLOR }
         }
     }
+
+fun TextToSpeech.speak(message: String?) {
+    speak(message?.replace("\\s+".toRegex(), ",") ?: return, TextToSpeech.QUEUE_FLUSH, null, "")
+}
