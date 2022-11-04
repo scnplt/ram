@@ -29,7 +29,7 @@
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appcolor.screen.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment" />
@@ -43,9 +43,12 @@
         android:name="dev.sertan.android.ram.appcolor.screen.training.TrainingFragment"
         android:label="fragment_training"
         tools:layout="@layout/fragment_training" />
+
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
         app:popUpTo="@id/nav_main"
         app:popUpToInclusive="true" />
 </navigation>
