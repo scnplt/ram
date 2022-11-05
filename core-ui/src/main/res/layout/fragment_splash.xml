@@ -19,11 +19,12 @@
 
     <ImageView
         android:id="@+id/flagImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/flag_transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintHeight_percent="0.12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,14 +33,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_2"
+        android:autoSizeMinTextSize="1sp"
+        android:autoSizeTextType="uniform"
         android:gravity="center_horizontal"
+        android:maxLines="2"
         android:text="@string/this_project_is_financed"
         android:textAlignment="center"
         android:textAppearance="?textAppearanceTitleMedium"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@id/appNameTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/flagImageView"
+        app:layout_constraintStart_toStartOf="@id/flagImageView"
         app:layout_constraintTop_toBottomOf="@id/flagImageView"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
@@ -69,26 +73,29 @@
         app:flow_horizontalStyle="spread_inside"
         app:layout_constraintBottom_toTopOf="@id/bottomImageLineFlow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appNameTextView" />
 
     <ImageView
         android:id="@+id/ikoImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/iko" />
 
     <ImageView
         android:id="@+id/mebImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/meb" />
 
     <ImageView
         android:id="@+id/sgbImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/sgb" />
 
     <androidx.constraintlayout.helper.widget.Flow
@@ -100,30 +107,34 @@
         app:flow_horizontalStyle="spread_inside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHeight_percent="0.03"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ramImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/ram" />
 
     <ImageView
         android:id="@+id/mtaImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/mta" />
 
     <ImageView
         android:id="@+id/omlImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/oml" />
 
     <ImageView
         android:id="@+id/esobImageView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/esob" />
 </androidx.constraintlayout.widget.ConstraintLayout>
