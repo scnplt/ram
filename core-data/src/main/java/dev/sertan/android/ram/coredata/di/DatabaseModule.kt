@@ -26,5 +26,5 @@ internal object DatabaseModule {
     @Provides
     @Singleton
     fun provideRamDatabase(@ApplicationContext context: Context): RamDatabase =
-        Room.databaseBuilder(context, RamDatabase::class.java, RamDatabase::class.java.name).build()
+        Room.databaseBuilder(context, RamDatabase::class.java, context.packageName).build()
 }
