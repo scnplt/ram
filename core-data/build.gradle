@@ -72,6 +72,9 @@ dependencies {
     // Coroutines
     implementation libs.coroutinesPlayServices
 
+    // Gson
+    implementation libs.gson
+
     // Test
     kaptAndroidTest kaptAndroidTests.hiltAndroidTesting
     androidTestImplementation androidTestLibs.hiltAndroidTesting

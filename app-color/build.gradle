@@ -92,4 +92,7 @@ dependencies {
     // Firebase
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx
+
+    // Timber
+    implementation libs.timber
 }
