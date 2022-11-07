@@ -16,7 +16,6 @@ import dagger.hilt.components.SingletonComponent
 import dev.sertan.android.ram.coredata.database.RamDatabase
 import dev.sertan.android.ram.coredata.database.dao.MaterialDao
 import dev.sertan.android.ram.coredata.database.dao.QuestionDao
-import dev.sertan.android.ram.coredata.database.dao.QuestionWithMaterialsDao
 import javax.inject.Singleton
 
 @Module
@@ -30,9 +29,4 @@ internal object DaoModule {
     @Provides
     @Singleton
     fun provideMaterialDao(ramDatabase: RamDatabase): MaterialDao = ramDatabase.materialDao()
-
-    @Provides
-    @Singleton
-    fun provideQuestionWithMaterialsDao(ramDatabase: RamDatabase): QuestionWithMaterialsDao =
-        ramDatabase.questionWithMaterialsDao()
 }

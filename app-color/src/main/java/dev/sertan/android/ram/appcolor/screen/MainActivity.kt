@@ -10,7 +10,6 @@
 package dev.sertan.android.ram.appcolor.screen
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +17,7 @@ import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.NavMainDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appcolor.R
+import dev.sertan.android.ram.coredomain.usecase.VoiceSupportUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.delay
 
@@ -27,7 +27,7 @@ private const val SPLASH_FRAGMENT_DURATION_MS = 3000L
 internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     @Inject
-    lateinit var textToSpeech: TextToSpeech
+    lateinit var voiceSupportUseCase: VoiceSupportUseCase
 
     private val navController by lazy {
         val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)

@@ -14,6 +14,9 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
+import timber.log.Timber
 
 fun SharedPreferences.getStringAsStream(dataKey: String): Flow<String?> = callbackFlow {
     trySend(getString(dataKey, null))
@@ -23,3 +26,16 @@ fun SharedPreferences.getStringAsStream(dataKey: String): Flow<String?> = callba
     registerOnSharedPreferenceChangeListener(sharedPrefListener)
     awaitClose { unregisterOnSharedPreferenceChangeListener(sharedPrefListener) }
 }
+
+suspend fun <R> tryGetResultWithLog(block: suspend () -> R): Result<R> = try {
+    Result.success(block())
+} catch (exception: Throwable) {
+    Timber.e(exception)
+    Result.failure(exception)
+}
+
+fun <I, O> Flow<I>.tryGetResultWithLog(block: (I) -> O): Flow<Result<O>> =
+    map { Result.success(block(it)) }.catch { exception ->
+        Timber.e(exception)
+        Result.failure<O>(exception)
+    }

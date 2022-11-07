@@ -11,24 +11,19 @@ package dev.sertan.android.ram.coredata.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import dev.sertan.android.ram.coredata.database.dao.MaterialDao
 import dev.sertan.android.ram.coredata.database.dao.QuestionDao
-import dev.sertan.android.ram.coredata.database.dao.QuestionWithMaterialsDao
 import dev.sertan.android.ram.coredata.database.model.MaterialEntity
 import dev.sertan.android.ram.coredata.database.model.QuestionEntity
-import dev.sertan.android.ram.coredata.database.model.QuestionWithMaterialsEntity
 
 @Database(
     version = 1,
     exportSchema = false,
-    entities = [
-        QuestionEntity::class,
-        MaterialEntity::class,
-        QuestionWithMaterialsEntity::class
-    ]
+    entities = [MaterialEntity::class, QuestionEntity::class],
 )
+@TypeConverters(Converters::class)
 internal abstract class RamDatabase : RoomDatabase() {
-    abstract fun questionDao(): QuestionDao
     abstract fun materialDao(): MaterialDao
-    abstract fun questionWithMaterialsDao(): QuestionWithMaterialsDao
+    abstract fun questionDao(): QuestionDao
 }

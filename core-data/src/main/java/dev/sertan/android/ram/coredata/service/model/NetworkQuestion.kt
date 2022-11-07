@@ -7,11 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.corecommon.model
+package dev.sertan.android.ram.coredata.service.model
 
-data class QuestionDto(
-    val uid: String,
-    val content: String,
-    val answerMaterialUid: String,
-    val materialUidList: List<String>
+internal data class NetworkQuestion(
+    val questionUid: String? = null,
+    val content: String? = null,
+    val answerMaterialUid: String? = null,
+    val materialUidList: List<String> = emptyList()
 )

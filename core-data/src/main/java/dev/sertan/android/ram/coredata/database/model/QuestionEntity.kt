@@ -16,5 +16,6 @@ import androidx.room.PrimaryKey
 internal data class QuestionEntity(
     @PrimaryKey val questionUid: String,
     val content: String,
-    val answerMaterialId: Long,
+    val answerMaterialUid: String,
+    val materialUidList: List<String>
 )

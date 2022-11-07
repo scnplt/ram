@@ -14,8 +14,10 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
+import dev.sertan.android.ram.corecommon.repository.QuestionRepository
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.coredata.repository.MaterialRepositoryImpl
+import dev.sertan.android.ram.coredata.repository.QuestionRepositoryImpl
 import dev.sertan.android.ram.coredata.repository.UserSettingsRepositoryImpl
 
 @Suppress("UnnecessaryAbstractClass")
@@ -32,4 +34,9 @@ internal abstract class RepositoryModule {
     abstract fun provideUserSettingsRepository(
         userSettingsRepository: UserSettingsRepositoryImpl
     ): UserSettingsRepository
+
+    @Binds
+    abstract fun provideQuestionRepository(
+        questionRepository: QuestionRepositoryImpl
+    ): QuestionRepository
 }

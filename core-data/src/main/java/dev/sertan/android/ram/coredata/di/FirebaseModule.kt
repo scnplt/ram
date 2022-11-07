@@ -25,6 +25,7 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 private const val MATERIAL_COLLECTION_REF_NAME = "materials"
+private const val QUESTION_COLLECTION_REF_NAME = "questions"
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -40,6 +41,14 @@ internal object FirebaseModule {
 
     @Provides
     @Singleton
+    @QuestionCollection
+    fun provideQuestionCollectionReference(
+        @ApplicationContext context: Context
+    ): CollectionReference = Firebase.firestore
+        .collection("${context.packageName}-$QUESTION_COLLECTION_REF_NAME")
+
+    @Provides
+    @Singleton
     fun provideStorageReference(): StorageReference =
         Firebase.storage(BuildConfig.FIREBASE_STORAGE_BUCKET).reference
 }
@@ -47,3 +56,7 @@ internal object FirebaseModule {
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
 annotation class MaterialCollection
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class QuestionCollection

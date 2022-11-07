@@ -23,5 +23,7 @@
     <string name="material_image">Materyal resmi</string>
     <string name="this_icon_was_created_by">Bu görsel %s tarafından oluşturulmuştur.</string>
     <string name="exit">Çık</string>
+    <string name="wrong_answer">Yanlış cevap</string>
+    <string name="correct_answer">Doğru cevap</string>
 
 </resources>

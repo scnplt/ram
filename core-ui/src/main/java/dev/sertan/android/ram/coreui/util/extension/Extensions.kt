@@ -11,9 +11,10 @@ package dev.sertan.android.ram.coreui.util.extension
 
 import android.content.Context
 import android.content.res.Resources
-import android.speech.tts.TextToSpeech
+import android.media.MediaPlayer
 import android.widget.Toast
 import androidx.annotation.ArrayRes
+import androidx.annotation.RawRes
 
 private const val NO_COLOR = Int.MIN_VALUE
 
@@ -21,13 +22,11 @@ fun Context.showToast(message: String?) {
     message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
 }
 
+fun Context.playSound(@RawRes soundResId: Int): Unit = MediaPlayer.create(this, soundResId).start()
+
 fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> = obtainTypedArray(colorListId)
     .use {
         (0 until it.length()).mapNotNull { colorIndex ->
             it.getColor(colorIndex, NO_COLOR).takeIf { color -> color != NO_COLOR }
         }
     }
-
-fun TextToSpeech.speak(message: String?) {
-    speak(message?.replace("\\s+".toRegex(), ",") ?: return, TextToSpeech.QUEUE_FLUSH, null, "")
-}

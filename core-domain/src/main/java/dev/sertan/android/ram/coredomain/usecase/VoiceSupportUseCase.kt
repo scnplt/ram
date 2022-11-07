@@ -9,7 +9,9 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
+import android.speech.tts.TextToSpeech
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
+import dev.sertan.android.ram.coredomain.util.speak
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
@@ -23,8 +25,19 @@ private const val VOICE_SUPPORT_DEFAULT_STATE = true
 
 @Singleton
 class VoiceSupportUseCase @Inject constructor(
-    private val userSettingsRepository: UserSettingsRepository
+    private val userSettingsRepository: UserSettingsRepository,
+    private val textToSpeech: TextToSpeech,
 ) {
+
+    suspend fun checkVoiceSupportStateAndSpeak(message: String?) {
+        if (getVoiceSupportState()) textToSpeech.speak(message)
+    }
+
+    fun speak(message: String?): Unit = textToSpeech.speak(message)
+
+    fun stopSpeech() {
+        textToSpeech.stop()
+    }
 
     fun getVoiceSupportStateAsStream(coroutineScope: CoroutineScope): StateFlow<Boolean> =
         with(userSettingsRepository) {
@@ -40,7 +53,7 @@ class VoiceSupportUseCase @Inject constructor(
                 )
         }
 
-    suspend fun getVoiceSupportState(): Boolean =
+    private suspend fun getVoiceSupportState(): Boolean =
         userSettingsRepository.getVoiceSupportState().getOrNull() == true
 
     suspend fun change() {

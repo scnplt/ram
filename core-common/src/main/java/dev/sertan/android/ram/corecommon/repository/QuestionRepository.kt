@@ -13,11 +13,13 @@ import dev.sertan.android.ram.corecommon.model.QuestionDto
 
 interface QuestionRepository {
 
-    suspend fun getAllQuestions(): Result<List<QuestionDto>>
+    suspend fun getQuestionsFromLocal(): Result<List<QuestionDto>>
 
-    suspend fun saveQuestion(vararg questionArray: QuestionDto): Result<Unit>
+    suspend fun getQuestionsFromRemote(): Result<List<QuestionDto>>
 
-    suspend fun deleteQuestion(vararg questionArray: QuestionDto): Result<Unit>
+    suspend fun saveQuestionToLocal(vararg questionArray: QuestionDto): Result<Unit>
 
-    suspend fun updateQuestion(questionDto: QuestionDto): Result<Unit>
+    suspend fun deleteQuestionFromLocal(vararg questionArray: QuestionDto): Result<Unit>
+
+    suspend fun updateLocalQuestion(questionDto: QuestionDto): Result<Unit>
 }

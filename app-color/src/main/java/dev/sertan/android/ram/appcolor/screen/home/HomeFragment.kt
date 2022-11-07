@@ -20,10 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appcolor.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.coreui.util.extension.navigateTo
 import dev.sertan.android.ram.coreui.util.extension.navigateToOssLicensesActivity
-import dev.sertan.android.ram.coreui.util.extension.showToast
 import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 
@@ -50,7 +50,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         helpButton.setOnClickListener { navigateToOssLicensesActivity() }
         changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
         trainingButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainingFragment()) }
-        practiceButton.setOnClickListener { showToast("Not yet implemented") }
+        practiceButton.setOnClickListener { navigateTo(actionHomeFragmentToPracticeFragment()) }
         drawingButton.setOnClickListener { navigateTo(actionHomeFragmentToDrawingFragment()) }
     }
 }

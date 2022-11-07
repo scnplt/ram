@@ -9,13 +9,11 @@
 
 package dev.sertan.android.ram.appcolor.screen.training
 
-import android.speech.tts.TextToSpeech
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.coredomain.usecase.GetMaterialsUseCase
 import dev.sertan.android.ram.coredomain.usecase.VoiceSupportUseCase
-import dev.sertan.android.ram.coreui.util.extension.speak
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -28,8 +26,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 internal class TrainingViewModel @Inject constructor(
     private val getMaterialsUseCase: GetMaterialsUseCase,
-    private val voiceSupportUseCase: VoiceSupportUseCase,
-    private val textToSpeech: TextToSpeech
+    private val voiceSupportUseCase: VoiceSupportUseCase
 ) : ViewModel() {
 
     private val materialIndex = MutableStateFlow(0)
@@ -45,8 +42,9 @@ internal class TrainingViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            if (!voiceSupportUseCase.getVoiceSupportState()) return@launch
-            uiState.collect { speakCurrentMaterialDescription() }
+            uiState.collect {
+                voiceSupportUseCase.checkVoiceSupportStateAndSpeak(it.material?.description)
+            }
         }
     }
 
@@ -54,9 +52,8 @@ internal class TrainingViewModel @Inject constructor(
 
     fun goToPreviousMaterial(): Unit = materialIndex.update { it.dec() }
 
-    fun speakCurrentMaterialDescription() = textToSpeech.speak(uiState.value.material?.description)
+    fun speakCurrentMaterialDescription(): Unit =
+        voiceSupportUseCase.speak(uiState.value.material?.description)
 
-    fun stopSpeech() {
-        textToSpeech.stop()
-    }
+    fun stopSpeech(): Unit = voiceSupportUseCase.stopSpeech()
 }

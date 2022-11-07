@@ -23,14 +23,11 @@ internal interface QuestionDao {
     @Query("SELECT * FROM questions")
     suspend fun getAll(): List<QuestionEntity>
 
-    @Query("SELECT * FROM questions WHERE :questionUid == questionUid")
-    suspend fun getByUid(questionUid: String): QuestionEntity?
-
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(vararg questionEntityArray: QuestionEntity)
+    suspend fun insert(vararg questionArray: QuestionEntity)
 
     @Delete
-    suspend fun delete(vararg questionEntityArray: QuestionEntity)
+    suspend fun delete(vararg questionArray: QuestionEntity)
 
     @Update
     suspend fun update(questionEntity: QuestionEntity)

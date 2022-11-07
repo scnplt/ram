@@ -14,7 +14,9 @@ import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
+import dev.sertan.android.ram.coredomain.worker.UpdateLocalQuestionsWorker
 import javax.inject.Inject
+import timber.log.Timber
 
 @HiltAndroidApp
 internal class ColorApp : Application(), Configuration.Provider {
@@ -27,6 +29,8 @@ internal class ColorApp : Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
         UpdateLocalMaterialsWorker.uniqueStart(applicationContext)
+        UpdateLocalQuestionsWorker.uniqueStart(applicationContext)
     }
 }

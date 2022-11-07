@@ -34,4 +34,9 @@ class GetMaterialsUseCase @Inject constructor(
                 emptyList()
             }
     }
+
+    suspend fun getByUid(uid: String): Material? = withContext(Dispatchers.IO) {
+        materialRepository.getMaterialFromLocalByUid(uid = uid).getOrNull()?.toUiModel()
+            ?.also { UpdateLocalMaterialsWorker.uniqueStart(context) }
+    }
 }

@@ -11,21 +11,34 @@ package dev.sertan.android.ram.coredata.mapper
 
 import dev.sertan.android.ram.corecommon.model.QuestionDto
 import dev.sertan.android.ram.coredata.database.model.QuestionEntity
+import dev.sertan.android.ram.coredata.service.model.NetworkQuestion
 
 internal fun QuestionEntity.toDomainModel(): QuestionDto = QuestionDto(
     uid = questionUid,
     content = content,
-    answerMaterialId = answerMaterialId
+    answerMaterialUid = answerMaterialUid,
+    materialUidList = materialUidList
 )
 
 internal fun List<QuestionEntity>.toDomainModel(): List<QuestionDto> =
     map(QuestionEntity::toDomainModel)
 
-internal fun QuestionDto.toEntityModel(): QuestionEntity = QuestionEntity(
+internal fun NetworkQuestion.toDomainModel(): QuestionDto? = questionUid?.let {
+    QuestionDto(
+        uid = it,
+        content = content.orEmpty(),
+        answerMaterialUid = answerMaterialUid.orEmpty(),
+        materialUidList = materialUidList
+    )
+}
+
+internal fun QuestionDto.toDataModel(): QuestionEntity = QuestionEntity(
     questionUid = uid,
     content = content,
-    answerMaterialId = answerMaterialId
+    answerMaterialUid = answerMaterialUid,
+    materialUidList = materialUidList
 )
 
-internal fun Array<out QuestionDto>.toEntityModel(): Array<QuestionEntity> =
-    map(QuestionDto::toEntityModel).toTypedArray()
+internal fun Array<out QuestionDto>.toDataModel(): Array<out QuestionEntity> =
+    map(QuestionDto::toDataModel).toTypedArray()
+
