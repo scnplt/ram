@@ -31,7 +31,8 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-internal class PracticeFragment : Fragment(R.layout.fragment_practice),
+internal class PracticeFragment :
+    Fragment(R.layout.fragment_practice),
     QuestionMaterialsViewHolder.QuestionMaterialListener {
 
     private val viewModel by viewModels<PracticeViewModel>()

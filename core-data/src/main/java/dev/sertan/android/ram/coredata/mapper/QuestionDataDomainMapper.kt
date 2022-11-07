@@ -41,4 +41,3 @@ internal fun QuestionDto.toDataModel(): QuestionEntity = QuestionEntity(
 
 internal fun Array<out QuestionDto>.toDataModel(): Array<out QuestionEntity> =
     map(QuestionDto::toDataModel).toTypedArray()
-

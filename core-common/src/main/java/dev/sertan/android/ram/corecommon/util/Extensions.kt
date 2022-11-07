@@ -27,6 +27,7 @@ fun SharedPreferences.getStringAsStream(dataKey: String): Flow<String?> = callba
     awaitClose { unregisterOnSharedPreferenceChangeListener(sharedPrefListener) }
 }
 
+@Suppress("TooGenericExceptionCaught")
 suspend fun <R> tryGetResultWithLog(block: suspend () -> R): Result<R> = try {
     Result.success(block())
 } catch (exception: Throwable) {
