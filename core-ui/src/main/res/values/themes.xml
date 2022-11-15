@@ -22,6 +22,6 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.RAM.Base" parent="Theme.Material3.DynamicColors.Light" />
+    <style name="Theme.RAM.Base" parent="Theme.Material3.Light" />
 
 </resources>

@@ -9,6 +9,6 @@
 
 <resources>
 
-    <style name="Theme.RAM.Base" parent="Theme.Material3.DynamicColors.Dark" />
+    <style name="Theme.RAM.Base" parent="Theme.Material3.Dark" />
 
 </resources>
