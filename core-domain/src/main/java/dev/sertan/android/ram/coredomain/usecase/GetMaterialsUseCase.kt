@@ -9,11 +9,8 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.corecommon.repository.MaterialRepository
 import dev.sertan.android.ram.coredomain.mapper.toUiModel
-import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
 import dev.sertan.android.ram.coreui.model.Material
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,21 +19,21 @@ import kotlinx.coroutines.withContext
 
 @Singleton
 class GetMaterialsUseCase @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val materialRepository: MaterialRepository,
+    private val updateLocalMaterialsUseCase: UpdateLocalMaterialsUseCase
 ) {
 
     suspend operator fun invoke(): List<Material> = withContext(Dispatchers.IO) {
-        materialRepository.getMaterialsFromLocal().getOrNull()?.shuffled()?.toUiModel()
-            .takeUnless { it.isNullOrEmpty() }
-            ?: run {
-                UpdateLocalMaterialsWorker.uniqueStart(context)
-                emptyList()
-            }
+        materialRepository.run {
+            getMaterialsFromLocal().getOrNull() ?: getMaterialsFromRemote().getOrNull()
+                .also { updateLocalMaterialsUseCase() }
+        }?.toUiModel()?.shuffled().orEmpty()
     }
 
     suspend fun getByUid(uid: String): Material? = withContext(Dispatchers.IO) {
-        materialRepository.getMaterialFromLocalByUid(uid = uid).getOrNull()?.toUiModel()
-            ?.also { UpdateLocalMaterialsWorker.uniqueStart(context) }
+        materialRepository.getMaterialFromLocalByUid(uid = uid).getOrElse {
+            updateLocalMaterialsUseCase()
+            null
+        }?.toUiModel()
     }
 }

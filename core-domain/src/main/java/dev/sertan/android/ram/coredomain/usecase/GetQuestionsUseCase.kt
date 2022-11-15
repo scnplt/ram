@@ -9,11 +9,8 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.corecommon.repository.QuestionRepository
 import dev.sertan.android.ram.coredomain.mapper.toUiModel
-import dev.sertan.android.ram.coredomain.worker.UpdateLocalQuestionsWorker
 import dev.sertan.android.ram.coreui.model.Question
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -22,23 +19,19 @@ import kotlinx.coroutines.withContext
 
 @Singleton
 class GetQuestionsUseCase @Inject constructor(
-    @ApplicationContext private val context: Context,
     private val questionRepository: QuestionRepository,
-    private val getMaterialsUseCase: GetMaterialsUseCase
+    private val getMaterialsUseCase: GetMaterialsUseCase,
+    private val updateLocalQuestionsUseCase: UpdateLocalQuestionsUseCase
 ) {
 
     suspend operator fun invoke(): List<Question> = withContext(Dispatchers.IO) {
-        questionRepository.getQuestionsFromLocal().getOrNull()?.shuffled()
-            ?.map {
-                val materials = it.materialUidList.mapNotNull { materialUid ->
-                    getMaterialsUseCase.getByUid(uid = materialUid)
-                }
-                it.toUiModel(materials)
-            }
-            .takeUnless { it.isNullOrEmpty() }
-            ?: run {
-                UpdateLocalQuestionsWorker.uniqueStart(context)
-                emptyList()
-            }
+        questionRepository.run {
+            getQuestionsFromLocal().getOrNull()
+                ?: getQuestionsFromRemote().getOrNull().also { updateLocalQuestionsUseCase() }
+        }?.map {
+            val materials = it.materialUidList
+                .mapNotNull { materialUid -> getMaterialsUseCase.getByUid(uid = materialUid) }
+            it.toUiModel(materials)
+        }.orEmpty()
     }
 }
