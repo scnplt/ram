@@ -46,9 +46,9 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core-ui')
-    implementation project(path: ':core-common')
-    implementation project(path: ':core-data')
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreData)
 
     implementation libs.coreKtx
     implementation libs.work

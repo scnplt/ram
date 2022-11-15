@@ -43,15 +43,19 @@ ext {
             multiDex    : "2.0.1"
     ]
 
+    module = [
+            appColor  : ":app-color",
+            coreCommon: ":core-common",
+            coreData  : ":core-data",
+            coreDomain: ":core-domain",
+            coreUi    : ":core-ui"
+    ]
+
     kapts = [
             androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.hiltWork}",
             hiltCompiler       : "com.google.dagger:hilt-compiler:${versions.hilt}",
             roomCompiler       : "androidx.room:room-compiler:${versions.room}",
             glide              : "com.github.bumptech.glide:compiler:${versions.glide}",
-    ]
-
-    kaptAndroidTests = [
-            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
     ]
 
     platforms = [
@@ -80,6 +84,10 @@ ext {
             gson                  : "com.google.code.gson:gson:${versions.gson}",
             timber                : "com.jakewharton.timber:timber:${versions.timber}",
             multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
+    ]
+
+    kaptAndroidTests = [
+            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
     ]
 
     testLibs = [
