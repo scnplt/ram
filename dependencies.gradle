@@ -11,7 +11,7 @@ ext {
     configs = [
             applicationId      : "dev.sertan.android.ram",
             compileSdk         : 32,
-            minSdk             : 26,
+            minSdk             : 19,
             targetSdk          : 32,
             versionCode        : 1,
             versionName        : "1.0.0",
