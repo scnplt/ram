@@ -19,7 +19,6 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.AttrRes
-import androidx.annotation.StyleRes
 import dev.sertan.android.ram.coreui.R
 import kotlin.properties.Delegates
 
@@ -31,9 +30,8 @@ private const val DEFAULT_PEN_WIDTH = 8f
 class DrawingView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    @AttrRes defStyleAttr: Int = 0,
-    @StyleRes defStyleRes: Int = 0
-) : View(context, attrs, defStyleAttr, defStyleRes) {
+    @AttrRes defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
 
     private data class Line(
         val path: Path,

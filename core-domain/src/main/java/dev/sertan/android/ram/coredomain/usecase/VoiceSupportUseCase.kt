@@ -9,9 +9,12 @@
 
 package dev.sertan.android.ram.coredomain.usecase
 
+import android.content.Context
 import android.speech.tts.TextToSpeech
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.corecommon.repository.UserSettingsRepository
 import dev.sertan.android.ram.coredomain.util.speak
+import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
@@ -22,12 +25,15 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
 private const val VOICE_SUPPORT_DEFAULT_STATE = true
+private const val VOICE_SUPPORT_LANG = "tr_TR"
 
 @Singleton
 class VoiceSupportUseCase @Inject constructor(
     private val userSettingsRepository: UserSettingsRepository,
-    private val textToSpeech: TextToSpeech,
-) {
+    @ApplicationContext context: Context
+) : TextToSpeech.OnInitListener {
+
+    private val textToSpeech = TextToSpeech(context, this)
 
     suspend fun checkVoiceSupportStateAndSpeak(message: String?) {
         if (getVoiceSupportState()) textToSpeech.speak(message)
@@ -59,5 +65,9 @@ class VoiceSupportUseCase @Inject constructor(
     suspend fun change() {
         val currentState = userSettingsRepository.getVoiceSupportState().getOrNull() ?: return
         userSettingsRepository.setVoiceSupportState(isActive = !currentState)
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) textToSpeech.language = Locale(VOICE_SUPPORT_LANG)
     }
 }

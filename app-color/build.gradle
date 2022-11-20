@@ -31,6 +31,7 @@ android {
         versionName configs.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -38,17 +39,11 @@ android {
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [
-                    isPerformanceMonitoringActive: "true",
-                    screenOrientation: "sensorPortrait"
-            ]
+            manifestPlaceholders = [isPerformanceMonitoringActive: "true"]
         }
         debug {
             minifyEnabled false
-            manifestPlaceholders = [
-                    isPerformanceMonitoringActive: "false",
-                    screenOrientation: "sensorPortrait"
-            ]
+            manifestPlaceholders = [isPerformanceMonitoringActive: "false"]
         }
     }
 
@@ -67,16 +62,15 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':core-ui')
-    implementation project(path: ':core-common')
-    implementation project(path: ':core-domain')
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreDomain)
 
     implementation libs.coreKtx
     implementation libs.ossLicenses
 
     // UI
     implementation libs.appcompat
-    implementation libs.splash
 
     // Navigation
     implementation libs.navigationUiKtx

@@ -11,6 +11,7 @@ package dev.sertan.android.ram.coredomain.util
 
 import android.speech.tts.TextToSpeech
 
+@Suppress("DEPRECATION")
 fun TextToSpeech.speak(message: String?) {
-    speak(message?.replace("\\s+".toRegex(), ",") ?: return, TextToSpeech.QUEUE_FLUSH, null, "")
+    speak(message?.replace("\\s+".toRegex(), ", ") ?: return, TextToSpeech.QUEUE_FLUSH, null)
 }

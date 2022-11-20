@@ -22,7 +22,7 @@ import androidx.work.WorkerParameters
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import dev.sertan.android.ram.coredomain.usecase.UpdateLocalMaterialsUseCase
-import java.time.Duration
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -47,12 +47,11 @@ class UpdateLocalMaterialsWorker @AssistedInject constructor(
                 .setRequiresBatteryNotLow(true)
                 .build()
 
-            val repeatInterval = Duration.ofDays(REPEAT_INTERVAL_DAY)
-            val backoffDuration = Duration.ofMinutes(BACKOFF_DELAY_MIN)
-
-            val request = PeriodicWorkRequestBuilder<UpdateLocalMaterialsWorker>(repeatInterval)
-                .setConstraints(constraints)
-                .setBackoffCriteria(BackoffPolicy.LINEAR, backoffDuration)
+            val request = PeriodicWorkRequestBuilder<UpdateLocalMaterialsWorker>(
+                REPEAT_INTERVAL_DAY,
+                TimeUnit.DAYS
+            ).setConstraints(constraints)
+                .setBackoffCriteria(BackoffPolicy.LINEAR, BACKOFF_DELAY_MIN, TimeUnit.MINUTES)
                 .build()
 
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(

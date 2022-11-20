@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appcolor.screen
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +34,6 @@ internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
         super.onCreate(savedInstanceState)
         lifecycleScope.launchWhenStarted {
             delay(SPLASH_FRAGMENT_DURATION_MS)

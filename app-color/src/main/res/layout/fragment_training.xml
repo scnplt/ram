@@ -47,8 +47,7 @@
                 android:layout_height="0dp"
                 android:background="?colorSecondaryContainer"
                 android:contentDescription="@string/material_image"
-                android:paddingHorizontal="@dimen/small_gap_2"
-                android:paddingTop="@dimen/small_gap_2"
+                android:padding="@dimen/small_gap_2"
                 android:scaleType="fitCenter"
                 app:layout_constraintDimensionRatio="1:0.6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,31 +56,47 @@
                 tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/mediaImageViewDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mediaImageView" />
+
             <TextView
                 android:id="@+id/attributionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_material_media"
                 android:maxLines="2"
                 android:padding="@dimen/small_gap_2"
                 android:textAlignment="center"
                 android:textAppearance="?textAppearanceLabelSmall"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mediaImageView"
+                app:layout_constraintTop_toBottomOf="@id/mediaImageViewDivider"
                 tools:text="@tools:sample/lorem/random" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/attributionTextViewDivider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/attributionTextView" />
 
             <TextView
                 android:id="@+id/descriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_gap_4"
+                android:layout_marginTop="@dimen/small_gap_2"
                 android:maxLines="10"
                 android:textAlignment="center"
                 android:textAppearance="?textAppearanceHeadlineMedium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/attributionTextView"
+                app:layout_constraintTop_toBottomOf="@id/attributionTextViewDivider"
                 tools:text="@tools:sample/lorem[10]" />
 
             <com.google.android.material.button.MaterialButton

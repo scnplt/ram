@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/flag_transparent"
+        android:src="@drawable/ic_flag_tr_eu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,13 +33,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_2"
-        android:autoSizeMinTextSize="1sp"
-        android:autoSizeTextType="uniform"
         android:gravity="center_horizontal"
         android:maxLines="2"
         android:text="@string/this_project_is_financed"
         android:textAlignment="center"
         android:textAppearance="?textAppearanceTitleMedium"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeTextType="uniform"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@id/appNameTextView"
         app:layout_constraintEnd_toEndOf="@id/flagImageView"
@@ -82,21 +82,21 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/iko" />
+        android:src="@drawable/ic_ikg" />
 
     <ImageView
         android:id="@+id/mebImageView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/meb" />
+        android:src="@drawable/ic_meb" />
 
     <ImageView
         android:id="@+id/sgbImageView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/sgb" />
+        android:src="@drawable/ic_csgb" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/bottomImageLineFlow"
@@ -115,26 +115,26 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/ram" />
+        android:src="@drawable/ic_ramm" />
 
     <ImageView
         android:id="@+id/mtaImageView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/mta" />
+        android:src="@drawable/ic_emtal" />
 
     <ImageView
         android:id="@+id/omlImageView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/oml" />
+        android:src="@drawable/ic_eoeml" />
 
     <ImageView
         android:id="@+id/esobImageView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/esob" />
+        android:src="@drawable/ic_eesobb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
