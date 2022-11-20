@@ -12,6 +12,7 @@ package dev.sertan.android.ram.coreui.util.extension
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.widget.ImageView
+import android.widget.RatingBar
 import androidx.annotation.ColorInt
 import com.google.android.material.button.MaterialButton
 import dev.sertan.android.ram.coreui.util.GlideApp
@@ -22,4 +23,9 @@ fun MaterialButton.setIconTint(@ColorInt color: Int) {
 
 fun ImageView.loadFromUrl(uri: Uri?) {
     GlideApp.with(this).load(uri).into(this)
+}
+
+@Suppress("MagicNumber")
+fun RatingBar.setRatingByPercent(percent: Float) {
+    rating = percent * numStars / 100
 }

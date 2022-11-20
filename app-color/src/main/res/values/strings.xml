@@ -25,5 +25,7 @@
     <string name="exit">Çık</string>
     <string name="wrong_answer">Yanlış cevap</string>
     <string name="correct_answer">Doğru cevap</string>
+    <string name="score_percent">Skor: %.1f/100</string>
+    <string name="try_again">Yeniden dene</string>
 
 </resources>

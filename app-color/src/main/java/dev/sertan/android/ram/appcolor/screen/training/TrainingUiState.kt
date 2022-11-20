@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.appcolor.screen.training
 
+import dev.sertan.android.ram.corecommon.util.percent
 import dev.sertan.android.ram.coreui.model.Material
 
 internal data class TrainingUiState(
@@ -29,13 +30,12 @@ internal data class TrainingUiState(
             progress = 0
         )
 
-        @Suppress("MagicNumber")
         fun getState(materials: List<Material>, index: Int): TrainingUiState = TrainingUiState(
             material = if (materials.isNotEmpty()) materials[index] else null,
             isBackButtonVisible = index > 0,
             isForwardButtonVisible = index in 0 until materials.lastIndex,
             isFinishButtonVisible = index == materials.lastIndex,
-            progress = ((index + 1).toFloat() / materials.size * 100).toInt()
+            progress = percent(value = index.inc(), total = materials.size)
         )
     }
 }

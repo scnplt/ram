@@ -40,3 +40,9 @@ fun <I, O> Flow<I>.tryGetResultWithLog(block: (I) -> O): Flow<Result<O>> =
         Timber.e(exception)
         Result.failure<O>(exception)
     }
+
+@Suppress("MagicNumber")
+fun percent(value: Float, total: Float): Float = value / total * 100
+
+@Suppress("MagicNumber")
+fun percent(value: Int, total: Int): Int = value / total * 100

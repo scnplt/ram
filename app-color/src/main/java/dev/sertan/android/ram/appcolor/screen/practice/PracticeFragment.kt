@@ -20,11 +20,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentPracticeBinding
+import dev.sertan.android.ram.appcolor.screen.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.appcolor.screen.practice.adapter.QuestionMaterialsAdapter
 import dev.sertan.android.ram.appcolor.screen.practice.adapter.QuestionMaterialsViewHolder
 import dev.sertan.android.ram.coreui.model.Material
+import dev.sertan.android.ram.coreui.util.extension.navigateTo
 import dev.sertan.android.ram.coreui.util.extension.playSound
-import dev.sertan.android.ram.coreui.util.extension.showToast
 import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
@@ -67,7 +68,9 @@ internal class PracticeFragment :
 
     private fun setUpComponents(): Unit = with(binding) {
         materialsRecyclerView.adapter = adapter
-        finishButton.setOnClickListener { showToast("Not yet implemented") }
+        finishButton.setOnClickListener {
+            navigateTo(actionPracticeFragmentToResultFragment(score = viewModel.score))
+        }
         nextButton.setOnClickListener { viewModel.goToNextQuestion() }
         contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
     }
@@ -77,17 +80,20 @@ internal class PracticeFragment :
         viewModel.stopSpeech()
     }
 
-    override fun onMaterialClicked(material: Material): Unit =
-        viewModel.setAnswerValidation(isActive = false)
+    override fun onMaterialClicked(material: Material) {
+        viewModel.isValidationActive = false
+    }
 
     override fun isMaterialCorrect(material: Material): Boolean? =
         viewModel.isMaterialCorrect(material)
 
     override fun onCorrectMaterialClicked(material: Material) {
         context?.playSound(dev.sertan.android.ram.coreui.R.raw.correct)
+        viewModel.setAnswerState(isCorrect = true)
     }
 
     override fun onWrongMaterialClicked(material: Material) {
         context?.playSound(dev.sertan.android.ram.coreui.R.raw.negative)
+        viewModel.setAnswerState(isCorrect = false)
     }
 }

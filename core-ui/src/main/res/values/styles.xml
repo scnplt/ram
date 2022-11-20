@@ -25,4 +25,9 @@
         <item name="iconSize">@dimen/size_icon_button_content</item>
     </style>
 
+    <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
+        <item name="colorControlNormal">?colorPrimaryVariant</item>
+        <item name="colorControlActivated">?colorPrimary</item>
+    </style>
+
 </resources>

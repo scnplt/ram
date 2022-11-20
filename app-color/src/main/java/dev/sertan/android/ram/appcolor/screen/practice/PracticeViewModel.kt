@@ -12,6 +12,7 @@ package dev.sertan.android.ram.appcolor.screen.practice
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.sertan.android.ram.corecommon.util.percent
 import dev.sertan.android.ram.coredomain.usecase.GetQuestionsUseCase
 import dev.sertan.android.ram.coredomain.usecase.VoiceSupportUseCase
 import dev.sertan.android.ram.coreui.model.Material
@@ -30,8 +31,14 @@ internal class PracticeViewModel @Inject constructor(
     private val voiceSupportUseCase: VoiceSupportUseCase
 ) : ViewModel() {
 
-    private var isValidationActive = true
+    var isValidationActive = true
     private val questionIndex = MutableStateFlow(0)
+
+    private var correctAnswerCount = 0f
+    private var wrongAnswerCount = 0f
+
+    val score: Float
+        get() = percent(value = correctAnswerCount, total = correctAnswerCount + wrongAnswerCount)
 
     val uiState: StateFlow<PracticeUiState> = flow {
         val questions = getQuestionsUseCase()
@@ -57,10 +64,10 @@ internal class PracticeViewModel @Inject constructor(
 
     fun stopSpeech(): Unit = voiceSupportUseCase.stopSpeech()
 
-    fun setAnswerValidation(isActive: Boolean) {
-        isValidationActive = isActive
-    }
-
     fun isMaterialCorrect(material: Material): Boolean? =
-        if (isValidationActive) uiState.value.question?.correctMaterialId == material.uid else null
+        uiState.value.question?.correctMaterialId.equals(material.uid).takeIf { isValidationActive }
+
+    fun setAnswerState(isCorrect: Boolean) {
+        if (isCorrect) correctAnswerCount++ else wrongAnswerCount++
+    }
 }
