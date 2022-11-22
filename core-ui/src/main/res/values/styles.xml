@@ -9,10 +9,6 @@
 
 <resources>
 
-    <style name="Widget.RAM.IconButton.Filled" parent="Widget.Material3.Button.IconButton.Filled">
-        <item name="iconSize">@dimen/size_icon_button_content</item>
-    </style>
-
     <style name="Widget.RAM.Button.ElevatedButton" parent="Widget.Material3.Button.ElevatedButton">
         <item name="iconSize">@dimen/size_icon_button_content</item>
     </style>

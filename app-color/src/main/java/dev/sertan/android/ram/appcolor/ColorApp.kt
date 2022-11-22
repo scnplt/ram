@@ -10,6 +10,7 @@
 package dev.sertan.android.ram.appcolor
 
 import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
 import dev.sertan.android.ram.coredomain.worker.UpdateLocalQuestionsWorker
@@ -17,10 +18,13 @@ import dev.sertan.android.ram.coreui.RamApplication
 import javax.inject.Inject
 
 @HiltAndroidApp
-internal class ColorApp : RamApplication() {
+internal class ColorApp : RamApplication(), Configuration.Provider {
 
     @Inject
-    override lateinit var workerFactory: HiltWorkerFactory
+    lateinit var workerFactory: HiltWorkerFactory
+
+    override fun getWorkManagerConfiguration(): Configuration =
+        Configuration.Builder().setWorkerFactory(workerFactory).build()
 
     override fun onCreate() {
         super.onCreate()

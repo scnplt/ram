@@ -12,15 +12,9 @@ package dev.sertan.android.ram.coreui
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import androidx.work.Configuration
-import androidx.work.WorkerFactory
 import timber.log.Timber
 
-abstract class RamApplication : Application(), Configuration.Provider {
-    abstract val workerFactory: WorkerFactory
-
-    override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder().setWorkerFactory(workerFactory).build()
+abstract class RamApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

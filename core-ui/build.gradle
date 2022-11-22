@@ -67,9 +67,6 @@ dependencies {
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
 
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
-
     // Navigation
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
