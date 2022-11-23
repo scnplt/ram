@@ -20,9 +20,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
+import dev.sertan.android.ram.appcolor.screen.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeFragment
 import dev.sertan.android.ram.coreui.util.extension.loadFromUrl
+import dev.sertan.android.ram.coreui.util.extension.navigateTo
 import dev.sertan.android.ram.coreui.util.extension.popBackStack
-import dev.sertan.android.ram.coreui.util.extension.showToast
 import dev.sertan.android.ram.coreui.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
@@ -64,7 +65,9 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
             backButton.setOnClickListener { goToPreviousMaterial() }
             exitButton.setOnClickListener { popBackStack() }
             materialCardView.setOnClickListener { speakCurrentMaterialDescription() }
-            finishButton.setOnClickListener { showToast("Not yet implemented") }
+            finishButton.setOnClickListener {
+                navigateTo(actionTrainingFragmentToPracticeFragment())
+            }
         }
     }
 
