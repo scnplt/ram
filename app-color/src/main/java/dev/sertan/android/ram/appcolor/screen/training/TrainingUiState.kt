@@ -11,6 +11,7 @@ package dev.sertan.android.ram.appcolor.screen.training
 
 import dev.sertan.android.ram.corecommon.util.percent
 import dev.sertan.android.ram.coreui.model.Material
+import kotlin.math.roundToInt
 
 internal data class TrainingUiState(
     val material: Material?,
@@ -35,7 +36,10 @@ internal data class TrainingUiState(
             isBackButtonVisible = index > 0,
             isForwardButtonVisible = index in 0 until materials.lastIndex,
             isFinishButtonVisible = index == materials.lastIndex,
-            progress = percent(value = index.inc(), total = materials.size)
+            progress = percent(
+                value = index.inc().toFloat(),
+                total = materials.size.toFloat()
+            ).roundToInt()
         )
     }
 }

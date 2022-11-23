@@ -43,6 +43,3 @@ fun <I, O> Flow<I>.tryGetResultWithLog(block: (I) -> O): Flow<Result<O>> =
 
 @Suppress("MagicNumber")
 fun percent(value: Float, total: Float): Float = if (total == 0f) 0f else value / total * 100
-
-@Suppress("MagicNumber")
-fun percent(value: Int, total: Int): Int = if (total == 0) 0 else value / total * 100
