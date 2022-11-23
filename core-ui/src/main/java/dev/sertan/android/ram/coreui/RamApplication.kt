@@ -19,6 +19,7 @@ abstract class RamApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
+        // TASK: Check internet connection and show a message if no connection
     }
 
     override fun attachBaseContext(base: Context?) {
