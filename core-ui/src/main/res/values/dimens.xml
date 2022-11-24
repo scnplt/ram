@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+
+    <dimen name="small_gap_1">4dp</dimen>
+    <dimen name="small_gap_2">8dp</dimen>
+    <dimen name="small_gap_4">16dp</dimen>
+    <dimen name="small_gap_7">28dp</dimen>
+    <dimen name="small_gap_8">32dp</dimen>
+
+    <dimen name="size_drawing_tools_color">30dp</dimen>
+
+    <dimen name="size_icon_button_stroke">4dp</dimen>
+    <dimen name="size_icon_button_content">32dp</dimen>
+
+</resources>

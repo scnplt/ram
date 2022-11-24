@@ -1,0 +1,103 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
+ext {
+    configs = [
+            applicationId      : "dev.sertan.android.ram",
+            compileSdk         : 32,
+            minSdk             : 19,
+            targetSdk          : 32,
+            versionCode        : 1,
+            versionName        : "1.0.0",
+            sourceCompatibility: JavaVersion.VERSION_1_8,
+            targetCompatibility: JavaVersion.VERSION_1_8,
+            jvmTarget          : "1.8"
+    ]
+
+    versions = [
+            coreKtx     : '1.8.0',
+            appcompat   : "1.5.1",
+            material    : '1.7.0',
+            coroutines  : "1.6.4",
+            hilt        : "2.44",
+            hiltWork    : "1.0.0",
+            room        : "2.4.3",
+            firebaseBom : "30.4.1",
+            navigation  : '2.5.3',
+            retrofit    : "2.9.0",
+            glide       : "4.14.2",
+            ossLicenses : "17.0.0",
+            work        : "2.7.1",
+            gson        : "2.10",
+            junit       : "4.13.2",
+            extJunit    : "1.1.3",
+            espressoCore: "3.4.0",
+            truth       : "1.1.3",
+            timber      : "5.0.1",
+            multiDex    : "2.0.1"
+    ]
+
+    module = [
+            appColor  : ":app-color",
+            coreCommon: ":core-common",
+            coreData  : ":core-data",
+            coreDomain: ":core-domain",
+            coreUi    : ":core-ui"
+    ]
+
+    kapts = [
+            androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.hiltWork}",
+            hiltCompiler       : "com.google.dagger:hilt-compiler:${versions.hilt}",
+            roomCompiler       : "androidx.room:room-compiler:${versions.room}",
+            glide              : "com.github.bumptech.glide:compiler:${versions.glide}",
+    ]
+
+    platforms = [
+            firebaseBom: "com.google.firebase:firebase-bom:${versions.firebaseBom}",
+    ]
+
+    libs = [
+            coreKtx               : "androidx.core:core-ktx:${versions.coreKtx}",
+            appcompat             : "androidx.appcompat:appcompat:${versions.appcompat}",
+            material              : "com.google.android.material:material:${versions.material}",
+            coroutinesPlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines}",
+            work                  : "androidx.work:work-runtime-ktx:${versions.work}",
+            hiltAndroid           : "com.google.dagger:hilt-android:${versions.hilt}",
+            hiltWork              : "androidx.hilt:hilt-work:${versions.hiltWork}",
+            roomRuntime           : "androidx.room:room-runtime:${versions.room}",
+            roomKtx               : "androidx.room:room-ktx:${versions.room}",
+            firebaseAnalyticsKts  : "com.google.firebase:firebase-analytics-ktx",
+            firebaseStorageKtx    : "com.google.firebase:firebase-storage-ktx",
+            firebaseFirestoreKtx  : "com.google.firebase:firebase-firestore-ktx",
+            firebasePerfKtx       : "com.google.firebase:firebase-perf-ktx",
+            navigationUiKtx       : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+            navigationFragmentKtx : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            retrofit              : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            glide                 : "com.github.bumptech.glide:glide:${versions.glide}",
+            ossLicenses           : "com.google.android.gms:play-services-oss-licenses:${versions.ossLicenses}",
+            gson                  : "com.google.code.gson:gson:${versions.gson}",
+            timber                : "com.jakewharton.timber:timber:${versions.timber}",
+            multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
+    ]
+
+    kaptAndroidTests = [
+            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
+    ]
+
+    testLibs = [
+            junit: "junit:junit:${versions.junit}",
+    ]
+
+    androidTestLibs = [
+            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
+            extJunit          : "androidx.test.ext:junit:${versions.extJunit}",
+            espressoCore      : "androidx.test.espresso:espresso-core:${versions.espressoCore}",
+            truth             : "com.google.truth:truth:${versions.truth}"
+    ]
+}

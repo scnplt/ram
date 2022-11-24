@@ -1,0 +1,66 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'com.google.dagger.hilt.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace "${configs.applicationId}.coredomain"
+    compileSdk configs.compileSdk
+
+    defaultConfig {
+        minSdk configs.minSdk
+        targetSdk configs.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility configs.sourceCompatibility
+        targetCompatibility configs.targetCompatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = configs.jvmTarget
+    }
+}
+
+dependencies {
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreData)
+
+    implementation libs.coreKtx
+    implementation libs.work
+
+    // Hilt
+    kapt kapts.hiltCompiler
+    implementation libs.hiltAndroid
+
+    kapt kapts.androidHiltCompiler
+    implementation libs.hiltWork
+
+    // Test
+    kaptAndroidTest kaptAndroidTests.hiltAndroidTesting
+    androidTestImplementation androidTestLibs.hiltAndroidTesting
+}
