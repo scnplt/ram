@@ -58,6 +58,10 @@ android {
     kotlinOptions {
         jvmTarget = configs.jvmTarget
     }
+
+    lintOptions {
+        disable "Instantiatable"
+    }
 }
 
 dependencies {
