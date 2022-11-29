@@ -15,19 +15,19 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.coreui.ui.SplashFragment"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/drawingFragment"
-        android:name="dev.sertan.android.ram.coreui.ui.drawing.DrawingFragment"
+        android:name="dev.sertan.android.ram.core.ui.drawing.DrawingFragment"
         android:label="DrawingFragment"
         tools:layout="@layout/fragment_drawing" />
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="dev.sertan.android.ram.appcolor.screen.home.HomeFragment"
+        android:name="dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="dev.sertan.android.ram.appcolor.screen.training.TrainingFragment"
+        android:name="dev.sertan.android.ram.appcolor.ui.screen.training.TrainingFragment"
         android:label="fragment_training"
         tools:layout="@layout/fragment_training">
         <action
@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/practiceFragment"
-        android:name="dev.sertan.android.ram.appcolor.screen.practice.PracticeFragment"
+        android:name="dev.sertan.android.ram.appcolor.ui.screen.practice.PracticeFragment"
         android:label="fragment_practice"
         tools:layout="@layout/fragment_practice">
         <action
@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/resultFragment"
-        android:name="dev.sertan.android.ram.appcolor.screen.result.ResultFragment"
+        android:name="dev.sertan.android.ram.appcolor.ui.screen.result.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result">
         <action

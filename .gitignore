@@ -10,4 +10,4 @@
 local.properties
 */google-services.json
 */proguard-rules.pro
-
+release/
