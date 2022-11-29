@@ -11,9 +11,9 @@ package dev.sertan.android.ram.appcolor
 
 import androidx.hilt.work.HiltWorkerFactory
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.coredomain.worker.UpdateLocalMaterialsWorker
-import dev.sertan.android.ram.coredomain.worker.UpdateLocalQuestionsWorker
-import dev.sertan.android.ram.coreui.RamApplication
+import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalMaterialsWorker
+import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalQuestionsWorker
+import dev.sertan.android.ram.core.RamApplication
 import javax.inject.Inject
 
 @HiltAndroidApp

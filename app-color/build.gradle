@@ -65,15 +65,19 @@ android {
 }
 
 dependencies {
-    implementation project(path: module.coreUi)
-    implementation project(path: module.coreCommon)
-    implementation project(path: module.coreDomain)
+    implementation project(path: module.core)
 
     implementation libs.coreKtx
     implementation libs.ossLicenses
+    implementation libs.work
 
     // UI
     implementation libs.appcompat
+
+    // Room
+    kapt kapts.roomCompiler
+    implementation libs.roomRuntime
+    implementation libs.roomKtx
 
     // Navigation
     implementation libs.navigationUiKtx
@@ -88,7 +92,11 @@ dependencies {
 
     // Firebase
     implementation platform(platforms.firebaseBom)
+    implementation libs.firebaseFirestoreKtx
     implementation libs.firebasePerfKtx
+
+    // Coroutines
+    implementation libs.coroutinesPlayServices
 
     // Timber
     implementation libs.timber

@@ -45,10 +45,10 @@ ext {
 
     module = [
             appColor  : ":app-color",
-            coreCommon: ":core-common",
             coreData  : ":core-data",
             coreDomain: ":core-domain",
-            coreUi    : ":core-ui"
+            coreUi    : ":core-ui",
+            core      : ":core"
     ]
 
     kapts = [
@@ -72,6 +72,7 @@ ext {
             hiltWork              : "androidx.hilt:hilt-work:${versions.hiltWork}",
             roomRuntime           : "androidx.room:room-runtime:${versions.room}",
             roomKtx               : "androidx.room:room-ktx:${versions.room}",
+            roomCommon            : "androidx.room:room-common:${versions.room}",
             firebaseAnalyticsKts  : "com.google.firebase:firebase-analytics-ktx",
             firebaseStorageKtx    : "com.google.firebase:firebase-storage-ktx",
             firebaseFirestoreKtx  : "com.google.firebase:firebase-firestore-ktx",
