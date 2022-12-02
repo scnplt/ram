@@ -10,34 +10,21 @@
 package dev.sertan.android.ram.appcolor.ui.screen
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appcolor.NavMainDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appcolor.R
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
-import dev.sertan.android.ram.core.util.navigateAfterDelay
-import javax.inject.Inject
-
-private const val SPLASH_FRAGMENT_DURATION_MS = 3000L
+import dev.sertan.android.ram.appcolor.ui.screen.result.ResultFragmentDirections.Companion.actionGlobalHomeFragment
+import dev.sertan.android.ram.core.ui.RamActivity
+import dev.sertan.android.ram.core.ui.SplashFragment
 
 @AndroidEntryPoint
-internal class MainActivity : AppCompatActivity(R.layout.activity_main) {
+internal class MainActivity : RamActivity(R.layout.activity_main) {
 
-    @Inject
-    lateinit var voiceSupportUseCase: VoiceSupportUseCase
-
-    private val navController by lazy {
-        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-        (fragment as NavHostFragment).navController
-    }
+    private val navController by getNavController(R.id.fragmentContainerView)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        navigateAfterDelay(
-            delayMillis = SPLASH_FRAGMENT_DURATION_MS,
-            navController = navController,
-            direction = actionGlobalHomeFragment()
-        )
+        launchWhenStarted(SplashFragment.DEFAULT_DURATION_MS) {
+            navController?.navigate(actionGlobalHomeFragment())
+        }
     }
 }

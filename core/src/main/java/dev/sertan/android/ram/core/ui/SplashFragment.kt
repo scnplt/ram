@@ -24,4 +24,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         binding.appNameTextView.text =
             with(requireContext()) { applicationInfo.loadLabel(packageManager) }
     }
+
+    companion object {
+        const val DEFAULT_DURATION_MS = 3000L
+    }
 }
