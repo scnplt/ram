@@ -9,18 +9,13 @@
 
 package dev.sertan.android.ram.appcolor
 
-import androidx.hilt.work.HiltWorkerFactory
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalMaterialsWorker
 import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalQuestionsWorker
 import dev.sertan.android.ram.core.RamApplication
-import javax.inject.Inject
 
 @HiltAndroidApp
 internal class ColorApp : RamApplication() {
-
-    @Inject
-    override lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()

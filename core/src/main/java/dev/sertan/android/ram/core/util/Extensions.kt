@@ -77,17 +77,6 @@ fun TextToSpeech.speak(message: String?) {
     speak(message?.replace("\\s+".toRegex(), ", ") ?: return, TextToSpeech.QUEUE_FLUSH, null)
 }
 
-fun AppCompatActivity.navigateAfterDelay(
-    delayMillis: Long,
-    navController: NavController,
-    direction: NavDirections
-) {
-    lifecycleScope.launchWhenStarted {
-        delay(delayMillis)
-        navController.navigate(direction)
-    }
-}
-
 fun Fragment.navigateTo(navDirections: NavDirections): Unit =
     findNavController().navigate(navDirections)
 

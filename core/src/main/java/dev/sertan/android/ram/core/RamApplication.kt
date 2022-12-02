@@ -14,11 +14,13 @@ import android.content.Context
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDex
 import androidx.work.Configuration
+import javax.inject.Inject
 import timber.log.Timber
 
 abstract class RamApplication : Application(), Configuration.Provider {
 
-    abstract val workerFactory: HiltWorkerFactory
+    @Inject
+    lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()

@@ -14,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.ui.screen.result.ResultFragmentDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.core.ui.RamActivity
-import dev.sertan.android.ram.core.ui.SplashFragment
 
 @AndroidEntryPoint
 internal class MainActivity : RamActivity(R.layout.activity_main) {
@@ -23,8 +22,6 @@ internal class MainActivity : RamActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        launchWhenStarted(SplashFragment.DEFAULT_DURATION_MS) {
-            navController?.navigate(actionGlobalHomeFragment())
-        }
+        launchAfterSplashDelay { navController?.navigate(actionGlobalHomeFragment()) }
     }
 }

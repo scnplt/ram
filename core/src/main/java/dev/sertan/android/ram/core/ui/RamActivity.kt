@@ -28,10 +28,9 @@ abstract class RamActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layout
         (fragment as? NavHostFragment)?.navController
     }
 
-    protected inline fun launchWhenStarted(delayMs: Long? = null, crossinline block: () -> Unit) {
-        if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) throw IllegalStateException()
+    protected inline fun launchAfterSplashDelay(crossinline block: () -> Unit) {
         lifecycleScope.launchWhenStarted {
-            delayMs?.let { delay(it) }
+            delay(SplashFragment.DEFAULT_DURATION_MS)
             block()
         }
     }
