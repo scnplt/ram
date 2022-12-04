@@ -65,12 +65,12 @@ class DrawingView @JvmOverloads constructor(
     }
 
     init {
-        context.obtainStyledAttributes(attrs, R.styleable.DrawingView).use {
+        context.obtainStyledAttributes(attrs, R.styleable.DrawingView).also {
             canvasColor = it.getColor(R.styleable.DrawingView_canvasColor, canvasColor)
             penColor = it.getColor(R.styleable.DrawingView_penColor, penColor)
             penWidth = it.getDimension(R.styleable.DrawingView_penWidth, penWidth)
             eraserWidth = it.getDimension(R.styleable.DrawingView_eraserWidth, eraserWidth)
-        }
+        }.recycle()
         setBackgroundColor(canvasColor)
         currentLine = Line(path = Path(), color = penColor, width = penWidth)
     }

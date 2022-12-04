@@ -42,9 +42,12 @@ fun TextToSpeech.speak(message: String?) {
     speak(message?.replace("\\s+".toRegex(), ", ") ?: return, TextToSpeech.QUEUE_FLUSH, null)
 }
 
-fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> = obtainTypedArray(colorListId)
-    .use {
-        (0 until it.length()).mapNotNull { colorIndex ->
+fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> {
+    val colorList: List<Int>
+    obtainTypedArray(colorListId).also {
+        colorList = (0 until it.length()).mapNotNull { colorIndex ->
             it.getColor(colorIndex, NO_COLOR).takeIf { color -> color != NO_COLOR }
         }
-    }
+    }.recycle()
+    return colorList
+}

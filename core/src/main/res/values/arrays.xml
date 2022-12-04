@@ -19,7 +19,6 @@
         <item>@color/gray</item>
         <item>@color/yellow</item>
         <item>@android:color/black</item>
-        <item>@android:color/white</item>
     </integer-array>
 
 </resources>
