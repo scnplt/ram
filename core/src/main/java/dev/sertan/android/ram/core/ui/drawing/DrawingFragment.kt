@@ -20,9 +20,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.core.R
 import dev.sertan.android.ram.core.databinding.FragmentDrawingBinding
-import dev.sertan.android.ram.core.util.getColorList
-import dev.sertan.android.ram.core.util.setIconTint
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.getColorList
+import dev.sertan.android.ram.core.util.extension.setIconTint
+import dev.sertan.android.ram.core.util.extension.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch

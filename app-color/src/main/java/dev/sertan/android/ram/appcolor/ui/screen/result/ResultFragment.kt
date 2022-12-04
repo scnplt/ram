@@ -17,9 +17,9 @@ import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentResultBinding
 import dev.sertan.android.ram.appcolor.ui.screen.result.ResultFragmentDirections.Companion.actionResultFragmentToHomeFragment
 import dev.sertan.android.ram.appcolor.ui.screen.result.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
-import dev.sertan.android.ram.core.util.navigateTo
-import dev.sertan.android.ram.core.util.setRatingByPercent
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.navigateTo
+import dev.sertan.android.ram.core.util.extension.setRatingByPercent
+import dev.sertan.android.ram.core.util.extension.viewBinding
 
 internal class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)

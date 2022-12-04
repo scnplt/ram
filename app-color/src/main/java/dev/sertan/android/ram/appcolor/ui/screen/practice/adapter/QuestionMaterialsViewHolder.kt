@@ -13,7 +13,7 @@ import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.appcolor.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.appcolor.ui.model.Material
-import dev.sertan.android.ram.core.util.loadFromUrl
+import dev.sertan.android.ram.core.util.extension.loadFromUrl
 
 internal class QuestionMaterialsViewHolder(
     private val binding: ItemQuestionMaterialBinding,

@@ -13,7 +13,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.sertan.android.ram.core.R
 import dev.sertan.android.ram.core.databinding.ActivityUncaughtExceptionHandlerBinding
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.viewBinding
 
 class UncaughtExceptionHandlerActivity :
     AppCompatActivity(R.layout.activity_uncaught_exception_handler) {

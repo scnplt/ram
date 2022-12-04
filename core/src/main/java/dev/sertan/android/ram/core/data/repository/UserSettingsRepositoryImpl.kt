@@ -11,7 +11,8 @@ package dev.sertan.android.ram.core.data.repository
 
 import android.content.SharedPreferences
 import dev.sertan.android.ram.core.domain.UserSettingsRepository
-import dev.sertan.android.ram.core.util.getStringAsStream
+import dev.sertan.android.ram.core.util.extension.getStringAsStream
+import dev.sertan.android.ram.core.util.extension.tryGetResultWithLog
 import dev.sertan.android.ram.core.util.tryGetResultWithLog
 import javax.inject.Inject
 import javax.inject.Singleton

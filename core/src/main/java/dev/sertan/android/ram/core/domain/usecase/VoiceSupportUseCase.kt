@@ -13,7 +13,7 @@ import android.content.Context
 import android.speech.tts.TextToSpeech
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.core.domain.UserSettingsRepository
-import dev.sertan.android.ram.core.util.speak
+import dev.sertan.android.ram.core.util.extension.speak
 import java.util.Locale
 import javax.inject.Inject
 import javax.inject.Singleton

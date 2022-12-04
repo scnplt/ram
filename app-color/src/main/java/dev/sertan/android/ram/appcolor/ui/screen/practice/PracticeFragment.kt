@@ -24,9 +24,9 @@ import dev.sertan.android.ram.appcolor.ui.model.Material
 import dev.sertan.android.ram.appcolor.ui.screen.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.appcolor.ui.screen.practice.adapter.QuestionMaterialsAdapter
 import dev.sertan.android.ram.appcolor.ui.screen.practice.adapter.QuestionMaterialsViewHolder
-import dev.sertan.android.ram.core.util.navigateTo
-import dev.sertan.android.ram.core.util.playSound
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.navigateTo
+import dev.sertan.android.ram.core.util.extension.playSound
+import dev.sertan.android.ram.core.util.extension.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch

@@ -22,9 +22,9 @@ import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
-import dev.sertan.android.ram.core.util.navigateTo
-import dev.sertan.android.ram.core.util.navigateToOssLicensesActivity
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.navigateTo
+import dev.sertan.android.ram.core.util.extension.navigateToOssLicensesActivity
+import dev.sertan.android.ram.core.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 
 @AndroidEntryPoint

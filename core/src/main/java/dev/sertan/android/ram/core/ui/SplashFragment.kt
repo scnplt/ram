@@ -14,7 +14,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dev.sertan.android.ram.core.R
 import dev.sertan.android.ram.core.databinding.FragmentSplashBinding
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.viewBinding
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
     private val binding by viewBinding(FragmentSplashBinding::bind)

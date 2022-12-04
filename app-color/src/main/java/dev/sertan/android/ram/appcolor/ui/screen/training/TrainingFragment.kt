@@ -21,10 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentTrainingBinding
 import dev.sertan.android.ram.appcolor.ui.screen.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeFragment
-import dev.sertan.android.ram.core.util.loadFromUrl
-import dev.sertan.android.ram.core.util.navigateTo
-import dev.sertan.android.ram.core.util.popBackStack
-import dev.sertan.android.ram.core.util.viewBinding
+import dev.sertan.android.ram.core.util.extension.loadFromUrl
+import dev.sertan.android.ram.core.util.extension.navigateTo
+import dev.sertan.android.ram.core.util.extension.popBackStack
+import dev.sertan.android.ram.core.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 
