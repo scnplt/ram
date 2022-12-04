@@ -21,9 +21,9 @@ import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
+import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToSettingsFragment
 import dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.core.util.extension.navigateTo
-import dev.sertan.android.ram.core.util.extension.navigateToOssLicensesActivity
 import dev.sertan.android.ram.core.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
 
@@ -47,7 +47,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUpComponents(): Unit = with(binding) {
-        helpButton.setOnClickListener { navigateToOssLicensesActivity() }
+        settingsButton.setOnClickListener { navigateTo(actionHomeFragmentToSettingsFragment()) }
         changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
         trainingButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainingFragment()) }
         practiceButton.setOnClickListener { navigateTo(actionHomeFragmentToPracticeFragment()) }

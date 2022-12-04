@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:key="@string/about"
+        app:title="@string/about">
+
+        <Preference
+            app:key="@string/licenses"
+            app:title="@string/licenses" />
+
+        <Preference
+            app:key="@string/developer_information"
+            app:summary="@string/developer_information_summary"
+            app:title="@string/developer_information" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

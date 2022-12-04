@@ -15,7 +15,7 @@
     tools:context=".ui.screen.home.HomeFragment">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/helpButton"
+        android:id="@+id/settingsButton"
         style="?attr/materialIconButtonFilledStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         android:contentDescription="@string/change_voice_support"
         app:icon="@drawable/ic_volume"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/helpButton" />
+        app:layout_constraintTop_toTopOf="@id/settingsButton" />
 
     <!-- TODO: Change layout_height and layout_width -->
     <ImageView

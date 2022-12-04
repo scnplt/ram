@@ -45,6 +45,7 @@ dependencies {
     implementation libs.coreKtx
     implementation libs.ossLicenses
     implementation libs.multiDex
+    implementation libs.preference
 
     // UI
     implementation libs.appcompat

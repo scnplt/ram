@@ -21,4 +21,8 @@
     <string name="an_unknown_error_has_occurred">Bilinmeyen bir hata oluştu!</string>
     <string name="report_error">Hatayı bildir</string>
     <string name="close">Kapat</string>
+    <string name="about">Hakkında</string>
+    <string name="developer_information">Geliştirici bilgileri</string>
+    <string name="developer_information_summary">Sertan Canpolat | Fırat Üniversitesi\nMail: ram@sertan.dev</string>
+    <string name="licenses">Lisanslar</string>
 </resources>

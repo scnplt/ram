@@ -68,7 +68,6 @@ dependencies {
     implementation project(path: module.core)
 
     implementation libs.coreKtx
-    implementation libs.ossLicenses
     implementation libs.work
 
     // UI

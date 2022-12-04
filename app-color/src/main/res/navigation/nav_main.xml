@@ -14,25 +14,27 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
-        android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash" />
+        android:id="@+id/drawingFragment"
+        tools:layout="@layout/fragment_drawing"
+        android:name="dev.sertan.android.ram.core.ui.drawing.DrawingFragment"
+        android:label="DrawingFragment" />
 
     <fragment
-        android:id="@+id/drawingFragment"
-        android:name="dev.sertan.android.ram.core.ui.drawing.DrawingFragment"
-        android:label="DrawingFragment"
-        tools:layout="@layout/fragment_drawing" />
+        android:id="@+id/settingsFragment"
+        android:name="dev.sertan.android.ram.core.ui.SettingsFragment"
+        android:label="SettingsFragment" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
+        android:label="SplashFragment" />
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appcolor.ui.screen.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_drawingFragment"
-            app:destination="@id/drawingFragment" />
         <action
             android:id="@+id/action_homeFragment_to_trainingFragment"
             app:destination="@id/trainingFragment"
@@ -41,6 +43,12 @@
         <action
             android:id="@+id/action_homeFragment_to_practiceFragment"
             app:destination="@id/practiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_drawingFragment"
+            app:destination="@id/drawingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
 
     <fragment
