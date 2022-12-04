@@ -19,6 +19,7 @@ import android.content.res.Resources
 import android.media.MediaPlayer
 import android.net.Uri
 import android.speech.tts.TextToSpeech
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
@@ -28,8 +29,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
@@ -37,7 +36,6 @@ import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.button.MaterialButton
 import kotlin.properties.ReadOnlyProperty
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.catch
@@ -92,6 +90,9 @@ fun Fragment.showToast(message: String?): Unit = requireContext().showToast(mess
 
 fun Fragment.navigateToOssLicensesActivity(): Unit =
     startActivity(Intent(requireActivity(), OssLicensesMenuActivity::class.java))
+
+fun <VB : ViewBinding> AppCompatActivity.viewBinding(inflate: (LayoutInflater) -> VB) =
+    lazy { inflate(layoutInflater) }
 
 fun Context.showToast(message: String?) {
     message?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }

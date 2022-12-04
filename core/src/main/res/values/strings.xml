@@ -17,5 +17,8 @@
     <string name="this_project_is_financed">Bu proje Avrupa Birliği ve Türkiye Cumhuriyeti\ntarafından finanse edilmektedir.</string>
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
-
+    <string name="error">Hata</string>
+    <string name="an_unknown_error_has_occurred">Bilinmeyen bir hata oluştu!</string>
+    <string name="report_error">Hatayı bildir</string>
+    <string name="close">Kapat</string>
 </resources>

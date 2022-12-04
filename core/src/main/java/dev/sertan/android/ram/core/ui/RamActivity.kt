@@ -9,19 +9,31 @@
 
 package dev.sertan.android.ram.core.ui
 
+import android.content.Intent
+import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.core.ui.UncaughtExceptionHandlerActivity.Companion.EXTRA_EXCEPTION_MESSAGE
 import javax.inject.Inject
 import kotlinx.coroutines.delay
+import timber.log.Timber
 
 abstract class RamActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layoutRes) {
 
     @Inject
     lateinit var voiceSupportUseCase: VoiceSupportUseCase
+
+    private val uncaughtExceptionHandler = Thread.UncaughtExceptionHandler { _, throwable ->
+        Timber.e(throwable)
+        val intent = Intent(this, UncaughtExceptionHandlerActivity::class.java).apply {
+            putExtra(EXTRA_EXCEPTION_MESSAGE, throwable.localizedMessage)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
+        startActivity(intent)
+    }
 
     protected fun getNavController(navHostFragmentId: Int) = lazy {
         val fragment = supportFragmentManager.findFragmentById(navHostFragmentId)
@@ -33,5 +45,10 @@ abstract class RamActivity(@LayoutRes layoutRes: Int) : AppCompatActivity(layout
             delay(SplashFragment.DEFAULT_DURATION_MS)
             block()
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler)
     }
 }
