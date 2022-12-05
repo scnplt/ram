@@ -28,7 +28,8 @@ internal class ResultFragment : Fragment(R.layout.fragment_result) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            scoreTextView.text = getString(R.string.score_percent, args.score)
+            scoreTextView.text =
+                getString(dev.sertan.android.ram.core.R.string.score_percent, args.score)
             ratingBar.setRatingByPercent(args.score)
             restartButton.setOnClickListener {
                 navigateTo(actionResultFragmentToPracticeFragment())

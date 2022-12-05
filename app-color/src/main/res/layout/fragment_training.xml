@@ -153,5 +153,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:trackThickness="@dimen/small_gap_2"
         tools:progress="10" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

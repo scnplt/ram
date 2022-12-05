@@ -37,8 +37,10 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
         with(binding) {
             it.material?.let { material ->
                 descriptionTextView.text = material.description
-                attributionTextView.text =
-                    getString(R.string.this_icon_was_created_by, material.attribution)
+                attributionTextView.text = getString(
+                    dev.sertan.android.ram.core.R.string.this_icon_was_created_by,
+                    material.attribution
+                )
                 mediaImageView.contentDescription = material.description
                 mediaImageView.loadFromUrl(material.mediaUri)
             }
