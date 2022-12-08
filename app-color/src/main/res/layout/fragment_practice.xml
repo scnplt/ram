@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/small_gap_2"
-    tools:context=".ui.screen.practice.PracticeFragment">
+    tools:context=".ui.practice.PracticeFragment">
 
     <ScrollView
         android:id="@+id/contentScrollView"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@id/contentScrollView"
         app:spanCount="2"
         tools:itemCount="10"
-        tools:listitem="@layout/item_question_material" />
+        tools:listitem="@layout/item_color_question_material" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextButton"

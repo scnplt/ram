@@ -19,19 +19,18 @@ plugins {
 }
 
 android {
-    namespace "${configs.applicationId}.appcolor"
+    namespace "${configs.projectId}.appcolor"
     compileSdk configs.compileSdk
 
     defaultConfig {
         applicationIdSuffix 'colorapp'
-        applicationId configs.applicationId
+        applicationId configs.projectId
         minSdk configs.minSdk
         targetSdk configs.targetSdk
-        versionCode configs.versionCode
-        versionName configs.versionName
+        versionCode 1
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -65,18 +64,16 @@ android {
 }
 
 dependencies {
-    implementation project(path: module.core)
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreModel)
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreDomain)
+    implementation project(path: module.featureDrawing)
 
     implementation libs.coreKtx
-    implementation libs.work
 
     // UI
     implementation libs.appcompat
-
-    // Room
-    kapt kapts.roomCompiler
-    implementation libs.roomRuntime
-    implementation libs.roomKtx
 
     // Navigation
     implementation libs.navigationUiKtx
@@ -86,17 +83,8 @@ dependencies {
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
 
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
-
-    // Firebase
+    // Firebase Performance
     implementation platform(platforms.firebaseBom)
-    implementation libs.firebaseFirestoreKtx
     implementation libs.firebasePerfKtx
 
-    // Coroutines
-    implementation libs.coroutinesPlayServices
-
-    // Timber
-    implementation libs.timber
 }
