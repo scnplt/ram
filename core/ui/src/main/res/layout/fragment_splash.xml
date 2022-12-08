@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="@dimen/small_gap_2"
+    tools:context=".SplashFragment"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/flagImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_flag_tr_eu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/financedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_2"
+        android:textColor="@android:color/black"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:text="@string/this_project_is_financed"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceTitleMedium"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/appNameTextView"
+        app:layout_constraintEnd_toEndOf="@id/flagImageView"
+        app:layout_constraintStart_toStartOf="@id/flagImageView"
+        app:layout_constraintTop_toBottomOf="@id/flagImageView"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginVertical="@dimen/small_gap_2"
+        android:gravity="center_horizontal"
+        android:maxLines="3"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceHeadlineMedium"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/middleImageLineFlow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/financedTextView"
+        tools:text="@tools:sample/lorem[5]" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/middleImageLineFlow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/small_gap_2"
+        app:constraint_referenced_ids="ikoImageView,mebImageView,sgbImageView"
+        app:flow_horizontalGap="@dimen/small_gap_2"
+        app:flow_horizontalStyle="spread_inside"
+        app:layout_constraintBottom_toTopOf="@id/bottomImageLineFlow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appNameTextView" />
+
+    <ImageView
+        android:id="@+id/ikoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_ikg" />
+
+    <ImageView
+        android:id="@+id/mebImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_meb" />
+
+    <ImageView
+        android:id="@+id/sgbImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_csgb" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/bottomImageLineFlow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="ramImageView,mtaImageView,omlImageView,esobImageView"
+        app:flow_horizontalGap="@dimen/small_gap_2"
+        app:flow_horizontalStyle="spread_inside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.03"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ramImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_ramm" />
+
+    <ImageView
+        android:id="@+id/mtaImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_emtal" />
+
+    <ImageView
+        android:id="@+id/omlImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_eoeml" />
+
+    <ImageView
+        android:id="@+id/esobImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_eesobb" />
+</androidx.constraintlayout.widget.ConstraintLayout>
