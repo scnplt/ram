@@ -43,6 +43,7 @@ android {
         }
 
         debug {
+            multiDexEnabled true
             manifestPlaceholders = [isPerformanceMonitoringActive: "false"]
         }
     }
@@ -89,4 +90,6 @@ dependencies {
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx
 
+    // MultiDex
+    debugImplementation libs.multiDex
 }
