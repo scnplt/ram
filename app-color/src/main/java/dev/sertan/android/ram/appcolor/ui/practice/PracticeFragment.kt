@@ -21,8 +21,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcolor.R
 import dev.sertan.android.ram.appcolor.databinding.FragmentPracticeBinding
 import dev.sertan.android.ram.appcolor.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
-import dev.sertan.android.ram.appcolor.ui.practice.adapter.ColorQuestionMaterialAdapter
-import dev.sertan.android.ram.appcolor.ui.practice.adapter.ColorQuestionMaterialViewHolder
+import dev.sertan.android.ram.appcolor.ui.practice.adapter.QuestionAdapter
+import dev.sertan.android.ram.appcolor.ui.practice.adapter.QuestionViewHolder
 import dev.sertan.android.ram.core.model.ui.Material
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.playSound
@@ -34,13 +34,13 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 internal class PracticeFragment :
     Fragment(R.layout.fragment_practice),
-    ColorQuestionMaterialViewHolder.Listener {
+    QuestionViewHolder.Listener {
 
     private val viewModel by viewModels<PracticeViewModel>()
     private val binding by viewBinding(FragmentPracticeBinding::bind)
 
     @Inject
-    lateinit var adapter: ColorQuestionMaterialAdapter
+    lateinit var adapter: QuestionAdapter
 
     private val uiStateFlowCollector = FlowCollector<PracticeUiState> {
         with(binding) {

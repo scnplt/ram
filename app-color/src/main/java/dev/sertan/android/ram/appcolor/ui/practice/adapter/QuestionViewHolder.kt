@@ -11,12 +11,12 @@ package dev.sertan.android.ram.appcolor.ui.practice.adapter
 
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.appcolor.databinding.ItemColorQuestionMaterialBinding
+import dev.sertan.android.ram.appcolor.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.core.model.ui.Material
 import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
 
-internal class ColorQuestionMaterialViewHolder(
-    private val binding: ItemColorQuestionMaterialBinding,
+internal class QuestionViewHolder(
+    private val binding: ItemQuestionMaterialBinding,
     private val listener: Listener?
 ) : RecyclerView.ViewHolder(binding.root) {
 

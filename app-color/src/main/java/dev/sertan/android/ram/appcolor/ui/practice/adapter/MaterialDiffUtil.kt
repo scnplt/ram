@@ -12,7 +12,7 @@ package dev.sertan.android.ram.appcolor.ui.practice.adapter
 import androidx.recyclerview.widget.DiffUtil
 import dev.sertan.android.ram.core.model.ui.Material
 
-internal object ColorMaterialDiffUtil : DiffUtil.ItemCallback<Material>() {
+internal object MaterialDiffUtil : DiffUtil.ItemCallback<Material>() {
 
     override fun areItemsTheSame(oldItem: Material, newItem: Material): Boolean =
         oldItem.uid == newItem.uid
