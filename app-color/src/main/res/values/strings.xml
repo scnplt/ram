@@ -8,24 +8,6 @@
   -->
 
 <resources>
-
     <string name="app_name">@string/let_get_to_know_colors</string>
     <string name="let_get_to_know_colors">Renkleri Tanıyalım</string>
-    <string name="application_logo">Uygulama logosu</string>
-    <string name="training">Eğitim</string>
-    <string name="practice">Uygulama</string>
-    <string name="help">Yardım</string>
-    <string name="change_voice_support">Sesli destek durumunu değiştir</string>
-    <string name="drawing">Çizim</string>
-    <string name="next">İleri</string>
-    <string name="previous">Geri</string>
-    <string name="finish">Bitir</string>
-    <string name="material_image">Materyal resmi</string>
-    <string name="this_icon_was_created_by">Bu görsel %s tarafından oluşturulmuştur.</string>
-    <string name="exit">Çık</string>
-    <string name="wrong_answer">Yanlış cevap</string>
-    <string name="correct_answer">Doğru cevap</string>
-    <string name="score_percent">Skor: %.1f/100</string>
-    <string name="try_again">Yeniden dene</string>
-
 </resources>

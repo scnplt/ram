@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.screen.training.TrainingFragment">
+    tools:context=".ui.training.TrainingFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/exitButton"
@@ -153,5 +153,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:trackThickness="@dimen/small_gap_2"
         tools:progress="10" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

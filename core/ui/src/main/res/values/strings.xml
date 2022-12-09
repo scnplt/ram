@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="this_project_is_financed">Bu proje Avrupa Birliği ve Türkiye Cumhuriyeti\ntarafından finanse edilmektedir.</string>
+    <string name="error">Hata</string>
+    <string name="an_unknown_error_has_occurred">Bilinmeyen bir hata oluştu!</string>
+    <string name="report_error">Hatayı bildir</string>
+    <string name="close">Kapat</string>
+    <string name="licenses">Lisanslar</string>
+    <string name="about">Hakkında</string>
+    <string name="developer_information">Geliştirici bilgileri</string>
+    <string name="developer_information_summary">Sertan Canpolat | Fırat Üniversitesi\nMail: ram@sertan.dev</string>
+    <string name="color">Renk</string>
+    <string name="clear_canvas">Tuvali temizle</string>
+    <string name="eraser">Silgi</string>
+    <string name="brush">Fırça</string>
+    <string name="application_logo">Uygulama logosu</string>
+    <string name="training">Eğitim</string>
+    <string name="practice">Uygulama</string>
+    <string name="help">Yardım</string>
+    <string name="change_voice_support">Sesli destek durumunu değiştir</string>
+    <string name="drawing">Çizim</string>
+    <string name="next">İleri</string>
+    <string name="previous">Geri</string>
+    <string name="finish">Bitir</string>
+    <string name="this_icon_was_created_by">Bu görsel %s tarafından oluşturulmuştur.</string>
+    <string name="exit">Çık</string>
+    <string name="wrong_answer">Yanlış cevap</string>
+    <string name="correct_answer">Doğru cevap</string>
+    <string name="score_percent">Skor: %.1f/100</string>
+    <string name="try_again">Yeniden dene</string>
+    <string name="material_image">Materyal resmi</string>
+</resources>

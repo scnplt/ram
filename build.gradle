@@ -27,43 +27,7 @@ plugins {
 
 allprojects {
     apply from: rootProject.file('dependencies.gradle')
-
-    apply plugin: 'org.jlleitschuh.gradle.ktlint'
-    apply plugin: 'io.gitlab.arturbosch.detekt'
-
-    ktlint {
-        android = true
-        debug = false
-        verbose = false
-        reporters {
-            reporter "plain"
-            reporter "html"
-        }
-    }
-
-    tasks.withType(org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask) {
-        reportsOutputDirectory = rootProject.layout.buildDirectory.dir("reports/ktlint/${project.name}")
-    }
-
-    detekt {
-        allRules = true
-        debug = false
-        parallel = true
-    }
-
-    tasks.named("detekt").configure {
-        reports {
-            html.required.set(true)
-            html.outputLocation.set(file("$rootDir/build/reports/detekt/${project.name}/detekt.html"))
-
-            txt.required.set(true)
-            txt.outputLocation.set(file("$rootDir/build/reports/detekt/${project.name}/detekt.txt"))
-
-            md.required.set(false)
-            sarif.required.set(false)
-            xml.required.set(false)
-        }
-    }
+    apply from: rootProject.file('lint.gradle')
 }
 
 task clean(type: Delete) {

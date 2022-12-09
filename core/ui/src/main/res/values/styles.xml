@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+
+    <style name="Widget.RAM.Button.ElevatedButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="iconSize">@dimen/size_icon_button_content</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="Widget.RAM.IconButton.Filled.Tonal" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="iconSize">@dimen/size_icon_button_content</item>
+    </style>
+
+    <style name="Widget.RAM.Button" parent="Widget.Material3.Button">
+        <item name="iconSize">@dimen/size_icon_button_content</item>
+    </style>
+
+    <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
+        <item name="colorControlNormal">?colorPrimaryVariant</item>
+        <item name="colorControlActivated">?colorPrimary</item>
+    </style>
+
+</resources>

@@ -10,16 +10,26 @@
 package dev.sertan.android.ram.appcolor
 
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalMaterialsWorker
-import dev.sertan.android.ram.appcolor.domain.worker.UpdateLocalQuestionsWorker
-import dev.sertan.android.ram.core.RamApplication
+import dev.sertan.android.ram.core.common.log.RamLogger
+import dev.sertan.android.ram.core.domain.usecase.RefreshLocalDataUseCase
+import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.core.ui.RamApplication
+import javax.inject.Inject
 
 @HiltAndroidApp
 internal class ColorApp : RamApplication() {
 
+    @Inject
+    lateinit var voiceSupportUseCase: VoiceSupportUseCase
+
+    @Inject
+    lateinit var ramLogger: RamLogger
+
+    @Inject
+    lateinit var refreshLocalDataUseCase: RefreshLocalDataUseCase
+
     override fun onCreate() {
         super.onCreate()
-        UpdateLocalMaterialsWorker.uniqueStart(applicationContext)
-        UpdateLocalQuestionsWorker.uniqueStart(applicationContext)
+        ramLogger.debugInit()
     }
 }
