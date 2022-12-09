@@ -11,7 +11,7 @@ package dev.sertan.android.ram.feature.drawing
 
 import android.content.res.ColorStateList
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.core.ui.databinding.ItemLayoutColorBinding
+import dev.sertan.android.ram.feature.drawing.databinding.ItemLayoutColorBinding
 
 class ColorItemViewHolder(
     private val binding: ItemLayoutColorBinding,

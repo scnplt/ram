@@ -13,7 +13,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.core.ui.databinding.ItemLayoutColorBinding
+import dev.sertan.android.ram.feature.drawing.databinding.ItemLayoutColorBinding
 
 class ColorItemAdapter : RecyclerView.Adapter<ColorItemViewHolder>() {
     private var colors: MutableList<Int> = mutableListOf()
