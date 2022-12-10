@@ -24,7 +24,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'RAM'
-include ':app-color'
+include ':app-selection'
 include ':core:common'
 include ':core:model'
 include ':core:ui'
