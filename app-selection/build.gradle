@@ -1,0 +1,102 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.android.gms.oss-licenses-plugin'
+    id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.firebase-perf'
+    id 'kotlin-kapt'
+}
+
+android {
+    def appId = "${configs.projectId}.appselection"
+
+    namespace appId
+    compileSdk configs.compileSdk
+
+    defaultConfig {
+        applicationId appId
+        minSdk configs.minSdk
+        targetSdk configs.targetSdk
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [isPerformanceMonitoringActive: "true"]
+        }
+
+        debug {
+            multiDexEnabled true
+            manifestPlaceholders = [isPerformanceMonitoringActive: "false"]
+        }
+    }
+
+    flavorDimensions "type"
+
+    productFlavors {
+        color {
+            applicationIdSuffix ".color"
+        }
+        oppositeConcepts {
+            applicationIdSuffix ".oppositeconcepts"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility configs.sourceCompatibility
+        targetCompatibility configs.targetCompatibility
+    }
+
+    kotlinOptions {
+        jvmTarget = configs.jvmTarget
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreModel)
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreDomain)
+    implementation project(path: module.featureDrawing)
+
+    implementation libs.coreKtx
+
+    // UI
+    implementation libs.appcompat
+
+    // Navigation
+    implementation libs.navigationUiKtx
+    implementation libs.navigationFragmentKtx
+
+    // Hilt
+    kapt kapts.hiltCompiler
+    implementation libs.hiltAndroid
+
+    // Firebase Performance
+    implementation platform(platforms.firebaseBom)
+    implementation libs.firebasePerfKtx
+
+    // MultiDex
+    debugImplementation libs.multiDex
+}

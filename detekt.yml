@@ -4,7 +4,7 @@ exceptions:
 
 style:
   UnnecessaryAbstractClass:
-    excludes: ['**/di/*Module.kt']
+    excludes: [ '**/di/*Module.kt' ]
 
 naming:
   active: true
