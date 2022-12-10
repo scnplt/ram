@@ -41,7 +41,7 @@ internal class PracticeViewModel @Inject constructor(
     val uiState: StateFlow<PracticeUiState> = flow {
         val questions = getQuestionsUseCase()
         questionIndex.collect { index ->
-            voiceSupportUseCase.checkStateAndSpeak(questions[index].content)
+            voiceSupportUseCase.checkStateAndSpeak(questions.getOrNull(index)?.content)
             emit(PracticeUiState.getState(questions, index))
         }
     }.stateIn(

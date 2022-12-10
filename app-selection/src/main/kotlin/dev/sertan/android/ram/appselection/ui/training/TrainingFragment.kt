@@ -12,6 +12,7 @@ package dev.sertan.android.ram.appselection.ui.training
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -48,6 +49,7 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
             forwardButton.isInvisible = !it.isForwardButtonVisible
             finishButton.isInvisible = !it.isFinishButtonVisible
             progressIndicator.progress = it.progress
+            changeContentVisibility(isVisible = !it.isEmptyListMessageVisible)
         }
     }
 
@@ -76,5 +78,10 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
     override fun onStop() {
         super.onStop()
         viewModel.stopSpeech()
+    }
+
+    private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
+        contentGroup.isVisible = isVisible
+        emptyListMessageTextView.isVisible = !isVisible
     }
 }

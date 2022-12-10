@@ -14,7 +14,8 @@ import dev.sertan.android.ram.core.model.ui.Question
 internal data class PracticeUiState(
     val question: Question?,
     val isForwardButtonVisible: Boolean,
-    val isFinishButtonVisible: Boolean
+    val isFinishButtonVisible: Boolean,
+    val isEmptyListMessageVisible: Boolean
 ) {
 
     companion object {
@@ -22,14 +23,16 @@ internal data class PracticeUiState(
         fun initialState(): PracticeUiState = PracticeUiState(
             question = null,
             isForwardButtonVisible = false,
-            isFinishButtonVisible = false
+            isFinishButtonVisible = false,
+            isEmptyListMessageVisible = true
         )
 
         fun getState(questions: List<Question>, index: Int): PracticeUiState =
             PracticeUiState(
-                question = if (questions.isNotEmpty()) questions[index] else null,
+                question = questions.getOrNull(index),
                 isForwardButtonVisible = index in 0 until questions.lastIndex,
-                isFinishButtonVisible = index == questions.lastIndex
+                isFinishButtonVisible = index == questions.lastIndex,
+                isEmptyListMessageVisible = questions.isEmpty()
             )
     }
 }

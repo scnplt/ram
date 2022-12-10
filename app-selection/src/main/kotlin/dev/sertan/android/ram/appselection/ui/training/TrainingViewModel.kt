@@ -33,7 +33,7 @@ internal class TrainingViewModel @Inject constructor(
     val uiState: StateFlow<TrainingUiState> = flow {
         val materials = getMaterialsUseCase()
         materialIndex.collect { index ->
-            voiceSupportUseCase.checkStateAndSpeak(materials[index].description)
+            voiceSupportUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
             emit(TrainingUiState.getState(materials, index))
         }
     }.stateIn(

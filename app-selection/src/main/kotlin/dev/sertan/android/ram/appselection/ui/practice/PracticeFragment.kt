@@ -12,12 +12,14 @@ package dev.sertan.android.ram.appselection.ui.practice
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentPracticeBinding
 import dev.sertan.android.ram.appselection.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
@@ -48,6 +50,7 @@ internal class PracticeFragment :
             finishButton.isInvisible = !it.isFinishButtonVisible
             nextButton.isInvisible = !it.isForwardButtonVisible
             adapter.submitList(it.question?.materials)
+            changeContentVisibility(isVisible = !it.isEmptyListMessageVisible)
         }
     }
 
@@ -73,6 +76,7 @@ internal class PracticeFragment :
         }
         nextButton.setOnClickListener { viewModel.goToNextQuestion() }
         contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
+        exitButton.setOnClickListener { navigateTo(actionGlobalHomeFragment()) }
     }
 
     override fun onMaterialClicked(material: Material) {
@@ -95,5 +99,11 @@ internal class PracticeFragment :
     override fun onStop() {
         super.onStop()
         viewModel.stopSpeech()
+    }
+
+    private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
+        contentGroup.isVisible = isVisible
+        emptyListMessageTextView.isVisible = !isVisible
+        exitButton.isVisible = !isVisible
     }
 }
