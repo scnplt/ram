@@ -49,7 +49,7 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
             forwardButton.isInvisible = !it.isForwardButtonVisible
             finishButton.isInvisible = !it.isFinishButtonVisible
             progressIndicator.progress = it.progress
-            changeContentVisibility(isVisible = !it.isEmptyListMessageVisible)
+            it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
         }
     }
 

@@ -50,7 +50,7 @@ internal class PracticeFragment :
             finishButton.isInvisible = !it.isFinishButtonVisible
             nextButton.isInvisible = !it.isForwardButtonVisible
             adapter.submitList(it.question?.materials)
-            changeContentVisibility(isVisible = !it.isEmptyListMessageVisible)
+            it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
         }
     }
 
