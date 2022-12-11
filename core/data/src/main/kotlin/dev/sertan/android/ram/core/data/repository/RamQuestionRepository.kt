@@ -33,10 +33,10 @@ internal class RamQuestionRepository @Inject constructor(
             questionDao.getAll().map(QuestionEntity::toDto)
         }
 
-    override suspend fun saveQuestionToLocal(question: QuestionDto): Unit =
+    override suspend fun saveQuestionToLocal(question: QuestionDto): Boolean =
         tryWithLogger(logger) { questionDao.insert(questionEntity = question.toEntity()) }
 
-    override suspend fun refreshQuestions(): Unit =
+    override suspend fun refreshQuestions(): Boolean =
         tryWithLogger(logger) { updateQuestionsFromRemote() }
 
     private suspend fun updateQuestionsFromRemote() {

@@ -17,5 +17,5 @@ interface UserSettingsRepository {
 
     suspend fun getVoiceSupportState(): Result<Boolean?>
 
-    suspend fun setVoiceSupportState(isActive: Boolean)
+    suspend fun setVoiceSupportState(isActive: Boolean): Boolean
 }

@@ -20,10 +20,12 @@ fun percent(value: Float, total: Float): Float = if (total == 0f) 0f else value 
 
 fun Context.getAppModuleName(): String = packageName.split(".").last()
 
-inline fun tryWithLogger(logger: RamLogger, block: () -> Unit) = try {
+inline fun tryWithLogger(logger: RamLogger, block: () -> Unit): Boolean = try {
     block()
+    true
 } catch (exception: Exception) {
     logger.e(exception)
+    false
 }
 
 fun <I, O> List<I>.tryMapNotNull(logger: RamLogger? = null, transform: (I) -> O): List<O> =

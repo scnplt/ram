@@ -9,15 +9,17 @@
 
 package dev.sertan.android.ram.appselection
 
+import androidx.hilt.work.HiltWorkerFactory
+import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.core.common.log.RamLogger
-import dev.sertan.android.ram.core.domain.usecase.RefreshLocalDataUseCase
 import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.core.domain.worker.UpdateLocalDataWorker
 import dev.sertan.android.ram.core.ui.RamApplication
 import javax.inject.Inject
 
 @HiltAndroidApp
-internal class SelectionApp : RamApplication() {
+internal class SelectionApp : RamApplication(), Configuration.Provider {
 
     @Inject
     lateinit var voiceSupportUseCase: VoiceSupportUseCase
@@ -26,10 +28,14 @@ internal class SelectionApp : RamApplication() {
     lateinit var ramLogger: RamLogger
 
     @Inject
-    lateinit var refreshLocalDataUseCase: RefreshLocalDataUseCase
+    lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()
         ramLogger.debugInit()
+        UpdateLocalDataWorker.start(this)
     }
+
+    override fun getWorkManagerConfiguration(): Configuration =
+        Configuration.Builder().setWorkerFactory(workerFactory).build()
 }

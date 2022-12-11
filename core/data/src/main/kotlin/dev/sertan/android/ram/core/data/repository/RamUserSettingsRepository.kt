@@ -33,7 +33,7 @@ internal class RamUserSettingsRepository @Inject constructor(
         sharedPref.getString(VOICE_SUPPORT_SHARED_PREF_KEY, null)?.toBooleanStrictOrNull()
     }
 
-    override suspend fun setVoiceSupportState(isActive: Boolean): Unit = tryWithLogger(logger) {
+    override suspend fun setVoiceSupportState(isActive: Boolean): Boolean = tryWithLogger(logger) {
         sharedPref.edit().putString(VOICE_SUPPORT_SHARED_PREF_KEY, isActive.toString()).apply()
     }
 }

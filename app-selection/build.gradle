@@ -82,6 +82,9 @@ dependencies {
 
     implementation libs.coreKtx
 
+    // Work
+    implementation libs.workRuntime
+
     // UI
     implementation libs.appcompat
 
@@ -92,6 +95,9 @@ dependencies {
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+    // ... with Work
+    kapt kapts.androidHiltCompiler
+    implementation libs.hiltWork
 
     // Firebase Performance
     implementation platform(platforms.firebaseBom)

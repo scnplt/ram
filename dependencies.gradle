@@ -39,6 +39,8 @@ ext {
             preference       : "1.1.0",
             fragmentKtx      : "1.5.4",
             multiDex         : "2.0.1",
+            hiltWork         : "1.0.0",
+            work             : "2.7.1",
     ]
 
     module = [
@@ -52,9 +54,10 @@ ext {
     ]
 
     kapts = [
-            hiltCompiler: "com.google.dagger:hilt-compiler:${versions.hilt}",
-            roomCompiler: "androidx.room:room-compiler:${versions.room}",
-            glide       : "com.github.bumptech.glide:compiler:${versions.glide}",
+            hiltCompiler       : "com.google.dagger:hilt-compiler:${versions.hilt}",
+            roomCompiler       : "androidx.room:room-compiler:${versions.room}",
+            glide              : "com.github.bumptech.glide:compiler:${versions.glide}",
+            androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.hiltWork}",
     ]
 
     platforms = [
@@ -68,6 +71,7 @@ ext {
             coroutinesPlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines}",
             coroutinesAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutinesAndroid}",
             hiltAndroid           : "com.google.dagger:hilt-android:${versions.hilt}",
+            hiltWork              : "androidx.hilt:hilt-work:${versions.hiltWork}",
             roomRuntime           : "androidx.room:room-runtime:${versions.room}",
             roomKtx               : "androidx.room:room-ktx:${versions.room}",
             firebaseStorageKtx    : "com.google.firebase:firebase-storage-ktx",
@@ -82,6 +86,7 @@ ext {
             preference            : "androidx.preference:preference:${versions.preference}",
             fragmentKtx           : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
+            workRuntime           : "androidx.work:work-runtime-ktx:${versions.work}",
     ]
 
     kaptAndroidTests = [

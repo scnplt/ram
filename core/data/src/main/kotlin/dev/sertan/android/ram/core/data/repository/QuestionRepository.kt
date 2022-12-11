@@ -15,7 +15,7 @@ interface QuestionRepository {
 
     suspend fun getQuestions(update: Boolean = false): Result<List<QuestionDto>>
 
-    suspend fun saveQuestionToLocal(question: QuestionDto)
+    suspend fun saveQuestionToLocal(question: QuestionDto): Boolean
 
-    suspend fun refreshQuestions()
+    suspend fun refreshQuestions(): Boolean
 }

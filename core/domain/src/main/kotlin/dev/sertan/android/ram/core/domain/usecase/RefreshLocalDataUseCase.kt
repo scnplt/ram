@@ -9,30 +9,22 @@
 
 package dev.sertan.android.ram.core.domain.usecase
 
-import dev.sertan.android.ram.core.common.Dispatcher
-import dev.sertan.android.ram.core.common.RamDispatcher
 import dev.sertan.android.ram.core.data.repository.MaterialRepository
 import dev.sertan.android.ram.core.data.repository.QuestionRepository
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.supervisorScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 
 @Singleton
 class RefreshLocalDataUseCase @Inject constructor(
     private val materialRepository: MaterialRepository,
-    private val questionRepository: QuestionRepository,
-    @Dispatcher(RamDispatcher.IO) private val ioDispatcher: CoroutineDispatcher
+    private val questionRepository: QuestionRepository
 ) {
 
-    init {
-        CoroutineScope(ioDispatcher).launch { invoke() }
-    }
-
-    suspend operator fun invoke(): Unit = supervisorScope {
-        launch { materialRepository.refreshMaterials() }
-        questionRepository.refreshQuestions()
+    suspend operator fun invoke(): Boolean = coroutineScope {
+        val materialResult = async { materialRepository.refreshMaterials() }
+        val questionResult = async { questionRepository.refreshQuestions() }
+        materialResult.await() && questionResult.await()
     }
 }

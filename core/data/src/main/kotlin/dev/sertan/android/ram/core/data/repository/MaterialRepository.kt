@@ -17,7 +17,7 @@ interface MaterialRepository {
 
     suspend fun getMaterial(materialUid: String): Result<MaterialDto?>
 
-    suspend fun saveMaterialToLocal(material: MaterialDto)
+    suspend fun saveMaterialToLocal(material: MaterialDto): Boolean
 
-    suspend fun refreshMaterials()
+    suspend fun refreshMaterials(): Boolean
 }

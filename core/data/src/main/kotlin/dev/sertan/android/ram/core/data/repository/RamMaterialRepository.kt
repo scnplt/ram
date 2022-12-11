@@ -36,10 +36,10 @@ internal class RamMaterialRepository @Inject constructor(
     override suspend fun getMaterial(materialUid: String): Result<MaterialDto?> =
         tryGetWithResult(logger) { materialDao.getByUid(materialUid)?.toDto() }
 
-    override suspend fun saveMaterialToLocal(material: MaterialDto): Unit =
+    override suspend fun saveMaterialToLocal(material: MaterialDto): Boolean =
         tryWithLogger(logger) { materialDao.insert(materialEntity = material.toEntity()) }
 
-    override suspend fun refreshMaterials(): Unit =
+    override suspend fun refreshMaterials(): Boolean =
         tryWithLogger(logger) { updateMaterialsFromRemote() }
 
     private suspend fun updateMaterialsFromRemote() {
