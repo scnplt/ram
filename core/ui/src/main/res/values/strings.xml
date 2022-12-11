@@ -16,7 +16,7 @@
     <string name="licenses">Lisanslar</string>
     <string name="about">Hakkında</string>
     <string name="developer_information">Geliştirici bilgileri</string>
-    <string name="developer_information_summary">Sertan Canpolat | Fırat Üniversitesi\nMail: ram@sertan.dev</string>
+    <string name="developer_information_summary">Fırat Üniversitesi Yazılım Mühendisliği öğretim üyesi Prof. Dr. İbrahim Türkoğlu danışmanlığında, Sertan Canpolat tarafından geliştirilmiştir.</string>
     <string name="color">Renk</string>
     <string name="clear_canvas">Tuvali temizle</string>
     <string name="eraser">Silgi</string>
