@@ -39,12 +39,12 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [isPerformanceMonitoringActive: "true"]
+            manifestPlaceholders = [isPerformanceLogcatEnabled: "false"]
         }
 
         debug {
             multiDexEnabled true
-            manifestPlaceholders = [isPerformanceMonitoringActive: "false"]
+            manifestPlaceholders = [isPerformanceLogcatEnabled: "true"]
         }
     }
 
