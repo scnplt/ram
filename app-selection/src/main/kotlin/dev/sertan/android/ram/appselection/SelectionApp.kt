@@ -9,7 +9,9 @@
 
 package dev.sertan.android.ram.appselection
 
+import android.content.Context
 import androidx.hilt.work.HiltWorkerFactory
+import androidx.multidex.MultiDex
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.core.common.log.RamLogger
@@ -34,6 +36,11 @@ internal class SelectionApp : RamApplication(), Configuration.Provider {
         super.onCreate()
         ramLogger.debugInit()
         UpdateLocalDataWorker.start(this)
+    }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        if (BuildConfig.DEBUG) MultiDex.install(this)
     }
 
     override fun getWorkManagerConfiguration(): Configuration =
