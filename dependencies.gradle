@@ -44,7 +44,6 @@ ext {
     ]
 
     module = [
-            appColor      : ":app-color",
             coreCommon    : ":core:common",
             coreModel     : ":core:model",
             coreUi        : ":core:ui",
