@@ -9,23 +9,33 @@
 
 package dev.sertan.android.ram.core.ui
 
+import android.os.Bundle
+import androidx.annotation.IdRes
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.NavHostFragment
 import kotlinx.coroutines.delay
 
-abstract class RamActivity : AppCompatActivity() {
+abstract class RamActivity(
+    @LayoutRes layoutResId: Int,
+    @IdRes navHostFragmentId: Int
+) : AppCompatActivity(layoutResId) {
 
-    protected inline fun launchAfterSplashDelay(crossinline block: () -> Unit) {
-        lifecycleScope.launchWhenStarted {
-            delay(SplashFragment.DEFAULT_DURATION_MS)
-            block()
-        }
-    }
+    abstract val afterSplashDirection: NavDirections
 
-    protected fun provideNavController(navHostFragmentId: Int) = lazy {
+    private val navController by lazy {
         val navHostFragment =
             supportFragmentManager.findFragmentById(navHostFragmentId) as? NavHostFragment
         navHostFragment?.navController
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycleScope.launchWhenStarted {
+            delay(SplashFragment.DEFAULT_DURATION_MS)
+            navController?.navigate(afterSplashDirection)
+        }
     }
 }

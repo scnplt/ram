@@ -9,40 +9,8 @@
 
 package dev.sertan.android.ram.appselection
 
-import android.content.Context
-import androidx.hilt.work.HiltWorkerFactory
-import androidx.multidex.MultiDex
-import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.core.common.log.RamLogger
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
-import dev.sertan.android.ram.core.domain.worker.UpdateLocalDataWorker
 import dev.sertan.android.ram.core.ui.RamApplication
-import javax.inject.Inject
 
 @HiltAndroidApp
-internal class SelectionApp : RamApplication(), Configuration.Provider {
-
-    @Inject
-    lateinit var voiceSupportUseCase: VoiceSupportUseCase
-
-    @Inject
-    lateinit var ramLogger: RamLogger
-
-    @Inject
-    lateinit var workerFactory: HiltWorkerFactory
-
-    override fun onCreate() {
-        super.onCreate()
-        ramLogger.debugInit()
-        UpdateLocalDataWorker.start(this)
-    }
-
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        if (BuildConfig.DEBUG) MultiDex.install(this)
-    }
-
-    override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder().setWorkerFactory(workerFactory).build()
-}
+internal class SelectionApp : RamApplication()

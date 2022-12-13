@@ -9,19 +9,16 @@
 
 package dev.sertan.android.ram.appselection.ui
 
-import android.os.Bundle
+import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.core.ui.RamActivity
 
 @AndroidEntryPoint
-internal class MainActivity : RamActivity() {
-    private val navController by provideNavController(R.id.fragmentContainerView)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        launchAfterSplashDelay { navController?.navigate(actionGlobalHomeFragment()) }
-    }
+internal class MainActivity : RamActivity(
+    layoutResId = R.layout.activity_main,
+    navHostFragmentId = R.id.fragmentContainerView
+) {
+    override val afterSplashDirection: NavDirections get() = actionGlobalHomeFragment()
 }

@@ -83,13 +83,8 @@ dependencies {
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureDrawing)
 
-    implementation libs.coreKtx
-
     // Work
     implementation libs.workRuntime
-
-    // UI
-    implementation libs.appcompat
 
     // Navigation
     implementation libs.navigationUiKtx
@@ -98,14 +93,8 @@ dependencies {
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-    // ... with Work
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
 
     // Firebase Performance
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx
-
-    // MultiDex
-    implementation libs.multiDex
 }

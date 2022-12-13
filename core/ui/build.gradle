@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
 }
 
@@ -37,6 +38,9 @@ android {
 }
 
 dependencies {
+    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreDomain)
+
     implementation libs.coreKtx
 
     // UI
@@ -45,10 +49,23 @@ dependencies {
     implementation libs.preference
     implementation libs.ossLicenses
 
+    // Work
+    implementation libs.workRuntime
+
     // Navigation
     implementation libs.navigationFragmentKtx
 
     // Glide
     kapt kapts.glide
     implementation libs.glide
+
+    // Hilt
+    kapt kapts.hiltCompiler
+    implementation libs.hiltAndroid
+    // ... with Work
+    kapt kapts.androidHiltCompiler
+    implementation libs.hiltWork
+
+    // MultiDex
+    implementation libs.multiDex
 }
