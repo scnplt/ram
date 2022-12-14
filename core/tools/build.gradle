@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace "${configs.projectId}.core.domain"
+    namespace "${configs.projectId}.core.tools"
     compileSdk configs.compileSdk
 
     defaultConfig {
@@ -23,6 +23,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,18 +38,9 @@ android {
 }
 
 dependencies {
-    implementation project(path: module.coreData)
-    implementation project(path: module.coreModel)
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreTools)
-
-    // Work
-    implementation libs.workRuntime
 
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-    // ... with Work
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
 }

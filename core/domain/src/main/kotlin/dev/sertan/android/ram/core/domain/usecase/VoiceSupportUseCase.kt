@@ -9,14 +9,10 @@
 
 package dev.sertan.android.ram.core.domain.usecase
 
-import android.content.Context
-import android.speech.tts.TextToSpeech
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.core.common.Dispatcher
 import dev.sertan.android.ram.core.common.RamDispatcher
 import dev.sertan.android.ram.core.data.repository.UserSettingsRepository
-import dev.sertan.android.ram.core.domain.util.speak
-import java.util.Locale
+import dev.sertan.android.ram.core.tools.speechservice.RamSpeechService
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
@@ -32,17 +28,10 @@ private const val VOICE_SUPPORT_LANG = "tr_TR"
 class VoiceSupportUseCase @Inject constructor(
     private val userSettingsRepository: UserSettingsRepository,
     @Dispatcher(RamDispatcher.IO) private val ioDispatcher: CoroutineDispatcher,
-    @ApplicationContext context: Context
+    private val ramSpeechService: RamSpeechService
 ) {
 
-    private lateinit var textToSpeech: TextToSpeech
-
-    private val textToSpeechInitListener = TextToSpeech.OnInitListener { status ->
-        if (status == TextToSpeech.SUCCESS) textToSpeech.language = Locale(VOICE_SUPPORT_LANG)
-    }
-
     init {
-        textToSpeech = TextToSpeech(context, textToSpeechInitListener)
         initializeVoiceSupportStateIfNeeded()
     }
 
@@ -59,15 +48,13 @@ class VoiceSupportUseCase @Inject constructor(
     fun getVoiceSupportStateStream(): Flow<Boolean> =
         userSettingsRepository.getVoiceSupportStateStream().map { it.getOrNull() == true }
 
-    fun speak(message: String?): Unit = textToSpeech.speak(message)
+    fun speak(message: String?) = ramSpeechService.speak(message)
 
     suspend fun checkStateAndSpeak(message: String?) {
-        if (getCurrentState() == true) textToSpeech.speak(message)
+        if (getCurrentState() == true) ramSpeechService.speak(message)
     }
 
-    fun stopSpeech() {
-        textToSpeech.stop()
-    }
+    fun stopSpeech(): Unit = ramSpeechService.stop()
 
     suspend fun change() {
         val currentState = getCurrentState() ?: VOICE_SUPPORT_DEFAULT_STATE

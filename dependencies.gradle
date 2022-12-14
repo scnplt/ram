@@ -49,6 +49,7 @@ ext {
             coreUi        : ":core:ui",
             coreData      : ":core:data",
             coreDomain    : ":core:domain",
+            coreTools     : ":core:tools",
             featureDrawing: ":feature:drawing",
     ]
 

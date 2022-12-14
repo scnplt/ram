@@ -7,11 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.domain.util
+package dev.sertan.android.ram.core.tools.speechservice
 
-import android.speech.tts.TextToSpeech
+interface RamSpeechService {
 
-@Suppress("DEPRECATION")
-fun TextToSpeech.speak(message: String?) {
-    speak(message?.replace("\\s+".toRegex(), ", ") ?: return, TextToSpeech.QUEUE_FLUSH, null)
+    fun speak(message: String?)
+
+    fun stop()
+
+    fun shutdown()
 }
