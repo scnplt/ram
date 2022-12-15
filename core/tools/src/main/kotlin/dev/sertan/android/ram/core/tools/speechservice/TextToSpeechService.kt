@@ -9,11 +9,8 @@
 
 package dev.sertan.android.ram.core.tools.speechservice
 
-interface RamSpeechService {
-
+interface TextToSpeechService {
     fun speak(message: String?)
-
     fun stop()
-
     fun shutdown()
 }

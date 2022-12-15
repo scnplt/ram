@@ -12,7 +12,7 @@ package dev.sertan.android.ram.core.domain.usecase
 import dev.sertan.android.ram.core.common.Dispatcher
 import dev.sertan.android.ram.core.common.RamDispatcher
 import dev.sertan.android.ram.core.data.repository.UserSettingsRepository
-import dev.sertan.android.ram.core.tools.speechservice.RamSpeechService
+import dev.sertan.android.ram.core.tools.speechservice.TextToSpeechService
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
@@ -22,13 +22,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 private const val VOICE_SUPPORT_DEFAULT_STATE = true
-private const val VOICE_SUPPORT_LANG = "tr_TR"
 
 @Singleton
 class VoiceSupportUseCase @Inject constructor(
     private val userSettingsRepository: UserSettingsRepository,
     @Dispatcher(RamDispatcher.IO) private val ioDispatcher: CoroutineDispatcher,
-    private val ramSpeechService: RamSpeechService
+    private val textToSpeechService: TextToSpeechService
 ) {
 
     init {
@@ -48,13 +47,13 @@ class VoiceSupportUseCase @Inject constructor(
     fun getVoiceSupportStateStream(): Flow<Boolean> =
         userSettingsRepository.getVoiceSupportStateStream().map { it.getOrNull() == true }
 
-    fun speak(message: String?) = ramSpeechService.speak(message)
+    fun speak(message: String?) = textToSpeechService.speak(message)
 
     suspend fun checkStateAndSpeak(message: String?) {
-        if (getCurrentState() == true) ramSpeechService.speak(message)
+        if (getCurrentState() == true) textToSpeechService.speak(message)
     }
 
-    fun stopSpeech(): Unit = ramSpeechService.stop()
+    fun stopSpeech(): Unit = textToSpeechService.stop()
 
     suspend fun change() {
         val currentState = getCurrentState() ?: VOICE_SUPPORT_DEFAULT_STATE
