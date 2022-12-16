@@ -8,5 +8,6 @@
   -->
 
 <resources>
-    <string name="app_name">Renkleri Tanıyalım</string>
+    <string name="app_name">RAM-1 Renkleri Tanıyalım</string>
+    <string name="label">Renkleri Tanıyalım</string>
 </resources>
