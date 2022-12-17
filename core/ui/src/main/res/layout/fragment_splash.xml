@@ -14,7 +14,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:padding="@dimen/small_gap_2"
-    tools:context=".SplashFragment"
+    tools:context=".fragment.SplashFragment"
     tools:ignore="ContentDescription">
 
     <include layout="@layout/layout_base_for_splash" />

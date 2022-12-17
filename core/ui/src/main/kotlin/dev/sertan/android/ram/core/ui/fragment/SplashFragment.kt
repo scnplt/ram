@@ -7,11 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui
+package dev.sertan.android.ram.core.ui.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import dev.sertan.android.ram.core.ui.R
+import dev.sertan.android.ram.core.ui.RamActivity
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
