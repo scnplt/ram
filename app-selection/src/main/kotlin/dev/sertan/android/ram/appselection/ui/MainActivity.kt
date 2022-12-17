@@ -12,12 +12,20 @@ package dev.sertan.android.ram.appselection.ui
 import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalHomeFragment
+import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalProjectInfoFragment
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.core.ui.RamActivity
 
 @AndroidEntryPoint
 internal class MainActivity : RamActivity(R.layout.activity_main) {
+
     override val label: String get() = getString(R.string.splash_title, getString(R.string.label))
+
     override val navHostFragmentId: Int get() = R.id.fragmentContainerView
-    override val afterSplashDirection: NavDirections get() = actionGlobalHomeFragment()
+
+    override val afterSplashDirection: NavDirections
+        get() = actionGlobalHomeFragment()
+
+    override val projectInformationDirection: NavDirections
+        get() = actionGlobalProjectInfoFragment()
 }

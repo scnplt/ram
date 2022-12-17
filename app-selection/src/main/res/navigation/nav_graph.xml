@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash" />
 
@@ -62,7 +62,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="dev.sertan.android.ram.core.ui.SettingsFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.SettingsFragment"
         android:label="SettingsFragment" />
 
     <fragment
@@ -123,6 +123,20 @@
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popUpTo="@id/nav_graph"
