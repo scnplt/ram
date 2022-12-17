@@ -38,4 +38,6 @@
     <string name="try_again">Yeniden dene</string>
     <string name="material_image">Materyal resmi</string>
     <string name="empty_list_message">Bir aksilik oldu!\nLütfen daha sonra tekrar deneyin.</string>
+    <string name="general_title">ÖZEL EĞİTİM İHTİYACI OLAN ÖĞRENCİLER İÇİN EĞİTİCİ BİLGİSAYAR PROGRAMI</string>
+    <string name="program_information">BU PROGRAM\nELAZIĞ REHBERLİK VE ARAŞTIRMA MERKEZİ MÜDÜRLÜĞÜ\nTREESP2.1.IQSES/285 REFERANS NOLU\nÖZEL EĞİTİM HİZMETLERİNDE ÖĞRENME ORTAMLARININ GELİŞTİRİLMESİ PROJESİ KAPSAMINDA HAZIRLANMIŞTIR</string>
 </resources>

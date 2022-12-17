@@ -16,9 +16,8 @@ import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.core.ui.RamActivity
 
 @AndroidEntryPoint
-internal class MainActivity : RamActivity(
-    layoutResId = R.layout.activity_main,
-    navHostFragmentId = R.id.fragmentContainerView
-) {
+internal class MainActivity : RamActivity(R.layout.activity_main) {
+    override val label: String get() = getString(R.string.splash_title, getString(R.string.label))
+    override val navHostFragmentId: Int get() = R.id.fragmentContainerView
     override val afterSplashDirection: NavDirections get() = actionGlobalHomeFragment()
 }

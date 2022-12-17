@@ -20,8 +20,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appNameTextView.text =
-            with(requireContext()) { applicationInfo.loadLabel(packageManager) }
+        (activity as? RamActivity)?.let { binding.appNameTextView.text = it.label }
     }
 
     companion object {

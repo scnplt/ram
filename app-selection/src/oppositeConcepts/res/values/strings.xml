@@ -10,4 +10,5 @@
 <resources>
     <string name="app_name">RAM-2 Zıt Kavramlar</string>
     <string name="label">Zıt Kavramlar</string>
+    <string name="splash_title">-2-\n%1$s</string>
 </resources>
