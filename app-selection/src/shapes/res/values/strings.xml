@@ -8,5 +8,7 @@
   -->
 
 <resources>
-    <string name="app_name">Nesneler ve Şekiller</string>
+    <string name="app_name">RAM-3 Nesneler ve Şekiller</string>
+    <string name="label">Nesneler ve Şekiller</string>
+    <string name="splash_title">-3-\n%1$s</string>
 </resources>

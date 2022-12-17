@@ -8,5 +8,7 @@
   -->
 
 <resources>
-    <string name="app_name">Renkleri Tanıyalım</string>
+    <string name="app_name">RAM-1 Renkleri Tanıyalım</string>
+    <string name="label">Renkleri Tanıyalım</string>
+    <string name="splash_title">-1-\n%1$s</string>
 </resources>

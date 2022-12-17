@@ -7,13 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui
+package dev.sertan.android.ram.core.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import dev.sertan.android.ram.core.ui.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 

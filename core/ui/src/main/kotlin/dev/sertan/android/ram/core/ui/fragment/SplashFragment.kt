@@ -7,11 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui
+package dev.sertan.android.ram.core.ui.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import dev.sertan.android.ram.core.ui.R
+import dev.sertan.android.ram.core.ui.RamActivity
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
@@ -20,8 +22,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appNameTextView.text =
-            with(requireContext()) { applicationInfo.loadLabel(packageManager) }
+        (activity as? RamActivity)?.let { binding.appNameTextView.text = it.label }
     }
 
     companion object {
