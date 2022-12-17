@@ -13,7 +13,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognitionListener
-import android.speech.RecognizerIntent
 import android.speech.RecognizerIntent.ACTION_RECOGNIZE_SPEECH
 import android.speech.RecognizerIntent.EXTRA_LANGUAGE
 import android.speech.RecognizerIntent.EXTRA_LANGUAGE_MODEL
@@ -22,7 +21,6 @@ import android.speech.SpeechRecognizer
 import android.speech.SpeechRecognizer.RESULTS_RECOGNITION
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.core.tools.di.DEFAULT_LANG_TAG
-import java.util.Locale
 import javax.inject.Inject
 
 internal class RamSpeechToTextService @Inject constructor(
