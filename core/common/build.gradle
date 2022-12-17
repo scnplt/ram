@@ -34,8 +34,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: module.coreModel)
-
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid

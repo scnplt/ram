@@ -39,7 +39,7 @@ internal class RamTextToSpeechService @Inject constructor(
     private lateinit var textToSpeech: TextToSpeech
 
     private val listener = TextToSpeech.OnInitListener { status ->
-        if (status != SUCCESS) throw IllegalStateException()
+        check(status == SUCCESS)
         val result = textToSpeech.setLanguage(locale)
         if (result == LANG_MISSING_DATA) startActivity(ACTION_INSTALL_TTS_DATA)
     }

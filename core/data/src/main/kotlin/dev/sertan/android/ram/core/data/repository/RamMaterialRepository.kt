@@ -24,7 +24,7 @@ import javax.inject.Inject
 internal class RamMaterialRepository @Inject constructor(
     private val materialDao: MaterialDao,
     private val materialService: MaterialService,
-    private val logger: RamLogger,
+    private val logger: RamLogger
 ) : MaterialRepository {
 
     override suspend fun getMaterials(update: Boolean): Result<List<MaterialDto>> =
