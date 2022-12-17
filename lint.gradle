@@ -1,31 +1,46 @@
-apply plugin: 'org.jlleitschuh.gradle.ktlint'
-apply plugin: 'io.gitlab.arturbosch.detekt'
+configurations {
+    detekt
+    ktlint
+}
 
-ktlint {
-    android = true
-    debug = false
-    verbose = false
-    reporters {
-        reporter "html"
-        reporter "plain"
+dependencies {
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.22.0'
+    ktlint("com.pinterest:ktlint:0.48.0") {
+        attributes {
+            attribute(Bundling.BUNDLING_ATTRIBUTE, getObjects().named(Bundling, Bundling.EXTERNAL))
+        }
     }
 }
 
-detekt {
-    allRules = true
-    debug = false
-    parallel = true
+def outputPath = "$rootDir/build/reports/${project.name}"
 
-    buildUponDefaultConfig = true
-    config = files("$rootDir/detekt.yml")
+task detekt(type: JavaExec, group: "verification") {
+    description = "Run static code analysis with Detekt"
+    classpath = configurations.detekt
+    mainClass.set("io.gitlab.arturbosch.detekt.cli.Main")
+    args = [
+            "-i", "$projectDir",
+            "--build-upon-default-config",
+            "--parallel",
+            "-c", "$rootDir/detekt.yml",
+            "-r", "html:$outputPath-detekt.html",
+    ]
 }
 
-tasks.named("detekt").configure {
-    reports {
-        html.required.set(true)
-        txt.required.set(true)
-        md.required.set(false)
-        sarif.required.set(false)
-        xml.required.set(false)
-    }
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style with Ktlint"
+    classpath = configurations.ktlint
+    mainClass.set("com.pinterest.ktlint.Main")
+    args = [
+            "-a",
+            "--reporter=html,output=$outputPath-ktlint.html",
+            "src/**/*.kt"
+    ]
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations with Ktlint"
+    classpath = configurations.ktlint
+    mainClass.set("com.pinterest.ktlint.Main")
+    args "-a", "--format", "src/**/*.kt"
 }
