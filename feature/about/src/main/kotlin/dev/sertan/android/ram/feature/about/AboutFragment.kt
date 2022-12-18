@@ -7,20 +7,18 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.fragment
+package dev.sertan.android.ram.feature.about
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import dev.sertan.android.ram.core.ui.R
 
-class SettingsFragment : PreferenceFragmentCompat() {
+class AboutFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preference_fragment, rootKey)
-
         val ossLicensesPreference: Preference? = findPreference(getString(R.string.licenses))
         ossLicensesPreference?.setOnPreferenceClickListener {
             startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
