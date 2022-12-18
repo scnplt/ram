@@ -16,11 +16,11 @@
     tools:context=".ui.home.HomeFragment">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/settingsButton"
+        android:id="@+id/aboutButton"
         style="?attr/materialIconButtonFilledStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/help"
+        android:contentDescription="@string/about"
         app:icon="@drawable/ic_help_outline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

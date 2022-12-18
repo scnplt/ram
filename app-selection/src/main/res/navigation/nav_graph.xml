@@ -38,8 +38,8 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment"
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -61,9 +61,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:id="@+id/aboutFragment"
+        android:name="dev.sertan.android.ram.feature.about.AboutFragment"
+        android:label="AboutFragment" />
 
     <fragment
         android:id="@+id/trainingFragment"
@@ -120,6 +120,12 @@
             app:popUpTo="@id/homeFragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment"
@@ -127,12 +133,6 @@
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
-
-    <fragment
-        android:id="@+id/projectInfoFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
-        android:label="ProjectInfoFragment"
-        tools:layout="@layout/fragment_project_info" />
 
     <action
         android:id="@+id/action_global_projectInfoFragment"

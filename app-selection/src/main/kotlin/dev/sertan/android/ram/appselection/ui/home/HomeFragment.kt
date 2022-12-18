@@ -19,9 +19,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentHomeBinding
+import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAboutFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
-import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToSettingsFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
@@ -47,7 +47,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUpComponents(): Unit = with(binding) {
-        settingsButton.setOnClickListener { navigateTo(actionHomeFragmentToSettingsFragment()) }
+        aboutButton.setOnClickListener { navigateTo(actionHomeFragmentToAboutFragment()) }
         changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
         trainingButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainingFragment()) }
         practiceButton.setOnClickListener { navigateTo(actionHomeFragmentToPracticeFragment()) }

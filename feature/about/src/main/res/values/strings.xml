@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="licenses">Lisanslar</string>
+    <string name="about">Hakkında</string>
+    <string name="developer_information">Geliştirici bilgileri</string>
+    <string name="developer_information_summary">Fırat Üniversitesi Yazılım Mühendisliği öğretim üyesi Prof. Dr. İbrahim Türkoğlu danışmanlığında, Sertan Canpolat tarafından geliştirilmiştir.</string>
+</resources>

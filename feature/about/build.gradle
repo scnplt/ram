@@ -1,12 +1,10 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.dagger.hilt.android'
-    id 'kotlin-kapt'
 }
 
 android {
-    namespace "${configs.projectId}.core.ui"
+    namespace "${configs.projectId}.feature.about"
     compileSdk configs.compileSdk
 
     defaultConfig {
@@ -37,33 +35,8 @@ android {
     }
 }
 
+
 dependencies {
-    implementation project(path: module.coreCommon)
-    implementation project(path: module.coreDomain)
-
-    implementation libs.coreKtx
-
-    // UI
-    implementation libs.appcompat
-    implementation libs.material
-
-    // Work
-    implementation libs.workRuntime
-
-    // Navigation
-    implementation libs.navigationFragmentKtx
-
-    // Glide
-    kapt kapts.glide
-    implementation libs.glide
-
-    // Hilt
-    kapt kapts.hiltCompiler
-    implementation libs.hiltAndroid
-    // ... with Work
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
-
-    // MultiDex
-    implementation libs.multiDex
+    implementation libs.preference
+    implementation libs.ossLicenses
 }
