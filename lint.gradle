@@ -19,7 +19,7 @@ task detekt(type: JavaExec, group: "verification") {
     classpath = configurations.detekt
     mainClass.set("io.gitlab.arturbosch.detekt.cli.Main")
     args = [
-            "-i", "$projectDir",
+            "-in", "**/src/**/*.kt",
             "--build-upon-default-config",
             "--parallel",
             "-c", "$rootDir/detekt.yml",
