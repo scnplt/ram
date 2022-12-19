@@ -13,6 +13,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <include app:graph="@navigation/practice_nav_graph" />
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
@@ -53,7 +55,7 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_practiceFragment"
-            app:destination="@id/practiceFragment"
+            app:destination="@id/practice_nav_graph"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -72,47 +74,7 @@
         tools:layout="@layout/fragment_training">
         <action
             android:id="@+id/action_trainingFragment_to_practiceFragment"
-            app:destination="@id/practiceFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/homeFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/practiceFragment"
-        android:name="dev.sertan.android.ram.appselection.ui.practice.PracticeFragment"
-        android:label="fragment_practice"
-        tools:layout="@layout/fragment_practice">
-        <action
-            android:id="@+id/action_practiceFragment_to_resultFragment"
-            app:destination="@id/resultFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/homeFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/resultFragment"
-        android:name="dev.sertan.android.ram.appselection.ui.result.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result">
-        <argument
-            android:name="score"
-            app:argType="float" />
-        <action
-            android:id="@+id/action_resultFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_resultFragment_to_practiceFragment"
-            app:destination="@id/practiceFragment"
+            app:destination="@id/practice_nav_graph"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"

@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.practice.adapter
+package dev.sertan.android.ram.feature.practice.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import dev.sertan.android.ram.core.model.ui.Material

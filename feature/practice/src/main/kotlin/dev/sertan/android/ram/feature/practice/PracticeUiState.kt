@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.practice
+package dev.sertan.android.ram.feature.practice
 
 import dev.sertan.android.ram.core.model.ui.Question
 

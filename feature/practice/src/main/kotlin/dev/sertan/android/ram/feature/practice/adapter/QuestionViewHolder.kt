@@ -7,13 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.practice.adapter
+package dev.sertan.android.ram.feature.practice.adapter
 
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.core.model.ui.Material
 import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
+import dev.sertan.android.ram.feature.practice.databinding.ItemQuestionMaterialBinding
 
 internal class QuestionViewHolder(
     private val binding: ItemQuestionMaterialBinding,

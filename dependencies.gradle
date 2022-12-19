@@ -44,14 +44,15 @@ ext {
     ]
 
     module = [
-            coreCommon    : ":core:common",
-            coreModel     : ":core:model",
-            coreUi        : ":core:ui",
-            coreData      : ":core:data",
-            coreDomain    : ":core:domain",
-            coreTools     : ":core:tools",
-            featureDrawing: ":feature:drawing",
-            featureAbout  : ":feature:about",
+            coreCommon     : ":core:common",
+            coreModel      : ":core:model",
+            coreUi         : ":core:ui",
+            coreData       : ":core:data",
+            coreDomain     : ":core:domain",
+            coreTools      : ":core:tools",
+            featureDrawing : ":feature:drawing",
+            featureAbout   : ":feature:about",
+            featurePractice: ":feature:practice",
     ]
 
     kapts = [

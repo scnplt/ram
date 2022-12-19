@@ -7,13 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.practice.adapter
+package dev.sertan.android.ram.feature.practice.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.core.model.ui.Material
+import dev.sertan.android.ram.feature.practice.databinding.ItemQuestionMaterialBinding
 import javax.inject.Inject
 
 internal class QuestionAdapter @Inject constructor() :
