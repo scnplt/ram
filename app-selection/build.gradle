@@ -94,6 +94,9 @@ dependencies {
     // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+    // ... with Work
+    kapt kapts.androidHiltCompiler
+    implementation libs.hiltWork
 
     // Firebase Performance
     implementation platform(platforms.firebaseBom)
