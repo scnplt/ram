@@ -81,8 +81,7 @@ dependencies {
     implementation project(path: module.coreModel)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
-    implementation project(path: module.featureDrawing)
-    implementation project(path: module.featureAbout)
+    implementation project(path: module.featureHome)
 
     // Work
     implementation libs.workRuntime

@@ -52,6 +52,7 @@ ext {
             coreTools     : ":core:tools",
             featureDrawing: ":feature:drawing",
             featureAbout  : ":feature:about",
+            featureHome   : ":feature:home",
     ]
 
     kapts = [

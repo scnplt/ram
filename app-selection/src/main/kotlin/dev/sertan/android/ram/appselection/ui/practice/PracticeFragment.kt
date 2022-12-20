@@ -19,7 +19,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentPracticeBinding
 import dev.sertan.android.ram.appselection.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
@@ -28,6 +27,7 @@ import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionViewHolde
 import dev.sertan.android.ram.core.model.ui.Material
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.playSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
@@ -76,7 +76,7 @@ internal class PracticeFragment :
         }
         nextButton.setOnClickListener { viewModel.goToNextQuestion() }
         contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
-        exitButton.setOnClickListener { navigateTo(actionGlobalHomeFragment()) }
+        exitButton.setOnClickListener { popBackStack() }
     }
 
     override fun onMaterialClicked(material: Material) {
