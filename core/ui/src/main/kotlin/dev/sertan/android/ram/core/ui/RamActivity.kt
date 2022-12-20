@@ -22,8 +22,9 @@ import kotlinx.coroutines.delay
 abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layoutResId) {
     abstract val navHostFragmentId: Int
     abstract val afterSplashDirection: NavDirections
-
-    protected open val projectInformationDirection: NavDirections? = null
+    abstract val projectInformationDirection: NavDirections
+    abstract val trainingDirection: NavDirections
+    abstract val practiceDirection: NavDirections
 
     private val navController by lazy {
         val navHostFragment =
@@ -33,11 +34,11 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed(): Unit = with(navController) {
-            if (backQueue.size > 2) {
+            if (backQueue.filterNot { it.destination.label.isNullOrEmpty() }.size > 1) {
                 popBackStack()
                 return
             }
-            projectInformationDirection?.let(navController::navigate) ?: finish()
+            navigate(projectInformationDirection)
         }
     }
 

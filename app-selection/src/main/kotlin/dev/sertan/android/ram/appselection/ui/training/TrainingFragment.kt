@@ -19,9 +19,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appselection.NavGraphDirections.Companion.actionGlobalPracticeFragment
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentTrainingBinding
-import dev.sertan.android.ram.appselection.ui.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeFragment
 import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
@@ -69,9 +69,7 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
             backButton.setOnClickListener { goToPreviousMaterial() }
             exitButton.setOnClickListener { popBackStack() }
             materialCardView.setOnClickListener { speakCurrentMaterialDescription() }
-            finishButton.setOnClickListener {
-                navigateTo(actionTrainingFragmentToPracticeFragment())
-            }
+            finishButton.setOnClickListener { navigateTo(actionGlobalPracticeFragment()) }
         }
     }
 
