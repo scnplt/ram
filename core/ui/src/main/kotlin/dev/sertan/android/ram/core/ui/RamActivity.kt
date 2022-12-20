@@ -20,7 +20,6 @@ import dev.sertan.android.ram.core.ui.fragment.SplashFragment
 import kotlinx.coroutines.delay
 
 abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layoutResId) {
-    abstract val label: String
     abstract val navHostFragmentId: Int
     abstract val afterSplashDirection: NavDirections
 

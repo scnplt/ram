@@ -40,4 +40,5 @@
     <string name="project_partners">Proje ortakları Elazığ Özel Eğitim Meslek Lisesi, Elazığ Mesleki ve Teknik Anadolu Lisesi ile Elazığ Esnaf ve Sanatkârlar Odaları Birliği Başkanlığı\'dır.</string>
     <string name="this_publication_has_been_produced">Bu yayın Avrupa Birliği ve Türkiye Cumhuriyeti\'nin mali katkısıyla hazırlanmıştır. Bu yayının içeriğinden yalnızca <font fgcolor="red">Elazığ Rehberlik ve Araştırma Merkezi Müdürlüğü</font> sorumludur ve bu içerik hiçbir şekilde Avrupa Birliği veya Türkiye Cumhuriyeti\'nin görüş ve tutumunu yansıtmamaktadır.</string>
     <string name="publication_date_mm_yyyy">EYLÜL - 2023</string>
+    <string name="splash_title">-%1$d-\n%2$s</string>
 </resources>

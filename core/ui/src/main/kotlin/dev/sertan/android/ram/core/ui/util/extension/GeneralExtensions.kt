@@ -16,8 +16,17 @@ import androidx.annotation.ArrayRes
 import androidx.annotation.RawRes
 
 private const val NO_COLOR = Int.MIN_VALUE
+private const val APP_NAME_PATTERN = "(?<=RAM-[0-9]\\s).*"
+private const val APP_NO_PATTERN = "(?<=RAM-)\\d+"
 
 fun Context.playSound(@RawRes soundResId: Int): Unit = MediaPlayer.create(this, soundResId).start()
+
+val Context.labelWithoutPrefix: String?
+    get() = APP_NAME_PATTERN.toRegex().find(applicationInfo.loadLabel(packageManager))?.value
+
+val Context.appNo: Int?
+    get() = APP_NO_PATTERN.toRegex()
+        .find(applicationInfo.loadLabel(packageManager))?.value?.toIntOrNull()
 
 fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> {
     val colorList: List<Int>
