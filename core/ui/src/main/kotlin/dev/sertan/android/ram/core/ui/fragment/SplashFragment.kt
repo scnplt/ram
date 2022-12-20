@@ -13,8 +13,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import dev.sertan.android.ram.core.ui.R
-import dev.sertan.android.ram.core.ui.RamActivity
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
+import dev.sertan.android.ram.core.ui.util.extension.appNo
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
 class SplashFragment : Fragment(R.layout.fragment_splash) {
@@ -22,7 +23,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? RamActivity)?.let { binding.appNameTextView.text = it.label }
+        binding.appNameTextView.text =
+            with(requireContext()) { getString(R.string.splash_title, appNo, labelWithoutPrefix) }
     }
 
     companion object {

@@ -23,6 +23,7 @@ import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Compan
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
@@ -47,6 +48,7 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUpComponents(): Unit = with(binding) {
+        titleTextView.text = requireContext().labelWithoutPrefix
         aboutButton.setOnClickListener { navigateTo(actionHomeFragmentToAboutFragment()) }
         changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
         trainingButton.setOnClickListener { navigateTo(actionHomeFragmentToTrainingFragment()) }
