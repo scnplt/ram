@@ -16,7 +16,7 @@ import dev.sertan.android.ram.core.model.domain.QuestionDto
 internal fun QuestionEntity.toDto(): QuestionDto = QuestionDto(
     uid = uid,
     content = content,
-    materialUidList = materialUidList,
+    materialUidList = materialUidList.shuffled(),
     correctMaterialUid = correctMaterialUid
 )
 

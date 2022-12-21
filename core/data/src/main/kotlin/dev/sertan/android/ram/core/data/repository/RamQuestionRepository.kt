@@ -30,7 +30,7 @@ internal class RamQuestionRepository @Inject constructor(
     override suspend fun getQuestions(update: Boolean): Result<List<QuestionDto>> =
         tryGetWithResult(logger) {
             if (update) updateQuestionsFromRemote()
-            questionDao.getAll().map(QuestionEntity::toDto)
+            questionDao.getAll().map(QuestionEntity::toDto).shuffled()
         }
 
     override suspend fun saveQuestionToLocal(question: QuestionDto): Boolean =

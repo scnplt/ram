@@ -30,7 +30,7 @@ internal class RamMaterialRepository @Inject constructor(
     override suspend fun getMaterials(update: Boolean): Result<List<MaterialDto>> =
         tryGetWithResult(logger) {
             if (update) updateMaterialsFromRemote()
-            materialDao.getAll().map(MaterialEntity::toDto)
+            materialDao.getAll().map(MaterialEntity::toDto).shuffled()
         }
 
     override suspend fun getMaterial(materialUid: String): Result<MaterialDto?> =
