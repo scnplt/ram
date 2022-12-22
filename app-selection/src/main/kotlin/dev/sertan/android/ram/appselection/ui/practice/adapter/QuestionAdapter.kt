@@ -13,7 +13,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.core.model.ui.Material
+import dev.sertan.android.ram.appselection.ui.model.Material
 import javax.inject.Inject
 
 internal class QuestionAdapter @Inject constructor() :

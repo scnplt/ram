@@ -35,17 +35,7 @@ android {
 
 dependencies {
     implementation project(path: module.coreData)
-    implementation project(path: module.coreModel)
-    implementation project(path: module.coreCommon)
-    implementation project(path: module.coreTools)
 
-    // Work
-    implementation libs.workRuntime
-
-    // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-    // ... with Work
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
 }

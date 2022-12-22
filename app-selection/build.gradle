@@ -78,26 +78,25 @@ android {
 
 dependencies {
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreModel)
+    implementation project(path: module.coreData)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureHome)
-
-    // Work
     implementation libs.workRuntime
 
-    // Navigation
+    kapt kapts.roomCompiler
+    implementation libs.roomKtx
+
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
 
-    // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-    // ... with Work
+
     kapt kapts.androidHiltCompiler
     implementation libs.hiltWork
 
-    // Firebase Performance
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx
+    implementation libs.firebaseFirestoreKtx
 }

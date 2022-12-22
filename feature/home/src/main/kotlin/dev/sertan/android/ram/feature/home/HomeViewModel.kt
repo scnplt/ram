@@ -12,7 +12,7 @@ package dev.sertan.android.ram.feature.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.SharedFlow
@@ -22,16 +22,16 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 internal class HomeViewModel @Inject constructor(
-    private val voiceSupportUseCase: VoiceSupportUseCase
+    private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
     private var changeVoiceSupportJob: Job? = null
 
-    val voiceSupportState: SharedFlow<Boolean> = voiceSupportUseCase.getVoiceSupportStateStream()
+    val voiceSupportState: SharedFlow<Boolean> = textToSpeechUseCase.getVoiceSupportStateStream()
         .shareIn(scope = viewModelScope, started = SharingStarted.WhileSubscribed())
 
     fun changeVoiceSupportState() {
         changeVoiceSupportJob?.cancel()
-        changeVoiceSupportJob = viewModelScope.launch { voiceSupportUseCase.change() }
+        changeVoiceSupportJob = viewModelScope.launch { textToSpeechUseCase.change() }
     }
 }

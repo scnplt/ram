@@ -12,8 +12,8 @@ package dev.sertan.android.ram.appselection.ui.training
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.sertan.android.ram.core.domain.usecase.GetMaterialsUseCase
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.appselection.domain.usecase.GetMaterialsUseCase
+import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 internal class TrainingViewModel @Inject constructor(
     private val getMaterialsUseCase: GetMaterialsUseCase,
-    private val voiceSupportUseCase: VoiceSupportUseCase
+    private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
     private val materialIndex = MutableStateFlow(0)
@@ -33,7 +33,7 @@ internal class TrainingViewModel @Inject constructor(
     val uiState: StateFlow<TrainingUiState> = flow {
         val materials = getMaterialsUseCase()
         materialIndex.collect { index ->
-            voiceSupportUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
+            textToSpeechUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
             emit(TrainingUiState.getState(materials, index))
         }
     }.stateIn(
@@ -47,7 +47,7 @@ internal class TrainingViewModel @Inject constructor(
     fun goToPreviousMaterial(): Unit = materialIndex.update { it.dec() }
 
     fun speakCurrentMaterialDescription(): Unit =
-        voiceSupportUseCase.speak(uiState.value.material?.description)
+        textToSpeechUseCase.speak(uiState.value.material?.description)
 
-    fun stopSpeech(): Unit = voiceSupportUseCase.stopSpeech()
+    fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
 }

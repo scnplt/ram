@@ -12,10 +12,10 @@ package dev.sertan.android.ram.appselection.ui.practice
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.sertan.android.ram.appselection.domain.usecase.GetQuestionsUseCase
+import dev.sertan.android.ram.appselection.ui.model.Material
 import dev.sertan.android.ram.core.common.percent
-import dev.sertan.android.ram.core.domain.usecase.GetQuestionsUseCase
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
-import dev.sertan.android.ram.core.model.ui.Material
+import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -27,7 +27,7 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 internal class PracticeViewModel @Inject constructor(
     getQuestionsUseCase: GetQuestionsUseCase,
-    private val voiceSupportUseCase: VoiceSupportUseCase
+    private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
     var isValidationActive = true
@@ -41,7 +41,7 @@ internal class PracticeViewModel @Inject constructor(
     val uiState: StateFlow<PracticeUiState> = flow {
         val questions = getQuestionsUseCase()
         questionIndex.collect { index ->
-            voiceSupportUseCase.checkStateAndSpeak(questions.getOrNull(index)?.content)
+            textToSpeechUseCase.checkStateAndSpeak(questions.getOrNull(index)?.content)
             emit(PracticeUiState.getState(questions, index))
         }
     }.stateIn(
@@ -53,7 +53,7 @@ internal class PracticeViewModel @Inject constructor(
     fun goToNextQuestion(): Unit = questionIndex.update { it.inc() }
 
     fun speakCurrentQuestionContent(): Unit =
-        voiceSupportUseCase.speak(uiState.value.question?.content)
+        textToSpeechUseCase.speak(uiState.value.question?.content)
 
     fun isMaterialCorrect(material: Material): Boolean? = uiState.takeIf { isValidationActive }
         ?.value?.question?.correctMaterialUid?.equals(material.uid)
@@ -62,5 +62,5 @@ internal class PracticeViewModel @Inject constructor(
         if (isCorrect) correctAnswerCount++ else wrongAnswerCount++
     }
 
-    fun stopSpeech(): Unit = voiceSupportUseCase.stopSpeech()
+    fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
 }

@@ -12,7 +12,7 @@ package dev.sertan.android.ram.appselection
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.core.domain.worker.UpdateLocalDataWorker
+import dev.sertan.android.ram.appselection.domain.worker.UpdateLocalDataWorker
 import dev.sertan.android.ram.core.ui.RamApplication
 import javax.inject.Inject
 

@@ -16,22 +16,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.core.common.Dispatcher
-import dev.sertan.android.ram.core.common.RamDispatcher
 import dev.sertan.android.ram.core.common.log.RamLogger
 import dev.sertan.android.ram.core.common.log.TimberRamLogger
+import java.util.Locale
 import javax.inject.Singleton
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
+
+const val DEFAULT_LOCALE_LANG_TAG = "tr-TR"
 
 @Module
 @InstallIn(SingletonComponent::class)
 internal object CommonModule {
-
-    @Provides
-    @Singleton
-    @Dispatcher(RamDispatcher.IO)
-    fun provideIODispatcher(): CoroutineDispatcher = Dispatchers.IO
 
     @Provides
     @Singleton
@@ -41,4 +35,8 @@ internal object CommonModule {
     @Provides
     @Singleton
     fun provideRamLogger(logger: TimberRamLogger): RamLogger = logger
+
+    @Provides
+    @Singleton
+    fun provideLocale(): Locale = Locale(DEFAULT_LOCALE_LANG_TAG)
 }
