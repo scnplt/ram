@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appselection.ui.practice.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import dev.sertan.android.ram.core.model.ui.Material
+import dev.sertan.android.ram.appselection.ui.model.Material
 
 internal object MaterialDiffUtil : DiffUtil.ItemCallback<Material>() {
 

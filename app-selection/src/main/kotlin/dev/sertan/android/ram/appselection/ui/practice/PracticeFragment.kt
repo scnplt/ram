@@ -21,10 +21,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentPracticeBinding
+import dev.sertan.android.ram.appselection.ui.model.Material
 import dev.sertan.android.ram.appselection.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionAdapter
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionViewHolder
-import dev.sertan.android.ram.core.model.ui.Material
 import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.playSound
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack

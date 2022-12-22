@@ -14,14 +14,14 @@ import android.content.Context
 import android.content.Intent
 import androidx.multidex.MultiDex
 import dev.sertan.android.ram.core.common.log.RamLogger
-import dev.sertan.android.ram.core.domain.usecase.VoiceSupportUseCase
+import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import dev.sertan.android.ram.core.ui.UncaughtExceptionHandlerActivity.Companion.EXTRA_EXCEPTION_MESSAGE
 import javax.inject.Inject
 
 abstract class RamApplication : Application() {
 
     @Inject
-    lateinit var voiceSupportUseCase: VoiceSupportUseCase
+    lateinit var textToSpeechUseCase: TextToSpeechUseCase
 
     @Inject
     lateinit var ramLogger: RamLogger

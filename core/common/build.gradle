@@ -34,10 +34,8 @@ android {
 }
 
 dependencies {
-    // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
 
-    // Timber
     implementation libs.timber
 }

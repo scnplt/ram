@@ -44,11 +44,9 @@ dependencies {
     implementation project(path: module.featureDrawing)
     implementation project(path: module.featureAbout)
 
-    // Navigation
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
 
-    // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
 }

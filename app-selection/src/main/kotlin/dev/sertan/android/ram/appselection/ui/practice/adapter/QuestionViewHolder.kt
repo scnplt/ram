@@ -12,7 +12,7 @@ package dev.sertan.android.ram.appselection.ui.practice.adapter
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.core.model.ui.Material
+import dev.sertan.android.ram.appselection.ui.model.Material
 import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
 
 internal class QuestionViewHolder(

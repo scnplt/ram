@@ -35,24 +35,9 @@ android {
 
 dependencies {
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreModel)
-
-    // Gson
     implementation libs.gson
+    implementation libs.roomCommon
 
-    // Room
-    kapt kapts.roomCompiler
-    implementation libs.roomKtx
-
-    // Hilt
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-
-    // Coroutines
-    implementation libs.coroutinesPlayServices
-    implementation libs.coroutinesAndroid
-
-    // Firebase
-    implementation platform(platforms.firebaseBom)
-    implementation libs.firebaseFirestoreKtx
 }
