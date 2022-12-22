@@ -9,13 +9,12 @@
 
 package dev.sertan.android.ram.appselection.data.service
 
-import com.google.firebase.firestore.CollectionReference
-import kotlinx.coroutines.tasks.await
+import dev.sertan.android.ram.appselection.data.service.model.NetworkMaterial
+import dev.sertan.android.ram.appselection.data.service.model.NetworkQuestion
 
-internal class FirebaseService<T> constructor(
-    private val collection: CollectionReference,
-    private val dataClass: Class<T>
-) : BaseService<T> {
+internal interface SelectionService {
 
-    override suspend fun getAll(): List<T> = collection.get().await().toObjects(dataClass)
+    suspend fun getMaterials(): List<NetworkMaterial>
+
+    suspend fun getQuestions(): List<NetworkQuestion>
 }

@@ -13,8 +13,7 @@ import dev.sertan.android.ram.appselection.data.database.dao.MaterialDao
 import dev.sertan.android.ram.appselection.data.database.model.MaterialEntity
 import dev.sertan.android.ram.appselection.data.mapper.toDto
 import dev.sertan.android.ram.appselection.data.mapper.toEntity
-import dev.sertan.android.ram.appselection.data.service.BaseService
-import dev.sertan.android.ram.appselection.data.service.model.NetworkMaterial
+import dev.sertan.android.ram.appselection.data.service.SelectionService
 import dev.sertan.android.ram.appselection.domain.model.MaterialDto
 import dev.sertan.android.ram.appselection.domain.repository.MaterialRepository
 import dev.sertan.android.ram.core.common.log.RamLogger
@@ -25,7 +24,7 @@ import javax.inject.Inject
 
 internal class DefaultMaterialRepository @Inject constructor(
     private val materialDao: MaterialDao,
-    private val materialService: BaseService<NetworkMaterial>,
+    private val selectionService: SelectionService,
     private val logger: RamLogger
 ) : MaterialRepository {
 
@@ -45,7 +44,7 @@ internal class DefaultMaterialRepository @Inject constructor(
         tryWithLogger(logger) { updateMaterialsFromRemote() }
 
     private suspend fun updateMaterialsFromRemote() {
-        val remoteData = materialService.getAll()
+        val remoteData = selectionService.getMaterials()
         materialDao.deleteAll()
         remoteData.tryMapNotNull(logger) { it.toEntity() }
             .forEach { materialDao.insert(materialEntity = it) }

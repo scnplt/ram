@@ -13,8 +13,7 @@ import dev.sertan.android.ram.appselection.data.database.dao.QuestionDao
 import dev.sertan.android.ram.appselection.data.database.model.QuestionEntity
 import dev.sertan.android.ram.appselection.data.mapper.toDto
 import dev.sertan.android.ram.appselection.data.mapper.toEntity
-import dev.sertan.android.ram.appselection.data.service.BaseService
-import dev.sertan.android.ram.appselection.data.service.model.NetworkQuestion
+import dev.sertan.android.ram.appselection.data.service.SelectionService
 import dev.sertan.android.ram.appselection.domain.model.QuestionDto
 import dev.sertan.android.ram.appselection.domain.repository.QuestionRepository
 import dev.sertan.android.ram.core.common.log.RamLogger
@@ -25,7 +24,7 @@ import javax.inject.Inject
 
 internal class DefaultQuestionRepository @Inject constructor(
     private val questionDao: QuestionDao,
-    private val questionService: BaseService<NetworkQuestion>,
+    private val selectionService: SelectionService,
     private val logger: RamLogger
 ) : QuestionRepository {
 
@@ -42,7 +41,7 @@ internal class DefaultQuestionRepository @Inject constructor(
         tryWithLogger(logger) { updateQuestionsFromRemote() }
 
     private suspend fun updateQuestionsFromRemote() {
-        val remoteData = questionService.getAll()
+        val remoteData = selectionService.getQuestions()
         questionDao.deleteAll()
         remoteData.tryMapNotNull(logger) { it.toEntity() }
             .forEach { questionDao.insert(questionEntity = it) }
