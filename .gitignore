@@ -4,4 +4,5 @@
 **/release/
 
 local.properties
-**/google-services.json
+ram.jks
+google-services.json
