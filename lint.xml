@@ -14,5 +14,7 @@
     </issue>
 
     <issue id="UnusedResources" severity="ignore" />
+    <issue id="BadConfigurationProvider" severity="ignore" />
+    <issue id="Instantiatable" severity="ignore" />
 
 </lint>
