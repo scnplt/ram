@@ -53,12 +53,15 @@ android {
     productFlavors {
         colors {
             applicationIdSuffix ".colors"
+            resValue "string", "app_name", "RAM-1 Renkleri Tanıyalım"
         }
         oppositeConcepts {
             applicationIdSuffix ".oppositeconcepts"
+            resValue "string", "app_name", "RAM-2 Zıt Kavramlar"
         }
         shapes {
             applicationIdSuffix ".shapes"
+            resValue "string", "app_name", "RAM-3 Nesneler ve Şekiller"
         }
     }
 
