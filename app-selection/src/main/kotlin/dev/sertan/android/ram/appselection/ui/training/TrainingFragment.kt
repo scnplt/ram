@@ -11,6 +11,7 @@ package dev.sertan.android.ram.appselection.ui.training
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -36,14 +37,11 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
 
     private val currentMaterialFlowCollector = FlowCollector<TrainingUiState> {
         with(binding) {
-            it.material?.let { material ->
-                descriptionTextView.text = material.description
-                attributionTextView.text = getString(
-                    dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
-                    material.attribution
-                )
-                mediaImageView.contentDescription = material.description
-                mediaImageView.loadFromUrl(material.mediaUrl)
+            it.material?.run {
+                setAttributionView(attribution)
+                descriptionTextView.text = description
+                mediaImageView.contentDescription = description
+                mediaImageView.loadFromUrl(mediaUrl)
             }
             backButton.isInvisible = !it.isBackButtonVisible
             forwardButton.isInvisible = !it.isForwardButtonVisible
@@ -81,5 +79,13 @@ internal class TrainingFragment : Fragment(R.layout.fragment_training) {
     private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
         contentGroup.isVisible = isVisible
         emptyListMessageTextView.isVisible = !isVisible
+    }
+
+    private fun setAttributionView(attribution: String?): Unit = with(binding) {
+        attributionGroup.isGone = attribution.isNullOrEmpty().also { if (it) return@with }
+        attributionTextView.text = getString(
+            dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
+            attribution
+        )
     }
 }
