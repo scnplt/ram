@@ -11,11 +11,11 @@ package dev.sertan.android.ram.core.ui
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.viewModels
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.findNavController
 import dev.sertan.android.ram.core.ui.fragment.SplashFragment
 import kotlinx.coroutines.delay
 
@@ -26,10 +26,12 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
     abstract val trainingDirection: NavDirections
     abstract val practiceDirection: NavDirections
 
-    private val navController by lazy {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(navHostFragmentId) as NavHostFragment
-        navHostFragment.navController
+    private val viewModel by viewModels<RamActivityViewModel>()
+    private val navController by lazy { findNavController(navHostFragmentId) }
+
+    private val navigateAfterSplash = suspend {
+        delay(SplashFragment.DEFAULT_DURATION_MS)
+        navController.navigate(afterSplashDirection)
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -45,9 +47,10 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-        lifecycleScope.launchWhenStarted {
-            delay(SplashFragment.DEFAULT_DURATION_MS)
-            navController.navigate(afterSplashDirection)
-        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.runOnce(navigateAfterSplash)
     }
 }
