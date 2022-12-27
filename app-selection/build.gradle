@@ -84,8 +84,10 @@ dependencies {
     implementation project(path: module.coreData)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
-    implementation project(path: module.featureHome)
-    implementation libs.workRuntime
+    implementation project(path: module.featureTraining)
+    implementation project(path: module.featureQuestion)
+    implementation project(path: module.featureDrawing)
+    implementation project(path: module.featureAbout)
 
     kapt kapts.roomCompiler
     implementation libs.roomKtx
@@ -95,9 +97,6 @@ dependencies {
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-
-    kapt kapts.androidHiltCompiler
-    implementation libs.hiltWork
 
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx

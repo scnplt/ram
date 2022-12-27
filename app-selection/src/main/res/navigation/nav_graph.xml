@@ -13,85 +13,88 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
-    <include app:graph="@navigation/home_nav" />
-
     <fragment
         android:id="@+id/splashFragment"
         android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
-        android:label="SplashFragment"
-        tools:layout="@layout/fragment_splash" />
+        android:label="SplashFragment" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="dev.sertan.android.ram.feature.about.AboutFragment"
+        android:label="AboutFragment" />
+
+    <fragment
+        android:id="@+id/drawingFragment"
+        android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
+        android:label="DrawingFragment" />
 
     <fragment
         android:id="@+id/projectInfoFragment"
         android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
-        android:label="ProjectInfoFragment"
-        tools:layout="@layout/fragment_project_info" />
+        android:label="ProjectInfoFragment" />
+
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="dev.sertan.android.feature.question.ui.QuestionFragment"
+        android:label="QuestionFragment" />
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="dev.sertan.android.ram.appselection.ui.training.TrainingFragment"
-        android:label="fragment_training"
-        tools:layout="@layout/fragment_training" />
+        android:name="dev.sertan.android.ram.feature.training.ui.TrainingFragment"
+        android:label="TrainingFragment" />
 
     <fragment
-        android:id="@+id/practiceFragment"
-        android:name="dev.sertan.android.ram.appselection.ui.practice.PracticeFragment"
-        android:label="fragment_practice"
-        tools:layout="@layout/fragment_practice">
+        android:id="@+id/homeFragment"
+        android:name="dev.sertan.android.ram.appselection.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_practiceFragment_to_resultFragment"
-            app:destination="@id/resultFragment"
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/homeFragment" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_drawingFragment"
+            app:destination="@id/drawingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_questionFragment"
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
         android:id="@+id/resultFragment"
         android:name="dev.sertan.android.ram.appselection.ui.result.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result">
+        tools:layout="@layout/fragment_result" >
         <argument
             android:name="score"
             app:argType="float" />
-        <action
-            android:id="@+id/action_resultFragment_to_practiceFragment"
-            app:destination="@id/practiceFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/homeFragment" />
     </fragment>
 
     <action
-        android:id="@+id/action_global_home_nav"
-        app:destination="@id/home_nav"
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/nav_graph" />
-
-    <action
-        android:id="@+id/action_global_trainingFragment"
-        app:destination="@id/trainingFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/homeFragment" />
-
-    <action
-        android:id="@+id/action_global_practiceFragment"
-        app:destination="@id/practiceFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/homeFragment" />
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
 
     <action
         android:id="@+id/action_global_projectInfoFragment"
@@ -99,4 +102,13 @@
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popUpTo="@id/nav_graph" />
+
+    <action
+        android:id="@+id/action_global_resultFragment"
+        app:destination="@id/resultFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/homeFragment"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 </navigation>
