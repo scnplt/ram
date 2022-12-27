@@ -15,11 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentResultBinding
-import dev.sertan.android.ram.appselection.ui.result.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
-import dev.sertan.android.ram.core.ui.util.extension.navigateTo
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.setRatingByPercent
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
+import dev.sertan.android.ram.core.ui.util.setNavResult
 
 internal class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)
@@ -32,9 +31,14 @@ internal class ResultFragment : Fragment(R.layout.fragment_result) {
                 getString(dev.sertan.android.ram.core.ui.R.string.score_percent, args.score)
             ratingBar.setRatingByPercent(args.score)
             restartButton.setOnClickListener {
-                navigateTo(actionResultFragmentToPracticeFragment())
+                setNavResult(NAVIGATE_TO_QUESTION, true)
+                popBackStack()
             }
             finishButton.setOnClickListener { popBackStack() }
         }
+    }
+
+    companion object {
+        const val NAVIGATE_TO_QUESTION = "nav result key"
     }
 }

@@ -9,24 +9,8 @@
 
 package dev.sertan.android.ram.appselection
 
-import androidx.hilt.work.HiltWorkerFactory
-import androidx.work.Configuration
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.appselection.domain.worker.UpdateLocalDataWorker
 import dev.sertan.android.ram.core.ui.RamApplication
-import javax.inject.Inject
 
 @HiltAndroidApp
-internal class SelectionApp : RamApplication(), Configuration.Provider {
-
-    @Inject
-    lateinit var workerFactory: HiltWorkerFactory
-
-    override fun onCreate() {
-        super.onCreate()
-        UpdateLocalDataWorker.start(this)
-    }
-
-    override fun getWorkManagerConfiguration(): Configuration =
-        Configuration.Builder().setWorkerFactory(workerFactory).build()
-}
+internal class SelectionApp : RamApplication()

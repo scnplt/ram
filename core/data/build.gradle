@@ -40,4 +40,7 @@ dependencies {
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+
+    implementation platform(platforms.firebaseBom)
+    implementation libs.firebaseFirestoreKtx
 }
