@@ -19,6 +19,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.sertan.android.ram.core.common.BuildConfig
 import dev.sertan.android.ram.core.common.getAppModuleName
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -30,7 +31,7 @@ annotation class Collection(val type: CollectionType)
 enum class CollectionType { MATERIAL, QUESTION }
 
 internal fun CollectionType.getReferenceName(context: Context): String =
-    "${context.getAppModuleName()}-${name.lowercase()}"
+    "${BuildConfig.BUILD_TYPE}/${context.getAppModuleName()}/${name.lowercase()}"
 
 @Module
 @InstallIn(SingletonComponent::class)
