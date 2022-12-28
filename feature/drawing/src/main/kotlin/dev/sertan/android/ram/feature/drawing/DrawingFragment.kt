@@ -17,9 +17,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import dev.sertan.android.ram.core.ui.util.extension.getColorList
-import dev.sertan.android.ram.core.ui.util.extension.setIconTint
-import dev.sertan.android.ram.core.ui.util.extension.viewBinding
+import dev.sertan.android.ram.core.ui.util.getColorList
+import dev.sertan.android.ram.core.ui.util.setIconTint
+import dev.sertan.android.ram.core.ui.util.viewBinding
 import dev.sertan.android.ram.feature.drawing.databinding.FragmentDrawingBinding
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch

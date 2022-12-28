@@ -20,11 +20,10 @@ import dev.sertan.android.ram.core.ui.fragment.SplashFragment
 import kotlinx.coroutines.delay
 
 abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layoutResId) {
+
     abstract val navHostFragmentId: Int
     abstract val afterSplashDirection: NavDirections
     abstract val projectInformationDirection: NavDirections
-    abstract val trainingDirection: NavDirections
-    abstract val practiceDirection: NavDirections
 
     private val viewModel by viewModels<RamActivityViewModel>()
     private val navController by lazy { findNavController(navHostFragmentId) }
