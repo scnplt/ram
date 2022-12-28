@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.FragmentProjectInfoBinding
-import dev.sertan.android.ram.core.ui.util.extension.viewBinding
+import dev.sertan.android.ram.core.ui.util.viewBinding
 import kotlinx.coroutines.delay
 
 private const val DEFAULT_HALF_DURATION_MS = 3000L

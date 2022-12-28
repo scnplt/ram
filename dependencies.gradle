@@ -45,16 +45,12 @@ ext {
 
     module = [
             coreCommon     : ":core:common",
-            coreModel      : ":core:model",
             coreUi         : ":core:ui",
             coreData       : ":core:data",
             coreDomain     : ":core:domain",
             coreTools      : ":core:tools",
             featureDrawing : ":feature:drawing",
             featureAbout   : ":feature:about",
-            featureHome    : ":feature:home",
-            featureTraining: ":feature:training",
-            featureQuestion: ":feature:question",
     ]
 
     kapts = [
