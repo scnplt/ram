@@ -13,10 +13,10 @@ import dev.sertan.android.ram.appselection.data.database.model.QuestionEntity
 import dev.sertan.android.ram.appselection.data.service.model.NetworkQuestion
 import dev.sertan.android.ram.appselection.domain.model.QuestionDto
 
-internal fun QuestionEntity.toDto(): QuestionDto = QuestionDto(
+internal fun QuestionEntity.toDto(shuffle: Boolean = true): QuestionDto = QuestionDto(
     uid = uid,
     content = content,
-    materialUidList = materialUidList.shuffled(),
+    materialUidList = if (shuffle) materialUidList.shuffled() else materialUidList,
     correctMaterialUid = correctMaterialUid
 )
 

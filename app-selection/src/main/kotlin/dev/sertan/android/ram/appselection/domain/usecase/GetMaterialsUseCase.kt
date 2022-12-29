@@ -22,6 +22,6 @@ internal class GetMaterialsUseCase @Inject constructor(
     suspend operator fun invoke(): List<Material> = with(materialRepository) {
         val dtoList = getMaterials().getOrNull()?.takeUnless { it.isEmpty() }
             ?: getMaterials(update = true).getOrNull()
-        dtoList?.map(MaterialDto::toUIModel).orEmpty()
+        dtoList?.map(MaterialDto::toUIModel)?.shuffled().orEmpty()
     }
 }

@@ -25,7 +25,8 @@ internal class GetQuestionsUseCase @Inject constructor(
     suspend operator fun invoke(): List<Question> = with(questionRepository) {
         val dtoList = getQuestions().getOrNull()?.takeUnless { it.isEmpty() }
             ?: getQuestions(update = true).getOrNull()
-        dtoList?.map { it.toUIModel(materials = getQuestionMaterials(question = it)) }.orEmpty()
+        dtoList?.map { it.toUIModel(materials = getQuestionMaterials(question = it)) }
+            ?.shuffled().orEmpty()
     }
 
     private suspend fun getQuestionMaterials(question: QuestionDto): List<Material> =
