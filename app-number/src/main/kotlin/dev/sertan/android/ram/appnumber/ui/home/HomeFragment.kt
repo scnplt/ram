@@ -17,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appnumber.R
 import dev.sertan.android.ram.appnumber.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAboutFragment
+import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToCountingFragment
 import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
@@ -25,7 +26,6 @@ import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import kotlinx.coroutines.flow.FlowCollector
-
 
 @AndroidEntryPoint
 internal class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -51,5 +51,6 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
         trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
         practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeFragment()) }
+        countingButton.setOnClickListener { navTo(actionHomeFragmentToCountingFragment()) }
     }
 }
