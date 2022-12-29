@@ -14,6 +14,8 @@ interface SpeechToTextService {
     fun stop()
     fun shutdown()
     fun setListener(listener: Listener)
+    fun convertNumberToWord(number: Int): Result<String?>
+    fun convertWordToNumber(text: String): Result<Int?>
 
     interface Listener {
         fun onResult(textList: List<String>) {}

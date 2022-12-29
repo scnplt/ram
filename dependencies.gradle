@@ -41,16 +41,17 @@ ext {
             multiDex         : "2.0.1",
             hiltWork         : "1.0.0",
             work             : "2.7.1",
+            icu4j            : "72.1",
     ]
 
     module = [
-            coreCommon     : ":core:common",
-            coreUi         : ":core:ui",
-            coreData       : ":core:data",
-            coreDomain     : ":core:domain",
-            coreTools      : ":core:tools",
-            featureDrawing : ":feature:drawing",
-            featureAbout   : ":feature:about",
+            coreCommon    : ":core:common",
+            coreUi        : ":core:ui",
+            coreData      : ":core:data",
+            coreDomain    : ":core:domain",
+            coreTools     : ":core:tools",
+            featureDrawing: ":feature:drawing",
+            featureAbout  : ":feature:about",
     ]
 
     kapts = [
@@ -88,6 +89,7 @@ ext {
             fragmentKtx           : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
             workRuntime           : "androidx.work:work-runtime-ktx:${versions.work}",
+            icu4j                 : "com.ibm.icu:icu4j:${versions.icu4j}",
     ]
 
     kaptAndroidTests = [
