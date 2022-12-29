@@ -19,16 +19,25 @@ import android.speech.RecognizerIntent.EXTRA_LANGUAGE_MODEL
 import android.speech.RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
 import android.speech.SpeechRecognizer
 import android.speech.SpeechRecognizer.RESULTS_RECOGNITION
+import com.ibm.icu.text.RuleBasedNumberFormat
+import com.ibm.icu.text.RuleBasedNumberFormat.SPELLOUT
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.core.common.di.DEFAULT_LOCALE_LANG_TAG
+import dev.sertan.android.ram.core.common.log.RamLogger
+import dev.sertan.android.ram.core.common.tryGetWithResult
+import java.util.Locale
 import javax.inject.Inject
 
 internal class RamSpeechToTextService @Inject constructor(
-    @ApplicationContext private val context: Context
+    @ApplicationContext private val context: Context,
+    private val locale: Locale,
+    private val logger: RamLogger
 ) : SpeechToTextService {
 
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var recognizerIntent: Intent
+
+    private val numberFormatter by lazy { RuleBasedNumberFormat(locale, SPELLOUT) }
 
     init {
         setUpIfNeeded()
@@ -69,4 +78,10 @@ internal class RamSpeechToTextService @Inject constructor(
         }
         speechRecognizer.setRecognitionListener(recognizerListener)
     }
+
+    override fun convertNumberToWord(number: Int): Result<String?> =
+        tryGetWithResult(logger) { numberFormatter.format(number) }
+
+    override fun convertWordToNumber(text: String): Result<Int?> =
+        tryGetWithResult(logger) { numberFormatter.parse(text).toInt() }
 }

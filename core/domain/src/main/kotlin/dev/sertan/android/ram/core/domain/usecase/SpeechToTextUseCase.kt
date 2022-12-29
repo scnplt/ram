@@ -32,4 +32,14 @@ class SpeechToTextUseCase @Inject constructor(
     fun stop(): Unit = speechToTextService.stop()
 
     fun shutdown(): Unit = speechToTextService.shutdown()
+
+    fun convertNumberToWord(number: Int): String =
+        speechToTextService.convertNumberToWord(number).getOrNull().orEmpty()
+
+    fun convertWordToNumber(text: String): Int =
+        speechToTextService.convertWordToNumber(text).getOrNull() ?: CONVERT_FAIL
+
+    companion object {
+        const val CONVERT_FAIL = Int.MIN_VALUE
+    }
 }
