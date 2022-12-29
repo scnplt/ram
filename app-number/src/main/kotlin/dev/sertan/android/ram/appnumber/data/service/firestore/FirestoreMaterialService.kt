@@ -7,9 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.data.service
+package dev.sertan.android.ram.appnumber.data.service.firestore
 
 import com.google.firebase.firestore.CollectionReference
+import dev.sertan.android.ram.appnumber.data.service.MaterialService
 import dev.sertan.android.ram.appnumber.data.service.model.NetworkMaterial
 import dev.sertan.android.ram.core.data.di.Collection
 import dev.sertan.android.ram.core.data.di.CollectionType.MATERIAL

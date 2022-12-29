@@ -9,9 +9,16 @@
 
 package dev.sertan.android.ram.appnumber.ui.model
 
+import androidx.recyclerview.widget.DiffUtil
+
 data class Material(
     val uid: String,
     val description: String,
     val mediaUrl: String,
     val attribution: String?
 )
+
+internal object MaterialDiffUtil : DiffUtil.ItemCallback<Material>() {
+    override fun areItemsTheSame(old: Material, new: Material): Boolean = old.uid == new.uid
+    override fun areContentsTheSame(old: Material, new: Material): Boolean = old == new
+}

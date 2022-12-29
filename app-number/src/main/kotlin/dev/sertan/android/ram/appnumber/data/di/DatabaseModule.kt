@@ -18,6 +18,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dev.sertan.android.ram.appnumber.data.database.NumberDatabase
 import dev.sertan.android.ram.appnumber.data.database.dao.MaterialDao
+import dev.sertan.android.ram.appnumber.data.database.dao.QuestionDao
+import dev.sertan.android.ram.appnumber.data.database.dao.SectionDao
 import javax.inject.Singleton
 
 @Module
@@ -36,4 +38,12 @@ internal object DatabaseModule {
     @Provides
     @Singleton
     fun provideMaterialDao(database: NumberDatabase): MaterialDao = database.materialDao()
+
+    @Provides
+    @Singleton
+    fun provideQuestionDao(database: NumberDatabase): QuestionDao = database.questionDao()
+
+    @Provides
+    @Singleton
+    fun provideSectionDao(database: NumberDatabase): SectionDao = database.sectionDao()
 }

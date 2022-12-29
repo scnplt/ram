@@ -11,10 +11,23 @@ package dev.sertan.android.ram.appnumber.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import dev.sertan.android.ram.appnumber.data.database.dao.MaterialDao
+import dev.sertan.android.ram.appnumber.data.database.dao.QuestionDao
+import dev.sertan.android.ram.appnumber.data.database.dao.SectionDao
 import dev.sertan.android.ram.appnumber.data.database.model.MaterialEntity
+import dev.sertan.android.ram.appnumber.data.database.model.QuestionEntity
+import dev.sertan.android.ram.appnumber.data.database.model.SectionEntity
+import dev.sertan.android.ram.core.data.util.StringToJsonConverter
 
-@Database(version = 1, exportSchema = false, entities = [MaterialEntity::class])
+@Database(
+    version = 1,
+    exportSchema = false,
+    entities = [MaterialEntity::class, QuestionEntity::class, SectionEntity::class]
+)
+@TypeConverters(StringToJsonConverter::class)
 internal abstract class NumberDatabase : RoomDatabase() {
     abstract fun materialDao(): MaterialDao
+    abstract fun questionDao(): QuestionDao
+    abstract fun sectionDao(): SectionDao
 }
