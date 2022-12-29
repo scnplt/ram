@@ -37,6 +37,7 @@ dependencies {
     implementation project(path: module.coreCommon)
     implementation libs.gson
     implementation libs.roomCommon
+    implementation libs.icu4j
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
