@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.appnumber
 
-import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import dev.sertan.android.ram.core.ui.RamApplication
 
 @HiltAndroidApp
-internal class NumberApp : Application()
+internal class NumberApp : RamApplication()

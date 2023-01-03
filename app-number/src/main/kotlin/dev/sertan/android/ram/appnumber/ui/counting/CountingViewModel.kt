@@ -10,34 +10,99 @@
 package dev.sertan.android.ram.appnumber.ui.counting
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.appnumber.domain.usecase.GetSectionsUseCase
+import dev.sertan.android.ram.appnumber.ui.model.Section
 import dev.sertan.android.ram.core.domain.usecase.SpeechToTextUseCase
-import dev.sertan.android.ram.core.domain.usecase.SpeechToTextUseCase.Companion.CONVERT_FAIL
+import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 internal class CountingViewModel @Inject constructor(
-    private val getSectionsUseCase: GetSectionsUseCase,
-    private val speechToTextUseCase: SpeechToTextUseCase
+    getSectionsUseCase: GetSectionsUseCase,
+    private val speechToTextUseCase: SpeechToTextUseCase,
+    private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(CountingUiState.initialState())
-    val uiState = _uiState.asStateFlow()
+    private val sectionIndexStream = MutableStateFlow(0)
+    private val numberIndexStream = MutableStateFlow(0)
 
-    fun listenToNumber(): Unit = speechToTextUseCase(
-        onComplete = { input ->
-            val number = speechToTextUseCase.convertWordToNumber(text = input)
-                .takeUnless { it == CONVERT_FAIL } ?: return@speechToTextUseCase
-            checkNextNumberAndUpdateState(number)
-        },
-        onError = { errorCode -> _uiState.update { it.copy(errorCode = errorCode) } }
+    private val sectionsStream = getSectionsUseCase().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(),
+        initialValue = emptyList()
     )
 
-    private fun checkNextNumberAndUpdateState(number: Int) {
-        _uiState.update { state -> state.copy(isCorrect = state.nextNumber == number) }
+    private var currentSection: StateFlow<Section?> =
+        combine(sectionsStream, sectionIndexStream) { sections, sectionIndex ->
+            sections.getOrNull(sectionIndex)?.also { numberIndexStream.update { 0 } }
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = null
+        )
+
+    private val _uiState = MutableStateFlow<CountingUiState>(CountingUiState.Idle)
+    val uiState get() = _uiState.asStateFlow()
+
+    init {
+        combine(currentSection, numberIndexStream) { section, numberIndex ->
+            if (section == null) return@combine CountingUiState.Failure
+            with(section) {
+                val index = sectionIndexStream.value
+                val lastSectionIndex = sectionsStream.value.lastIndex
+                val number = numberIndex * step + minNumber
+                val state = CountingUiState.Success(
+                    number = number,
+                    step = step,
+                    isNextSectionButtonVisible = number == maxNumber && index < lastSectionIndex,
+                    isFinishButtonVisible = number == maxNumber && index == lastSectionIndex,
+                    isMicButtonEnabled = number + step <= maxNumber
+                )
+                _uiState.update { state }
+            }
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.Eagerly,
+            initialValue = CountingUiState.Idle
+        )
+    }
+
+    fun listenToNumber(listener: NumberListener) {
+        listener.onStart()
+        speechToTextUseCase(
+            onComplete = { input ->
+                val section = currentSection.value ?: return@speechToTextUseCase
+                val numberInput = speechToTextUseCase.convertWordToNumber(text = input)
+                val nextNumber =
+                    numberIndexStream.value * section.step + section.minNumber + section.step
+                listener.onComplete()
+                if (numberInput != nextNumber) return@speechToTextUseCase listener.onWrong()
+                listener.onCorrect(nextNumber, section.step)
+                numberIndexStream.update { it.inc() }
+            },
+            onError = listener::onError
+        )
+    }
+
+    // TODO: Use this function when the number is changed
+    fun speak(text: String): Unit = textToSpeechUseCase.speak(message = text)
+
+    fun nextSection(): Unit = sectionIndexStream.update { it.inc() }
+
+    interface NumberListener {
+        fun onStart()
+        fun onCorrect(newNumber: Int, step: Int)
+        fun onWrong()
+        fun onComplete()
+        fun onError(errorCode: Int)
     }
 }

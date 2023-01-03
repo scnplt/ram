@@ -51,4 +51,3 @@ internal class DefaultMaterialRepository @Inject constructor(
             .forEach { materialDao.insert(materialEntity = it) }
     }
 }
-

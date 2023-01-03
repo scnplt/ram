@@ -10,6 +10,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/small_gap_2"
@@ -20,9 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?textAppearanceDisplayLarge"
+        app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="0" />
 
     <TextView
@@ -31,21 +34,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_8"
         android:textAppearance="?textAppearanceHeadlineMedium"
+        app:layout_constraintBottom_toTopOf="@id/buttonDescriptionTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/currentNumberTextView"
-        tools:text="Bir sonraki sayı nedir?" />
+        tools:text="@string/what_is_the_next_number" />
 
     <TextView
         android:id="@+id/buttonDescriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_2"
+        android:text="@string/mic_button_description"
         android:textAppearance="?textAppearanceBodySmall"
+        app:layout_constraintBottom_toTopOf="@id/micButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
-        tools:text="Aşağıdaki konuşma butonuna basarak cevap verebilirsiniz." />
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/micButton"
@@ -54,7 +59,43 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_8"
         app:icon="@drawable/ic_mic"
+        app:layout_constraintBottom_toTopOf="@id/nextSectionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonDescriptionTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextSectionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:visibility="invisible"
+        app:icon="@drawable/ic_forward"
+        app:iconGravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:visibility="visible" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/finishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finish"
+        android:visibility="invisible"
+        app:icon="@drawable/ic_done"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="@id/nextSectionButton"
+        app:layout_constraintTop_toTopOf="@id/nextSectionButton" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/micButton"
+        app:layout_constraintEnd_toEndOf="@id/micButton"
+        app:layout_constraintStart_toStartOf="@id/micButton"
+        app:layout_constraintTop_toTopOf="@id/micButton"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,17 +9,17 @@
 
 package dev.sertan.android.ram.appnumber.ui.counting
 
-internal data class CountingUiState(
-    val nextNumber: Int,
-    val isCorrect: Boolean?,
-    val errorCode: Int?
-) {
+internal sealed class CountingUiState {
 
-    companion object {
-        fun initialState(): CountingUiState = CountingUiState(
-            nextNumber = 0,
-            isCorrect = null,
-            errorCode = null
-        )
-    }
+    object Idle : CountingUiState()
+
+    object Failure : CountingUiState()
+
+    data class Success(
+        val number: Int,
+        val step: Int,
+        val isNextSectionButtonVisible: Boolean,
+        val isFinishButtonVisible: Boolean,
+        val isMicButtonEnabled: Boolean
+    ) : CountingUiState()
 }

@@ -19,4 +19,3 @@ internal data class QuestionEntity(
     val correctMaterialUid: String,
     val materialUidList: List<String>
 )
-

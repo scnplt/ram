@@ -33,4 +33,3 @@ internal abstract class RepositoryModule {
     @Binds
     abstract fun bindSectionRepository(repository: DefaultSectionRepository): SectionRepository
 }
-

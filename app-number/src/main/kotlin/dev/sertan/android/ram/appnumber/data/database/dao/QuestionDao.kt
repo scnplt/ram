@@ -27,4 +27,3 @@ internal interface QuestionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(questionEntity: QuestionEntity)
 }
-
