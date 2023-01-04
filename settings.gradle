@@ -35,3 +35,5 @@ include ':core:domain'
 
 include ':feature:drawing'
 include ':feature:about'
+include ':feature:material'
+include ':feature:question'

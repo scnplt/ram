@@ -13,8 +13,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.appselection.ui.model.Material
-import dev.sertan.android.ram.appselection.ui.model.MaterialDiffUtil
+import dev.sertan.android.ram.feature.material.ui.MaterialDiffUtil
+import dev.sertan.android.ram.feature.material.ui.model.Material
 import javax.inject.Inject
 
 class QuestionAdapter @Inject constructor() :
