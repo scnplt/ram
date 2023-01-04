@@ -9,10 +9,12 @@
 
 package dev.sertan.android.ram.core.data.util
 
+import androidx.annotation.Keep
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+@Keep
 class StringToJsonConverter {
 
     @TypeConverter
