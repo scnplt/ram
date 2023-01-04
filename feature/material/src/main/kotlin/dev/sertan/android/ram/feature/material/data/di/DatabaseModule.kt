@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.data.di
+package dev.sertan.android.ram.feature.material.data.di
 
 import android.content.Context
 import androidx.room.Room
@@ -16,9 +16,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.appselection.data.database.SelectionDatabase
-import dev.sertan.android.ram.appselection.data.database.dao.MaterialDao
-import dev.sertan.android.ram.appselection.data.database.dao.QuestionDao
+import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialDao
+import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialDatabase
 import javax.inject.Singleton
 
 @Module
@@ -27,18 +26,14 @@ internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext context: Context): SelectionDatabase =
+    fun provideMaterialDatabase(@ApplicationContext context: Context): MaterialDatabase =
         Room.databaseBuilder(
             context,
-            SelectionDatabase::class.java,
-            SelectionDatabase::class.java.name
+            MaterialDatabase::class.java,
+            MaterialDatabase::class.java.name
         ).build()
 
     @Provides
     @Singleton
-    fun provideMaterialDao(database: SelectionDatabase): MaterialDao = database.materialDao()
-
-    @Provides
-    @Singleton
-    fun provideQuestionDao(database: SelectionDatabase): QuestionDao = database.questionDao()
+    fun provideMaterialDao(database: MaterialDatabase): MaterialDao = database.materialDao()
 }

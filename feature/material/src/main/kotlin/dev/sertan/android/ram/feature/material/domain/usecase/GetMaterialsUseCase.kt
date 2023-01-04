@@ -7,15 +7,17 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.domain.usecase
+package dev.sertan.android.ram.feature.material.domain.usecase
 
-import dev.sertan.android.ram.appselection.domain.mapper.toUIModel
-import dev.sertan.android.ram.appselection.domain.model.MaterialDto
-import dev.sertan.android.ram.appselection.domain.repository.MaterialRepository
-import dev.sertan.android.ram.appselection.ui.model.Material
+import android.util.Log
+import dev.sertan.android.ram.feature.material.domain.mapper.toUIModel
+import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
+import dev.sertan.android.ram.feature.material.ui.model.Material
 import javax.inject.Inject
 
-internal class GetMaterialsUseCase @Inject constructor(
+
+class GetMaterialsUseCase @Inject constructor(
     private val materialRepository: MaterialRepository
 ) {
 

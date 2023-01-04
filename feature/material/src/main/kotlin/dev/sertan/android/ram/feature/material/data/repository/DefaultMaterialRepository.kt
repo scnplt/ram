@@ -7,24 +7,25 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.data.repository
+package dev.sertan.android.ram.feature.material.data.repository
 
-import dev.sertan.android.ram.appselection.data.database.dao.MaterialDao
-import dev.sertan.android.ram.appselection.data.database.model.MaterialEntity
-import dev.sertan.android.ram.appselection.data.mapper.toDto
-import dev.sertan.android.ram.appselection.data.mapper.toEntity
-import dev.sertan.android.ram.appselection.data.service.MaterialService
-import dev.sertan.android.ram.appselection.domain.model.MaterialDto
-import dev.sertan.android.ram.appselection.domain.repository.MaterialRepository
 import dev.sertan.android.ram.core.common.log.RamLogger
 import dev.sertan.android.ram.core.common.tryGetWithResult
 import dev.sertan.android.ram.core.common.tryMapNotNull
 import dev.sertan.android.ram.core.common.tryWithLogger
+import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialDao
+import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialEntity
+import dev.sertan.android.ram.feature.material.data.datasource.remote.FirestoreMaterialSource
+import dev.sertan.android.ram.feature.material.data.datasource.remote.NetworkMaterial
+import dev.sertan.android.ram.feature.material.data.mapper.toDto
+import dev.sertan.android.ram.feature.material.data.mapper.toEntity
+import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
 import javax.inject.Inject
 
 internal class DefaultMaterialRepository @Inject constructor(
     private val materialDao: MaterialDao,
-    private val materialService: MaterialService,
+    private val materialService: FirestoreMaterialSource,
     private val logger: RamLogger
 ) : MaterialRepository {
 
@@ -46,7 +47,7 @@ internal class DefaultMaterialRepository @Inject constructor(
     private suspend fun updateMaterialsFromRemote() {
         val remoteData = materialService.getMaterials()
         materialDao.deleteAll()
-        remoteData.tryMapNotNull(logger) { it.toEntity() }
+        remoteData.tryMapNotNull(logger = logger, transform = NetworkMaterial::toEntity)
             .forEach { materialDao.insert(materialEntity = it) }
     }
 }

@@ -7,10 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.data.service
+package dev.sertan.android.ram.feature.material.ui.model
 
-import dev.sertan.android.ram.appselection.data.service.model.NetworkQuestion
-
-internal interface QuestionService {
-    suspend fun getQuestions(): List<NetworkQuestion>
-}
+data class Material(
+    val uid: String,
+    val description: String,
+    val mediaUrl: String,
+    val attribution: String?
+)

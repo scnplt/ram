@@ -42,6 +42,7 @@ ext {
             hiltWork         : "1.0.0",
             work             : "2.7.1",
             icu4j            : "72.1",
+            recyclerView     : "1.2.1"
     ]
 
     module = [
@@ -51,7 +52,7 @@ ext {
             coreDomain    : ":core:domain",
             coreTools     : ":core:tools",
             featureDrawing: ":feature:drawing",
-            featureAbout  : ":feature:about",
+            featureMaterial: ":feature:material",
     ]
 
     kapts = [
@@ -90,7 +91,7 @@ ext {
             multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
             workRuntime           : "androidx.work:work-runtime-ktx:${versions.work}",
             icu4j                 : "com.ibm.icu:icu4j:${versions.icu4j}",
-    ]
+            recyclerView          : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
 
     kaptAndroidTests = [
             hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",

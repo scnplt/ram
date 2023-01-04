@@ -7,11 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.data.database.model
+package dev.sertan.android.ram.feature.material.data.datasource.local
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Keep
 @Entity(tableName = "materials")
 internal data class MaterialEntity(
     @PrimaryKey val uid: String,

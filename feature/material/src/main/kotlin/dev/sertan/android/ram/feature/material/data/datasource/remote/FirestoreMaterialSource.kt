@@ -7,19 +7,18 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.data.service
+package dev.sertan.android.ram.feature.material.data.datasource.remote
 
 import com.google.firebase.firestore.CollectionReference
-import dev.sertan.android.ram.appselection.data.service.model.NetworkMaterial
 import dev.sertan.android.ram.core.data.di.Collection
 import dev.sertan.android.ram.core.data.di.CollectionType.MATERIAL
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
-internal class FirestoreMaterialService @Inject constructor(
-    @Collection(MATERIAL) private val materialCollection: CollectionReference
-) : MaterialService {
+internal class FirestoreMaterialSource @Inject constructor(
+    @Collection(MATERIAL) private val collection: CollectionReference
+) {
 
-    override suspend fun getMaterials(): List<NetworkMaterial> =
-        materialCollection.get().await().toObjects(NetworkMaterial::class.java)
+    suspend fun getMaterials(): List<NetworkMaterial> =
+        collection.get().await().toObjects(NetworkMaterial::class.java)
 }
