@@ -9,7 +9,7 @@
 
 package dev.sertan.android.ram.appnumber.ui.practice
 
-import dev.sertan.android.ram.appnumber.ui.model.Question
+import dev.sertan.android.ram.feature.question.ui.model.Question
 
 internal data class PracticeUiState(
     val question: Question?,

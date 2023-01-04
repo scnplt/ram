@@ -12,8 +12,8 @@ package dev.sertan.android.ram.appnumber.ui.practice.adapter
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.appnumber.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.appnumber.ui.model.Material
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
+import dev.sertan.android.ram.feature.material.ui.model.Material
 
 class QuestionViewHolder(
     private val binding: ItemQuestionMaterialBinding,
