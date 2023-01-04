@@ -81,14 +81,12 @@ android {
 
 dependencies {
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreData)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureDrawing)
     implementation project(path: module.featureAbout)
-
-    kapt kapts.roomCompiler
-    implementation libs.roomKtx
+    implementation project(path: module.featureMaterial)
+    implementation project(path: module.featureQuestion)
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
@@ -98,5 +96,4 @@ dependencies {
 
     implementation platform(platforms.firebaseBom)
     implementation libs.firebasePerfKtx
-    implementation libs.firebaseFirestoreKtx
 }

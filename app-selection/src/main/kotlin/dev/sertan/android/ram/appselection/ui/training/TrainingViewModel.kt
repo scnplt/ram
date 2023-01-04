@@ -12,8 +12,8 @@ package dev.sertan.android.ram.appselection.ui.training
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.sertan.android.ram.appselection.domain.usecase.GetMaterialsUseCase
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
+import dev.sertan.android.ram.feature.material.domain.usecase.GetMaterialsUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

@@ -19,11 +19,7 @@ ext {
     ]
 
     versions = [
-            coreKtx          : '1.9.0',
-            appcompat        : "1.5.1",
             material         : '1.7.0',
-            coroutines       : "1.6.4",
-            coroutinesAndroid: '1.6.4',
             hilt             : '2.44.2',
             room             : "2.4.3",
             firebaseBom      : '31.1.0',
@@ -31,34 +27,29 @@ ext {
             glide            : "4.14.2",
             ossLicenses      : "17.0.0",
             gson             : "2.10",
-            junit            : "4.13.2",
-            extJunit         : "1.1.3",
-            espressoCore     : "3.4.0",
-            truth            : "1.1.3",
             timber           : "5.0.1",
             preference       : '1.2.0',
             fragmentKtx      : '1.5.5',
             multiDex         : "2.0.1",
-            hiltWork         : "1.0.0",
-            work             : "2.7.1",
             icu4j            : "72.1",
+            recyclerView     : "1.2.1"
     ]
 
     module = [
-            coreCommon    : ":core:common",
-            coreUi        : ":core:ui",
-            coreData      : ":core:data",
-            coreDomain    : ":core:domain",
-            coreTools     : ":core:tools",
-            featureDrawing: ":feature:drawing",
-            featureAbout  : ":feature:about",
+            coreCommon     : ":core:common",
+            coreUi         : ":core:ui",
+            coreData       : ":core:data",
+            coreDomain     : ":core:domain",
+            featureDrawing : ":feature:drawing",
+            featureAbout   : ":feature:about",
+            featureMaterial: ":feature:material",
+            featureQuestion: ":feature:question",
     ]
 
     kapts = [
             hiltCompiler       : "com.google.dagger:hilt-compiler:${versions.hilt}",
             roomCompiler       : "androidx.room:room-compiler:${versions.room}",
             glide              : "com.github.bumptech.glide:compiler:${versions.glide}",
-            androidHiltCompiler: "androidx.hilt:hilt-compiler:${versions.hiltWork}",
     ]
 
     platforms = [
@@ -66,17 +57,10 @@ ext {
     ]
 
     libs = [
-            coreKtx               : "androidx.core:core-ktx:${versions.coreKtx}",
-            appcompat             : "androidx.appcompat:appcompat:${versions.appcompat}",
             material              : "com.google.android.material:material:${versions.material}",
-            coroutinesPlayServices: "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines}",
-            coroutinesAndroid     : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutinesAndroid}",
             hiltAndroid           : "com.google.dagger:hilt-android:${versions.hilt}",
-            hiltWork              : "androidx.hilt:hilt-work:${versions.hiltWork}",
-            roomRuntime           : "androidx.room:room-runtime:${versions.room}",
             roomKtx               : "androidx.room:room-ktx:${versions.room}",
             roomCommon            : "androidx.room:room-common:${versions.room}",
-            firebaseStorageKtx    : "com.google.firebase:firebase-storage-ktx",
             firebaseFirestoreKtx  : "com.google.firebase:firebase-firestore-ktx",
             firebasePerfKtx       : "com.google.firebase:firebase-perf-ktx",
             navigationUiKtx       : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
@@ -88,22 +72,7 @@ ext {
             preference            : "androidx.preference:preference:${versions.preference}",
             fragmentKtx           : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex              : "androidx.multidex:multidex:${versions.multiDex}",
-            workRuntime           : "androidx.work:work-runtime-ktx:${versions.work}",
             icu4j                 : "com.ibm.icu:icu4j:${versions.icu4j}",
-    ]
-
-    kaptAndroidTests = [
-            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
-    ]
-
-    testLibs = [
-            junit: "junit:junit:${versions.junit}",
-    ]
-
-    androidTestLibs = [
-            hiltAndroidTesting: "com.google.dagger:hilt-android-testing:${versions.hilt}",
-            extJunit          : "androidx.test.ext:junit:${versions.extJunit}",
-            espressoCore      : "androidx.test.espresso:espresso-core:${versions.espressoCore}",
-            truth             : "com.google.truth:truth:${versions.truth}"
+            recyclerView          : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
     ]
 }

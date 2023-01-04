@@ -18,7 +18,6 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentPracticeBinding
-import dev.sertan.android.ram.appselection.ui.model.Material
 import dev.sertan.android.ram.appselection.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionAdapter
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionViewHolder
@@ -27,6 +26,7 @@ import dev.sertan.android.ram.core.ui.util.playSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.material.ui.model.Material
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 
