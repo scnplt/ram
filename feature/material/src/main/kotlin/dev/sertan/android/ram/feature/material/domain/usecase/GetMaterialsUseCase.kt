@@ -9,13 +9,11 @@
 
 package dev.sertan.android.ram.feature.material.domain.usecase
 
-import android.util.Log
 import dev.sertan.android.ram.feature.material.domain.mapper.toUIModel
 import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
 import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
 import dev.sertan.android.ram.feature.material.ui.model.Material
 import javax.inject.Inject
-
 
 class GetMaterialsUseCase @Inject constructor(
     private val materialRepository: MaterialRepository
