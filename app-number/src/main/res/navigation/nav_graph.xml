@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.sertan.android.ram.appnumber.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_drawingFragment"
+            app:destination="@id/drawingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_countingFragment"
+            app:destination="@id/countingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
+    <fragment
+        android:id="@+id/drawingFragment"
+        android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
+        android:label="DrawingFragment"
+        tools:layout="@layout/fragment_drawing" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="dev.sertan.android.ram.feature.about.AboutFragment"
+        android:label="AboutFragment" />
+
+    <fragment
+        android:id="@+id/practiceFragment"
+        android:name="dev.sertan.android.ram.appnumber.ui.practice.PracticeFragment"
+        android:label="fragment_practice"
+        tools:layout="@layout/fragment_practice" >
+        <action
+            android:id="@+id/action_practiceFragment_to_resultFragment"
+            app:destination="@id/resultFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/homeFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="dev.sertan.android.ram.appnumber.ui.training.TrainingFragment"
+        android:label="fragment_training"
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_trainingFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/homeFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="dev.sertan.android.ram.appnumber.ui.result.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="score"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_resultFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/homeFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/countingFragment"
+        android:name="dev.sertan.android.ram.appnumber.ui.counting.CountingFragment"
+        android:label="fragment_counting"
+        tools:layout="@layout/fragment_counting" />
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+</navigation>
