@@ -35,6 +35,8 @@ internal class CountingViewModel @Inject constructor(
     private val sectionIndexStream = MutableStateFlow(0)
     private val numberIndexStream = MutableStateFlow(0)
 
+    var listener: NumberListener? = null
+
     private val sectionsStream = getSectionsUseCase().stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
@@ -76,24 +78,26 @@ internal class CountingViewModel @Inject constructor(
         )
     }
 
-    fun listenToNumber(listener: NumberListener) {
-        listener.onStart()
+    fun listenToNumber() {
+        listener?.onStart()
         speechToTextUseCase(
             onComplete = { input ->
                 val section = currentSection.value ?: return@speechToTextUseCase
                 val numberInput = speechToTextUseCase.convertWordToNumber(text = input)
                 val nextNumber =
                     numberIndexStream.value * section.step + section.minNumber + section.step
-                listener.onComplete()
-                if (numberInput != nextNumber) return@speechToTextUseCase listener.onWrong()
-                listener.onCorrect(nextNumber, section.step)
+                listener?.onComplete()
+                if (numberInput != nextNumber) {
+                    listener?.onWrong()
+                    return@speechToTextUseCase
+                }
+                listener?.onCorrect(nextNumber, section.step)
                 numberIndexStream.update { it.inc() }
             },
-            onError = listener::onError
+            onError = { errorCode -> listener?.onError(errorCode) }
         )
     }
 
-    // TODO: Use this function when the number is changed
     fun speak(text: String): Unit = textToSpeechUseCase.speak(message = text)
 
     fun nextSection(): Unit = sectionIndexStream.update { it.inc() }

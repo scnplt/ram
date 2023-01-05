@@ -35,7 +35,7 @@ internal class MainActivity : RamActivity(R.layout.activity_main) {
         }
 
     private fun showPermissionDetailDialog() {
-        // TODO: Refactor this
+        // TASK: Refactor this
         val alertDialog = AlertDialog.Builder(this)
             .setTitle("Uygulama izinlerini neden kabul etmelisiniz?")
             .setMessage(

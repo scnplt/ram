@@ -33,7 +33,11 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private val uiStateFlowCollector = FlowCollector<CountingUiState> {
         binding.contentLayout.isInvisible = it !is CountingUiState.Success
         if (it == CountingUiState.Failure) showErrorMessage()
-        if (it is CountingUiState.Success) showNumber(it)
+        if (it is CountingUiState.Success) {
+            showNumber(it)
+            viewModel.takeIf { binding.micButton.isEnabled }
+                ?.speak(text = getString(R.string.current_number_what_the_next, it.number, it.step))
+        }
     }
 
     private val numberListener = object : CountingViewModel.NumberListener {
@@ -65,15 +69,14 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     }
 
     private fun setUpListeners(): Unit = with(binding) {
-        with(viewModel) {
-            micButton.setOnClickListener { listenToNumber(numberListener) }
-            nextSectionButton.setOnClickListener { nextSection() }
-            finishButton.setOnClickListener { popBackStack() }
-        }
+        viewModel.listener = numberListener
+        micButton.setOnClickListener { viewModel.listenToNumber() }
+        nextSectionButton.setOnClickListener { viewModel.nextSection() }
+        finishButton.setOnClickListener { popBackStack() }
     }
 
     private fun showErrorMessage() {
-        // TODO: Refactor this function and use the custom dialog for showing an error message
+        // TASK: Refactor this function and use the custom dialog for showing an error message
         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
     }
 
