@@ -9,8 +9,16 @@
 
 package dev.sertan.android.ram.appletter.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appletter.NavGraphDirections.Companion.actionGlobalHomeFragment
+import dev.sertan.android.ram.appletter.NavGraphDirections.Companion.actionGlobalProjectInfoFragment
+import dev.sertan.android.ram.appletter.R
+import dev.sertan.android.ram.core.ui.RamActivity
 
 @AndroidEntryPoint
-internal class MainActivity : AppCompatActivity()
+internal class MainActivity : RamActivity(R.layout.activity_main) {
+    override val navHostFragmentId: Int = R.id.fragmentContainerView
+    override val afterSplashDirection: NavDirections = actionGlobalHomeFragment()
+    override val projectInformationDirection: NavDirections = actionGlobalProjectInfoFragment()
+}
