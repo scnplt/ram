@@ -12,19 +12,28 @@ package dev.sertan.android.ram.core.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
 import dev.sertan.android.ram.core.ui.util.appNo
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import java.util.Locale
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SplashFragment : Fragment(R.layout.fragment_splash) {
     private val binding by viewBinding(FragmentSplashBinding::bind)
 
+    @Inject
+    lateinit var locale: Locale
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.appNameTextView.text =
-            with(requireContext()) { getString(R.string.splash_title, appNo, labelWithoutPrefix) }
+        with(binding) {
+            appNoTextView.text = getString(R.string.app_no, context?.appNo)
+            appNameTextView.text = context?.labelWithoutPrefix?.uppercase(locale)
+        }
     }
 
     companion object {

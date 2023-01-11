@@ -16,4 +16,9 @@
     <dimen name="small_gap_8">32dp</dimen>
 
     <dimen name="size_icon_button_content">32dp</dimen>
+
+    <dimen name="text_size_m">16sp</dimen>
+    <dimen name="text_size_l">32sp</dimen>
+
+    <dimen name="text_line_height_s">18sp</dimen>
 </resources>
