@@ -19,6 +19,7 @@
 
     <include layout="@layout/layout_base_for_splash" />
 
+    <!-- WARN: This text may be removed -->
     <TextView
         android:id="@+id/programInformationTextView"
         android:layout_width="0dp"
@@ -27,6 +28,7 @@
         android:gravity="center_horizontal"
         android:text="@string/program_information"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,10 +43,23 @@
         android:text="@string/general_title"
         android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
+        android:textSize="@dimen/text_size_m"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/programInformationTextView"
         app:layout_constraintStart_toStartOf="@id/programInformationTextView"
         app:layout_constraintTop_toBottomOf="@id/programInformationTextView" />
+
+    <TextView
+        android:id="@+id/appNoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="@dimen/text_size_l"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/firstTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/firstTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/firstTitleTextView"
+        tools:text="-1-" />
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -61,6 +76,9 @@
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/firstTitleTextView"
-        tools:text="-1-\nRenkleri Tanıyalım" />
+        app:layout_constraintTop_toBottomOf="@id/appNoTextView"
+        tools:text="@tools:sample/lorem[2]" />
+
+    <!-- TASK: Add application image (ImageView)-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

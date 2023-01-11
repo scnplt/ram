@@ -21,7 +21,7 @@ import dev.sertan.android.ram.core.common.log.TimberRamLogger
 import java.util.Locale
 import javax.inject.Singleton
 
-const val DEFAULT_LOCALE_LANG_TAG = "tr-TR"
+const val DEFAULT_LOCALE_LANG_TAG = "tr"
 
 @Module
 @InstallIn(SingletonComponent::class)
