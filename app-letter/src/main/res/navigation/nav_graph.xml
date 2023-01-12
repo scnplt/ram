@@ -69,6 +69,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_writeFragment"
+            app:destination="@id/writeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -102,6 +109,14 @@
         <argument
             android:name="score"
             app:argType="float" />
+        <action
+            android:id="@+id/action_resultFragment_to_writeFragment"
+            app:destination="@id/writeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/homeFragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -118,6 +133,12 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+
+    <fragment
+        android:id="@+id/writeFragment"
+        android:name="dev.sertan.android.ram.appletter.ui.write.WriteFragment"
+        android:label="fragment_write"
+        tools:layout="@layout/fragment_write" />
 
     <action
         android:id="@+id/action_global_homeFragment"

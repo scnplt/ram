@@ -44,4 +44,5 @@ dependencies {
 
     implementation platform(platforms.firebaseBom)
     implementation libs.firebaseFirestoreKtx
+    implementation libs.firebaseConfigKtx
 }

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentResultBinding
 import dev.sertan.android.ram.appletter.ui.result.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
+import dev.sertan.android.ram.appletter.ui.result.ResultFragmentDirections.Companion.actionResultFragmentToWriteFragment
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.setRatingByPercent
@@ -33,6 +34,7 @@ internal class ResultFragment : Fragment(R.layout.fragment_result) {
             ratingBar.setRatingByPercent(args.score)
             restartButton.setOnClickListener { navTo(actionResultFragmentToPracticeFragment()) }
             finishButton.setOnClickListener { popBackStack() }
+            writeButton.setOnClickListener { navTo(actionResultFragmentToWriteFragment()) }
         }
     }
 }

@@ -20,6 +20,7 @@ import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
+import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToWriteFragment
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
@@ -50,5 +51,6 @@ internal class HomeFragment : Fragment(R.layout.fragment_home) {
         drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
         trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
         practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeFragment()) }
+        writeButton.setOnClickListener { navTo(actionHomeFragmentToWriteFragment()) }
     }
 }

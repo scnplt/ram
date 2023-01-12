@@ -83,11 +83,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"
-        android:layout_marginBottom="@dimen/small_gap_7"
         android:text="@string/drawing"
         app:icon="@drawable/ic_brush"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/writeButton"
         app:layout_constraintEnd_toEndOf="@id/practiceButton"
         app:layout_constraintStart_toStartOf="@id/practiceButton"
         app:layout_constraintTop_toBottomOf="@id/practiceButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/writeButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:layout_marginBottom="@dimen/small_gap_7"
+        android:text="@string/writing_practice"
+        app:icon="@drawable/ic_pen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/drawingButton"
+        app:layout_constraintStart_toStartOf="@id/drawingButton"
+        app:layout_constraintTop_toBottomOf="@id/drawingButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
