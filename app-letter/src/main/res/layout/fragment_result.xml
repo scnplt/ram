@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/small_gap_2"
+    tools:context=".ui.result.ResultFragment">
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:numStars="4"
+        android:stepSize="0.1"
+        android:theme="@style/Widget.RAM.RatingBar"
+        app:layout_constraintBottom_toTopOf="@id/scoreTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:rating="2.4" />
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_8"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceDisplayMedium"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@id/restartButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar"
+        tools:text="Puan: 60/100" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/restartButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_7"
+        android:text="@string/try_again"
+        app:icon="@drawable/ic_refresh"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/writeButton"
+        app:layout_constraintEnd_toEndOf="@id/scoreTextView"
+        app:layout_constraintStart_toStartOf="@id/scoreTextView"
+        app:layout_constraintTop_toBottomOf="@id/scoreTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/writeButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:text="@string/go_to_writing_practice"
+        app:icon="@drawable/ic_pen"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/finishButton"
+        app:layout_constraintEnd_toEndOf="@id/restartButton"
+        app:layout_constraintStart_toStartOf="@id/restartButton"
+        app:layout_constraintTop_toBottomOf="@id/restartButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/finishButton"
+        style="@style/Widget.RAM.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:text="@string/finish"
+        app:icon="@drawable/ic_done"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/writeButton"
+        app:layout_constraintStart_toStartOf="@id/writeButton"
+        app:layout_constraintTop_toBottomOf="@id/writeButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>
