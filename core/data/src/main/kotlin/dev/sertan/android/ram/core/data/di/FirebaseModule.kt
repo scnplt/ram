@@ -38,6 +38,8 @@ enum class CollectionType { MATERIAL, QUESTION, SECTION }
 internal fun CollectionType.getReferenceName(context: Context): String =
     "${BuildConfig.BUILD_TYPE}/${context.getAppModuleName()}/${name.lowercase()}"
 
+private const val CONFIG_MIN_FETCH_INTERVAL_SEC = 3600L
+
 @Module
 @InstallIn(SingletonComponent::class)
 internal class FirebaseModule {
@@ -48,32 +50,34 @@ internal class FirebaseModule {
 
     @Provides
     @Singleton
-    fun provideFirebaseRemoteConfig(): FirebaseRemoteConfig =
-        Firebase.remoteConfig.apply {
-            setConfigSettingsAsync(remoteConfigSettings {
-                minimumFetchIntervalInSeconds = 3600
-            })
-        }
+    fun provideFirebaseRemoteConfig(): FirebaseRemoteConfig = Firebase.remoteConfig.apply {
+        setConfigSettingsAsync(
+            remoteConfigSettings { minimumFetchIntervalInSeconds = CONFIG_MIN_FETCH_INTERVAL_SEC }
+        )
+    }
 
     @Provides
     @Singleton
     @Collection(CollectionType.MATERIAL)
     fun provideMaterialCollectionReference(
-        @ApplicationContext context: Context, firestore: FirebaseFirestore
+        @ApplicationContext context: Context,
+        firestore: FirebaseFirestore
     ): CollectionReference = firestore.collection(CollectionType.MATERIAL.getReferenceName(context))
 
     @Provides
     @Singleton
     @Collection(CollectionType.QUESTION)
     fun provideQuestionCollectionReference(
-        @ApplicationContext context: Context, firestore: FirebaseFirestore
+        @ApplicationContext context: Context,
+        firestore: FirebaseFirestore
     ): CollectionReference = firestore.collection(CollectionType.QUESTION.getReferenceName(context))
 
     @Provides
     @Singleton
     @Collection(CollectionType.SECTION)
     fun provideSectionCollectionReference(
-        @ApplicationContext context: Context, firestore: FirebaseFirestore
+        @ApplicationContext context: Context,
+        firestore: FirebaseFirestore
     ): CollectionReference = firestore.collection(CollectionType.SECTION.getReferenceName(context))
 
     @Provides
