@@ -16,7 +16,7 @@ import androidx.annotation.ArrayRes
 import androidx.annotation.RawRes
 
 private const val NO_COLOR = Int.MIN_VALUE
-private const val APP_NAME_PATTERN = "(?<=RAM-[0-9]\\s).*"
+private const val APP_NAME_PATTERN = "(?<=RAM-\\d\\s|\\d\\d\\s).*"
 private const val APP_NO_PATTERN = "(?<=RAM-)\\d+"
 
 fun Context.playSound(@RawRes soundResId: Int): Unit = MediaPlayer.create(this, soundResId).start()
