@@ -25,6 +25,7 @@ class RamButton @JvmOverloads constructor(
 
     private val binding = viewBinding(CustomButtonBinding::inflate)
 
+    @Suppress("MemberVisibilityCanBePrivate")
     var buttonText: String
         get() = binding.textView.text.toString()
         set(value) {

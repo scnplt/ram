@@ -21,6 +21,7 @@ import kotlin.properties.ReadOnlyProperty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@Suppress("unused")
 fun <VB : ViewBinding> Fragment.viewBinding(
     viewBindingFactory: (View) -> VB
 ): ReadOnlyProperty<Fragment, VB> = FragmentViewBindingDelegate(viewBindingFactory)
