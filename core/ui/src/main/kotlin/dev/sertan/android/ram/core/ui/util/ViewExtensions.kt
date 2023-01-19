@@ -14,13 +14,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
 import androidx.annotation.ColorInt
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
-
-fun View.hide() {
-    if (visibility == View.VISIBLE) isGone = true
-}
 
 fun View.show() {
     if (visibility != View.VISIBLE) isVisible = true

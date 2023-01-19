@@ -29,13 +29,6 @@ class SpeechToTextUseCase @Inject constructor(
         speechToTextService.start()
     }
 
-    fun stop(): Unit = speechToTextService.stop()
-
-    fun shutdown(): Unit = speechToTextService.shutdown()
-
-    fun convertNumberToWord(number: Int): String =
-        speechToTextService.convertNumberToWord(number).getOrNull().orEmpty()
-
     fun convertWordToNumber(text: String): Int =
         speechToTextService.convertWordToNumber(text).getOrNull() ?: CONVERT_FAIL
 
