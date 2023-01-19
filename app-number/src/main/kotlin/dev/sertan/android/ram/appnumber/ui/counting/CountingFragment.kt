@@ -18,8 +18,8 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appnumber.R
 import dev.sertan.android.ram.appnumber.databinding.FragmentCountingBinding
-import dev.sertan.android.ram.core.ui.R.raw
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
@@ -47,10 +47,13 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
             binding.progressIndicator.show()
         }
 
-        override fun onCorrect(newNumber: Int, step: Int): Unit =
-            requireContext().playSound(raw.correct)
+        override fun onCorrect(newNumber: Int, step: Int) {
+            context?.playCorrectSound()
+        }
 
-        override fun onWrong(): Unit = requireContext().playSound(raw.negative)
+        override fun onWrong() {
+            context?.playNegativeSound()
+        }
 
         override fun onComplete(): Unit = stopLoadingAnimation()
 

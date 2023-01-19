@@ -22,7 +22,8 @@ import dev.sertan.android.ram.appnumber.ui.practice.PracticeFragmentDirections.C
 import dev.sertan.android.ram.appnumber.ui.practice.adapter.QuestionAdapter
 import dev.sertan.android.ram.appnumber.ui.practice.adapter.QuestionViewHolder
 import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
@@ -80,12 +81,12 @@ class PracticeFragment :
         viewModel.isMaterialCorrect(material)
 
     override fun onCorrectMaterialClicked(material: Material) {
-        context?.playSound(dev.sertan.android.ram.core.ui.R.raw.correct)
+        context?.playCorrectSound()
         viewModel.setAnswerState(isCorrect = true)
     }
 
     override fun onWrongMaterialClicked(material: Material) {
-        context?.playSound(dev.sertan.android.ram.core.ui.R.raw.negative)
+        context?.playNegativeSound()
         viewModel.setAnswerState(isCorrect = false)
     }
 

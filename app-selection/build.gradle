@@ -88,6 +88,8 @@ dependencies {
     implementation project(path: module.featureMaterial)
     implementation project(path: module.featureQuestion)
 
+    implementation libs.flexBox
+
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
 

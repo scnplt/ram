@@ -9,10 +9,10 @@
 
 package dev.sertan.android.ram.appselection.ui.practice.adapter
 
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.appselection.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
+import dev.sertan.android.ram.core.ui.util.show
 import dev.sertan.android.ram.feature.material.ui.model.Material
 
 class QuestionViewHolder(
@@ -22,13 +22,19 @@ class QuestionViewHolder(
 
     fun bind(material: Material): Unit = with(binding) {
         materialImageView.loadFromUrl(material.mediaUrl)
-        materialCardView.setOnClickListener {
+        materialConstraintLayout.setOnClickListener {
             if (listener == null) return@setOnClickListener
             with(listener) {
                 isMaterialCorrect(material)?.let {
-                    if (it) onCorrectMaterialClicked(material) else onWrongMaterialClicked(material)
-                    correctImageView.isInvisible = !it
-                    wrongImageView.isInvisible = it
+                    val icon = if (it) {
+                        onCorrectMaterialClicked(material)
+                        dev.sertan.android.ram.core.ui.R.drawable.ic_check_circle
+                    } else {
+                        onWrongMaterialClicked(material)
+                        dev.sertan.android.ram.core.ui.R.drawable.ic_outline_cancel
+                    }
+                    answerStateImageView.setImageResource(icon)
+                    answerStateImageView.show()
                 }
                 onMaterialClicked(material)
             }

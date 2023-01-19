@@ -40,4 +40,5 @@
     <string name="this_publication_has_been_produced">Bu yayın Avrupa Birliği ve Türkiye Cumhuriyeti\'nin mali katkısıyla hazırlanmıştır. Bu yayının içeriğinden yalnızca <font fgcolor="red">Elazığ Rehberlik ve Araştırma Merkezi Müdürlüğü</font> sorumludur ve bu içerik hiçbir şekilde Avrupa Birliği veya Türkiye Cumhuriyeti\'nin görüş ve tutumunu yansıtmamaktadır.</string>
     <string name="publication_date_mm_yyyy">MART - 2023</string>
     <string name="app_no">-%1$d-</string>
+    <string name="about">Hakkında</string>
 </resources>

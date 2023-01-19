@@ -12,82 +12,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/small_gap_2"
     tools:context=".ui.home.HomeFragment">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/aboutButton"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/buttonPanelFlexLayout"
+        style="@style/Widget.RAM.FlexboxLayout.Row"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:icon="@drawable/ic_help_outline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/changeVoiceSupportButton"
-        style="?attr/materialIconButtonFilledStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/change_voice_support"
-        app:icon="@drawable/ic_volume"
+        app:flexDirection="row"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/aboutButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/about"
+            android:src="@drawable/ic_info" />
+
+        <ImageButton
+            android:id="@+id/changeVoiceSupportButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/change_voice_support"
+            android:src="@drawable/ic_volume" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        app:dividerColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_7"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_5"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceDisplaySmall"
-        app:layout_constraintBottom_toTopOf="@id/trainingButton"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changeVoiceSupportButton"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/divider"
         tools:text="@tools:sample/lorem[3]" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/trainingButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
+    <ImageView
+        android:id="@+id/appImageView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_8"
-        android:text="@string/training"
-        app:icon="@drawable/ic_play"
-        app:layout_constraintBottom_toTopOf="@id/practiceButton"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/small_gap_5"
+        android:layout_marginTop="@dimen/small_gap_5"
+        android:background="@drawable/bg_card"
+        android:contentDescription="@string/application_logo"
+        android:paddingHorizontal="@dimen/gap_1"
+        android:paddingVertical="@dimen/small_gap_9"
+        android:scaleType="fitCenter"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintDimensionRatio="1.8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView"
-        app:layout_constraintWidth_percent="0.5" />
+        app:srcCompat="@drawable/ic_splash" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/practiceButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_4"
-        android:text="@string/practice"
-        app:icon="@drawable/ic_pen"
-        app:layout_constraintBottom_toTopOf="@id/drawingButton"
-        app:layout_constraintEnd_toEndOf="@id/trainingButton"
-        app:layout_constraintStart_toStartOf="@id/trainingButton"
-        app:layout_constraintTop_toBottomOf="@id/trainingButton" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/drawingButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_4"
-        android:layout_marginBottom="@dimen/small_gap_7"
-        android:text="@string/drawing"
-        app:icon="@drawable/ic_brush"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/practiceButton"
-        app:layout_constraintStart_toStartOf="@id/practiceButton"
-        app:layout_constraintTop_toBottomOf="@id/practiceButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appImageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/small_gap_8">
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/trainingButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_s"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_play"
+                app:buttonText="@string/training" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/practiceButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_s"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_pen"
+                app:buttonText="@string/practice" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/drawingButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_s"
+                android:layout_marginVertical="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_brush"
+                app:buttonText="@string/drawing" />
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

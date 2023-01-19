@@ -11,8 +11,6 @@ package dev.sertan.android.ram.appletter.ui.home
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentHomeBinding
@@ -21,36 +19,30 @@ import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToWriteFragment
+import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
 
 @AndroidEntryPoint
-internal class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val viewModel by viewModels<HomeViewModel>()
+internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
 
-    private val voiceSupportStateFlowCollector = FlowCollector<Boolean> { isActive ->
+    private val binding by viewBinding(FragmentHomeBinding::bind)
+
+    override fun onTextToSpeechStateChanged(isActive: Boolean) {
         binding.changeVoiceSupportButton.isActivated = isActive
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpComponents()
-        repeatOnLifecycleStarted {
-            viewModel.voiceSupportState.collect(voiceSupportStateFlowCollector)
+        with(binding) {
+            titleTextView.text = requireContext().labelWithoutPrefix
+            changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
+            aboutButton.setOnClickListener { navTo(actionHomeFragmentToAboutFragment()) }
+            drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
+            trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
+            practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeFragment()) }
+            writeButton.setOnClickListener { navTo(actionHomeFragmentToWriteFragment()) }
         }
-    }
-
-    private fun setUpComponents(): Unit = with(binding) {
-        titleTextView.text = requireContext().labelWithoutPrefix
-        changeVoiceSupportButton.setOnClickListener { viewModel.changeVoiceSupportState() }
-        aboutButton.setOnClickListener { navTo(actionHomeFragmentToAboutFragment()) }
-        drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
-        trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
-        practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeFragment()) }
-        writeButton.setOnClickListener { navTo(actionHomeFragmentToWriteFragment()) }
     }
 }

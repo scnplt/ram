@@ -23,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_2"
+        android:fontFamily="@font/montserrat"
         android:gravity="center_horizontal"
         android:text="@string/project_description"
         android:textAlignment="center"

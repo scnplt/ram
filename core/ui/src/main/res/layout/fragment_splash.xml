@@ -19,21 +19,6 @@
 
     <include layout="@layout/layout_base_for_splash" />
 
-    <!-- WARN: This text may be removed -->
-    <TextView
-        android:id="@+id/programInformationTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_2"
-        android:gravity="center_horizontal"
-        android:text="@string/program_information"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/financedTextView" />
-
     <TextView
         android:id="@+id/firstTitleTextView"
         android:layout_width="0dp"
@@ -45,9 +30,9 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="@dimen/text_size_m"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/programInformationTextView"
-        app:layout_constraintStart_toStartOf="@id/programInformationTextView"
-        app:layout_constraintTop_toBottomOf="@id/programInformationTextView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/financedTextView" />
 
     <TextView
         android:id="@+id/appNoTextView"
@@ -79,6 +64,17 @@
         app:layout_constraintTop_toBottomOf="@id/appNoTextView"
         tools:text="@tools:sample/lorem[2]" />
 
-    <!-- TASK: Add application image (ImageView)-->
-
+    <ImageView
+        android:id="@+id/appImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/small_gap_2"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@id/middleImageLineFlow"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appNameTextView"
+        app:layout_constraintWidth_percent="0.75"
+        tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

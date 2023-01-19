@@ -7,6 +7,11 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@android:color/white" />
-</selector>
+<resources>
+
+    <declare-styleable name="RamButton">
+        <attr name="buttonIcon" format="reference" />
+        <attr name="buttonText" format="string" />
+    </declare-styleable>
+
+</resources>

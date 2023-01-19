@@ -17,7 +17,8 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentWriteBinding
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
@@ -38,12 +39,13 @@ internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val answerListener = object : WriteViewModel.AnswerListener {
 
         override fun onCorrect() {
-            requireContext().playSound(dev.sertan.android.ram.core.ui.R.raw.correct)
+            context?.playCorrectSound()
             binding.inputEditText.text?.clear()
         }
 
-        override fun onWrong(): Unit =
-            requireContext().playSound(dev.sertan.android.ram.core.ui.R.raw.negative)
+        override fun onWrong() {
+            context?.playNegativeSound()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

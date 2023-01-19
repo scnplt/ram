@@ -7,6 +7,10 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="?attr/colorPrimaryContainer" />
-</selector>
+<resources>
+
+    <style name="Theme.RAM" parent="Theme.RAM.Base">
+        <item name="android:statusBarColor">@color/dark_blue_700</item>
+    </style>
+
+</resources>

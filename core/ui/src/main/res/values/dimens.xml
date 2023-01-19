@@ -10,10 +10,23 @@
 <resources>
     <dimen name="small_gap_1">4dp</dimen>
     <dimen name="small_gap_2">8dp</dimen>
+    <dimen name="small_gap_3">12dp</dimen>
     <dimen name="small_gap_4">16dp</dimen>
+    <dimen name="small_gap_5">20dp</dimen>
     <dimen name="small_gap_6">24dp</dimen>
     <dimen name="small_gap_7">28dp</dimen>
     <dimen name="small_gap_8">32dp</dimen>
+    <dimen name="small_gap_9">36dp</dimen>
+    <dimen name="small_gap_10">40dp</dimen>
+
+    <dimen name="gap_1">60dp</dimen>
+    <dimen name="gap_2">64dp</dimen>
+
+    <dimen name="divider_height">3dp</dimen>
+
+    <dimen name="button_height_s">62dp</dimen>
+    <dimen name="button_icon_size">32dp</dimen>
+    <dimen name="button_text_size">28dp</dimen>
 
     <dimen name="size_icon_button_content">32dp</dimen>
 

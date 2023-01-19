@@ -22,13 +22,14 @@ import dev.sertan.android.ram.appselection.ui.practice.PracticeFragmentDirection
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionAdapter
 import dev.sertan.android.ram.appselection.ui.practice.adapter.QuestionViewHolder
 import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import dev.sertan.android.ram.feature.material.ui.model.Material
 import javax.inject.Inject
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 class PracticeFragment :
@@ -41,13 +42,15 @@ class PracticeFragment :
     @Inject
     lateinit var adapter: QuestionAdapter
 
-    private val uiStateFlowCollector = FlowCollector<PracticeUiState> {
-        with(binding) {
-            contentTextView.text = it.question?.content
-            finishButton.isInvisible = !it.isFinishButtonVisible
-            nextButton.isInvisible = !it.isForwardButtonVisible
-            adapter.submitList(it.question?.materials)
-            it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            with(binding) {
+                contentTextView.text = it.question?.content
+                finishButton.isInvisible = !it.isFinishButtonVisible
+                forwardButton.isInvisible = !it.isForwardButtonVisible
+                adapter.submitList(it.question?.materials)
+                it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
+            }
         }
     }
 
@@ -58,18 +61,16 @@ class PracticeFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpComponents()
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
-    }
-
-    private fun setUpComponents(): Unit = with(binding) {
-        materialsRecyclerView.adapter = adapter
-        nextButton.setOnClickListener { viewModel.goToNextQuestion() }
-        contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
-        exitButton.setOnClickListener { popBackStack() }
-        finishButton.setOnClickListener {
-            navTo(actionPracticeFragmentToResultFragment(score = viewModel.score))
+        with(binding) {
+            materialsRecyclerView.adapter = adapter
+            forwardButton.setOnClickListener { viewModel.goToNextQuestion() }
+            contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
+            exitButton.setOnClickListener { popBackStack() }
+            finishButton.setOnClickListener {
+                navTo(actionPracticeFragmentToResultFragment(score = viewModel.score))
+            }
         }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     override fun onMaterialClicked(material: Material) {
@@ -80,12 +81,12 @@ class PracticeFragment :
         viewModel.isMaterialCorrect(material)
 
     override fun onCorrectMaterialClicked(material: Material) {
-        context?.playSound(dev.sertan.android.ram.core.ui.R.raw.correct)
+        context?.playCorrectSound()
         viewModel.setAnswerState(isCorrect = true)
     }
 
     override fun onWrongMaterialClicked(material: Material) {
-        context?.playSound(dev.sertan.android.ram.core.ui.R.raw.negative)
+        context?.playNegativeSound()
         viewModel.setAnswerState(isCorrect = false)
     }
 
@@ -95,8 +96,11 @@ class PracticeFragment :
     }
 
     private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
-        contentGroup.isVisible = isVisible
+        contentScrollView.isVisible = isVisible
+        materialsRecyclerView.isVisible = isVisible
+        forwardButton.isVisible = isVisible
+        finishButton.isVisible = isVisible
+        exitButton.isVisible = isVisible
         emptyListMessageTextView.isVisible = !isVisible
-        exitButton.isVisible = !isVisible
     }
 }
