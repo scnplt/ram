@@ -7,15 +7,15 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.ui.practice
+package dev.sertan.android.ram.feature.practice
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.core.common.percent
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
-import dev.sertan.android.ram.feature.material.ui.model.Material
 import dev.sertan.android.ram.feature.question.domain.usecase.GetQuestionsUseCase
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

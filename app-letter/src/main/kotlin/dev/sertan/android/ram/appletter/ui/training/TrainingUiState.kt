@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appletter.ui.training
 
 import dev.sertan.android.ram.core.common.percent
-import dev.sertan.android.ram.feature.material.ui.model.Material
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import kotlin.math.roundToInt
 
 internal data class TrainingUiState(
@@ -39,8 +39,7 @@ internal data class TrainingUiState(
             isForwardButtonVisible = index in 0 until materials.lastIndex,
             isFinishButtonVisible = index == materials.lastIndex,
             progress = percent(
-                value = index.inc().toFloat(),
-                total = materials.size.toFloat()
+                value = index.inc().toFloat(), total = materials.size.toFloat()
             ).roundToInt(),
             isEmptyListMessageVisible = materials.isEmpty()
         )

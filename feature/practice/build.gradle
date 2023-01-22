@@ -1,12 +1,13 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
 }
 
 android {
-    namespace "${configs.projectId}.feature.material"
+    namespace "${configs.projectId}.feature.practice"
     compileSdk configs.compileSdk
 
     defaultConfig {
@@ -14,7 +15,6 @@ android {
         targetSdk configs.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,19 +32,21 @@ android {
     kotlinOptions {
         jvmTarget = configs.jvmTarget
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreData)
-    implementation libs.recyclerView
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreDomain)
+    implementation project(path: module.featureQuestion)
 
-    kapt kapts.roomCompiler
-    implementation libs.roomKtx
+    implementation libs.navigationUiKtx
+    implementation libs.navigationFragmentKtx
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-
-    implementation platform(platforms.firebaseBom)
-    implementation libs.firebaseFirestoreKtx
 }

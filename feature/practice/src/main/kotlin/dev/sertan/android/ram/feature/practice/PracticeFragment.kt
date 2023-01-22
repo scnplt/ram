@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appletter.ui.practice
+package dev.sertan.android.ram.feature.practice
 
 import android.os.Bundle
 import android.view.View
@@ -16,31 +16,30 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appletter.R
-import dev.sertan.android.ram.appletter.databinding.FragmentPracticeBinding
-import dev.sertan.android.ram.appletter.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
-import dev.sertan.android.ram.appletter.ui.practice.adapter.QuestionAdapter
-import dev.sertan.android.ram.appletter.ui.practice.adapter.QuestionViewHolder
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import dev.sertan.android.ram.feature.material.ui.model.Material
+import dev.sertan.android.ram.feature.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
+import dev.sertan.android.ram.feature.practice.databinding.FragmentPracticeBinding
+import dev.sertan.android.ram.feature.question.ui.adapter.QuestionMaterialAdapter
+import dev.sertan.android.ram.feature.question.ui.adapter.QuestionMaterialViewHolder
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import javax.inject.Inject
 import kotlinx.coroutines.flow.FlowCollector
 
 @AndroidEntryPoint
 class PracticeFragment :
     Fragment(R.layout.fragment_practice),
-    QuestionViewHolder.Listener {
+    QuestionMaterialViewHolder.MaterialListener {
 
     private val viewModel by viewModels<PracticeViewModel>()
     private val binding by viewBinding(FragmentPracticeBinding::bind)
 
     @Inject
-    lateinit var adapter: QuestionAdapter
+    lateinit var adapter: QuestionMaterialAdapter
 
     private val uiStateFlowCollector = FlowCollector<PracticeUiState> {
         with(binding) {
@@ -73,22 +72,14 @@ class PracticeFragment :
         }
     }
 
-    override fun onMaterialClicked(material: Material) {
+    override fun onMaterialClicked(material: Material, isCorrect: Boolean) {
+        if (isCorrect) context?.playCorrectSound() else context?.playNegativeSound()
+        viewModel.setAnswerState(isCorrect)
         viewModel.isValidationActive = false
     }
 
     override fun isMaterialCorrect(material: Material): Boolean? =
         viewModel.isMaterialCorrect(material)
-
-    override fun onCorrectMaterialClicked(material: Material) {
-        context?.playCorrectSound()
-        viewModel.setAnswerState(isCorrect = true)
-    }
-
-    override fun onWrongMaterialClicked(material: Material) {
-        context?.playNegativeSound()
-        viewModel.setAnswerState(isCorrect = false)
-    }
 
     override fun onStop() {
         super.onStop()

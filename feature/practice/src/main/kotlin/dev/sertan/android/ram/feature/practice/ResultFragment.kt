@@ -7,19 +7,18 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.result
+package dev.sertan.android.ram.feature.practice
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import dev.sertan.android.ram.appselection.R
-import dev.sertan.android.ram.appselection.databinding.FragmentResultBinding
-import dev.sertan.android.ram.appselection.ui.result.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.setRatingByPercent
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.practice.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
+import dev.sertan.android.ram.feature.practice.databinding.FragmentResultBinding
 
 internal class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)

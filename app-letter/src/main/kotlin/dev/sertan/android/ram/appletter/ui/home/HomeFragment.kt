@@ -16,7 +16,7 @@ import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAboutFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
-import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeFragment
+import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToWriteFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
@@ -41,7 +41,7 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             aboutButton.setOnClickListener { navTo(actionHomeFragmentToAboutFragment()) }
             drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
             trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
-            practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeFragment()) }
+            practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeGraph()) }
             writeButton.setOnClickListener { navTo(actionHomeFragmentToWriteFragment()) }
         }
     }

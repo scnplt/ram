@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/small_gap_2"
-    tools:context=".ui.result.ResultFragment">
+    tools:context=".ResultFragment">
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -54,23 +54,10 @@
         android:text="@string/try_again"
         app:icon="@drawable/ic_refresh"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/writeButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/scoreTextView"
         app:layout_constraintStart_toStartOf="@id/scoreTextView"
         app:layout_constraintTop_toBottomOf="@id/scoreTextView" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/writeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_4"
-        android:text="@string/go_to_writing_practice"
-        app:icon="@drawable/ic_pen"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@id/finishButton"
-        app:layout_constraintEnd_toEndOf="@id/restartButton"
-        app:layout_constraintStart_toStartOf="@id/restartButton"
-        app:layout_constraintTop_toBottomOf="@id/restartButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/finishButton"
@@ -80,8 +67,7 @@
         android:text="@string/finish"
         app:icon="@drawable/ic_done"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/writeButton"
-        app:layout_constraintStart_toStartOf="@id/writeButton"
-        app:layout_constraintTop_toBottomOf="@id/writeButton" />
+        app:layout_constraintEnd_toEndOf="@id/restartButton"
+        app:layout_constraintStart_toStartOf="@id/restartButton"
+        app:layout_constraintTop_toBottomOf="@id/restartButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
