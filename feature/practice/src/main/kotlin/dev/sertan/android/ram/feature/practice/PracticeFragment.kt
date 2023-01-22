@@ -88,9 +88,8 @@ class PracticeFragment :
         viewModel.stopSpeech()
     }
 
-    private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
+    private fun changeContentVisibility(isVisible: Boolean): Unit = with(binding) {
         contentGroup.isVisible = isVisible
         emptyListMessageTextView.isVisible = !isVisible
-        exitButton.isVisible = !isVisible
     }
 }
