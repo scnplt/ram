@@ -7,12 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.question.data.datasource.local
+package dev.sertan.android.ram.feature.question.data.datasource.local.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import dev.sertan.android.ram.feature.question.data.datasource.local.model.QuestionEntity
 
 @Dao
 internal interface QuestionDao {

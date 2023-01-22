@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.ui.model
+package dev.sertan.android.ram.feature.question.ui.model
 
 data class Material(
     val uid: String,

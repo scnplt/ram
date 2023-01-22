@@ -7,14 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.data.datasource.remote
+package dev.sertan.android.ram.feature.question.data.datasource.remote.model
 
 import androidx.annotation.Keep
 
 @Keep
-internal data class NetworkMaterial(
+internal data class NetworkQuestion(
     val uid: String? = null,
-    val description: String? = null,
-    val mediaUrl: String? = null,
-    val attribution: String? = null
+    val correctAnswerUid: String? = null,
+    val content: String? = null,
+    val materialUidList: List<String>? = null
 )

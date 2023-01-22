@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.feature.question.domain.mapper
 
-import dev.sertan.android.ram.feature.material.ui.model.Material
 import dev.sertan.android.ram.feature.question.domain.model.QuestionDto
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import dev.sertan.android.ram.feature.question.ui.model.Question
 
 internal fun QuestionDto.toUIModel(materials: List<Material>): Question = Question(

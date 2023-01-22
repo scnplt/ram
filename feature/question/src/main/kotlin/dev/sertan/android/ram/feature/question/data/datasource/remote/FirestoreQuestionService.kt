@@ -12,13 +12,14 @@ package dev.sertan.android.ram.feature.question.data.datasource.remote
 import com.google.firebase.firestore.CollectionReference
 import dev.sertan.android.ram.core.data.di.Collection
 import dev.sertan.android.ram.core.data.di.CollectionType.QUESTION
+import dev.sertan.android.ram.feature.question.data.datasource.remote.model.NetworkQuestion
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
 internal class FirestoreQuestionService @Inject constructor(
-    @Collection(QUESTION) private val questionCollection: CollectionReference
+    @Collection(QUESTION) private val collection: CollectionReference
 ) {
 
     suspend fun getQuestions(): List<NetworkQuestion> =
-        questionCollection.get().await().toObjects(NetworkQuestion::class.java)
+        collection.get().await().toObjects(NetworkQuestion::class.java)
 }

@@ -9,8 +9,6 @@
 
 package dev.sertan.android.ram.feature.question.ui.model
 
-import dev.sertan.android.ram.feature.material.ui.model.Material
-
 data class Question(
     val uid: String,
     val content: String,

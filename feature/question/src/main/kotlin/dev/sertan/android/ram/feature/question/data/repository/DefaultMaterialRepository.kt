@@ -7,20 +7,20 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.data.repository
+package dev.sertan.android.ram.feature.question.data.repository
 
 import dev.sertan.android.ram.core.common.log.RamLogger
 import dev.sertan.android.ram.core.common.tryGetWithResult
 import dev.sertan.android.ram.core.common.tryMapNotNull
 import dev.sertan.android.ram.core.common.tryWithLogger
-import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialDao
-import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialEntity
-import dev.sertan.android.ram.feature.material.data.datasource.remote.FirestoreMaterialSource
-import dev.sertan.android.ram.feature.material.data.datasource.remote.NetworkMaterial
-import dev.sertan.android.ram.feature.material.data.mapper.toDto
-import dev.sertan.android.ram.feature.material.data.mapper.toEntity
-import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
-import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
+import dev.sertan.android.ram.feature.question.data.datasource.local.dao.MaterialDao
+import dev.sertan.android.ram.feature.question.data.datasource.local.model.MaterialEntity
+import dev.sertan.android.ram.feature.question.data.datasource.remote.FirestoreMaterialSource
+import dev.sertan.android.ram.feature.question.data.datasource.remote.model.NetworkMaterial
+import dev.sertan.android.ram.feature.question.data.mapper.toDto
+import dev.sertan.android.ram.feature.question.data.mapper.toEntity
+import dev.sertan.android.ram.feature.question.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.question.domain.repository.MaterialRepository
 import javax.inject.Inject
 
 internal class DefaultMaterialRepository @Inject constructor(

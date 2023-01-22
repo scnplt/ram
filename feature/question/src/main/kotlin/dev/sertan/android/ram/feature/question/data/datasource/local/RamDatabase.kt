@@ -14,10 +14,19 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import dev.sertan.android.ram.core.data.util.StringToJsonConverter
+import dev.sertan.android.ram.feature.question.data.datasource.local.dao.MaterialDao
+import dev.sertan.android.ram.feature.question.data.datasource.local.dao.QuestionDao
+import dev.sertan.android.ram.feature.question.data.datasource.local.model.MaterialEntity
+import dev.sertan.android.ram.feature.question.data.datasource.local.model.QuestionEntity
 
 @Keep
-@Database(version = 1, exportSchema = false, entities = [QuestionEntity::class])
+@Database(
+    version = 1,
+    exportSchema = false,
+    entities = [QuestionEntity::class, MaterialEntity::class]
+)
 @TypeConverters(StringToJsonConverter::class)
-internal abstract class QuestionDatabase : RoomDatabase() {
+internal abstract class RamDatabase : RoomDatabase() {
+    abstract fun materialDao(): MaterialDao
     abstract fun questionDao(): QuestionDao
 }

@@ -24,6 +24,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -36,8 +40,10 @@ android {
 
 dependencies {
     implementation project(path: module.coreCommon)
+    implementation project(path: module.coreUi)
     implementation project(path: module.coreData)
-    implementation project(path: module.featureMaterial)
+
+    implementation libs.material
 
     kapt kapts.roomCompiler
     implementation libs.roomKtx
