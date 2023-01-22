@@ -25,33 +25,35 @@ import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 class TrainingFragment : Fragment(R.layout.fragment_training) {
     private val binding by viewBinding(FragmentTrainingBinding::bind)
     private val viewModel by viewModels<TrainingViewModel>()
 
-    private val currentMaterialFlowCollector = FlowCollector<TrainingUiState> {
-        with(binding) {
-            it.material?.run {
-                setAttributionView(attribution)
-                descriptionTextView.text = description
-                mediaImageView.contentDescription = description
-                mediaImageView.loadFromUrl(mediaUrl)
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            with(binding) {
+                it.material?.run {
+                    setAttributionView(attribution)
+                    descriptionTextView.text = description
+                    mediaImageView.contentDescription = description
+                    mediaImageView.loadFromUrl(mediaUrl)
+                }
+                backButton.isInvisible = !it.isBackButtonVisible
+                forwardButton.isInvisible = !it.isForwardButtonVisible
+                finishButton.isInvisible = !it.isFinishButtonVisible
+                progressIndicator.progress = it.progress
+                it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
             }
-            backButton.isInvisible = !it.isBackButtonVisible
-            forwardButton.isInvisible = !it.isForwardButtonVisible
-            finishButton.isInvisible = !it.isFinishButtonVisible
-            progressIndicator.progress = it.progress
-            it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpComponents()
-        repeatOnLifecycleStarted { viewModel.uiState.collect(currentMaterialFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpComponents(): Unit = with(binding) {

@@ -28,7 +28,7 @@ import dev.sertan.android.ram.feature.question.ui.adapter.QuestionMaterialAdapte
 import dev.sertan.android.ram.feature.question.ui.adapter.QuestionMaterialViewHolder
 import dev.sertan.android.ram.feature.question.ui.model.Material
 import javax.inject.Inject
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 class PracticeFragment :
@@ -41,13 +41,15 @@ class PracticeFragment :
     @Inject
     lateinit var adapter: QuestionMaterialAdapter
 
-    private val uiStateFlowCollector = FlowCollector<PracticeUiState> {
-        with(binding) {
-            contentTextView.text = it.question?.content
-            finishButton.isInvisible = !it.isFinishButtonVisible
-            nextButton.isInvisible = !it.isForwardButtonVisible
-            adapter.submitList(it.question?.materials)
-            it.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect { uiState ->
+            with(binding) {
+                contentTextView.text = uiState.question?.content
+                finishButton.isInvisible = !uiState.isFinishButtonVisible
+                nextButton.isInvisible = !uiState.isForwardButtonVisible
+                adapter.submitList(uiState.question?.materials)
+                uiState.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
+            }
         }
     }
 
@@ -59,7 +61,7 @@ class PracticeFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpComponents()
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpComponents(): Unit = with(binding) {

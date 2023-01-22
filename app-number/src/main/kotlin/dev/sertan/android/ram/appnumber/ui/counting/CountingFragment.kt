@@ -23,20 +23,28 @@ import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private val binding by viewBinding(FragmentCountingBinding::bind)
     private val viewModel by viewModels<CountingViewModel>()
 
-    private val uiStateFlowCollector = FlowCollector<CountingUiState> {
-        binding.contentLayout.isInvisible = it !is CountingUiState.Success
-        if (it == CountingUiState.Failure) showErrorMessage()
-        if (it is CountingUiState.Success) {
-            showNumber(it)
-            viewModel.takeIf { binding.micButton.isEnabled }
-                ?.speak(text = getString(R.string.current_number_what_the_next, it.number, it.step))
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            binding.contentLayout.isInvisible = it !is CountingUiState.Success
+            if (it == CountingUiState.Failure) showErrorMessage()
+            if (it is CountingUiState.Success) {
+                showNumber(it)
+                viewModel.takeIf { binding.micButton.isEnabled }
+                    ?.speak(
+                        text = getString(
+                            R.string.current_number_what_the_next,
+                            it.number,
+                            it.step
+                        )
+                    )
+            }
         }
     }
 
@@ -68,7 +76,7 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpListeners(): Unit = with(binding) {

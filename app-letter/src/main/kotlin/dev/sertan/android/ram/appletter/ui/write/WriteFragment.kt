@@ -22,17 +22,19 @@ import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val binding by viewBinding(FragmentWriteBinding::bind)
     private val viewModel by viewModels<WriteViewModel>()
 
-    private val uiStateFlowCollector = FlowCollector<WriteUiState> {
-        with(binding) {
-            nextButton.isVisible = it.isNextButtonVisible
-            finishButton.isVisible = it.isFinishButtonVisible
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            with(binding) {
+                nextButton.isVisible = it.isNextButtonVisible
+                finishButton.isVisible = it.isFinishButtonVisible
+            }
         }
     }
 
@@ -52,7 +54,7 @@ internal class WriteFragment : Fragment(R.layout.fragment_write) {
         super.onViewCreated(view, savedInstanceState)
         setUpComponents()
         viewModel.listener = answerListener
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpComponents(): Unit = with(binding) {
