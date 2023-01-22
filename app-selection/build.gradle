@@ -85,8 +85,8 @@ dependencies {
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureDrawing)
     implementation project(path: module.featureAbout)
-    implementation project(path: module.featureMaterial)
     implementation project(path: module.featureQuestion)
+    implementation project(path: module.featurePractice)
 
     implementation libs.flexBox
 

@@ -1,34 +1,18 @@
-/*
- * RAM (c) by Sertan Canpolat
- *
- * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
- *
- * You should have received a copy of the license along with this work.
- * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
- */
-
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.android.gms.oss-licenses-plugin'
     id 'com.google.dagger.hilt.android'
-    id 'com.google.gms.google-services'
     id 'kotlin-kapt'
 }
 
 android {
-    def appId = "${configs.projectId}.appletter"
-
-    namespace appId
+    namespace "${configs.projectId}.feature.practice"
     compileSdk configs.compileSdk
 
     defaultConfig {
-        applicationId appId
         minSdk configs.minSdk
         targetSdk configs.targetSdk
-        versionCode 1
-        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,18 +20,13 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            multiDexEnabled true
         }
     }
 
     compileOptions {
-        sourceCompatibility configs.sourceCompatibility
-        targetCompatibility configs.targetCompatibility
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -63,17 +42,11 @@ dependencies {
     implementation project(path: module.coreCommon)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
-    implementation project(path: module.featureDrawing)
-    implementation project(path: module.featureAbout)
     implementation project(path: module.featureQuestion)
-    implementation project(path: module.featurePractice)
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
-
-    implementation platform(platforms.firebaseBom)
-    implementation libs.firebaseFirestoreKtx
 }

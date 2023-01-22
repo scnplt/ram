@@ -43,8 +43,8 @@ ext {
             coreDomain     : ":core:domain",
             featureDrawing : ":feature:drawing",
             featureAbout   : ":feature:about",
-            featureMaterial: ":feature:material",
             featureQuestion: ":feature:question",
+            featurePractice: ":feature:practice",
     ]
 
     kapts = [

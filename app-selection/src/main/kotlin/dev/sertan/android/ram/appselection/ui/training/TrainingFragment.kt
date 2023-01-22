@@ -19,7 +19,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentTrainingBinding
-import dev.sertan.android.ram.appselection.ui.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeFragment
+import dev.sertan.android.ram.appselection.ui.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeGraph
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.popBackStack
@@ -58,9 +58,7 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                 backButton.setOnClickListener { goToPreviousMaterial() }
                 exitButton.setOnClickListener { popBackStack() }
                 materialConstraintLayout.setOnClickListener { speakCurrentMaterialDescription() }
-                finishButton.setOnClickListener {
-                    navTo(actionTrainingFragmentToPracticeFragment())
-                }
+                finishButton.setOnClickListener { navTo(actionTrainingFragmentToPracticeGraph()) }
             }
         }
         repeatOnLifecycleStarted(onLifecycleStarted)
