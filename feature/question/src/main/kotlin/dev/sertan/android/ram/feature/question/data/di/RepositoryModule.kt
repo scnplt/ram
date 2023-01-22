@@ -13,7 +13,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dev.sertan.android.ram.feature.question.data.repository.DefaultMaterialRepository
 import dev.sertan.android.ram.feature.question.data.repository.DefaultQuestionRepository
+import dev.sertan.android.ram.feature.question.domain.repository.MaterialRepository
 import dev.sertan.android.ram.feature.question.domain.repository.QuestionRepository
 
 @Module
@@ -22,4 +24,7 @@ internal abstract class RepositoryModule {
 
     @Binds
     abstract fun bindQuestionRepository(repository: DefaultQuestionRepository): QuestionRepository
+
+    @Binds
+    abstract fun bindMaterialRepository(repository: DefaultMaterialRepository): MaterialRepository
 }

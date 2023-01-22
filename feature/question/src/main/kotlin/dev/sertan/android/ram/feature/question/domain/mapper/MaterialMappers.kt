@@ -7,10 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.domain.mapper
+package dev.sertan.android.ram.feature.question.domain.mapper
 
-import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
-import dev.sertan.android.ram.feature.material.ui.model.Material
+import dev.sertan.android.ram.feature.question.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.question.ui.model.Material
 
 fun MaterialDto.toUIModel(): Material = Material(
     uid = uid,

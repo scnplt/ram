@@ -7,11 +7,12 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.data.datasource.remote
+package dev.sertan.android.ram.feature.question.data.datasource.remote
 
 import com.google.firebase.firestore.CollectionReference
 import dev.sertan.android.ram.core.data.di.Collection
 import dev.sertan.android.ram.core.data.di.CollectionType.MATERIAL
+import dev.sertan.android.ram.feature.question.data.datasource.remote.model.NetworkMaterial
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 

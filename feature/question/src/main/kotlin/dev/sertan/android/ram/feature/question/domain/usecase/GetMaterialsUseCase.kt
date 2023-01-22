@@ -7,12 +7,12 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.domain.usecase
+package dev.sertan.android.ram.feature.question.domain.usecase
 
-import dev.sertan.android.ram.feature.material.domain.mapper.toUIModel
-import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
-import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
-import dev.sertan.android.ram.feature.material.ui.model.Material
+import dev.sertan.android.ram.feature.question.domain.mapper.toUIModel
+import dev.sertan.android.ram.feature.question.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.question.domain.repository.MaterialRepository
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import javax.inject.Inject
 
 class GetMaterialsUseCase @Inject constructor(
