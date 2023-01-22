@@ -39,7 +39,8 @@ internal data class TrainingUiState(
             isForwardButtonVisible = index in 0 until materials.lastIndex,
             isFinishButtonVisible = index == materials.lastIndex,
             progress = percent(
-                value = index.inc().toFloat(), total = materials.size.toFloat()
+                value = index.inc().toFloat(),
+                total = materials.size.toFloat()
             ).roundToInt(),
             isEmptyListMessageVisible = materials.isEmpty()
         )

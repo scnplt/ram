@@ -15,7 +15,7 @@ import dev.sertan.android.ram.core.common.tryMapNotNull
 import dev.sertan.android.ram.core.common.tryWithLogger
 import dev.sertan.android.ram.feature.question.data.datasource.local.dao.MaterialDao
 import dev.sertan.android.ram.feature.question.data.datasource.local.model.MaterialEntity
-import dev.sertan.android.ram.feature.question.data.datasource.remote.FirestoreMaterialSource
+import dev.sertan.android.ram.feature.question.data.datasource.remote.FirestoreMaterialService
 import dev.sertan.android.ram.feature.question.data.datasource.remote.model.NetworkMaterial
 import dev.sertan.android.ram.feature.question.data.mapper.toDto
 import dev.sertan.android.ram.feature.question.data.mapper.toEntity
@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 internal class DefaultMaterialRepository @Inject constructor(
     private val materialDao: MaterialDao,
-    private val materialService: FirestoreMaterialSource,
+    private val materialService: FirestoreMaterialService,
     private val logger: RamLogger
 ) : MaterialRepository {
 

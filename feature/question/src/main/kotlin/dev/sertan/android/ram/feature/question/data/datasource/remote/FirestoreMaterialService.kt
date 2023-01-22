@@ -16,7 +16,7 @@ import dev.sertan.android.ram.feature.question.data.datasource.remote.model.Netw
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 
-internal class FirestoreMaterialSource @Inject constructor(
+internal class FirestoreMaterialService @Inject constructor(
     @Collection(MATERIAL) private val collection: CollectionReference
 ) {
 
