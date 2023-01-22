@@ -52,7 +52,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/trainingButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_8"
@@ -66,7 +65,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/practiceButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"
@@ -79,11 +77,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/countingButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"
-        android:text="Ardışık sayma"
+        android:text="@string/sequential_counting"
         app:icon="@drawable/ic_mic"
         app:layout_constraintBottom_toTopOf="@id/drawingButton"
         app:layout_constraintEnd_toEndOf="@id/practiceButton"
@@ -92,7 +89,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/drawingButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"

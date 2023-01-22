@@ -9,23 +9,35 @@
 
 <resources>
 
-    <style name="Widget.RAM.Button.ElevatedButton" parent="Widget.Material3.Button.ElevatedButton">
-        <item name="iconSize">@dimen/size_icon_button_content</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
+    <style name="Widget.RAM.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/bg_square_button</item>
     </style>
 
-    <style name="Widget.RAM.IconButton.Filled.Tonal" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
-        <item name="iconSize">@dimen/size_icon_button_content</item>
-    </style>
-
-    <style name="Widget.RAM.Button" parent="Widget.Material3.Button">
-        <item name="iconSize">@dimen/size_icon_button_content</item>
+    <style name="Widget.RAM.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
         <item name="colorControlNormal">?colorPrimaryVariant</item>
         <item name="colorControlActivated">?colorPrimary</item>
+    </style>
+
+    <style name="Widget.TextView.Button" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <style name="Widget.RAM.FlexboxLayout.Row" parent="">
+        <item name="android:background">@drawable/bg_button_panel</item>
+        <item name="android:padding">@dimen/small_gap_3</item>
+        <item name="justifyContent">space_between</item>
+    </style>
+
+    <style name="Widget.RAM.ProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackColor">@color/turquoise_200</item>
+        <item name="indicatorColor">@color/dark_blue_900</item>
+        <item name="trackThickness">@dimen/small_gap_2</item>
     </style>
 
 </resources>

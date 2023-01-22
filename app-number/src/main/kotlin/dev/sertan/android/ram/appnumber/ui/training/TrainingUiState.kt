@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appnumber.ui.training
 
 import dev.sertan.android.ram.core.common.percent
-import dev.sertan.android.ram.feature.material.ui.model.Material
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import kotlin.math.roundToInt
 
 internal data class TrainingUiState(

@@ -12,14 +12,22 @@ package dev.sertan.android.ram.core.ui.util
 import android.content.Context
 import android.content.res.Resources
 import android.media.MediaPlayer
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.annotation.ArrayRes
 import androidx.annotation.RawRes
+import androidx.viewbinding.ViewBinding
+import dev.sertan.android.ram.core.ui.R
 
 private const val NO_COLOR = Int.MIN_VALUE
 private const val APP_NAME_PATTERN = "(?<=RAM-\\d\\s|\\d\\d\\s).*"
 private const val APP_NO_PATTERN = "(?<=RAM-)\\d+"
 
 fun Context.playSound(@RawRes soundResId: Int): Unit = MediaPlayer.create(this, soundResId).start()
+
+fun Context.playCorrectSound(): Unit = playSound(R.raw.correct)
+
+fun Context.playNegativeSound(): Unit = playSound(R.raw.negative)
 
 val Context.labelWithoutPrefix: String?
     get() = APP_NAME_PATTERN.toRegex().find(applicationInfo.loadLabel(packageManager))?.value
@@ -37,3 +45,6 @@ fun Resources.getColorList(@ArrayRes colorListId: Int): List<Int> {
     }.recycle()
     return colorList
 }
+
+fun <VB : ViewBinding> ViewGroup.viewBinding(inflater: (LayoutInflater, ViewGroup) -> VB): VB =
+    inflater(LayoutInflater.from(context), this)

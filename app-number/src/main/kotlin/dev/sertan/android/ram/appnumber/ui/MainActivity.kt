@@ -25,6 +25,8 @@ internal class MainActivity : RamActivity(R.layout.activity_main) {
 
     override val navHostFragmentId: Int = R.id.fragmentContainerView
 
+    override val appImageResId: Int = R.drawable.ic_splash
+
     override val afterSplashDirection: NavDirections = actionGlobalHomeFragment()
 
     override val projectInformationDirection: NavDirections = actionGlobalProjectInfoFragment()

@@ -9,7 +9,6 @@
 
 <resources>
     <string name="licenses">Lisanslar</string>
-    <string name="about">Hakkında</string>
     <string name="developer_information">Geliştirici bilgileri</string>
     <string name="developer_information_summary">Fırat Üniversitesi Yazılım Mühendisliği öğretim üyesi Prof. Dr. İbrahim Türkoğlu danışmanlığında, Sertan Canpolat tarafından geliştirilmiştir.</string>
 </resources>

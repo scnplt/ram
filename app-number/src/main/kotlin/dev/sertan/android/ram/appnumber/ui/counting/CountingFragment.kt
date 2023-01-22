@@ -18,25 +18,33 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appnumber.R
 import dev.sertan.android.ram.appnumber.databinding.FragmentCountingBinding
-import dev.sertan.android.ram.core.ui.R.raw
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private val binding by viewBinding(FragmentCountingBinding::bind)
     private val viewModel by viewModels<CountingViewModel>()
 
-    private val uiStateFlowCollector = FlowCollector<CountingUiState> {
-        binding.contentLayout.isInvisible = it !is CountingUiState.Success
-        if (it == CountingUiState.Failure) showErrorMessage()
-        if (it is CountingUiState.Success) {
-            showNumber(it)
-            viewModel.takeIf { binding.micButton.isEnabled }
-                ?.speak(text = getString(R.string.current_number_what_the_next, it.number, it.step))
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            binding.contentLayout.isInvisible = it !is CountingUiState.Success
+            if (it == CountingUiState.Failure) showErrorMessage()
+            if (it is CountingUiState.Success) {
+                showNumber(it)
+                viewModel.takeIf { binding.micButton.isEnabled }
+                    ?.speak(
+                        text = getString(
+                            R.string.current_number_what_the_next,
+                            it.number,
+                            it.step
+                        )
+                    )
+            }
         }
     }
 
@@ -47,10 +55,13 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
             binding.progressIndicator.show()
         }
 
-        override fun onCorrect(newNumber: Int, step: Int): Unit =
-            requireContext().playSound(raw.correct)
+        override fun onCorrect(newNumber: Int, step: Int) {
+            context?.playCorrectSound()
+        }
 
-        override fun onWrong(): Unit = requireContext().playSound(raw.negative)
+        override fun onWrong() {
+            context?.playNegativeSound()
+        }
 
         override fun onComplete(): Unit = stopLoadingAnimation()
 
@@ -65,7 +76,7 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpListeners()
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpListeners(): Unit = with(binding) {

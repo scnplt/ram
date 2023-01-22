@@ -16,8 +16,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import dev.sertan.android.ram.feature.question.data.datasource.local.QuestionDao
-import dev.sertan.android.ram.feature.question.data.datasource.local.QuestionDatabase
+import dev.sertan.android.ram.feature.question.data.datasource.local.RamDatabase
+import dev.sertan.android.ram.feature.question.data.datasource.local.dao.MaterialDao
+import dev.sertan.android.ram.feature.question.data.datasource.local.dao.QuestionDao
 import javax.inject.Singleton
 
 @Module
@@ -26,14 +27,14 @@ internal object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideQuestionDatabase(@ApplicationContext context: Context): QuestionDatabase =
-        Room.databaseBuilder(
-            context,
-            QuestionDatabase::class.java,
-            QuestionDatabase::class.java.name
-        ).build()
+    fun provideDatabase(@ApplicationContext context: Context): RamDatabase =
+        Room.databaseBuilder(context, RamDatabase::class.java, RamDatabase::class.java.name).build()
 
     @Provides
     @Singleton
-    fun provideQuestionDao(database: QuestionDatabase): QuestionDao = database.questionDao()
+    fun provideMaterialDao(database: RamDatabase): MaterialDao = database.materialDao()
+
+    @Provides
+    @Singleton
+    fun provideQuestionDao(database: RamDatabase): QuestionDao = database.questionDao()
 }

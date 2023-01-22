@@ -12,18 +12,22 @@ package dev.sertan.android.ram.core.ui
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import dev.sertan.android.ram.core.ui.fragment.SplashFragment
 import kotlinx.coroutines.delay
 
 abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layoutResId) {
-
     abstract val navHostFragmentId: Int
     abstract val afterSplashDirection: NavDirections
     abstract val projectInformationDirection: NavDirections
+
+    @get:DrawableRes
+    abstract val appImageResId: Int
 
     private val viewModel by viewModels<RamActivityViewModel>()
     private val navController by lazy { findNavController(navHostFragmentId) }
@@ -51,5 +55,11 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
     override fun onStart() {
         super.onStart()
         viewModel.runOnce(navigateAfterSplash)
+    }
+
+    companion object {
+        init {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
     }
 }

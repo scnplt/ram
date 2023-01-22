@@ -9,12 +9,11 @@
 
 package dev.sertan.android.ram.feature.question.domain.usecase
 
-import dev.sertan.android.ram.feature.material.domain.mapper.toUIModel
-import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
-import dev.sertan.android.ram.feature.material.ui.model.Material
 import dev.sertan.android.ram.feature.question.domain.mapper.toUIModel
 import dev.sertan.android.ram.feature.question.domain.model.QuestionDto
+import dev.sertan.android.ram.feature.question.domain.repository.MaterialRepository
 import dev.sertan.android.ram.feature.question.domain.repository.QuestionRepository
+import dev.sertan.android.ram.feature.question.ui.model.Material
 import dev.sertan.android.ram.feature.question.ui.model.Question
 import javax.inject.Inject
 

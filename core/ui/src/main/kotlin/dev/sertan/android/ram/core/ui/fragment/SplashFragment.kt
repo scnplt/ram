@@ -14,6 +14,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.core.ui.R
+import dev.sertan.android.ram.core.ui.RamActivity
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
 import dev.sertan.android.ram.core.ui.util.appNo
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
@@ -33,6 +34,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         with(binding) {
             appNoTextView.text = getString(R.string.app_no, context?.appNo)
             appNameTextView.text = context?.labelWithoutPrefix?.uppercase(locale)
+            (activity as? RamActivity)?.run { appImageView.setImageResource(appImageResId) }
         }
     }
 

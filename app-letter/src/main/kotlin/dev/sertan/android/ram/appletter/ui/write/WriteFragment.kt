@@ -17,40 +17,44 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentWriteBinding
-import dev.sertan.android.ram.core.ui.util.playSound
+import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
 internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val binding by viewBinding(FragmentWriteBinding::bind)
     private val viewModel by viewModels<WriteViewModel>()
 
-    private val uiStateFlowCollector = FlowCollector<WriteUiState> {
-        with(binding) {
-            nextButton.isVisible = it.isNextButtonVisible
-            finishButton.isVisible = it.isFinishButtonVisible
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            with(binding) {
+                nextButton.isVisible = it.isNextButtonVisible
+                finishButton.isVisible = it.isFinishButtonVisible
+            }
         }
     }
 
     private val answerListener = object : WriteViewModel.AnswerListener {
 
         override fun onCorrect() {
-            requireContext().playSound(dev.sertan.android.ram.core.ui.R.raw.correct)
+            context?.playCorrectSound()
             binding.inputEditText.text?.clear()
         }
 
-        override fun onWrong(): Unit =
-            requireContext().playSound(dev.sertan.android.ram.core.ui.R.raw.negative)
+        override fun onWrong() {
+            context?.playNegativeSound()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpComponents()
         viewModel.listener = answerListener
-        repeatOnLifecycleStarted { viewModel.uiState.collect(uiStateFlowCollector) }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     private fun setUpComponents(): Unit = with(binding) {

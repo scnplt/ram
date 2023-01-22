@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.feature.question.data.mapper
 
-import dev.sertan.android.ram.feature.question.data.datasource.local.QuestionEntity
-import dev.sertan.android.ram.feature.question.data.datasource.remote.NetworkQuestion
+import dev.sertan.android.ram.feature.question.data.datasource.local.model.QuestionEntity
+import dev.sertan.android.ram.feature.question.data.datasource.remote.model.NetworkQuestion
 import dev.sertan.android.ram.feature.question.domain.model.QuestionDto
 
 internal fun QuestionEntity.toDto(): QuestionDto = QuestionDto(

@@ -9,25 +9,20 @@
 
 package dev.sertan.android.ram.core.ui.util
 
-import android.content.res.ColorStateList
+import android.graphics.PorterDuff
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.RatingBar
 import androidx.annotation.ColorInt
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import com.google.android.material.button.MaterialButton
-
-fun View.hide() {
-    if (visibility == View.VISIBLE) isGone = true
-}
 
 fun View.show() {
     if (visibility != View.VISIBLE) isVisible = true
 }
 
-fun MaterialButton.setIconTint(@ColorInt color: Int) {
-    iconTint = ColorStateList.valueOf(color)
+fun ImageButton.setIconTint(@ColorInt color: Int) {
+    setColorFilter(color, PorterDuff.Mode.SRC_IN)
 }
 
 fun ImageView.loadFromUrl(url: String?) {

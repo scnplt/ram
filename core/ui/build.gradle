@@ -40,12 +40,14 @@ android {
 dependencies {
     implementation project(path: module.coreCommon)
     implementation project(path: module.coreDomain)
+
     implementation libs.material
+    implementation libs.flexBox
     implementation libs.multiDex
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
-    
+
     kapt kapts.glide
     implementation libs.glide
 

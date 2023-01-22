@@ -66,8 +66,8 @@ dependencies {
     implementation project(path: module.coreUi)
     implementation project(path: module.featureDrawing)
     implementation project(path: module.featureAbout)
-    implementation project(path: module.featureMaterial)
     implementation project(path: module.featureQuestion)
+    implementation project(path: module.featurePractice)
 
     kapt kapts.roomCompiler
     implementation libs.roomKtx

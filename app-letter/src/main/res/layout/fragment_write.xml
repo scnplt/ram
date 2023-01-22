@@ -44,16 +44,15 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputEditText"
             android:layout_width="match_parent"
-            android:maxLength="1"
             android:layout_height="wrap_content"
             android:hint="@string/letter_you_hear"
             android:imeOptions="actionDone"
-            android:inputType="text" />
+            android:inputType="text"
+            android:maxLength="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/listenAgainButton"
-        style="@style/Widget.RAM.Button.ElevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_8"
