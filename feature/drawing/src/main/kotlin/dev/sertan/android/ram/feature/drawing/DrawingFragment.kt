@@ -14,15 +14,14 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import dev.sertan.android.ram.core.ui.util.getColorList
+import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.setIconTint
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import dev.sertan.android.ram.feature.drawing.databinding.FragmentDrawingBinding
-import kotlinx.coroutines.flow.FlowCollector
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.CoroutineScope
+
+private const val SELECTED_SCALE = 1.1f
 
 class DrawingFragment :
     Fragment(R.layout.fragment_drawing),
@@ -33,11 +32,17 @@ class DrawingFragment :
     private val viewModel by viewModels<DrawingViewModel>()
     private lateinit var adapter: ColorItemAdapter
 
-    private val uiStateFlowCollector = FlowCollector<DrawingUiState> { uiState ->
-        with(binding) {
-            brushButton.isActivated = uiState.isBrushButtonActive
-            eraserButton.isActivated = !uiState.isBrushButtonActive
-            drawingView.currentMode = uiState.drawingViewMode
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect { uiState ->
+            with(binding) {
+                drawingView.currentMode = uiState.drawingViewMode
+                val (brushScale, eraserScale) =
+                    if (uiState.isBrushButtonActive) SELECTED_SCALE to 1f else 1f to SELECTED_SCALE
+                brushButton.scaleX = brushScale
+                brushButton.scaleY = brushScale
+                eraserButton.scaleX = eraserScale
+                eraserButton.scaleY = eraserScale
+            }
         }
     }
 
@@ -50,11 +55,7 @@ class DrawingFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ColorItemAdapter().apply { listener = this@DrawingFragment }
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect(uiStateFlowCollector)
-            }
-        }
+        repeatOnLifecycleStarted(onLifecycleStarted)
         setUpComponents()
         onPenColorChanged(color = binding.drawingView.penColor)
     }

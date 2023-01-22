@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/small_gap_2"
         android:contentDescription="@string/exit"
-        app:icon="@drawable/ic_exit"
+        app:icon="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

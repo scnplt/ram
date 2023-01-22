@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/about"
-            android:src="@drawable/ic_info" />
+            app:srcCompat="@drawable/ic_info" />
 
         <ImageButton
             android:id="@+id/changeVoiceSupportButton"
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/change_voice_support"
-            android:src="@drawable/ic_volume" />
+            app:srcCompat="@drawable/ic_volume" />
     </com.google.android.flexbox.FlexboxLayout>
 
     <com.google.android.material.divider.MaterialDivider
@@ -75,7 +75,6 @@
         android:contentDescription="@string/application_logo"
         android:paddingHorizontal="@dimen/gap_1"
         android:paddingVertical="@dimen/small_gap_9"
-        android:scaleType="fitCenter"
         app:layout_constrainedWidth="true"
         app:layout_constraintDimensionRatio="1.8"
         app:layout_constraintEnd_toEndOf="parent"
