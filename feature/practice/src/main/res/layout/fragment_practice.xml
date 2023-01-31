@@ -12,26 +12,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/small_gap_2"
     tools:context=".PracticeFragment">
+
+    <FrameLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_panel"
+        android:padding="@dimen/small_gap_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/exitButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@string/exit"
+            app:srcCompat="@drawable/ic_close" />
+    </FrameLayout>
 
     <ScrollView
         android:id="@+id/contentScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
         app:layout_constraintBottom_toTopOf="@id/materialsRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
             android:id="@+id/contentTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:maxLines="3"
-            android:textAlignment="center"
             android:textAppearance="?textAppearanceTitleLarge"
+            android:textColor="@android:color/white"
             tools:text="@tools:sample/lorem[200]" />
     </ScrollView>
 
@@ -39,6 +60,7 @@
         android:id="@+id/materialsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
         android:layout_marginBottom="@dimen/small_gap_2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constrainedHeight="true"
@@ -50,26 +72,29 @@
         tools:itemCount="10"
         tools:listitem="@layout/item_question_material" />
 
-    <com.google.android.material.button.MaterialButton
+    <dev.sertan.android.ram.core.ui.customview.RamButton
         android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next"
-        app:icon="@drawable/ic_forward"
-        app:iconGravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height_s"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
+        android:layout_marginVertical="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_forward"
+        app:buttonText="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <dev.sertan.android.ram.core.ui.customview.RamButton
         android:id="@+id/finishButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/finish"
-        app:icon="@drawable/ic_done"
-        app:iconGravity="end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintBottom_toBottomOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="@id/nextButton"
+        app:layout_constraintStart_toStartOf="@id/nextButton"
+        app:layout_constraintTop_toTopOf="@id/nextButton" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/contentGroup"
@@ -87,25 +112,14 @@
         android:id="@+id/emptyListMessageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/empty_list_message"
-        android:textAlignment="center"
         android:textAppearance="?textAppearanceHeadlineMedium"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:icon="@drawable/ic_close"
-        app:iconGravity="end"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
         tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
