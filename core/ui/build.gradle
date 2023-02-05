@@ -44,6 +44,7 @@ dependencies {
     implementation libs.material
     implementation libs.flexBox
     implementation libs.multiDex
+    implementation libs.conscrypt
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
