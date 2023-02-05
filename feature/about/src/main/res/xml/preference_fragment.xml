@@ -7,17 +7,21 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         app:key="@string/about"
+        app:layout="@layout/custom_preference_category"
         app:title="@string/about">
 
         <Preference
+            android:layout="@layout/custom_preference"
             app:key="@string/licenses"
             app:title="@string/licenses" />
 
         <Preference
+            android:layout="@layout/custom_preference"
             app:key="@string/developer_information"
             app:summary="@string/developer_information_summary"
             app:title="@string/developer_information" />
