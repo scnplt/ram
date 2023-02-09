@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.core.ui
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -59,7 +60,9 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
 
     companion object {
         init {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+                AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+            }
         }
     }
 }
