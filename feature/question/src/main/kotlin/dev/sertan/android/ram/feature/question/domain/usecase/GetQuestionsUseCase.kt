@@ -23,6 +23,7 @@ class GetQuestionsUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): List<Question> = with(questionRepository) {
+        materialRepository.updateMaterialsFromRemote()
         val dtoList = getQuestions().getOrNull()?.takeUnless { it.isEmpty() }
             ?: getQuestions(update = true).getOrNull()
         dtoList?.map { it.toUIModel(materials = getQuestionMaterials(question = it)) }

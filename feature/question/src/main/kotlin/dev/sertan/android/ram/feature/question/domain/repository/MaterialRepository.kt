@@ -20,4 +20,6 @@ interface MaterialRepository {
     suspend fun saveMaterialToLocal(material: MaterialDto): Boolean
 
     suspend fun refreshMaterials(): Boolean
+
+    suspend fun updateMaterialsFromRemote()
 }
