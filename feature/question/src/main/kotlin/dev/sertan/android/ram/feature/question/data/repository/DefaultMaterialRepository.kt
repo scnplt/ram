@@ -44,7 +44,7 @@ internal class DefaultMaterialRepository @Inject constructor(
     override suspend fun refreshMaterials(): Boolean =
         tryWithLogger(logger) { updateMaterialsFromRemote() }
 
-    private suspend fun updateMaterialsFromRemote() {
+    override suspend fun updateMaterialsFromRemote() {
         val remoteData = materialService.getMaterials()
         materialDao.deleteAll()
         remoteData.tryMapNotNull(logger = logger, transform = NetworkMaterial::toEntity)
