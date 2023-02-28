@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:contentDescription="@string/exit"
-            app:srcCompat="@drawable/ic_close" />
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@android:color/holo_red_dark" />
     </FrameLayout>
 
     <ScrollView
@@ -51,7 +52,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:maxLines="3"
-            android:textAppearance="?textAppearanceTitleLarge"
+            android:textStyle="bold"
+            android:textAppearance="?textAppearanceDisplaySmall"
             android:textColor="@android:color/white"
             tools:text="@tools:sample/lorem[200]" />
     </ScrollView>
@@ -114,9 +116,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/empty_list_message"
-        android:textAppearance="?textAppearanceHeadlineMedium"
+        android:textAppearance="?textAppearanceDisplayMedium"
         android:textStyle="bold"
         android:visibility="gone"
+        android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
