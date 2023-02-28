@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/small_gap_7"
         android:background="@drawable/bg_drawing_tools_layout"
+        android:overScrollMode="never"
         android:padding="@dimen/small_gap_1"
         android:scrollbars="none"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
