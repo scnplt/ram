@@ -14,13 +14,13 @@ import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.R
 import dev.sertan.android.ram.appselection.databinding.FragmentHomeBinding
-import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAboutFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
+import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
 import dev.sertan.android.ram.core.ui.util.viewBinding
 
 @AndroidEntryPoint
@@ -37,7 +37,7 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
         with(binding) {
             titleTextView.text = requireContext().labelWithoutPrefix
             changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
-            aboutButton.setOnClickListener { navTo(actionHomeFragmentToAboutFragment()) }
+            aboutButton.setOnClickListener { navigateToOssLicenses() }
             drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
             trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
             practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeGraph()) }

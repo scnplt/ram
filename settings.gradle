@@ -35,6 +35,5 @@ include ':core:data'
 include ':core:domain'
 
 include ':feature:drawing'
-include ':feature:about'
 include ':feature:question'
 include ':feature:practice'

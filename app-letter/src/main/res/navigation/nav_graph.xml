@@ -28,11 +28,6 @@
         tools:layout="@layout/fragment_project_info" />
 
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="dev.sertan.android.ram.feature.about.AboutFragment"
-        android:label="AboutFragment" />
-
-    <fragment
         android:id="@+id/drawingFragment"
         android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
         android:label="DrawingFragment"
@@ -43,13 +38,6 @@
         android:name="dev.sertan.android.ram.appletter.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment"
