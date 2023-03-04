@@ -19,8 +19,8 @@
     </style>
 
     <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
-        <item name="colorControlNormal">?colorPrimaryVariant</item>
-        <item name="colorControlActivated">?colorPrimary</item>
+        <item name="colorControlNormal">@android:color/holo_red_light</item>
+        <item name="colorControlActivated">@android:color/holo_red_dark</item>
     </style>
 
     <style name="Widget.TextView.Button" parent="Widget.AppCompat.TextView">
