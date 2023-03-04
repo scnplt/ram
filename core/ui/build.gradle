@@ -45,6 +45,7 @@ dependencies {
     implementation libs.flexBox
     implementation libs.multiDex
     implementation libs.conscrypt
+    implementation libs.ossLicenses
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
