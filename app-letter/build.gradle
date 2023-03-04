@@ -67,6 +67,8 @@ dependencies {
     implementation project(path: module.featureQuestion)
     implementation project(path: module.featurePractice)
 
+    implementation libs.flexBox
+
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
 

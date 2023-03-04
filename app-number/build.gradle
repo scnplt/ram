@@ -68,6 +68,8 @@ dependencies {
     implementation project(path: module.featureQuestion)
     implementation project(path: module.featurePractice)
 
+    implementation libs.flexBox
+
     kapt kapts.roomCompiler
     implementation libs.roomKtx
 

@@ -27,7 +27,6 @@
     <!-- Widget -->
     <dimen name="divider_height">3dp</dimen>
 
-    <dimen name="button_height_s">62dp</dimen>
     <dimen name="button_icon_size">32dp</dimen>
     <dimen name="button_text_size">28dp</dimen>
 

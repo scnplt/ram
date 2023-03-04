@@ -41,4 +41,14 @@
         <item name="trackThickness">@dimen/small_gap_2</item>
     </style>
 
+    <style name="Widget.RAM.ImageView.Card" parent="">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingTop">@dimen/small_gap_8</item>
+        <item name="android:paddingBottom">@dimen/small_gap_8</item>
+        <item name="android:paddingStart">@dimen/small_gap_6</item>
+        <item name="android:paddingEnd">@dimen/small_gap_6</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="layout_constraintDimensionRatio">1.8</item>
+    </style>
+
 </resources>
