@@ -29,7 +29,7 @@
     <string name="exit">Çık</string>
     <string name="wrong_answer">Yanlış cevap</string>
     <string name="correct_answer">Doğru cevap</string>
-    <string name="score_percent">Puan: %.1f/100</string>
+    <string name="score_percent">Puan: %d/100</string>
     <string name="try_again">Yeniden dene</string>
     <string name="material_image">Materyal resmi</string>
     <string name="empty_list_message">Bir aksilik oldu!\nLütfen daha sonra tekrar deneyin.</string>
