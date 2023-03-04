@@ -11,6 +11,7 @@
 
     <style name="Widget.RAM.ImageButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/bg_square_button</item>
+        <item name="tint">@android:color/holo_red_dark</item>
     </style>
 
     <style name="Widget.RAM.Button" parent="Widget.AppCompat.Button">
