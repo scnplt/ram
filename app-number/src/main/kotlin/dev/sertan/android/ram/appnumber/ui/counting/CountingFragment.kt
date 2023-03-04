@@ -98,4 +98,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
         nextSectionButton.isInvisible = !state.isNextSectionButtonVisible
         finishButton.isInvisible = !state.isFinishButtonVisible
     }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopSpeech()
+    }
 }
