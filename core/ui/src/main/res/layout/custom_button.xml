@@ -10,8 +10,6 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     tools:background="@drawable/bg_button"
     tools:ignore="contentDescription"
     tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
@@ -31,16 +29,16 @@
         android:id="@+id/textView"
         style="@style/Widget.TextView.Button"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/small_gap_2"
         android:layout_marginEnd="@dimen/gap_2"
-        android:textColor="@android:color/holo_red_dark"
         android:gravity="center"
-        android:textStyle="bold"
         android:textAllCaps="false"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/buttonIconImageView"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem[2]" />
+        tools:text="@tools:sample/lorem[5]" />
 </merge>
