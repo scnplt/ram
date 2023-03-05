@@ -100,6 +100,8 @@ internal class CountingViewModel @Inject constructor(
 
     fun speak(text: String): Unit = textToSpeechUseCase.speak(message = text)
 
+    fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
+
     fun nextSection(): Unit = sectionIndexStream.update { it.inc() }
 
     interface NumberListener {

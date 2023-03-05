@@ -24,7 +24,7 @@
 
     <ImageButton
         android:id="@+id/deleteAllButton"
-        style="@style/Widget.RAM.ImageButton"
+        style="@style/Widget.Drawing.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_gap_1"
@@ -36,7 +36,7 @@
 
     <ImageButton
         android:id="@+id/eraserButton"
-        style="@style/Widget.RAM.ImageButton"
+        style="@style/Widget.Drawing.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_1"
@@ -48,7 +48,7 @@
 
     <ImageButton
         android:id="@+id/brushButton"
-        style="@style/Widget.RAM.ImageButton"
+        style="@style/Widget.Drawing.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/small_gap_2"

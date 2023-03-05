@@ -27,15 +27,14 @@
     <!-- Widget -->
     <dimen name="divider_height">3dp</dimen>
 
-    <dimen name="button_height_s">62dp</dimen>
     <dimen name="button_icon_size">32dp</dimen>
     <dimen name="button_text_size">28dp</dimen>
 
     <dimen name="size_min_image_width">160dp</dimen>
 
     <!-- Text -->
-    <dimen name="text_size_m">16sp</dimen>
-    <dimen name="text_size_l">32sp</dimen>
+    <dimen name="text_size_m">22sp</dimen>
+    <dimen name="text_size_l">36sp</dimen>
 
     <dimen name="text_line_height_s">18sp</dimen>
 </resources>

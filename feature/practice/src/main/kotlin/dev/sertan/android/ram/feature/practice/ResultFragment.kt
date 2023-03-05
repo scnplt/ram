@@ -19,6 +19,7 @@ import dev.sertan.android.ram.core.ui.util.setRatingByPercent
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import dev.sertan.android.ram.feature.practice.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment
 import dev.sertan.android.ram.feature.practice.databinding.FragmentResultBinding
+import kotlin.math.roundToInt
 
 internal class ResultFragment : Fragment(R.layout.fragment_result) {
     private val binding by viewBinding(FragmentResultBinding::bind)
@@ -27,8 +28,10 @@ internal class ResultFragment : Fragment(R.layout.fragment_result) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-            scoreTextView.text =
-                getString(dev.sertan.android.ram.core.ui.R.string.score_percent, args.score)
+            scoreTextView.text = getString(
+                dev.sertan.android.ram.core.ui.R.string.score_percent,
+                args.score.roundToInt()
+            )
             ratingBar.setRatingByPercent(args.score)
             restartButton.setOnClickListener { navTo(actionResultFragmentToPracticeFragment()) }
             finishButton.setOnClickListener { popBackStack() }

@@ -100,7 +100,7 @@
     <dev.sertan.android.ram.core.ui.customview.RamButton
         android:id="@+id/forwardButton"
         android:layout_width="0dp"
-        android:layout_height="@dimen/button_height_s"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap_4"
         app:buttonIcon="@drawable/ic_forward"
         app:buttonText="@string/next"
@@ -126,7 +126,7 @@
     <dev.sertan.android.ram.core.ui.customview.RamButton
         android:id="@+id/backButton"
         android:layout_width="0dp"
-        android:layout_height="@dimen/button_height_s"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/small_gap_4"
         app:buttonIcon="@drawable/ic_back"
         app:buttonText="@string/previous"

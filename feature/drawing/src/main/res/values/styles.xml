@@ -8,7 +8,9 @@
   -->
 
 <resources>
-    <string name="licenses">Lisanslar</string>
-    <string name="developer_information">Geliştirici bilgileri</string>
-    <string name="developer_information_summary">Fırat Üniversitesi Yazılım Mühendisliği öğretim üyesi Prof. Dr. İbrahim Türkoğlu danışmanlığında, Sertan Canpolat tarafından geliştirilmiştir.</string>
+
+    <style name="Widget.Drawing.ImageButton" parent="Widget.RAM.ImageButton">
+        <item name="tint">@android:color/black</item>
+    </style>
+
 </resources>

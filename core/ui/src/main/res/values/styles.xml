@@ -11,6 +11,7 @@
 
     <style name="Widget.RAM.ImageButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">@drawable/bg_square_button</item>
+        <item name="tint">@android:color/holo_red_dark</item>
     </style>
 
     <style name="Widget.RAM.Button" parent="Widget.AppCompat.Button">
@@ -19,8 +20,8 @@
     </style>
 
     <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
-        <item name="colorControlNormal">?colorPrimaryVariant</item>
-        <item name="colorControlActivated">?colorPrimary</item>
+        <item name="colorControlNormal">@android:color/holo_red_light</item>
+        <item name="colorControlActivated">@android:color/holo_red_dark</item>
     </style>
 
     <style name="Widget.TextView.Button" parent="Widget.AppCompat.TextView">
@@ -38,6 +39,16 @@
         <item name="trackColor">@color/turquoise_200</item>
         <item name="indicatorColor">@color/dark_blue_900</item>
         <item name="trackThickness">@dimen/small_gap_2</item>
+    </style>
+
+    <style name="Widget.RAM.ImageView.Card" parent="">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingTop">@dimen/small_gap_8</item>
+        <item name="android:paddingBottom">@dimen/small_gap_8</item>
+        <item name="android:paddingStart">@dimen/small_gap_6</item>
+        <item name="android:paddingEnd">@dimen/small_gap_6</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="layout_constraintDimensionRatio">1.8</item>
     </style>
 
 </resources>
