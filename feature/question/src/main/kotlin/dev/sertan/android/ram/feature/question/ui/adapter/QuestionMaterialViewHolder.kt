@@ -26,9 +26,10 @@ class QuestionMaterialViewHolder(
         materialConstraintLayout.setOnClickListener {
             val isCorrect =
                 listener?.run { isMaterialCorrect(material) } ?: return@setOnClickListener
-            val icon = if (isCorrect) R.drawable.ic_check_circle else R.drawable.ic_outline_cancel
+            val icon = if (isCorrect) R.drawable.ic_done else R.drawable.ic_close
             listener.onMaterialClicked(material, isCorrect = isCorrect)
             answerStateImageView.setImageResource(icon)
+            answerStateImageView.isActivated = isCorrect
             answerStateImageView.show()
         }
     }
