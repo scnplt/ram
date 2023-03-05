@@ -8,9 +8,21 @@
   -->
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:shape="oval">
 
-    <solid android:color="@android:color/white" />
+    <solid>
+        <aapt:attr name="android:color">
+            <selector>
+                <item
+                    android:color="@android:color/holo_green_light"
+                    android:state_activated="true" />
+                <item
+                    android:color="@android:color/holo_red_dark"
+                    android:state_activated="false" />
+            </selector>
+        </aapt:attr>
+    </solid>
 
     <stroke
         android:width="2dp"
