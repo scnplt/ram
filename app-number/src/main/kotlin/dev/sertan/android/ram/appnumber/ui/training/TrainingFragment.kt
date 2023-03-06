@@ -52,18 +52,16 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpComponents()
-        repeatOnLifecycleStarted(onLifecycleStarted)
-    }
-
-    private fun setUpComponents(): Unit = with(binding) {
-        with(viewModel) {
-            forwardButton.setOnClickListener { goToNextMaterial() }
-            backButton.setOnClickListener { goToPreviousMaterial() }
-            exitButton.setOnClickListener { popBackStack() }
-            materialCardView.setOnClickListener { speakCurrentMaterialDescription() }
-            finishButton.setOnClickListener { navTo(actionTrainingFragmentToPracticeGraph()) }
+        with(binding) {
+            with(viewModel) {
+                forwardButton.setOnClickListener { goToNextMaterial() }
+                backButton.setOnClickListener { goToPreviousMaterial() }
+                exitButton.setOnClickListener { popBackStack() }
+                materialConstraintLayout.setOnClickListener { speakCurrentMaterialDescription() }
+                finishButton.setOnClickListener { navTo(actionTrainingFragmentToPracticeGraph()) }
+            }
         }
+        repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
     override fun onStop() {
@@ -77,7 +75,7 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
     }
 
     private fun setAttributionView(attribution: String?): Unit = with(binding) {
-        attributionGroup.isGone = attribution.isNullOrEmpty().also { if (it) return@with }
+        attributionTextView.isGone = attribution.isNullOrEmpty().also { if (it) return@with }
         attributionTextView.text = getString(
             dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
             attribution
