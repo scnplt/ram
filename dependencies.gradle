@@ -28,11 +28,9 @@ ext {
             ossLicenses : "17.0.0",
             gson        : "2.10",
             timber      : "5.0.1",
-            preference  : '1.2.0',
             fragmentKtx : '1.5.5',
             multiDex    : "2.0.1",
             icu4j       : "72.1",
-            recyclerView: "1.2.1",
             flexBox     : "3.0.0",
             conscrypt   : "2.5.2",
     ]
@@ -43,9 +41,9 @@ ext {
             coreData       : ":core:data",
             coreDomain     : ":core:domain",
             featureDrawing : ":feature:drawing",
-            featureAbout   : ":feature:about",
             featureQuestion: ":feature:question",
             featurePractice: ":feature:practice",
+            featureTraining: ":feature:training",
     ]
 
     kapts = [
@@ -72,11 +70,9 @@ ext {
             ossLicenses          : "com.google.android.gms:play-services-oss-licenses:${versions.ossLicenses}",
             gson                 : "com.google.code.gson:gson:${versions.gson}",
             timber               : "com.jakewharton.timber:timber:${versions.timber}",
-            preference           : "androidx.preference:preference:${versions.preference}",
             fragmentKtx          : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex             : "androidx.multidex:multidex:${versions.multiDex}",
             icu4j                : "com.ibm.icu:icu4j:${versions.icu4j}",
-            recyclerView         : "androidx.recyclerview:recyclerview:${versions.recyclerView}",
             flexBox              : "com.google.android.flexbox:flexbox:${versions.flexBox}",
             conscrypt            : "org.conscrypt:conscrypt-android:${versions.conscrypt}",
     ]
