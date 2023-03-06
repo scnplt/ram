@@ -16,3 +16,18 @@ import androidx.navigation.fragment.findNavController
 fun Fragment.navTo(navDirections: NavDirections): Unit = findNavController().navigate(navDirections)
 
 fun Fragment.popBackStack(): Boolean = findNavController().popBackStack()
+
+fun <T> Fragment.popBackStack(key: String, data: T): Boolean = with(findNavController()) {
+    previousBackStackEntry?.savedStateHandle?.let {
+        if (!it.contains(key)) it[key] = data
+        popBackStack()
+    } ?: false
+}
+
+fun <T> Fragment.savedStateHandeListener(key: String, callback: (T) -> Unit) {
+    val savedStateHandle = findNavController().currentBackStackEntry?.savedStateHandle ?: return
+    savedStateHandle.getLiveData<T>(key).observe(viewLifecycleOwner) { data ->
+        callback(data)
+        savedStateHandle.remove<T>(key)
+    }
+}
