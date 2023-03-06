@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appletter.ui.training
+package dev.sertan.android.ram.feature.training
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -31,7 +31,7 @@ internal class TrainingViewModel @Inject constructor(
     private val materialIndex = MutableStateFlow(0)
 
     val uiState: StateFlow<TrainingUiState> = flow {
-        val materials = getMaterialsUseCase(shuffle = false)
+        val materials = getMaterialsUseCase()
         materialIndex.collect { index ->
             textToSpeechUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
             emit(TrainingUiState.getState(materials, index))
