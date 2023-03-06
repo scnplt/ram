@@ -7,21 +7,22 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appselection.ui.home
+package dev.sertan.android.ram.appselection
 
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appselection.R
+import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
+import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.appselection.databinding.FragmentHomeBinding
-import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
-import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
-import dev.sertan.android.ram.appselection.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
+import dev.sertan.android.ram.core.ui.util.savedStateHandeListener
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.training.TrainingFragment
 
 @AndroidEntryPoint
 internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
@@ -34,6 +35,11 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
+            if (it) navTo(actionHomeFragmentToPracticeGraph())
+        }
+
         with(binding) {
             titleTextView.text = requireContext().labelWithoutPrefix
             changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }

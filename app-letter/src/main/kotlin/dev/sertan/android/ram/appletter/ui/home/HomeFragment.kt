@@ -22,7 +22,9 @@ import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeech
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
+import dev.sertan.android.ram.core.ui.util.savedStateHandeListener
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.training.TrainingFragment
 
 @AndroidEntryPoint
 internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
@@ -35,6 +37,11 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
+            if (it) navTo(actionHomeFragmentToPracticeGraph())
+        }
+
         with(binding) {
             titleTextView.text = requireContext().labelWithoutPrefix
             changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }

@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.ui.training
+package dev.sertan.android.ram.feature.training
 
 import android.os.Bundle
 import android.view.View
@@ -17,14 +17,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appnumber.R
-import dev.sertan.android.ram.appnumber.databinding.FragmentTrainingBinding
-import dev.sertan.android.ram.appnumber.ui.training.TrainingFragmentDirections.Companion.actionTrainingFragmentToPracticeGraph
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
-import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.training.databinding.FragmentTrainingBinding
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
@@ -58,7 +55,7 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
                 backButton.setOnClickListener { goToPreviousMaterial() }
                 exitButton.setOnClickListener { popBackStack() }
                 materialConstraintLayout.setOnClickListener { speakCurrentMaterialDescription() }
-                finishButton.setOnClickListener { navTo(actionTrainingFragmentToPracticeGraph()) }
+                finishButton.setOnClickListener { popBackStack(KEY_FINISHED, true) }
             }
         }
         repeatOnLifecycleStarted(onLifecycleStarted)
@@ -80,5 +77,9 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
             dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
             attribution
         )
+    }
+
+    companion object {
+        const val KEY_FINISHED = "navResult - finishButton"
     }
 }
