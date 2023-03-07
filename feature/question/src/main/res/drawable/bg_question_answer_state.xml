@@ -7,24 +7,24 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:shape="oval">
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:aapt="http://schemas.android.com/aapt">
 
-    <solid>
-        <aapt:attr name="android:color">
-            <selector>
-                <item
-                    android:color="@android:color/holo_green_light"
-                    android:state_activated="true" />
-                <item
-                    android:color="@android:color/holo_red_dark"
-                    android:state_activated="false" />
-            </selector>
+    <item android:state_activated="true">
+        <aapt:attr name="android:drawable">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/holo_green_light" />
+                <stroke android:width="2dp" android:color="@android:color/black" />
+            </shape>
         </aapt:attr>
-    </solid>
+    </item>
 
-    <stroke
-        android:width="2dp"
-        android:color="@android:color/black" />
-</shape>
+    <item android:state_activated="false">
+        <aapt:attr name="android:drawable">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/holo_red_dark" />
+                <stroke android:width="2dp" android:color="@android:color/black" />
+            </shape>
+        </aapt:attr>
+    </item>
+
+</selector>

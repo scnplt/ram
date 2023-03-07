@@ -10,9 +10,9 @@
 package dev.sertan.android.ram.feature.question.ui.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
 import dev.sertan.android.ram.core.ui.util.show
+import dev.sertan.android.ram.feature.question.R
 import dev.sertan.android.ram.feature.question.databinding.ItemQuestionMaterialBinding
 import dev.sertan.android.ram.feature.question.ui.model.Material
 
@@ -26,7 +26,7 @@ class QuestionMaterialViewHolder(
         materialConstraintLayout.setOnClickListener {
             val isCorrect =
                 listener?.run { isMaterialCorrect(material) } ?: return@setOnClickListener
-            val icon = if (isCorrect) R.drawable.ic_done else R.drawable.ic_close
+            val icon = if (isCorrect) R.drawable.ic_correct else R.drawable.ic_wrong
             listener.onMaterialClicked(material, isCorrect = isCorrect)
             answerStateImageView.setImageResource(icon)
             answerStateImageView.isActivated = isCorrect
