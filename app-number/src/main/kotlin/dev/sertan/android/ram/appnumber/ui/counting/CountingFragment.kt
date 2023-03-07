@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,7 @@ import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.show
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
@@ -36,23 +38,18 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
             if (it == CountingUiState.Failure) showErrorMessage()
             if (it is CountingUiState.Success) {
                 showNumber(it)
-                viewModel.takeIf { binding.micButton.isEnabled }
-                    ?.speak(
-                        text = getString(
-                            R.string.current_number_what_the_next,
-                            it.number,
-                            it.step
-                        )
-                    )
+                viewModel.takeIf { binding.micButton.isVisible }?.speak(
+                    text = getString(R.string.current_number_what_the_next, it.number, it.step)
+                )
             }
         }
     }
 
     private val numberListener = object : CountingViewModel.NumberListener {
 
-        override fun onStart() {
-            binding.micButton.isEnabled = false
-            binding.progressIndicator.show()
+        override fun onStart(): Unit = with(binding) {
+            micButton.isInvisible = true
+            progressIndicator.show()
         }
 
         override fun onCorrect(newNumber: Int, step: Int) {
@@ -67,9 +64,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
 
         override fun onError(errorCode: Int): Unit = stopLoadingAnimation()
 
-        private fun stopLoadingAnimation() {
-            binding.progressIndicator.hide()
-            binding.micButton.isEnabled = true
+        private fun stopLoadingAnimation(): Unit = with(binding) {
+            progressIndicator.hide()
+            micButton.show()
         }
     }
 
@@ -94,9 +91,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private fun showNumber(state: CountingUiState.Success): Unit = with(binding) {
         currentNumberTextView.text = state.number.toString()
         descriptionTextView.text = getString(R.string.what_is_the_next_number, state.step)
-        micButton.isEnabled = state.isMicButtonEnabled
+        micButton.isInvisible = !state.isMicButtonVisible
         nextSectionButton.isInvisible = !state.isNextSectionButtonVisible
-        finishButton.isInvisible = !state.isFinishButtonVisible
+        finishButton.isVisible = state.isFinishButtonVisible
     }
 
     override fun onStop() {

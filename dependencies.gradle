@@ -30,7 +30,7 @@ ext {
             timber      : "5.0.1",
             fragmentKtx : '1.5.5',
             multiDex    : "2.0.1",
-            icu4j       : "72.1",
+            icu4j       : "51.1",
             flexBox     : "3.0.0",
             conscrypt   : "2.5.2",
     ]

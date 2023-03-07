@@ -67,7 +67,7 @@ internal class CountingViewModel @Inject constructor(
                     step = step,
                     isNextSectionButtonVisible = number == maxNumber && index < lastSectionIndex,
                     isFinishButtonVisible = number == maxNumber && index == lastSectionIndex,
-                    isMicButtonEnabled = number + step <= maxNumber
+                    isMicButtonVisible = number + step <= maxNumber
                 )
                 _uiState.update { state }
             }
