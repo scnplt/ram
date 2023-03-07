@@ -37,7 +37,7 @@ internal class RamSpeechToTextService @Inject constructor(
     private lateinit var speechRecognizer: SpeechRecognizer
     private lateinit var recognizerIntent: Intent
 
-    private val numberFormatter by lazy { RuleBasedNumberFormat(locale, SPELLOUT) }
+    private val numberFormatter = RuleBasedNumberFormat(locale, SPELLOUT)
 
     init {
         setUpIfNeeded()
