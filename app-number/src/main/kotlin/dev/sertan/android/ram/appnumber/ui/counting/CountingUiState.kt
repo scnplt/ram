@@ -20,6 +20,6 @@ internal sealed class CountingUiState {
         val step: Int,
         val isNextSectionButtonVisible: Boolean,
         val isFinishButtonVisible: Boolean,
-        val isMicButtonEnabled: Boolean
+        val isMicButtonVisible: Boolean
     ) : CountingUiState()
 }
