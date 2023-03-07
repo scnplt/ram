@@ -59,7 +59,6 @@ internal class WriteViewModel @Inject constructor(
             delay(NEXT_QUESTION_DELAY_MS)
             letterIndex.update { it.inc() }
         }
-
     }
 
     fun speakCurrentLetter(): Unit = textToSpeechUseCase.speak(message = uiState.value.letter)
