@@ -15,15 +15,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.core.domain.usecase.GetApplicationConfigsUseCase
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 private const val LETTERS_KEY = "letters"
 private const val LETTER_DELIMITER = ','
+private const val NEXT_QUESTION_DELAY_MS = 750L
 
 @HiltViewModel
 internal class WriteViewModel @Inject constructor(
@@ -51,7 +54,12 @@ internal class WriteViewModel @Inject constructor(
     )
 
     fun nextLetterIfAnswerCorrect(input: String) {
-        if (checkInput(input)) letterIndex.update { it.inc() }
+        viewModelScope.launch {
+            if (!checkInput(input)) return@launch
+            delay(NEXT_QUESTION_DELAY_MS)
+            letterIndex.update { it.inc() }
+        }
+
     }
 
     fun speakCurrentLetter(): Unit = textToSpeechUseCase.speak(message = uiState.value.letter)
