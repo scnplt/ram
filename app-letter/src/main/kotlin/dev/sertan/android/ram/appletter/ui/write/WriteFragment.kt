@@ -11,7 +11,7 @@ package dev.sertan.android.ram.appletter.ui.write
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,8 +32,8 @@ internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect {
             with(binding) {
-                nextButton.isVisible = it.isNextButtonVisible
-                finishButton.isVisible = it.isFinishButtonVisible
+                nextButton.isInvisible = !it.isNextButtonVisible
+                finishButton.isInvisible = !it.isFinishButtonVisible
             }
         }
     }

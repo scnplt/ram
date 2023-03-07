@@ -11,7 +11,7 @@
     <string name="app_name">RAM-5 Harfler</string>
     <string name="writing_practice">Yazma Alıştırması</string>
     <string name="go_to_writing_practice">Yazma Alıştırmasına Git</string>
-    <string name="write_down_sound_hear">Duyduğunuz harfi yazın</string>
+    <string name="write_down_sound_hear">Duyduğunuz\nharfi yazın</string>
     <string name="listen_again">Tekrar dinle</string>
     <string name="letter_you_hear">Duyduğunuz harf</string>
 </resources>
