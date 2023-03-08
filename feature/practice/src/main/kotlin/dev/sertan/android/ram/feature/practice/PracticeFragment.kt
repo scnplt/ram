@@ -16,11 +16,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.core.ui.util.hide
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.show
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import dev.sertan.android.ram.feature.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.feature.practice.databinding.FragmentPracticeBinding
@@ -66,7 +68,10 @@ class PracticeFragment :
 
     private fun setUpComponents(): Unit = with(binding) {
         materialsRecyclerView.adapter = adapter
-        nextButton.setOnClickListener { viewModel.goToNextQuestion() }
+        nextButton.setOnClickListener {
+            answerStateImageView.hide()
+            viewModel.goToNextQuestion()
+        }
         contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
         exitButton.setOnClickListener { popBackStack() }
         finishButton.setOnClickListener {
@@ -75,9 +80,20 @@ class PracticeFragment :
     }
 
     override fun onMaterialClicked(material: Material, isCorrect: Boolean) {
-        if (isCorrect) context?.playCorrectSound() else context?.playNegativeSound()
-        viewModel.setAnswerState(isCorrect)
+        val bgResId = playAnswerSoundAndGetIconRes(isCorrect)
+        binding.answerStateImageView.setImageResource(bgResId)
+        binding.answerStateImageView.show()
+
+        viewModel.updateScore(isCorrect)
         viewModel.isValidationActive = false
+    }
+
+    private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
+        context?.playCorrectSound()
+        R.drawable.ic_answer_correct
+    } else {
+        context?.playNegativeSound()
+        R.drawable.ic_answer_wrong
     }
 
     override fun isMaterialCorrect(material: Material): Boolean? =

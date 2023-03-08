@@ -61,7 +61,7 @@ internal class PracticeViewModel @Inject constructor(
     fun isMaterialCorrect(material: Material): Boolean? = uiState.takeIf { isValidationActive }
         ?.value?.question?.correctMaterialUid?.equals(material.uid)
 
-    fun setAnswerState(isCorrect: Boolean) {
+    fun updateScore(isCorrect: Boolean) {
         if (isCorrect) correctAnswerCount++ else wrongAnswerCount++
     }
 

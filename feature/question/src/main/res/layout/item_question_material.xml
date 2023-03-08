@@ -30,23 +30,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/answerStateImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_question_answer_state"
-        android:contentDescription="@string/wrong_answer"
-        android:padding="@dimen/small_gap_8"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5"
-        app:srcCompat="@drawable/ic_wrong"
-        app:tint="@android:color/white"
-        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
