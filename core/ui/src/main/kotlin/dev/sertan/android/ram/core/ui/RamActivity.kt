@@ -9,14 +9,12 @@
 
 package dev.sertan.android.ram.core.ui
 
-import android.os.Build
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import dev.sertan.android.ram.core.ui.fragment.SplashFragment
@@ -56,13 +54,5 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
     override fun onStart() {
         super.onStart()
         viewModel.runOnce(navigateAfterSplash)
-    }
-
-    companion object {
-        init {
-            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
-                AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-            }
-        }
     }
 }

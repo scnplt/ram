@@ -21,6 +21,10 @@ fun View.show() {
     if (visibility != View.VISIBLE) isVisible = true
 }
 
+fun View.hide() {
+    if (visibility == View.VISIBLE) isVisible = false
+}
+
 fun ImageButton.setIconTint(@ColorInt color: Int) {
     setColorFilter(color, PorterDuff.Mode.SRC_IN)
 }
