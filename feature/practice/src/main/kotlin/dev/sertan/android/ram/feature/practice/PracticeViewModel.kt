@@ -50,7 +50,10 @@ internal class PracticeViewModel @Inject constructor(
         initialValue = PracticeUiState.initialState()
     )
 
-    fun goToNextQuestion(): Unit = questionIndex.update { it.inc() }
+    fun goToNextQuestion() {
+        questionIndex.update { it.inc() }
+        isValidationActive = true
+    }
 
     fun speakCurrentQuestionContent(): Unit =
         textToSpeechUseCase.speak(uiState.value.question?.content)

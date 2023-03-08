@@ -105,9 +105,7 @@
         android:visibility="gone"
         app:constraint_referenced_ids="
             contentScrollView,
-            materialsRecyclerView,
-            nextButton,
-            finishButton"
+            materialsRecyclerView"
         tools:visibility="visible" />
 
     <TextView
