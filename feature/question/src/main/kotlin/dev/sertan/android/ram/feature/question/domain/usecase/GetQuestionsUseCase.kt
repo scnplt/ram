@@ -18,7 +18,7 @@ import javax.inject.Inject
 class GetQuestionsUseCase @Inject constructor(
     private val questionRepository: QuestionRepository,
     private val materialRepository: MaterialRepository,
-    private val questionMapper: QuestionMapper,
+    private val questionMapper: QuestionMapper
 ) {
 
     suspend operator fun invoke(): List<Question> = with(questionRepository) {
