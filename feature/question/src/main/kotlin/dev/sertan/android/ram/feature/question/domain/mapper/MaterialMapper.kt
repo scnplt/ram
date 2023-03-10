@@ -11,10 +11,15 @@ package dev.sertan.android.ram.feature.question.domain.mapper
 
 import dev.sertan.android.ram.feature.question.domain.model.MaterialDto
 import dev.sertan.android.ram.feature.question.ui.model.Material
+import java.util.Locale
+import javax.inject.Inject
 
-fun MaterialDto.toUIModel(): Material = Material(
-    uid = uid,
-    description = description.replaceFirstChar { it.uppercase() },
-    mediaUrl = mediaUrl,
-    attribution = attribution
-)
+class MaterialMapper @Inject constructor(private val locale: Locale) {
+
+    fun toUIModel(dto: MaterialDto): Material = Material(
+        uid = dto.uid,
+        description = dto.description.replaceFirstChar { it.titlecase(locale) },
+        mediaUrl = dto.mediaUrl,
+        attribution = dto.attribution
+    )
+}

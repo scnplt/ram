@@ -9,29 +9,26 @@
 
 package dev.sertan.android.ram.feature.question.domain.usecase
 
-import dev.sertan.android.ram.feature.question.domain.mapper.toUIModel
-import dev.sertan.android.ram.feature.question.domain.model.QuestionDto
+import dev.sertan.android.ram.feature.question.domain.mapper.QuestionMapper
 import dev.sertan.android.ram.feature.question.domain.repository.MaterialRepository
 import dev.sertan.android.ram.feature.question.domain.repository.QuestionRepository
-import dev.sertan.android.ram.feature.question.ui.model.Material
 import dev.sertan.android.ram.feature.question.ui.model.Question
 import javax.inject.Inject
 
 class GetQuestionsUseCase @Inject constructor(
     private val questionRepository: QuestionRepository,
-    private val materialRepository: MaterialRepository
+    private val materialRepository: MaterialRepository,
+    private val questionMapper: QuestionMapper,
 ) {
 
     suspend operator fun invoke(): List<Question> = with(questionRepository) {
         materialRepository.updateMaterialsFromRemote()
-        val dtoList = getQuestions().getOrNull()?.takeUnless { it.isEmpty() }
+        val questionDtoList = getQuestions().getOrNull()?.takeUnless { it.isEmpty() }
             ?: getQuestions(update = true).getOrNull()
-        dtoList?.map { it.toUIModel(materials = getQuestionMaterials(question = it)) }
-            ?.shuffled().orEmpty()
+        questionDtoList?.map { questionDto ->
+            val materialDtoList = questionDto.materialUidList
+                .mapNotNull { materialRepository.getMaterial(materialUid = it).getOrNull() }
+            questionMapper.toUIModel(dto = questionDto, materials = materialDtoList)
+        }?.shuffled().orEmpty()
     }
-
-    private suspend fun getQuestionMaterials(question: QuestionDto): List<Material> =
-        question.materialUidList.mapNotNull {
-            materialRepository.getMaterial(materialUid = it).getOrNull()?.toUIModel()
-        }
 }
