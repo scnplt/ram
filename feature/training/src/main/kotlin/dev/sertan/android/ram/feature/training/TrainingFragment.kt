@@ -47,6 +47,11 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.getBoolean(SHUFFLE_KEY)?.let { savedInstanceState?.putBoolean(SHUFFLE_KEY, it) }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
@@ -81,5 +86,6 @@ class TrainingFragment : Fragment(R.layout.fragment_training) {
 
     companion object {
         const val KEY_FINISHED = "navResult - finishButton"
+        const val SHUFFLE_KEY = "shuffle"
     }
 }

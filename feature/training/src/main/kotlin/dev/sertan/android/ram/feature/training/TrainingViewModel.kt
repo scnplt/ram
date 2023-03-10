@@ -9,11 +9,13 @@
 
 package dev.sertan.android.ram.feature.training
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import dev.sertan.android.ram.feature.question.domain.usecase.GetMaterialsUseCase
+import dev.sertan.android.ram.feature.training.TrainingFragment.Companion.SHUFFLE_KEY
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,14 +26,15 @@ import kotlinx.coroutines.flow.update
 
 @HiltViewModel
 internal class TrainingViewModel @Inject constructor(
-    private val getMaterialsUseCase: GetMaterialsUseCase,
+    getMaterialsUseCase: GetMaterialsUseCase,
+    savedStateHandle: SavedStateHandle,
     private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
     private val materialIndex = MutableStateFlow(0)
 
     val uiState: StateFlow<TrainingUiState> = flow {
-        val materials = getMaterialsUseCase()
+        val materials = getMaterialsUseCase(shuffle = savedStateHandle[SHUFFLE_KEY])
         materialIndex.collect { index ->
             textToSpeechUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
             emit(TrainingUiState.getState(materials, index))

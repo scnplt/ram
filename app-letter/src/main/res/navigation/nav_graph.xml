@@ -72,7 +72,7 @@
         android:id="@+id/trainingFragment"
         android:name="dev.sertan.android.ram.feature.training.TrainingFragment"
         android:label="TrainingFragment"
-        tools:layout="@layout/fragment_training"/>
+        tools:layout="@layout/fragment_training" />
 
     <fragment
         android:id="@+id/writeFragment"
