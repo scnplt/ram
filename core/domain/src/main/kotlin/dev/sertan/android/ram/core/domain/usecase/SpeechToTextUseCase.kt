@@ -32,6 +32,9 @@ class SpeechToTextUseCase @Inject constructor(
     fun convertWordToNumber(text: String): Int =
         speechToTextService.convertWordToNumber(text).getOrNull() ?: CONVERT_FAIL
 
+    fun convertNumberToWord(number: Int): String =
+        speechToTextService.convertNumberToWord(number).getOrNull().orEmpty()
+
     companion object {
         const val CONVERT_FAIL = Int.MIN_VALUE
     }

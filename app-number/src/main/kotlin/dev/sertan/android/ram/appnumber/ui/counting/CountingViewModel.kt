@@ -16,6 +16,7 @@ import dev.sertan.android.ram.appnumber.domain.usecase.GetSectionsUseCase
 import dev.sertan.android.ram.appnumber.ui.model.Section
 import dev.sertan.android.ram.core.domain.usecase.SpeechToTextUseCase
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
+import java.util.Locale
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -28,6 +29,7 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 internal class CountingViewModel @Inject constructor(
     getSectionsUseCase: GetSectionsUseCase,
+    private val locale: Locale,
     private val speechToTextUseCase: SpeechToTextUseCase,
     private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
@@ -62,12 +64,14 @@ internal class CountingViewModel @Inject constructor(
                 val index = sectionIndexStream.value
                 val lastSectionIndex = sectionsStream.value.lastIndex
                 val number = numberIndex * step + minNumber
+                val stepText = speechToTextUseCase.convertNumberToWord(number = step)
+                    .replaceFirstChar { it.titlecase(locale) }
                 val state = CountingUiState.Success(
                     number = number,
-                    step = step,
                     isNextSectionButtonVisible = number == maxNumber && index < lastSectionIndex,
                     isFinishButtonVisible = number == maxNumber && index == lastSectionIndex,
-                    isMicButtonVisible = number + step <= maxNumber
+                    isMicButtonVisible = number + step <= maxNumber,
+                    step = stepText
                 )
                 _uiState.update { state }
             }

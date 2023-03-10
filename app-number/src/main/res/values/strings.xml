@@ -9,8 +9,8 @@
 
 <resources>
     <string name="app_name">RAM-4 Sayılar</string>
-    <string name="what_is_the_next_number">%1$d sonraki sayı nedir?</string>
+    <string name="what_is_the_next_number">%s sonraki sayı nedir?</string>
     <string name="mic_button_description">Aşağıdaki konuşma butonuna basarak cevap verebilirsiniz.</string>
-    <string name="current_number_what_the_next">Şu anki sayı %1$d, %2$d sonraki sayı nedir?</string>
+    <string name="current_number_what_the_next">Şu anki sayı %1$d, %2$s sonraki sayı nedir?</string>
     <string name="sequential_counting">Ardışık sayma</string>
 </resources>

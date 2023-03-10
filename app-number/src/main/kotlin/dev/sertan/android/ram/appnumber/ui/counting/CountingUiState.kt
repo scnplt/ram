@@ -17,7 +17,7 @@ internal sealed class CountingUiState {
 
     data class Success(
         val number: Int,
-        val step: Int,
+        val step: String,
         val isNextSectionButtonVisible: Boolean,
         val isFinishButtonVisible: Boolean,
         val isMicButtonVisible: Boolean
