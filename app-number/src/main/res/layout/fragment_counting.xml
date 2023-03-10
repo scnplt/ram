@@ -13,14 +13,35 @@
     android:id="@+id/contentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/small_gap_2"
     tools:context=".ui.counting.CountingFragment">
+
+    <FrameLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_panel"
+        android:padding="@dimen/small_gap_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/exitButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="@string/exit"
+            app:srcCompat="@drawable/ic_close"
+            app:tint="@android:color/holo_red_dark" />
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/inputConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/small_gap_4"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
+        android:layout_marginVertical="@dimen/small_gap_4"
         android:background="@drawable/bg_card"
         android:padding="@dimen/small_gap_10"
         app:layout_constraintBottom_toTopOf="@id/nextSectionButton"
@@ -95,6 +116,7 @@
         android:id="@+id/nextSectionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
         android:layout_marginVertical="@dimen/small_gap_4"
         android:visibility="invisible"
         app:buttonIcon="@drawable/ic_forward"

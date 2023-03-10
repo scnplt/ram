@@ -48,6 +48,7 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private val numberListener = object : CountingViewModel.NumberListener {
 
         override fun onStart(): Unit = with(binding) {
+            viewModel.stopSpeech()
             micButton.isInvisible = true
             progressIndicator.show()
         }
@@ -72,15 +73,16 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpListeners()
+        setUpComponents()
         repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
-    private fun setUpListeners(): Unit = with(binding) {
+    private fun setUpComponents(): Unit = with(binding) {
         viewModel.listener = numberListener
         micButton.setOnClickListener { viewModel.listenToNumber() }
         nextSectionButton.setOnClickListener { viewModel.nextSection() }
         finishButton.setOnClickListener { popBackStack() }
+        exitButton.setOnClickListener { popBackStack() }
     }
 
     private fun showErrorMessage() {
