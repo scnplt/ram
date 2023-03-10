@@ -19,11 +19,15 @@ class GetMaterialsUseCase @Inject constructor(
     private val materialRepository: MaterialRepository
 ) {
 
-    suspend operator fun invoke(shuffle: Boolean = true): List<Material> =
+    suspend operator fun invoke(shuffle: Boolean? = DEFAULT_SHUFFLE): List<Material> =
         with(materialRepository) {
             val dtoList = getMaterials().getOrNull()?.takeUnless { it.isEmpty() }
                 ?: getMaterials(update = true).getOrNull()
             dtoList?.map(MaterialDto::toUIModel).orEmpty()
-                .let { if (shuffle) it.shuffled() else it }
+                .let { if (shuffle == false) it else it.shuffled() }
         }
+
+    companion object {
+        const val DEFAULT_SHUFFLE = true
+    }
 }

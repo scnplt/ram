@@ -9,11 +9,16 @@
 
 package dev.sertan.android.ram.core.ui.util
 
+import android.os.Bundle
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 
 fun Fragment.navTo(navDirections: NavDirections): Unit = findNavController().navigate(navDirections)
+
+fun Fragment.navTo(@IdRes destinationResId: Int, args: Bundle? = null): Unit =
+    findNavController().navigate(destinationResId, args)
 
 fun Fragment.popBackStack(): Boolean = findNavController().popBackStack()
 
