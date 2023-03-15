@@ -31,8 +31,7 @@ ext {
             fragmentKtx: '1.5.5',
             multiDex   : "2.0.1",
             icu4j      : "51.1",
-            flexBox    : "3.0.0",
-            conscrypt  : "2.5.2",
+            flexBox    : "3.0.0"
     ]
 
     module = [
@@ -73,7 +72,6 @@ ext {
             fragmentKtx          : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex             : "androidx.multidex:multidex:${versions.multiDex}",
             icu4j                : "com.ibm.icu:icu4j:${versions.icu4j}",
-            flexBox              : "com.google.android.flexbox:flexbox:${versions.flexBox}",
-            conscrypt            : "org.conscrypt:conscrypt-android:${versions.conscrypt}",
+            flexBox              : "com.google.android.flexbox:flexbox:${versions.flexBox}"
     ]
 }

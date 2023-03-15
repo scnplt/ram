@@ -14,9 +14,7 @@ import android.content.Context
 import androidx.multidex.MultiDex
 import dev.sertan.android.ram.core.common.log.RamLogger
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
-import java.security.Security
 import javax.inject.Inject
-import org.conscrypt.Conscrypt
 
 abstract class RamApplication : Application() {
 
@@ -29,7 +27,6 @@ abstract class RamApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         ramLogger.debugInit()
-        Security.insertProviderAt(Conscrypt.newProvider(), 1)
         // TASK: Check internet connection and show a message if no connection
     }
 
