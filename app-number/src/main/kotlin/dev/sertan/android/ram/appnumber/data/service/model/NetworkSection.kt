@@ -9,6 +9,9 @@
 
 package dev.sertan.android.ram.appnumber.data.service.model
 
+import androidx.annotation.Keep
+
+@Keep
 internal data class NetworkSection(
     val uid: String? = null,
     val minNumber: Int? = null,
