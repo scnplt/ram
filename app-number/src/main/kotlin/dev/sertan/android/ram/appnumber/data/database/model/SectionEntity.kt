@@ -9,9 +9,11 @@
 
 package dev.sertan.android.ram.appnumber.data.database.model
 
+import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Keep
 @Entity(tableName = "sections")
 internal data class SectionEntity(
     @PrimaryKey val uid: String,
