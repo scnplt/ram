@@ -7,17 +7,16 @@ on:
       - staging
 
 jobs:
-  scan:
+  set_up:
+    uses: scnplt/ram/.github/workflows/set-up.yml@staging
+    secrets:
+          googleServicesJsonPath: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
+  scan:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up dependencies
-        uses: scnplt/ram/.github/workflows/set-up.yml@staging
-        secrets:
-          googleServicesJsonPath: ${{ secrets.GOOGLE_SERVICES_JSON }}
+      - uses: actions/checkout@v2        
 
       - name: Scan with Ktlint
         run: ./gradlew ktlint
