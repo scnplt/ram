@@ -24,7 +24,6 @@ jobs:
         with:
           java-version: ${{ inputs.java-version }}
           distribution: 'adopt'
-          cache: maven
 
       - name: Put google-services.json file in all application modules
         run: for appFolder in [app]*; do echo ${{ secrets.googleServicesJsonPath }} > $appFolder/google-services.json; done
