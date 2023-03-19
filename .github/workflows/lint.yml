@@ -8,7 +8,7 @@ on:
 
 jobs:
   set_up:
-    uses: scnplt/ram/.github/workflows/set-up.yml
+    uses: scnplt/ram/.github/workflows/set-up.yml@github-actions
     secrets:
           googleServicesJsonPath: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
