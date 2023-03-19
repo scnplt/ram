@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set up dependencies
-        uses: ./.github/workflows/set-up.yml
+        uses: scnplt/ram/.github/workflows/set-up.yml@staging
         secrets:
           googleServicesJsonPath: ${{ secrets.GOOGLE_SERVICES_JSON }}
 
