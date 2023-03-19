@@ -1,0 +1,33 @@
+name: Set up dependencies
+
+on:
+  workflow_call:
+    inputs:
+      java-version:
+        required: false
+        type: string
+        default: '11'
+
+    secrets:
+      googleServicesJsonPath:
+        required: true
+
+jobs:
+  set_up:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: ${{ inputs.java-version }}
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Put google-services.json file in all application modules
+        run: for appFolder in [app]*; do echo ${{ secrets.googleServicesJsonPath }} > $appFolder/google-services.json; done
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
