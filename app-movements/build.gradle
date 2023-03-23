@@ -65,6 +65,7 @@ dependencies {
     implementation project(path: module.featureDrawing)
 
     implementation libs.flexBox
+    implementation libs.mlKitPoseDetection
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx
