@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/fragment_splash"
+        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:label="SplashFragment" />
+
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        tools:layout="@layout/fragment_project_info"
+        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:label="ProjectInfoFragment" />
+
+    <fragment
+        android:id="@+id/drawingFragment"
+        tools:layout="@layout/fragment_drawing"
+        android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
+        android:label="DrawingFragment" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/fragment_home"
+        android:name="dev.sertan.android.ram.appmovements.HomeFragment"
+        android:label="HomeFragment" />
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+</navigation>

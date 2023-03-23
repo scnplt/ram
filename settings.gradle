@@ -28,6 +28,7 @@ rootProject.name = 'RAM'
 include ':app-selection'
 include ':app-number'
 include ':app-letter'
+include ':app-movements'
 
 include ':core:common'
 include ':core:ui'
