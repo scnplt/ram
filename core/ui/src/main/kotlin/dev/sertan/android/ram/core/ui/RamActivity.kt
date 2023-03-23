@@ -55,4 +55,9 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
         super.onStart()
         viewModel.runOnce(navigateAfterSplash)
     }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.cancelJob()
+    }
 }
