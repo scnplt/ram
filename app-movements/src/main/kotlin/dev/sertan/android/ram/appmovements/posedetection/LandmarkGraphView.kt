@@ -43,32 +43,28 @@ internal class LandmarkGraphView @JvmOverloads constructor(
     private fun addPoint(landmark: PoseLandmark?) {
         if (landmark == null) return
         points.add(landmark.position.x to landmark.position.y)
-        invalidate()
     }
 
-    fun addLine(startLandmark: PoseLandmark?, stopLandmark: PoseLandmark?) {
-        startLandmark?.let { addPoint(it) } ?: return
-        stopLandmark?.let { addPoint(it) } ?: return
-        lines.add(
-            Pair(
-                startLandmark.position.x to startLandmark.position.y,
-                stopLandmark.position.x to stopLandmark.position.y
-            )
-        )
+    fun addLine(start: PoseLandmark?, stop: PoseLandmark?) {
+        start?.let { addPoint(it) }
+        stop?.let { addPoint(it) }
+        if (start == null || stop == null) return invalidate()
+
+        lines.add(Pair(start.position.x to start.position.y, stop.position.x to stop.position.y))
         invalidate()
     }
 
     fun clear() {
-        points.clear()
         lines.clear()
+        points.clear()
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        points.forEach { (x, y) -> canvas.drawPoint(x, y, pointPaint) }
         lines.forEach { (start, stop) ->
             canvas.drawLine(start.first, start.second, stop.first, stop.second, linePaint)
         }
+        points.forEach { (x, y) -> canvas.drawPoint(x, y, pointPaint) }
     }
 }

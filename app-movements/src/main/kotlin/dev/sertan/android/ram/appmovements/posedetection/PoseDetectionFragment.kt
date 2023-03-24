@@ -18,14 +18,15 @@ import android.util.Log
 import android.view.TextureView
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.PoseDetection
-import com.google.mlkit.vision.pose.PoseLandmark
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.appmovements.databinding.FragmentPoseDetectionBinding
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import java.util.concurrent.Executors
 
 @AndroidEntryPoint
 internal class PoseDetectionFragment :
@@ -33,10 +34,13 @@ internal class PoseDetectionFragment :
     TextureView.SurfaceTextureListener {
 
     private val binding by viewBinding(FragmentPoseDetectionBinding::bind)
+    private val viewModel by viewModels<PoseDetectionViewModel>()
 
     private lateinit var camera: Camera
     private var isFrontCameraActive = true
     private var isDetectionActive = false
+
+    private val poseExecutor = Executors.newSingleThreadExecutor()
 
     private val poseDetector by lazy {
         val options = PoseDetectorOptions.Builder()
@@ -96,59 +100,16 @@ internal class PoseDetectionFragment :
     override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {
         if (!isDetectionActive) return
         val image = InputImage.fromBitmap(binding.cameraTextureView.bitmap ?: return, 0)
-
-        poseDetector.process(image)
-            .addOnSuccessListener { pose ->
+        Log.d("RAM_LOG_TAG", "onSurfaceTextureUpdated: ${Thread.currentThread().name}}")
+        poseDetector.process(image).continueWith(poseExecutor) { task ->
+            val pose = task.result ?: return@continueWith
+            viewModel.processPoseWithPairs(pose) { posePairs ->
                 binding.landmarkGraphView.clear()
-                val nose = pose.getPoseLandmark(PoseLandmark.NOSE)
-                val leftEyeInner = pose.getPoseLandmark(PoseLandmark.LEFT_EYE_INNER)
-                val leftEye = pose.getPoseLandmark(PoseLandmark.LEFT_EYE)
-                val rightEyeInner = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_INNER)
-                val rightEye = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE)
-                val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
-                val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
-                val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
-                val rightShoulder = pose.getPoseLandmark(PoseLandmark.RIGHT_SHOULDER)
-                val leftElbow = pose.getPoseLandmark(PoseLandmark.LEFT_ELBOW)
-                val rightElbow = pose.getPoseLandmark(PoseLandmark.RIGHT_ELBOW)
-                val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
-                val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
-/*                val leftPinky = pose.getPoseLandmark(PoseLandmark.LEFT_PINKY)
-                val rightPinky = pose.getPoseLandmark(PoseLandmark.RIGHT_PINKY)
-                val leftIndex = pose.getPoseLandmark(PoseLandmark.LEFT_INDEX)
-                val rightIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_INDEX)
-                val leftThumb = pose.getPoseLandmark(PoseLandmark.LEFT_THUMB)
-                val rightThumb = pose.getPoseLandmark(PoseLandmark.RIGHT_THUMB)*/
-                val leftHip = pose.getPoseLandmark(PoseLandmark.LEFT_HIP)
-                val rightHip = pose.getPoseLandmark(PoseLandmark.RIGHT_HIP)
-/*                val leftKnee = pose.getPoseLandmark(PoseLandmark.LEFT_KNEE)
-                val rightKnee = pose.getPoseLandmark(PoseLandmark.RIGHT_KNEE)
-                val leftAnkle = pose.getPoseLandmark(PoseLandmark.LEFT_ANKLE)
-                val rightAnkle = pose.getPoseLandmark(PoseLandmark.RIGHT_ANKLE)
-                val leftHeel = pose.getPoseLandmark(PoseLandmark.LEFT_HEEL)
-                val rightHeel = pose.getPoseLandmark(PoseLandmark.RIGHT_HEEL)
-                val leftFootIndex = pose.getPoseLandmark(PoseLandmark.LEFT_FOOT_INDEX)
-                val rightFootIndex = pose.getPoseLandmark(PoseLandmark.RIGHT_FOOT_INDEX)*/
-
-                with(binding.landmarkGraphView) {
-                    addLine(leftEyeInner, nose)
-                    addLine(leftEye, leftEyeInner)
-                    addLine(rightEyeInner, nose)
-                    addLine(rightEye, rightEyeInner)
-                    addLine(leftMouth, rightMouth)
-                    addLine(leftShoulder, rightShoulder)
-                    addLine(rightShoulder, rightElbow)
-                    addLine(leftShoulder, leftElbow)
-                    addLine(rightElbow, rightWrist)
-                    addLine(leftElbow, leftWrist)
-                    addLine(rightShoulder, rightHip)
-                    addLine(leftShoulder, leftHip)
-                    addLine(leftHip, rightHip)
+                posePairs.forEach { (start, stop) ->
+                    binding.landmarkGraphView.addLine(start, stop)
                 }
             }
-            .addOnFailureListener { exception ->
-                Log.d("RAM_LOG_TAG", "Pose detection failed: ${exception.message}")
-            }
+        }
     }
 }
 
