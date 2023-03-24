@@ -63,8 +63,8 @@ internal class LandmarkGraphView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         lines.forEach { (start, stop) ->
-            canvas.drawLine(start.first, start.second, stop.first, stop.second, linePaint)
+            canvas.drawLine(start.second, start.first, stop.second, stop.first, linePaint)
         }
-        points.forEach { (x, y) -> canvas.drawPoint(x, y, pointPaint) }
+        points.forEach { (x, y) -> canvas.drawPoint(y, x, pointPaint) }
     }
 }

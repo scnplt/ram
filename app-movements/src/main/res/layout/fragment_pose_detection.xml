@@ -15,8 +15,8 @@
     android:keepScreenOn="true"
     tools:context=".posedetection.PoseDetectionFragment">
 
-    <TextureView
-        android:id="@+id/cameraTextureView"
+    <SurfaceView
+        android:id="@+id/cameraView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/small_gap_2"
@@ -29,10 +29,10 @@
         android:id="@+id/landmarkGraphView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/cameraTextureView"
-        app:layout_constraintEnd_toEndOf="@id/cameraTextureView"
-        app:layout_constraintStart_toStartOf="@id/cameraTextureView"
-        app:layout_constraintTop_toTopOf="@id/cameraTextureView" />
+        app:layout_constraintBottom_toBottomOf="@id/cameraView"
+        app:layout_constraintEnd_toEndOf="@id/cameraView"
+        app:layout_constraintStart_toStartOf="@id/cameraView"
+        app:layout_constraintTop_toTopOf="@id/cameraView" />
 
     <Button
         android:id="@+id/changeCamera"
