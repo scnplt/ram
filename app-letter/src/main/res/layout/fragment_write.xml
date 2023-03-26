@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/small_gap_2"
+    tools:context=".ui.write.WriteFragment">
+
+    <LinearLayout
+        android:id="@+id/inputLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_gap_4"
+        android:background="@drawable/bg_card"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/small_gap_10"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.9">
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/write_down_sound_hear"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceDisplayMedium" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap_4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/letter_you_hear"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <dev.sertan.android.ram.core.ui.customview.RamButton
+            android:id="@+id/listenAgainButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap_5"
+            app:buttonIcon="@drawable/ic_refresh"
+            app:buttonText="@string/listen_again" />
+    </LinearLayout>
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/nextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_gap_4"
+        android:visibility="invisible"
+        app:buttonIcon="@drawable/ic_forward"
+        app:buttonText="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputLinearLayout"
+        tools:visibility="invisible" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/finishButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintBottom_toBottomOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="@id/nextButton"
+        app:layout_constraintStart_toStartOf="@id/nextButton"
+        app:layout_constraintTop_toTopOf="@id/nextButton"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

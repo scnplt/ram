@@ -24,5 +24,17 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'RAM'
-include ':app-color'
-include ':core'
+
+include ':app-selection'
+include ':app-number'
+include ':app-letter'
+
+include ':core:common'
+include ':core:ui'
+include ':core:data'
+include ':core:domain'
+
+include ':feature:drawing'
+include ':feature:question'
+include ':feature:practice'
+include ':feature:training'

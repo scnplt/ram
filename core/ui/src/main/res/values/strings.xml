@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="this_project_is_financed">Bu proje Avrupa Birliği ve Türkiye Cumhuriyeti\ntarafından finanse edilmektedir.</string>
+    <string name="error">Hata</string>
+    <string name="report_error">Hatayı bildir</string>
+    <string name="close">Kapat</string>
+    <string name="color">Renk</string>
+    <string name="clear_canvas">Tuvali temizle</string>
+    <string name="eraser">Silgi</string>
+    <string name="brush">Fırça</string>
+    <string name="application_logo">Uygulama logosu</string>
+    <string name="training">Eğitim</string>
+    <string name="practice">Uygulama</string>
+    <string name="help">Yardım</string>
+    <string name="change_voice_support">Sesli destek durumunu değiştir</string>
+    <string name="drawing">Çizim</string>
+    <string name="next">İleri</string>
+    <string name="previous">Geri</string>
+    <string name="finish">Bitir</string>
+    <string name="this_icon_was_created_by">Bu görsel %s tarafından oluşturulmuştur.</string>
+    <string name="exit">Çık</string>
+    <string name="wrong_answer">Yanlış cevap</string>
+    <string name="correct_answer">Doğru cevap</string>
+    <string name="score_percent">Puan: %d/100</string>
+    <string name="try_again">Yeniden dene</string>
+    <string name="material_image">Materyal resmi</string>
+    <string name="empty_list_message">Bir aksilik oldu!\nLütfen daha sonra tekrar deneyin.</string>
+    <string name="general_title">ÖZEL EĞİTİM İHTİYACI OLAN\nÖĞRENCİLER İÇİN\nEĞİTİCİ BİLGİSAYAR PROGRAMI</string>
+    <string name="program_information">Bu Program\nElazığ Rehberlik Ve Araştırma Merkezi Müdürlüğü\nTREESP2.1.IQSES/285 Referans Nolu\nÖzel Eğitim Hizmetlerinde Öğrenme Ortamlarının Geliştirilmesi Projesi Kapsamında Hazırlanmıştır</string>
+    <string name="project_description">Bu program Türkiye ile Avrupa Birliği arasındaki Mali İşbirliği çerçevesinde geliştirilmiş olan Katılım Öncesi Mali Yardım Aracı (IPA)\'nın "İstihdam, Eğitim ve Sosyal Politikalar Sektörel Operasyonel Programı" altındaki "Bütünleştirici Eğitim için Özel Eğitim Hizmetlerinin Kalitesinin Artırılması Hibe Programı" çerçevesinde\n<font fgcolor="red">Elazığ Rehberlik ve Araştırma Merkezi Müdürlüğü</font>\ntarafından geliştirilen\n<font fgcolor="red">"Özel Eğitim Hizmetlerinde Öğrenme Ortamlarının Geliştirilmesi"</font>\nadlı proje çerçevesinde hazırlanmıştır.</string>
+    <string name="project_partners">Proje ortakları Elazığ Özel Eğitim Meslek Lisesi, Elazığ Mesleki ve Teknik Anadolu Lisesi ile Elazığ Esnaf ve Sanatkârlar Odaları Birliği Başkanlığı\'dır.</string>
+    <string name="this_publication_has_been_produced">Bu yayın Avrupa Birliği ve Türkiye Cumhuriyeti\'nin mali katkısıyla hazırlanmıştır. Bu yayının içeriğinden yalnızca <font fgcolor="red">Elazığ Rehberlik ve Araştırma Merkezi Müdürlüğü</font> sorumludur ve bu içerik hiçbir şekilde Avrupa Birliği veya Türkiye Cumhuriyeti\'nin görüş ve tutumunu yansıtmamaktadır.</string>
+    <string name="publication_date_mm_yyyy">MART - 2023</string>
+    <string name="app_no">%1$d</string>
+    <string name="about">Hakkında</string>
+</resources>

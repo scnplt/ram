@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <color name="turquoise_200">#8ae0f2</color>
+    <color name="turquoise_400">#48CAE4</color>
+
+    <!-- Dark Blue -->
+    <color name="dark_blue_600">#1c7bcd</color>
+    <color name="dark_blue_700">#146abb</color>
+    <color name="dark_blue_900">#023E8A</color>
+</resources>

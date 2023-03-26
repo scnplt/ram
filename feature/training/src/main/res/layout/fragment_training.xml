@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrainingFragment">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/buttonPanelFlexLayout"
+        style="@style/Widget.RAM.FlexboxLayout.Row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexDirection="row_reverse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/exitButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/exit"
+            app:srcCompat="@drawable/ic_close" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/materialConstraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:background="@drawable/bg_card_training"
+        app:layout_constrainedHeight="true"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/forwardButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_gap_4"
+            android:autoSizeTextType="uniform"
+            android:maxLines="10"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceHeadlineMedium"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@id/mediaImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem[10]" />
+
+        <ImageView
+            android:id="@+id/mediaImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/small_gap_8"
+            android:contentDescription="@string/material_image"
+            app:layout_constraintBottom_toTopOf="@id/attributionTextView"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+            app:layout_constraintWidth_percent="0.85"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/attributionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/small_gap_4"
+            android:layout_marginTop="@dimen/small_gap_4"
+            android:layout_marginBottom="@dimen/small_gap_8"
+            android:maxLines="2"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceLabelSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mediaImageView"
+            tools:text="@tools:sample/lorem/random" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/forwardButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_forward"
+        app:buttonText="@string/next"
+        app:layout_constraintBottom_toTopOf="@id/backButton"
+        app:layout_constraintEnd_toEndOf="@id/materialConstraintLayout"
+        app:layout_constraintStart_toStartOf="@id/materialConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@id/materialConstraintLayout"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/finishButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintBottom_toBottomOf="@id/forwardButton"
+        app:layout_constraintEnd_toEndOf="@id/forwardButton"
+        app:layout_constraintStart_toStartOf="@id/forwardButton"
+        app:layout_constraintTop_toTopOf="@id/forwardButton"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_back"
+        app:buttonText="@string/previous"
+        app:layout_constraintBottom_toTopOf="@id/progressIndicator"
+        app:layout_constraintEnd_toEndOf="@id/forwardButton"
+        app:layout_constraintStart_toStartOf="@id/forwardButton"
+        app:layout_constraintTop_toBottomOf="@id/forwardButton" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:progress="10" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/contentGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:constraint_referenced_ids="progressIndicator, materialConstraintLayout" />
+
+    <TextView
+        android:id="@+id/emptyListMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_list_message"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceHeadlineMedium"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>

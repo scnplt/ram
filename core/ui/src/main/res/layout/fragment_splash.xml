@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash"
+    android:padding="@dimen/small_gap_2"
+    tools:context=".fragment.SplashFragment"
+    tools:ignore="ContentDescription">
+
+    <include layout="@layout/layout_base_for_splash" />
+
+    <TextView
+        android:id="@+id/firstTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_6"
+        android:gravity="center_horizontal"
+        android:text="@string/general_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_m"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/financedTextView" />
+
+    <TextView
+        android:id="@+id/appNoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_l"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/firstTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/firstTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/firstTitleTextView"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/appNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_6"
+        android:layout_marginBottom="@dimen/small_gap_6"
+        android:gravity="center_horizontal"
+        android:maxLines="3"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceHeadlineLarge"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appNoTextView"
+        tools:text="@tools:sample/lorem[2]" />
+
+    <ImageView
+        android:id="@+id/appImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/small_gap_2"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toTopOf="@id/middleImageLineFlow"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appNameTextView"
+        app:layout_constraintWidth_percent="0.75"
+        tools:src="@tools:sample/avatars" />
+</androidx.constraintlayout.widget.ConstraintLayout>

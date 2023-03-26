@@ -1,0 +1,43 @@
+<!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="132.3486dp"
+    android:height="200dp"
+    android:viewportWidth="448"
+    android:viewportHeight="677">
+
+    <group android:translateY="8">
+        <path
+            android:fillColor="#202020"
+            android:pathData="M1,10.74C1,5.53 5.48,1.39 10.7,1.74C119.13,9.02 197.91,6.65 285.64,4.03C331.85,2.64 380.54,1.18 437.36,1.02C442.55,1 446.7,5.3 446.41,10.45C444.63,42.37 439.38,140.14 437.73,207.11C433.8,366.54 444.06,605.02 446.5,658.25C446.74,663.51 442.31,667.76 436.99,667.55C302.79,662.19 231.59,663.91 152.25,665.82C110.55,666.82 66.6,667.88 10.08,667.99C5.1,668 1,663.96 1,659V10.74Z" />
+    </group>
+
+    <path
+        android:pathData="M1,10.74C1,5.53 5.48,1.39 10.7,1.74C119.13,9.02 197.91,6.65 285.64,4.03C331.85,2.64 380.54,1.18 437.36,1.02C442.55,1 446.7,5.3 446.41,10.45C444.63,42.37 439.38,140.14 437.73,207.11C433.8,366.54 444.06,605.02 446.5,658.25C446.74,663.51 442.31,667.76 436.99,667.55C302.79,662.19 231.59,663.91 152.25,665.82C110.55,666.82 66.6,667.88 10.08,667.99C5.1,668 1,663.96 1,659V10.74Z"
+        android:strokeWidth="2"
+        android:strokeColor="#1C1C1D">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="448.05"
+                android:endY="323.32"
+                android:startX="5.02"
+                android:startY="321.47"
+                android:type="linear">
+                <item
+                    android:color="#FFFBF8CC"
+                    android:offset="0" />
+                <item
+                    android:color="#FFA3C4F3"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

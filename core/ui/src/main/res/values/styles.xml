@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+
+    <style name="Widget.RAM.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/bg_square_button</item>
+        <item name="tint">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="Widget.RAM.Button" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="Widget.RAM.RatingBar" parent="Theme.RAM">
+        <item name="colorControlNormal">@android:color/holo_red_light</item>
+        <item name="colorControlActivated">@android:color/holo_red_dark</item>
+    </style>
+
+    <style name="Widget.TextView.Button" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+    </style>
+
+    <style name="Widget.RAM.FlexboxLayout.Row" parent="">
+        <item name="android:background">@drawable/bg_button_panel</item>
+        <item name="android:padding">@dimen/small_gap_3</item>
+        <item name="justifyContent">space_between</item>
+    </style>
+
+    <style name="Widget.RAM.ProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackColor">@color/turquoise_200</item>
+        <item name="indicatorColor">@color/dark_blue_900</item>
+        <item name="trackThickness">@dimen/small_gap_2</item>
+    </style>
+
+    <style name="Widget.RAM.ImageView.Card" parent="">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:paddingTop">@dimen/small_gap_8</item>
+        <item name="android:paddingBottom">@dimen/small_gap_8</item>
+        <item name="android:paddingStart">@dimen/small_gap_6</item>
+        <item name="android:paddingEnd">@dimen/small_gap_6</item>
+        <item name="layout_constrainedWidth">true</item>
+        <item name="layout_constraintDimensionRatio">1.8</item>
+    </style>
+
+</resources>

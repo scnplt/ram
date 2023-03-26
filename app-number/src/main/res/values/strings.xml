@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="app_name">RAM-4 Sayılar</string>
+    <string name="what_is_the_next_number">%s sonraki sayı nedir?</string>
+    <string name="mic_button_description">Aşağıdaki konuşma butonuna basarak cevap verebilirsiniz.</string>
+    <string name="current_number_what_the_next">Şu anki sayı %1$d, %2$s sonraki sayı nedir?</string>
+    <string name="sequential_counting">Ardışık sayma</string>
+</resources>
