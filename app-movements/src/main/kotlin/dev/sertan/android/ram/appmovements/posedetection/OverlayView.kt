@@ -19,7 +19,7 @@ import android.widget.FrameLayout
 import com.google.mlkit.vision.pose.Pose
 import dev.sertan.android.ram.appmovements.R
 
-class OverlayView @JvmOverloads constructor(
+internal class OverlayView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
