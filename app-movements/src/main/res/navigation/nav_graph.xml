@@ -44,20 +44,7 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_homeFragment_to_poseDetectionFragment"
-            app:destination="@id/poseDetectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
-
-    <fragment
-        android:id="@+id/poseDetectionFragment"
-        android:name="dev.sertan.android.ram.appmovements.posedetection.PoseDetectionFragment"
-        android:label="fragment_pose_detection"
-        tools:layout="@layout/fragment_pose_detection" />
 
     <action
         android:id="@+id/action_global_homeFragment"

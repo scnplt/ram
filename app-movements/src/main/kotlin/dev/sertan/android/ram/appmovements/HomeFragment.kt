@@ -12,10 +12,8 @@ package dev.sertan.android.ram.appmovements
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appmovements.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.appmovements.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
-import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.viewBinding
 
 @AndroidEntryPoint
@@ -27,8 +25,5 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.goToPoseDetectionButton.setOnClickListener {
-            navTo(actionHomeFragmentToPoseDetectionFragment())
-        }
     }
 }
