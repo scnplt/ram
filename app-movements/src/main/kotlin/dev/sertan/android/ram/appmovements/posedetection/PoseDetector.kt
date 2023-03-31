@@ -123,6 +123,12 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         isDetectionActive = true
     }
 
+    fun stop() {
+        isDetectionActive = false
+        camera?.stopPreview()
+        camera?.release()
+    }
+
     companion object {
         const val TAG = "PoseDetection:DebugTag"
     }

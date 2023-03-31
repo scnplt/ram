@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ RAM (c) by Sertan Canpolat
   ~
   ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
@@ -10,36 +9,51 @@
 
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
-        tools:layout="@layout/fragment_splash"
         android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/projectInfoFragment"
-        tools:layout="@layout/fragment_project_info"
         android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
-        android:label="ProjectInfoFragment" />
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
 
     <fragment
         android:id="@+id/drawingFragment"
-        tools:layout="@layout/fragment_drawing"
         android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
-        android:label="DrawingFragment" />
+        android:label="DrawingFragment"
+        tools:layout="@layout/fragment_drawing" />
 
     <fragment
         android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home"
         android:name="dev.sertan.android.ram.appmovements.HomeFragment"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_poseDetectionFragment"
+            app:destination="@id/poseDetectionFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -51,15 +65,13 @@
         app:destination="@id/homeFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
-        app:popUpTo="@id/nav_graph"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/nav_graph" />
 
-    <action
-        android:id="@+id/action_global_projectInfoFragment"
-        app:destination="@id/projectInfoFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popUpTo="@id/nav_graph"
-        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/poseDetectionFragment"
+        android:name="dev.sertan.android.ram.appmovements.posedetection.PoseDetectionFragment"
+        android:label="PoseDetectionFragment"
+        tools:layout="@layout/fragment_pose_detection" />
 </navigation>
