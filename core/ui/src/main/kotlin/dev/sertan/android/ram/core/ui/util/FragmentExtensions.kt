@@ -10,7 +10,10 @@
 package dev.sertan.android.ram.core.ui.util
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -32,3 +35,13 @@ fun Fragment.repeatOnLifecycleStarted(block: suspend CoroutineScope.() -> Unit) 
 
 fun Fragment.navigateToOssLicenses(): Unit =
     startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
+
+fun Fragment.doIfPermissionGranted(
+    resultLauncher: ActivityResultLauncher<String>,
+    permission: String,
+    block: () -> Unit
+) {
+    val permissionResult = ContextCompat.checkSelfPermission(requireContext(), permission)
+    if (permissionResult == PackageManager.PERMISSION_GRANTED) return block()
+    resultLauncher.launch(permission)
+}
