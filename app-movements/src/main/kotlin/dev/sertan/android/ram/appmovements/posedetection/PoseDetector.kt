@@ -17,6 +17,7 @@ import android.util.Log
 import android.view.Display
 import android.view.SurfaceHolder
 import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
 import java.util.concurrent.Executors
@@ -27,6 +28,8 @@ private const val DEFAULT_ROTATION_DEGREE = 180
 private const val START_PER_FRAME = 4
 
 internal class PoseDetector(display: Display, private val overlayView: OverlayView) {
+
+    var listener: Listener? = null
 
     private var isDetectionActive = false
 
@@ -55,7 +58,10 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         )
 
         detector.process(image)
-            .addOnSuccessListener(overlayView::updatePose)
+            .addOnSuccessListener { pose ->
+                listener?.onNewPose(pose)
+                overlayView.updatePose(pose)
+            }
             .addOnFailureListener { Log.d(TAG, "Process - exception: ${it.message}") }
     }
 
@@ -127,6 +133,10 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         isDetectionActive = false
         camera?.stopPreview()
         camera?.release()
+    }
+
+    internal fun interface Listener {
+        fun onNewPose(pose: Pose)
     }
 
     companion object {
