@@ -18,10 +18,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.appmovements.databinding.FragmentPoseDetectionBinding
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 internal class PoseDetectionFragment : Fragment(R.layout.fragment_pose_detection) {
@@ -31,29 +31,54 @@ internal class PoseDetectionFragment : Fragment(R.layout.fragment_pose_detection
 
     private var detector: PoseDetector? = null
 
-    private val poseListener = PoseDetector.Listener {
-        viewModel.checkMotion(pose = it) { isCorrect ->
-            if (isCorrect) {
-                context?.playCorrectSound()
-                viewModel.resetCount()
-                delay(1000L)
-                viewModel.goToNextMotion()
+    private val poseListener = PoseDetector.Listener { pose ->
+        viewModel.checkMotion(pose = pose) { isCorrect ->
+            if (!isCorrect) return@checkMotion
+            playCorrectSound()
+            viewModel.isValidationActive = false
+            binding.answerStateImageView.isInvisible = false
+            viewModel.resetCount()
+        }
+    }
+
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect { uiState ->
+            with(binding) {
+                nextButton.isInvisible = !uiState.isNextButtonVisible
+                finishButton.isInvisible = !uiState.isFinishButtonVisible
             }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         detector = PoseDetector(
             display = requireActivity().windowManager.defaultDisplay,
             overlayView = binding.overlayView
         ).apply { listener = poseListener }
         detector?.start()
+
+        repeatOnLifecycleStarted(onLifecycleStarted)
+
+        with(binding) {
+            exitButton.setOnClickListener { popBackStack() }
+            nextButton.setOnClickListener {
+                binding.answerStateImageView.isInvisible = true
+                viewModel.goToNextMotion()
+            }
+            finishButton.setOnClickListener { popBackStack() }
+        }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        detector?.stop()
+    override fun onStop() {
+        viewModel.stopSpeech()
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        detector?.releaseCamera()
         detector = null
+        super.onDestroy()
     }
 }

@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.pose.Pose
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.sertan.android.ram.appmovements.posedetection.motion.RaiseLeftHandMotion
+import dev.sertan.android.ram.appmovements.posedetection.motion.RaiseRightHandMotion
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,39 +32,43 @@ internal class PoseDetectionViewModel @Inject constructor(
     private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
-    private var count = 0
+    var isValidationActive = true
+    private var trueDetectionCount = 0
+    private val motionIndex = MutableStateFlow(0)
 
     private val motions = listOf(
         RaiseRightHandMotion(),
         RaiseLeftHandMotion()
     )
 
-    private val motionIndex = MutableStateFlow(0)
-
-    private val motionFlow: StateFlow<Motion?> = flow {
+    val uiState: StateFlow<PoseDetectionUiState> = flow {
         motionIndex.collect { index ->
-            val motion = motions.getOrNull(index)
-            emit(motion)
-            textToSpeechUseCase.speak(motion?.descriptionResId)
+            val state = PoseDetectionUiState.getState(index, motions)
+            textToSpeechUseCase.speak(state.motion?.descriptionResId)
+            emit(state)
         }
     }.stateIn(
         scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(),
-        initialValue = null
+        started = SharingStarted.Eagerly,
+        initialValue = PoseDetectionUiState.initialState()
     )
 
-    fun checkMotion(pose: Pose, callback: suspend (Boolean) -> Unit) {
-        val result = motionFlow.value?.check(pose)
-        if (result == true) count++ else count = 0
-        viewModelScope.launch { callback(count >= RESET_PER_DETECTION) }
+    fun checkMotion(pose: Pose, callback: suspend (isCorrect: Boolean) -> Unit) {
+        if (!isValidationActive) return
+        val result = uiState.value.motion?.check(pose)
+        if (result == true) trueDetectionCount++ else trueDetectionCount = 0
+        viewModelScope.launch { callback(trueDetectionCount >= RESET_PER_DETECTION) }
     }
 
     fun resetCount() {
-        count = 0
+        trueDetectionCount = 0
     }
 
     fun goToNextMotion() {
         motionIndex.update { it.inc() }
         resetCount()
+        isValidationActive = true
     }
+
+    fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
 }

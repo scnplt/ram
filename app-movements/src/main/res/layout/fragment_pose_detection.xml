@@ -39,4 +39,47 @@
             app:srcCompat="@drawable/ic_close"
             app:tint="@android:color/holo_red_dark" />
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/answerStateImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/wrong_answer"
+        android:minWidth="@dimen/size_min_image_width"
+        android:minHeight="@dimen/size_min_image_width"
+        android:padding="@dimen/small_gap_2"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
+        app:srcCompat="@drawable/ic_answer_correct"
+        tools:visibility="visible" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/nextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_gap_2"
+        android:visibility="gone"
+        app:buttonIcon="@drawable/ic_forward"
+        app:buttonText="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/answerStateImageView"
+        app:layout_constraintVertical_bias="1" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/finishButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintBottom_toBottomOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="@id/nextButton"
+        app:layout_constraintStart_toStartOf="@id/nextButton"
+        app:layout_constraintTop_toTopOf="@id/nextButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
