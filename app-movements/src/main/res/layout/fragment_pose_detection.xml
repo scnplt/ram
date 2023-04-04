@@ -14,7 +14,7 @@
     android:layout_height="match_parent"
     tools:context=".posedetection.PoseDetectionFragment">
 
-    <dev.sertan.android.ram.appmovements.posedetection.OverlayView
+    <dev.sertan.android.ram.appmovements.posedetection.customview.OverlayView
         android:id="@+id/overlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
