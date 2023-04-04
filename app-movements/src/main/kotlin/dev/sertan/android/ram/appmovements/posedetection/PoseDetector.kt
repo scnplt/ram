@@ -20,6 +20,7 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
+import dev.sertan.android.ram.appmovements.posedetection.customview.OverlayView
 import java.util.concurrent.Executors
 
 private const val DETECTOR_MODE = 1
@@ -68,11 +69,11 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
     private val surfaceHolderCallback = object : SurfaceHolder.Callback {
 
         override fun surfaceCreated(holder: SurfaceHolder) {
-            camera?.run {
+            camera = getCamera().apply {
                 setPreviewDisplay(holder)
-                camera?.setPreviewCallback(previewCallback)
-                startPreview()
+                setPreviewCallback(previewCallback)
             }
+            camera?.startPreview()
         }
 
         override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
@@ -91,8 +92,8 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         }
 
         override fun surfaceDestroyed(holder: SurfaceHolder) {
+            isDetectionActive = false
             camera?.stopPreview()
-            camera?.release()
         }
     }
 
@@ -103,7 +104,6 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
                 .setExecutor(executor)
                 .build()
         )
-        camera = getCamera()
         overlayView.setHolderCallback(surfaceHolderCallback)
     }
 
@@ -129,10 +129,11 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         isDetectionActive = true
     }
 
-    fun stop() {
+    fun releaseCamera() {
         isDetectionActive = false
-        camera?.stopPreview()
+        camera?.setPreviewCallback(null)
         camera?.release()
+        camera = null
     }
 
     internal fun interface Listener {
