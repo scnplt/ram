@@ -41,13 +41,11 @@ internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val answerListener = object : WriteViewModel.AnswerListener {
 
         override fun onCorrect() {
-            context?.playCorrectSound()
+            playCorrectSound()
             binding.inputEditText.text?.clear()
         }
 
-        override fun onWrong() {
-            context?.playNegativeSound()
-        }
+        override fun onWrong(): Unit = playNegativeSound()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

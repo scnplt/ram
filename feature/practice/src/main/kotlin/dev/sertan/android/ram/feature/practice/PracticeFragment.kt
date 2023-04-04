@@ -89,10 +89,10 @@ class PracticeFragment :
     }
 
     private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
-        context?.playCorrectSound()
+        playCorrectSound()
         dev.sertan.android.ram.core.ui.R.drawable.ic_answer_correct
     } else {
-        context?.playNegativeSound()
+        playNegativeSound()
         dev.sertan.android.ram.core.ui.R.drawable.ic_answer_wrong
     }
 

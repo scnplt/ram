@@ -9,11 +9,13 @@
 
 package dev.sertan.android.ram.core.ui
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
@@ -30,6 +32,8 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
 
     private val viewModel by viewModels<RamActivityViewModel>()
     private val navController by lazy { findNavController(navHostFragmentId) }
+
+    private var mediaPlayer: MediaPlayer? = null
 
     private val navigateAfterSplash = suspend {
         delay(SplashFragment.DEFAULT_DURATION_MS)
@@ -54,6 +58,12 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
     override fun onStart() {
         super.onStart()
         viewModel.runOnce(navigateAfterSplash)
+    }
+
+    fun playSound(@RawRes soundResId: Int) {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(this, soundResId)
+        mediaPlayer?.start()
     }
 
     override fun onPause() {
