@@ -90,10 +90,10 @@ class PracticeFragment :
 
     private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
         context?.playCorrectSound()
-        R.drawable.ic_answer_correct
+        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_correct
     } else {
         context?.playNegativeSound()
-        R.drawable.ic_answer_wrong
+        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_wrong
     }
 
     override fun isMaterialCorrect(material: Material): Boolean? =
