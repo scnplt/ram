@@ -7,16 +7,17 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements
+package dev.sertan.android.ram.appmovements.ui
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appmovements.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
-import dev.sertan.android.ram.appmovements.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
+import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.appmovements.databinding.FragmentHomeBinding
+import dev.sertan.android.ram.appmovements.ui.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appmovements.ui.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix

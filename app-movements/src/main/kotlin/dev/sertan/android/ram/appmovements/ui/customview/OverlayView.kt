@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.posedetection.customview
+package dev.sertan.android.ram.appmovements.ui.customview
 
 import android.content.Context
 import android.graphics.Color

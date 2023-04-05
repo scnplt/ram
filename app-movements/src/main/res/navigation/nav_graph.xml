@@ -41,7 +41,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="dev.sertan.android.ram.appmovements.HomeFragment"
+        android:name="dev.sertan.android.ram.appmovements.ui.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/poseDetectionFragment"
-        android:name="dev.sertan.android.ram.appmovements.posedetection.PoseDetectionFragment"
+        android:name="dev.sertan.android.ram.appmovements.ui.posedetection.PoseDetectionFragment"
         android:label="PoseDetectionFragment"
         tools:layout="@layout/fragment_pose_detection" />
 </navigation>

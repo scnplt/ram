@@ -7,9 +7,9 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.posedetection
+package dev.sertan.android.ram.appmovements.ui.posedetection
 
-import dev.sertan.android.ram.appmovements.posedetection.motion.Motion
+import dev.sertan.android.ram.appmovements.domain.motion.Motion
 
 internal data class PoseDetectionUiState(
     val motion: Motion?,

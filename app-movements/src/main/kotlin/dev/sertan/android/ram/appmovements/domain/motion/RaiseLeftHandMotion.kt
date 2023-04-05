@@ -7,20 +7,20 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.posedetection.motion
+package dev.sertan.android.ram.appmovements.domain.motion
 
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
 import dev.sertan.android.ram.appmovements.R
 
-internal class LookRightMotion : Motion {
+internal class RaiseLeftHandMotion : Motion {
 
-    override val descriptionResId: Int = R.string.look_right
+    override val descriptionResId: Int = R.string.raise_left_hand
 
     override fun check(pose: Pose): Boolean {
-        val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
-        val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
-        if (rightEar == null || rightEyeOuter == null) return false
-        return rightEar.position.y < rightEyeOuter.position.y
+        val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
+        val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
+        if (leftWrist == null || leftMouth == null) return false
+        return leftWrist.position.x < leftMouth.position.x
     }
 }

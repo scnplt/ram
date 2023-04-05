@@ -12,9 +12,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".posedetection.PoseDetectionFragment">
+    tools:context=".ui.posedetection.PoseDetectionFragment">
 
-    <dev.sertan.android.ram.appmovements.posedetection.customview.OverlayView
+    <dev.sertan.android.ram.appmovements.ui.customview.OverlayView
         android:id="@+id/overlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -7,12 +7,13 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements
+package dev.sertan.android.ram.appmovements.ui
 
 import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmovements.NavGraphDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appmovements.NavGraphDirections.Companion.actionGlobalProjectInfoFragment
+import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.core.ui.RamActivity
 
 @AndroidEntryPoint

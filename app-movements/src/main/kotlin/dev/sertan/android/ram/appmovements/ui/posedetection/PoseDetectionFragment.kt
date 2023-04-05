@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.posedetection
+package dev.sertan.android.ram.appmovements.ui.posedetection
 
 import android.os.Bundle
 import android.view.View
@@ -17,6 +17,7 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.appmovements.databinding.FragmentPoseDetectionBinding
+import dev.sertan.android.ram.appmovements.domain.PoseDetector
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted

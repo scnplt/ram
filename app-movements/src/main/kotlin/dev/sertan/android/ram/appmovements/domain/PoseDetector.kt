@@ -9,7 +9,7 @@
 
 @file:Suppress("DEPRECATION")
 
-package dev.sertan.android.ram.appmovements.posedetection
+package dev.sertan.android.ram.appmovements.domain
 
 import android.graphics.ImageFormat
 import android.hardware.Camera
@@ -20,7 +20,7 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
-import dev.sertan.android.ram.appmovements.posedetection.customview.OverlayView
+import dev.sertan.android.ram.appmovements.ui.customview.OverlayView
 import java.util.concurrent.Executors
 
 private const val DETECTOR_MODE = 1
