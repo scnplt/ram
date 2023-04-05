@@ -53,13 +53,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
             progressIndicator.show()
         }
 
-        override fun onCorrect(newNumber: Int, step: Int) {
-            context?.playCorrectSound()
-        }
+        override fun onCorrect(newNumber: Int, step: Int): Unit = playCorrectSound()
 
-        override fun onWrong() {
-            context?.playNegativeSound()
-        }
+        override fun onWrong(): Unit = playNegativeSound()
 
         override fun onComplete(): Unit = stopLoadingAnimation()
 

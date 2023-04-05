@@ -19,19 +19,20 @@ ext {
     ]
 
     versions = [
-            material   : '1.7.0',
-            hilt       : '2.44.2',
-            room       : "2.4.3",
-            firebaseBom: '31.1.0',
-            navigation : '2.5.3',
-            glide      : "4.14.2",
-            ossLicenses: "17.0.0",
-            gson       : "2.10",
-            timber     : "5.0.1",
-            fragmentKtx: '1.5.5',
-            multiDex   : "2.0.1",
-            icu4j      : "51.1",
-            flexBox    : "3.0.0"
+            material          : '1.7.0',
+            hilt              : '2.44.2',
+            room              : "2.4.3",
+            firebaseBom       : '31.1.0',
+            navigation        : '2.5.3',
+            glide             : "4.14.2",
+            ossLicenses       : "17.0.0",
+            gson              : "2.10",
+            timber            : "5.0.1",
+            fragmentKtx       : '1.5.5',
+            multiDex          : "2.0.1",
+            icu4j             : "51.1",
+            flexBox           : "3.0.0",
+            mlKitPoseDetection: "17.0.0"
     ]
 
     module = [
@@ -72,6 +73,7 @@ ext {
             fragmentKtx          : "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
             multiDex             : "androidx.multidex:multidex:${versions.multiDex}",
             icu4j                : "com.ibm.icu:icu4j:${versions.icu4j}",
-            flexBox              : "com.google.android.flexbox:flexbox:${versions.flexBox}"
+            flexBox              : "com.google.android.flexbox:flexbox:${versions.flexBox}",
+            mlKitPoseDetection   : "com.google.mlkit:pose-detection:${versions.mlKitPoseDetection}"
     ]
 }

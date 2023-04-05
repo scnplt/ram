@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="app_name">RAM-6 Hareketler</string>
+    <string name="start">Başla</string>
+    <string name="raise_left_hand">Sol elini kaldır.</string>
+    <string name="raise_right_hand">Sağ elini kaldır.</string>
+    <string name="look_right">Sağa bak</string>
+    <string name="look_left">Sola bak</string>
+</resources>

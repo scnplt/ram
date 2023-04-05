@@ -9,6 +9,9 @@
 
 package dev.sertan.android.ram.core.domain.usecase
 
+import android.content.Context
+import androidx.annotation.StringRes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.sertan.android.ram.core.data.repository.UserSettingsRepository
 import dev.sertan.android.ram.core.data.service.texttospeech.TextToSpeechService
 import dev.sertan.android.ram.core.domain.Dispatcher
@@ -25,10 +28,13 @@ private const val VOICE_SUPPORT_DEFAULT_STATE = true
 
 @Singleton
 class TextToSpeechUseCase @Inject constructor(
+    @ApplicationContext context: Context,
     private val userSettingsRepository: UserSettingsRepository,
     @Dispatcher(IO) private val ioDispatcher: CoroutineDispatcher,
     private val textToSpeechService: TextToSpeechService
 ) {
+
+    private val resources = context.resources
 
     init {
         initializeVoiceSupportStateIfNeeded()
@@ -48,6 +54,8 @@ class TextToSpeechUseCase @Inject constructor(
         userSettingsRepository.getVoiceSupportStateStream().map { it.getOrNull() == true }
 
     fun speak(message: String?) = textToSpeechService.speak(message)
+
+    fun speak(@StringRes messageResId: Int?) = messageResId?.let { speak(resources.getString(it)) }
 
     suspend fun checkStateAndSpeak(message: String?) {
         if (getCurrentState() == true) textToSpeechService.speak(message)
