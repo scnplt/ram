@@ -13,14 +13,14 @@ import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
 import dev.sertan.android.ram.appmovements.R
 
-internal class RaiseRightHandMotion : Motion {
+internal class LookRightMotion : Motion {
 
-    override val descriptionResId: Int = R.string.raise_right_hand
+    override val descriptionResId: Int = R.string.look_right
 
     override fun check(pose: Pose): Boolean {
-        val rightWrist = pose.getPoseLandmark(PoseLandmark.RIGHT_WRIST)
-        val rightMouth = pose.getPoseLandmark(PoseLandmark.RIGHT_MOUTH)
-        if (rightWrist == null || rightMouth == null) return false
-        return rightWrist.position.x < rightMouth.position.x
+        val rightEar = pose.getPoseLandmark(PoseLandmark.RIGHT_EAR)
+        val rightEyeOuter = pose.getPoseLandmark(PoseLandmark.RIGHT_EYE_OUTER)
+        if (rightEar == null || rightEyeOuter == null) return false
+        return rightEar.position.y < rightEyeOuter.position.y
     }
 }

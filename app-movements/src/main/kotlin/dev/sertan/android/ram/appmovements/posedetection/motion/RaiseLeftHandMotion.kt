@@ -19,8 +19,8 @@ internal class RaiseLeftHandMotion : Motion {
 
     override fun check(pose: Pose): Boolean {
         val leftWrist = pose.getPoseLandmark(PoseLandmark.LEFT_WRIST)
-        val leftShoulder = pose.getPoseLandmark(PoseLandmark.LEFT_SHOULDER)
-        if (leftWrist == null || leftShoulder == null) return false
-        return leftWrist.position.x < leftShoulder.position.x
+        val leftMouth = pose.getPoseLandmark(PoseLandmark.LEFT_MOUTH)
+        if (leftWrist == null || leftMouth == null) return false
+        return leftWrist.position.x < leftMouth.position.x
     }
 }

@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.pose.Pose
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.sertan.android.ram.appmovements.posedetection.motion.LookLeftMotion
+import dev.sertan.android.ram.appmovements.posedetection.motion.LookRightMotion
 import dev.sertan.android.ram.appmovements.posedetection.motion.RaiseLeftHandMotion
 import dev.sertan.android.ram.appmovements.posedetection.motion.RaiseRightHandMotion
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
@@ -25,7 +27,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private const val RESET_PER_DETECTION = 8
+private const val CHECK_PER_DETECTION = 8
 
 @HiltViewModel
 internal class PoseDetectionViewModel @Inject constructor(
@@ -38,7 +40,9 @@ internal class PoseDetectionViewModel @Inject constructor(
 
     private val motions = listOf(
         RaiseRightHandMotion(),
-        RaiseLeftHandMotion()
+        RaiseLeftHandMotion(),
+        LookLeftMotion(),
+        LookRightMotion()
     )
 
     val uiState: StateFlow<PoseDetectionUiState> = flow {
@@ -57,7 +61,7 @@ internal class PoseDetectionViewModel @Inject constructor(
         if (!isValidationActive) return
         val result = uiState.value.motion?.check(pose)
         if (result == true) trueDetectionCount++ else trueDetectionCount = 0
-        viewModelScope.launch { callback(trueDetectionCount >= RESET_PER_DETECTION) }
+        viewModelScope.launch { callback(trueDetectionCount >= CHECK_PER_DETECTION) }
     }
 
     fun resetCount() {
