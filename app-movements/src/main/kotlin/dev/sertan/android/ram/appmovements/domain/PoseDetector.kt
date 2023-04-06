@@ -26,7 +26,7 @@ import java.util.concurrent.Executors
 private const val DETECTOR_MODE = 1
 private const val DEFAULT_DEGREE = 90
 private const val DEFAULT_ROTATION_DEGREE = 180
-private const val START_PER_FRAME = 4
+private const val START_PER_FRAME = 10
 
 internal class PoseDetector(display: Display, private val overlayView: OverlayView) {
 

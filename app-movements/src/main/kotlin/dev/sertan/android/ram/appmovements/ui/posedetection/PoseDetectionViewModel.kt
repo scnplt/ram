@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private const val CHECK_PER_DETECTION = 8
+private const val CHECK_PER_DETECTION = 2
 
 @HiltViewModel
 internal class PoseDetectionViewModel @Inject constructor(
