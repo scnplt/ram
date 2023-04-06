@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.appmovements.domain
 
+import dev.sertan.android.ram.appmovements.domain.motion.LookDownMotion
 import dev.sertan.android.ram.appmovements.domain.motion.LookLeftMotion
 import dev.sertan.android.ram.appmovements.domain.motion.LookRightMotion
 import dev.sertan.android.ram.appmovements.domain.motion.Motion
@@ -22,6 +23,7 @@ internal class GetMotionsUseCase @Inject constructor() {
         RaiseLeftHandMotion(),
         RaiseRightHandMotion(),
         LookLeftMotion(),
-        LookRightMotion()
+        LookRightMotion(),
+        LookDownMotion()
     )
 }
