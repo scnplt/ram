@@ -9,7 +9,7 @@
 
 @file:Suppress("DEPRECATION")
 
-package dev.sertan.android.ram.appmovements.domain
+package dev.sertan.android.ram.feature.posedetection.ui
 
 import android.graphics.ImageFormat
 import android.hardware.Camera
@@ -20,7 +20,7 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseDetection
 import com.google.mlkit.vision.pose.defaults.PoseDetectorOptions
-import dev.sertan.android.ram.appmovements.ui.customview.OverlayView
+import dev.sertan.android.ram.feature.posedetection.ui.customview.OverlayView
 import java.util.concurrent.Executors
 
 private const val DETECTOR_MODE = 1
@@ -28,7 +28,7 @@ private const val DEFAULT_DEGREE = 90
 private const val DEFAULT_ROTATION_DEGREE = 180
 private const val START_PER_FRAME = 10
 
-internal class PoseDetector(display: Display, private val overlayView: OverlayView) {
+class PoseDetector(display: Display, private val overlayView: OverlayView) {
 
     var listener: Listener? = null
 
@@ -136,7 +136,7 @@ internal class PoseDetector(display: Display, private val overlayView: OverlayVi
         camera = null
     }
 
-    internal fun interface Listener {
+    fun interface Listener {
         fun onNewPose(pose: Pose)
     }
 

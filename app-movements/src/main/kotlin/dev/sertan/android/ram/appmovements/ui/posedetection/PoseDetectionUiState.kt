@@ -9,7 +9,7 @@
 
 package dev.sertan.android.ram.appmovements.ui.posedetection
 
-import dev.sertan.android.ram.appmovements.domain.motion.Motion
+import dev.sertan.android.ram.feature.posedetection.domain.motion.Motion
 
 internal data class PoseDetectionUiState(
     val motion: Motion?,

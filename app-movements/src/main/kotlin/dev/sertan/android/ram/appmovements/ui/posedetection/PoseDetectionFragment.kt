@@ -17,11 +17,11 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmovements.R
 import dev.sertan.android.ram.appmovements.databinding.FragmentPoseDetectionBinding
-import dev.sertan.android.ram.appmovements.domain.PoseDetector
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.posedetection.ui.PoseDetector
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
