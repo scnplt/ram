@@ -40,15 +40,15 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_practice_graph"
-            app:destination="@id/practice_graph"
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_trainingFragment"
-            app:destination="@id/trainingFragment"
+            android:id="@+id/action_homeFragment_to_practice_graph"
+            app:destination="@id/practice_graph"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -63,21 +63,23 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="dev.sertan.android.ram.feature.training.TrainingFragment"
+        android:name="dev.sertan.android.ram.feature.training.ui.training.TrainingFragment"
         android:label="TrainingFragment"
         tools:layout="@layout/fragment_training" />
 
     <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment"
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/nav_graph"
         app:popUpToInclusive="true" />
 
     <action
-        android:id="@+id/action_global_projectInfoFragment"
-        app:destination="@id/projectInfoFragment"
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
         app:enterAnim="@anim/nav_default_enter_anim"
         app:exitAnim="@anim/nav_default_exit_anim"
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
 }
@@ -39,14 +40,23 @@ android {
 
 dependencies {
     implementation project(path: module.coreCommon)
+    implementation project(path: module.coreData)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
-    implementation project(path: module.featureQuestion)
 
-    implementation libs.fragmentKtx
-    implementation libs.flexBox
     implementation libs.material
+    implementation libs.flexBox
+    implementation libs.fragmentKtx
+
+    implementation libs.navigationUiKtx
+    implementation libs.navigationFragmentKtx
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid
+
+    kapt kapts.roomCompiler
+    implementation libs.roomKtx
+
+    implementation platform(platforms.firebaseBom)
+    implementation libs.firebaseFirestoreKtx
 }
