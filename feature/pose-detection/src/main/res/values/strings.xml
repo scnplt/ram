@@ -8,6 +8,9 @@
   -->
 
 <resources>
-    <string name="app_name">RAM-6 Hareketler</string>
-    <string name="start">Başla</string>
+    <string name="raise_left_hand">Sol elini kaldır.</string>
+    <string name="raise_right_hand">Sağ elini kaldır.</string>
+    <string name="look_right">Sağa bak</string>
+    <string name="look_left">Sola bak</string>
+    <string name="look_down">Aşağı bak</string>
 </resources>

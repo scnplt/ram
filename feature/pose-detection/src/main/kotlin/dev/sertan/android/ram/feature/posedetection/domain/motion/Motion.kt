@@ -7,12 +7,12 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.domain.motion
+package dev.sertan.android.ram.feature.posedetection.domain.motion
 
 import androidx.annotation.StringRes
 import com.google.mlkit.vision.pose.Pose
 
-internal interface Motion {
+interface Motion {
 
     @get:StringRes
     val descriptionResId: Int

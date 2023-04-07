@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.mlkit.vision.pose.Pose
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dev.sertan.android.ram.appmovements.domain.GetMotionsUseCase
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
+import dev.sertan.android.ram.feature.posedetection.domain.usecase.GetMotionsUseCase
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

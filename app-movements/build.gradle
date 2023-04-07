@@ -63,9 +63,10 @@ dependencies {
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureDrawing)
+    implementation project(path: module.featurePoseDetection)
 
+    implementation libs.mlKitPoseDetectionCommon
     implementation libs.flexBox
-    implementation libs.mlKitPoseDetection
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx

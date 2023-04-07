@@ -7,11 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.domain.motion
+package dev.sertan.android.ram.feature.posedetection.domain.motion
 
 import com.google.mlkit.vision.pose.Pose
 import com.google.mlkit.vision.pose.PoseLandmark
-import dev.sertan.android.ram.appmovements.R
+import dev.sertan.android.ram.feature.posedetection.R
 
 internal class LookRightMotion : Motion {
 
