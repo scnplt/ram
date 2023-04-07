@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainingFragment">
+    tools:context=".ui.training.TrainingFragment">
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/buttonPanelFlexLayout"

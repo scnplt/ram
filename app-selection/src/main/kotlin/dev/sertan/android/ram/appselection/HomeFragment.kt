@@ -22,7 +22,7 @@ import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
 import dev.sertan.android.ram.core.ui.util.savedStateHandeListener
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import dev.sertan.android.ram.feature.training.TrainingFragment
+import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
 
 @AndroidEntryPoint
 internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
