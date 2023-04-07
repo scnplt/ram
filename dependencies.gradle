@@ -41,7 +41,6 @@ ext {
             coreData            : ":core:data",
             coreDomain          : ":core:domain",
             featureDrawing      : ":feature:drawing",
-            featurePractice     : ":feature:practice",
             featureTraining     : ":feature:training",
             featurePoseDetection: ":feature:pose-detection",
     ]
