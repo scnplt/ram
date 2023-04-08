@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="app_name">RAM-7 İletişim Becerileri</string>
+    <string name="attention_practice">Dikkat alıştırması</string>
+    <string name="object_recognition">Nesne tanıma</string>
+    <string name="movements">Hareketler</string>
+    <string name="sounds">Sesler</string>
+</resources>

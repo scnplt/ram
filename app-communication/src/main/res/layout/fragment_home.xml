@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/buttonPanelFlexLayout"
+        style="@style/Widget.RAM.FlexboxLayout.Row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexDirection="row"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/aboutButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/about"
+            app:srcCompat="@drawable/ic_info" />
+
+        <ImageButton
+            android:id="@+id/changeVoiceSupportButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/change_voice_support"
+            app:srcCompat="@drawable/ic_volume" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        app:dividerColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_5"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceDisplaySmall"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        tools:text="@tools:sample/lorem[3]" />
+
+    <ImageView
+        android:id="@+id/appImageView"
+        style="@style/Widget.RAM.ImageView.Card"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/small_gap_5"
+        android:layout_marginTop="@dimen/small_gap_5"
+        android:contentDescription="@string/application_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:srcCompat="@drawable/ic_splash" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appImageView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/small_gap_8">
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/attentionPracticeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_face"
+                app:buttonText="@string/attention_practice" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/objectRecognitionButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_diamond"
+                app:buttonText="@string/object_recognition" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/movementsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_run"
+                app:buttonText="@string/movements" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/soundsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_mic"
+                app:buttonText="@string/sounds" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/drawingButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_brush"
+                app:buttonText="@string/drawing" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

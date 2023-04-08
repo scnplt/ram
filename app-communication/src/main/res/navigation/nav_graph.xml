@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_drawingFragment"
+            app:destination="@id/drawingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_objectRecognitionFragment"
+            app:destination="@id/objectRecognitionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_eyeDetectionFragment"
+            app:destination="@id/eyeDetectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_soundRecognitionFragment"
+            app:destination="@id/soundRecognitionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_poseDetectionFragment"
+            app:destination="@id/poseDetectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/drawingFragment"
+        android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
+        android:label="DrawingFragment"
+        tools:layout="@layout/fragment_drawing" />
+
+    <fragment
+        android:id="@+id/objectRecognitionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.objectrecognition.ObjectRecognitionFragment"
+        android:label="fragment_object_recognition"
+        tools:layout="@layout/fragment_object_recognition" />
+
+    <fragment
+        android:id="@+id/eyeDetectionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.eyedetection.EyeDetectionFragment"
+        android:label="fragment_eye_detection"
+        tools:layout="@layout/fragment_eye_detection" />
+
+    <fragment
+        android:id="@+id/soundRecognitionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.soundrecognition.SoundRecognitionFragment"
+        android:label="fragment_sound_recognition"
+        tools:layout="@layout/fragment_sound_recognition" />
+
+    <fragment
+        android:id="@+id/poseDetectionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.posedetection.PoseDetectionFragment"
+        android:label="fragment_pose_detection"
+        tools:layout="@layout/fragment_pose_detection" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+</navigation>
