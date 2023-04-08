@@ -11,6 +11,8 @@ package dev.sertan.android.ram.appcommunication.ui.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentHomeBinding
@@ -20,6 +22,7 @@ import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Co
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToSoundRecognitionFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
+import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.navTo
 import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
@@ -29,6 +32,16 @@ import dev.sertan.android.ram.core.ui.util.viewBinding
 internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
+
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+        if (it) {
+            navTo(actionHomeFragmentToPoseDetectionFragment())
+            return@registerForActivityResult
+        }
+
+        // TASK: Refactor - Use custom dialog
+        Toast.makeText(requireContext(), "Camera permission denied!", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onTextToSpeechStateChanged(isActive: Boolean) {
         binding.changeVoiceSupportButton.isActivated = isActive
@@ -48,7 +61,11 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
                 navTo(actionHomeFragmentToObjectRecognitionFragment())
             }
             movementsButton.setOnClickListener {
-                navTo(actionHomeFragmentToPoseDetectionFragment())
+                doIfPermissionGranted(
+                    resultLauncher = requestPermissionLauncher,
+                    permission = android.Manifest.permission.CAMERA,
+                    block = { navTo(actionHomeFragmentToPoseDetectionFragment()) }
+                )
             }
             soundsButton.setOnClickListener {
                 navTo(actionHomeFragmentToSoundRecognitionFragment())
