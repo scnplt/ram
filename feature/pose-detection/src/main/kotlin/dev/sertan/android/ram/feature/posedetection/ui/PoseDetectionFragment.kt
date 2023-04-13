@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmovements.ui.posedetection
+package dev.sertan.android.ram.feature.posedetection.ui
 
 import android.os.Bundle
 import android.view.View
@@ -15,17 +15,16 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appmovements.R
-import dev.sertan.android.ram.appmovements.databinding.FragmentPoseDetectionBinding
 import dev.sertan.android.ram.core.ui.util.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.viewBinding
-import dev.sertan.android.ram.feature.posedetection.ui.PoseDetector
+import dev.sertan.android.ram.feature.posedetection.R
+import dev.sertan.android.ram.feature.posedetection.databinding.FragmentPoseDetectionBinding
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
-internal class PoseDetectionFragment : Fragment(R.layout.fragment_pose_detection) {
+class PoseDetectionFragment : Fragment(R.layout.fragment_pose_detection) {
 
     private val viewModel by viewModels<PoseDetectionViewModel>()
     private val binding by viewBinding(FragmentPoseDetectionBinding::bind)

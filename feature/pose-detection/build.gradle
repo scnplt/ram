@@ -31,9 +31,18 @@ android {
     kotlinOptions {
         jvmTarget = configs.jvmTarget
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreDomain)
+
+    implementation libs.material
+    implementation libs.fragmentKtx
     implementation libs.mlKitPoseDetection
 
     kapt kapts.hiltCompiler

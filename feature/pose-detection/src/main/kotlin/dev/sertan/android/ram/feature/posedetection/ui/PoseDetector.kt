@@ -28,7 +28,7 @@ private const val DEFAULT_DEGREE = 90
 private const val DEFAULT_ROTATION_DEGREE = 180
 private const val START_PER_FRAME = 10
 
-class PoseDetector(display: Display, private val overlayView: OverlayView) {
+internal class PoseDetector(display: Display, private val overlayView: OverlayView) {
 
     var listener: Listener? = null
 
