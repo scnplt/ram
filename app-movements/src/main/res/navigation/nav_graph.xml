@@ -71,7 +71,7 @@
 
     <fragment
         android:id="@+id/poseDetectionFragment"
-        android:name="dev.sertan.android.ram.appmovements.ui.posedetection.PoseDetectionFragment"
+        android:name="dev.sertan.android.ram.feature.posedetection.ui.PoseDetectionFragment"
         android:label="PoseDetectionFragment"
         tools:layout="@layout/fragment_pose_detection" />
 </navigation>
