@@ -69,4 +69,3 @@ internal class PoseDetectionViewModel @Inject constructor(
 
     fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
 }
-
