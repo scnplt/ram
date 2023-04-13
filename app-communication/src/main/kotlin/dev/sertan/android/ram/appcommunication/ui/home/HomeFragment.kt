@@ -33,15 +33,16 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
 
-    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        if (it) {
-            navTo(actionHomeFragmentToPoseDetectionFragment())
-            return@registerForActivityResult
-        }
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                navTo(actionHomeFragmentToPoseDetectionFragment())
+                return@registerForActivityResult
+            }
 
-        // TASK: Refactor - Use custom dialog
-        Toast.makeText(requireContext(), "Camera permission denied!", Toast.LENGTH_SHORT).show()
-    }
+            // TASK: Refactor - Use custom dialog
+            Toast.makeText(requireContext(), "Camera permission denied!", Toast.LENGTH_SHORT).show()
+        }
 
     override fun onTextToSpeechStateChanged(isActive: Boolean) {
         binding.changeVoiceSupportButton.isActivated = isActive
@@ -63,9 +64,8 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             movementsButton.setOnClickListener {
                 doIfPermissionGranted(
                     resultLauncher = requestPermissionLauncher,
-                    permission = android.Manifest.permission.CAMERA,
-                    block = { navTo(actionHomeFragmentToPoseDetectionFragment()) }
-                )
+                    permission = android.Manifest.permission.CAMERA
+                ) { navTo(actionHomeFragmentToPoseDetectionFragment()) }
             }
             soundsButton.setOnClickListener {
                 navTo(actionHomeFragmentToSoundRecognitionFragment())
