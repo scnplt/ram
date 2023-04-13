@@ -38,29 +38,15 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_homeFragment_to_objectRecognitionFragment"
-            app:destination="@id/objectRecognitionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_homeFragment_to_eyeDetectionFragment"
-            app:destination="@id/eyeDetectionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_homeFragment_to_soundRecognitionFragment"
-            app:destination="@id/soundRecognitionFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
             android:id="@+id/action_homeFragment_to_poseDetectionFragment"
             app:destination="@id/poseDetectionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_audioInstructionFragment"
+            app:destination="@id/audioInstructionFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -74,28 +60,16 @@
         tools:layout="@layout/fragment_drawing" />
 
     <fragment
-        android:id="@+id/objectRecognitionFragment"
-        android:name="dev.sertan.android.ram.appcommunication.ui.objectrecognition.ObjectRecognitionFragment"
-        android:label="fragment_object_recognition"
-        tools:layout="@layout/fragment_object_recognition" />
-
-    <fragment
-        android:id="@+id/eyeDetectionFragment"
-        android:name="dev.sertan.android.ram.appcommunication.ui.eyedetection.EyeDetectionFragment"
-        android:label="fragment_eye_detection"
-        tools:layout="@layout/fragment_eye_detection" />
-
-    <fragment
-        android:id="@+id/soundRecognitionFragment"
-        android:name="dev.sertan.android.ram.appcommunication.ui.soundrecognition.SoundRecognitionFragment"
-        android:label="fragment_sound_recognition"
-        tools:layout="@layout/fragment_sound_recognition" />
-
-    <fragment
         android:id="@+id/poseDetectionFragment"
         android:name="dev.sertan.android.ram.feature.posedetection.ui.PoseDetectionFragment"
         android:label="fragment_pose_detection"
         tools:layout="@layout/fragment_pose_detection" />
+
+    <fragment
+        android:id="@+id/audioInstructionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.audioinstruction.AudioInstructionFragment"
+        android:label="fragment_audio_instruction"
+        tools:layout="@layout/fragment_audio_instruction" />
 
     <action
         android:id="@+id/action_global_projectInfoFragment"

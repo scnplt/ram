@@ -41,4 +41,5 @@
     <string name="publication_date_mm_yyyy">MART - 2023</string>
     <string name="app_no">%1$d</string>
     <string name="about">Hakkında</string>
+    <string name="start">Başla</string>
 </resources>

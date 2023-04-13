@@ -13,4 +13,6 @@
     <string name="object_recognition">Nesne tanıma</string>
     <string name="movements">Hareketler</string>
     <string name="sounds">Sesler</string>
+    <string name="audible_stimulus">Sesli Uyaran</string>
+    <string name="audio_instruction_description">Ses duyduğunuzda, aşağıdaki butona basın.</string>
 </resources>

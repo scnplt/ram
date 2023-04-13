@@ -59,6 +59,7 @@ android {
 }
 
 dependencies {
+    implementation project(path: module.coreCommon)
     implementation project(path: module.coreUi)
     implementation project(path: module.coreDomain)
     implementation project(path: module.featureDrawing)

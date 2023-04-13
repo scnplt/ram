@@ -16,11 +16,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentHomeBinding
+import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAudioInstructionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
-import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToEyeDetectionFragment
-import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToObjectRecognitionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
-import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToSoundRecognitionFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
@@ -55,20 +53,14 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             titleTextView.text = requireContext().labelWithoutPrefix
             changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
             aboutButton.setOnClickListener { navigateToOssLicenses() }
-            attentionPracticeButton.setOnClickListener {
-                navTo(actionHomeFragmentToEyeDetectionFragment())
-            }
-            objectRecognitionButton.setOnClickListener {
-                navTo(actionHomeFragmentToObjectRecognitionFragment())
+            attentionPracticeWithSoundButton.setOnClickListener {
+                navTo(actionHomeFragmentToAudioInstructionFragment())
             }
             movementsButton.setOnClickListener {
                 doIfPermissionGranted(
                     resultLauncher = requestPermissionLauncher,
                     permission = android.Manifest.permission.CAMERA
                 ) { navTo(actionHomeFragmentToPoseDetectionFragment()) }
-            }
-            soundsButton.setOnClickListener {
-                navTo(actionHomeFragmentToSoundRecognitionFragment())
             }
             drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
         }

@@ -93,20 +93,20 @@
             android:paddingHorizontal="@dimen/small_gap_8">
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
-                android:id="@+id/attentionPracticeButton"
+                android:id="@+id/attentionPracticeWithSoundButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_gap_5"
-                app:buttonIcon="@drawable/ic_face"
+                app:buttonIcon="@drawable/ic_audiotrack"
                 app:buttonText="@string/attention_practice" />
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
-                android:id="@+id/objectRecognitionButton"
+                android:id="@+id/attentionPracticeWithImageButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_gap_5"
-                app:buttonIcon="@drawable/ic_diamond"
-                app:buttonText="@string/object_recognition" />
+                app:buttonIcon="@drawable/ic_eye"
+                app:buttonText="@string/attention_practice" />
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
                 android:id="@+id/movementsButton"
@@ -115,14 +115,6 @@
                 android:layout_marginTop="@dimen/small_gap_5"
                 app:buttonIcon="@drawable/ic_run"
                 app:buttonText="@string/movements" />
-
-            <dev.sertan.android.ram.core.ui.customview.RamButton
-                android:id="@+id/soundsButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_gap_5"
-                app:buttonIcon="@drawable/ic_mic"
-                app:buttonText="@string/sounds" />
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
                 android:id="@+id/drawingButton"
