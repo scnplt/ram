@@ -7,13 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.ui.model
+package dev.sertan.android.ram.feature.material.ui
 
-import dev.sertan.android.ram.feature.material.ui.Material
-
-data class Question(
+data class Material(
     val uid: String,
-    val content: String,
-    val materials: List<Material>,
-    val correctMaterialUid: String
+    val description: String,
+    val mediaUrl: String,
+    val attribution: String?
 )

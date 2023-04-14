@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
-import dev.sertan.android.ram.feature.training.domain.usecase.GetMaterialsUseCase
+import dev.sertan.android.ram.feature.material.domain.usecase.GetMaterialsUseCase
 import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment.Companion.SHUFFLE_KEY
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

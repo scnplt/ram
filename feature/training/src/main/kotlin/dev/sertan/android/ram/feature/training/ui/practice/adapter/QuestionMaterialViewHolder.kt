@@ -11,8 +11,8 @@ package dev.sertan.android.ram.feature.training.ui.practice.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import dev.sertan.android.ram.core.ui.util.loadFromUrl
+import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.feature.training.ui.model.Material
 
 class QuestionMaterialViewHolder(
     private val binding: ItemQuestionMaterialBinding,

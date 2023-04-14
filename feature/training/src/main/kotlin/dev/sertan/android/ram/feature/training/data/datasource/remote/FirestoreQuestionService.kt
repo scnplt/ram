@@ -12,7 +12,6 @@ package dev.sertan.android.ram.feature.training.data.datasource.remote
 import com.google.firebase.firestore.CollectionReference
 import dev.sertan.android.ram.core.data.di.Collection
 import dev.sertan.android.ram.core.data.di.CollectionType
-import dev.sertan.android.ram.feature.training.data.datasource.remote.model.NetworkQuestion
 import javax.inject.Inject
 import kotlinx.coroutines.tasks.await
 

@@ -13,10 +13,10 @@ import dev.sertan.android.ram.core.common.log.RamLogger
 import dev.sertan.android.ram.core.common.tryGetWithResult
 import dev.sertan.android.ram.core.common.tryMapNotNull
 import dev.sertan.android.ram.core.common.tryWithLogger
-import dev.sertan.android.ram.feature.training.data.datasource.local.dao.QuestionDao
-import dev.sertan.android.ram.feature.training.data.datasource.local.model.QuestionEntity
+import dev.sertan.android.ram.feature.training.data.datasource.local.QuestionDao
+import dev.sertan.android.ram.feature.training.data.datasource.local.QuestionEntity
 import dev.sertan.android.ram.feature.training.data.datasource.remote.FirestoreQuestionService
-import dev.sertan.android.ram.feature.training.data.datasource.remote.model.NetworkQuestion
+import dev.sertan.android.ram.feature.training.data.datasource.remote.NetworkQuestion
 import dev.sertan.android.ram.feature.training.data.mapper.toDto
 import dev.sertan.android.ram.feature.training.data.mapper.toEntity
 import dev.sertan.android.ram.feature.training.domain.model.QuestionDto
