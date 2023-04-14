@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.feature.training.ui.practice.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import dev.sertan.android.ram.feature.training.ui.model.Material
+import dev.sertan.android.ram.feature.material.ui.Material
 
 internal object MaterialDiffUtil : DiffUtil.ItemCallback<Material>() {
     override fun areItemsTheSame(old: Material, new: Material): Boolean = old.uid == new.uid

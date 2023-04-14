@@ -14,8 +14,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.core.common.calculatePercentage
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
+import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.domain.usecase.GetQuestionsUseCase
-import dev.sertan.android.ram.feature.training.ui.model.Material
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
