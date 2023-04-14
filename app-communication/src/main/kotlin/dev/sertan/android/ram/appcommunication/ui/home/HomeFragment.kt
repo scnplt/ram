@@ -18,6 +18,7 @@ import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAudioInstructionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToObjectRecognitionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVisualInstructionFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
@@ -32,7 +33,7 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
 
-    private val requestPermissionLauncher =
+    private val cameraRequestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
                 navTo(actionHomeFragmentToPoseDetectionFragment())
@@ -41,6 +42,17 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
 
             // TASK: Refactor - Use custom dialog
             Toast.makeText(requireContext(), "Camera permission denied!", Toast.LENGTH_SHORT).show()
+        }
+
+    private val micRequestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            if (it) {
+                navTo(actionHomeFragmentToObjectRecognitionFragment())
+                return@registerForActivityResult
+            }
+
+            // TASK: Refactor - Use custom dialog
+            Toast.makeText(requireContext(), "Mic permission denied!", Toast.LENGTH_SHORT).show()
         }
 
     override fun onTextToSpeechStateChanged(isActive: Boolean) {
@@ -60,9 +72,15 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             attentionPracticeWithImageButton.setOnClickListener {
                 navTo(actionHomeFragmentToVisualInstructionFragment())
             }
+            objectButton.setOnClickListener {
+                doIfPermissionGranted(
+                    resultLauncher = micRequestPermissionLauncher,
+                    permission = android.Manifest.permission.RECORD_AUDIO,
+                ) { navTo(actionHomeFragmentToObjectRecognitionFragment()) }
+            }
             movementsButton.setOnClickListener {
                 doIfPermissionGranted(
-                    resultLauncher = requestPermissionLauncher,
+                    resultLauncher = cameraRequestPermissionLauncher,
                     permission = android.Manifest.permission.CAMERA
                 ) { navTo(actionHomeFragmentToPoseDetectionFragment()) }
             }

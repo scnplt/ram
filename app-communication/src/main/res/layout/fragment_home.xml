@@ -109,6 +109,14 @@
                 app:buttonText="@string/attention_practice" />
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/objectButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_diamond"
+                app:buttonText="@string/object_recognition" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
                 android:id="@+id/movementsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -17,4 +17,5 @@
     <string name="audio_instruction_description">Ses duyduğunuzda, aşağıdaki butona basın.</string>
     <string name="visual_stimulus">Görsel Uyaran</string>
     <string name="visual_instruction_description">Aşağıda buton göründüğünde, üzerine basın.</string>
+    <string name="object_recognition_description">Mikrofona bastıktan sonra aşağıdaki nesnenin ismini söyleyin.</string>
 </resources>
