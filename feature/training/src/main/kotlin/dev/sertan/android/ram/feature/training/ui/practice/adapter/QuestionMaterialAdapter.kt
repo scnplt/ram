@@ -12,8 +12,8 @@ package dev.sertan.android.ram.feature.training.ui.practice.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.databinding.ItemQuestionMaterialBinding
-import dev.sertan.android.ram.feature.training.ui.model.Material
 import javax.inject.Inject
 
 class QuestionMaterialAdapter @Inject constructor() :

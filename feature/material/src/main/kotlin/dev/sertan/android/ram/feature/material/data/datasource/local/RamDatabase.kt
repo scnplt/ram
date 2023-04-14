@@ -7,21 +7,18 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.data.datasource.local
+package dev.sertan.android.ram.feature.material.data.datasource.local
 
 import androidx.annotation.Keep
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import dev.sertan.android.ram.core.data.util.StringToJsonConverter
 
 @Keep
 @Database(
     version = 1,
     exportSchema = false,
-    entities = [QuestionEntity::class]
+    entities = [MaterialEntity::class]
 )
-@TypeConverters(StringToJsonConverter::class)
 internal abstract class RamDatabase : RoomDatabase() {
-    abstract fun questionDao(): QuestionDao
+    abstract fun materialDao(): MaterialDao
 }

@@ -24,9 +24,9 @@ import dev.sertan.android.ram.core.ui.util.popBackStack
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.show
 import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.R
 import dev.sertan.android.ram.feature.training.databinding.FragmentPracticeBinding
-import dev.sertan.android.ram.feature.training.ui.model.Material
 import dev.sertan.android.ram.feature.training.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.feature.training.ui.practice.adapter.QuestionMaterialAdapter
 import dev.sertan.android.ram.feature.training.ui.practice.adapter.QuestionMaterialViewHolder

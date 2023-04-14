@@ -7,10 +7,16 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.domain.model
+package dev.sertan.android.ram.feature.material.data.datasource.local
 
-internal data class MaterialDto(
-    val uid: String,
+import androidx.annotation.Keep
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Keep
+@Entity(tableName = "materials")
+internal data class MaterialEntity(
+    @PrimaryKey val uid: String,
     val description: String,
     val mediaUrl: String,
     val attribution: String?

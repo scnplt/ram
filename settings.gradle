@@ -36,5 +36,6 @@ include ':core:data'
 include ':core:domain'
 
 include ':feature:drawing'
+include ':feature:material'
 include ':feature:training'
 include ':feature:pose-detection'

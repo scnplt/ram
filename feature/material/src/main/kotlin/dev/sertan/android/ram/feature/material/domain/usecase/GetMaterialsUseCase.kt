@@ -7,14 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.domain.usecase
+package dev.sertan.android.ram.feature.material.domain.usecase
 
-import dev.sertan.android.ram.feature.training.domain.mapper.MaterialMapper
-import dev.sertan.android.ram.feature.training.domain.repository.MaterialRepository
-import dev.sertan.android.ram.feature.training.ui.model.Material
+import dev.sertan.android.ram.feature.material.domain.mapper.MaterialMapper
+import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
+import dev.sertan.android.ram.feature.material.ui.Material
 import javax.inject.Inject
 
-internal class GetMaterialsUseCase @Inject constructor(
+class GetMaterialsUseCase @Inject internal constructor(
     private val materialRepository: MaterialRepository,
     private val materialMapper: MaterialMapper
 ) {
@@ -26,6 +26,10 @@ internal class GetMaterialsUseCase @Inject constructor(
             dtoList?.map(materialMapper::toUIModel).orEmpty()
                 .let { if (shuffle == false) it else it.shuffled() }
         }
+
+    suspend fun getMaterial(materialUid: String): Material? =
+        materialRepository.getMaterial(materialUid).getOrNull()
+            ?.let(materialMapper::toUIModel)
 
     companion object {
         const val DEFAULT_SHUFFLE = true

@@ -9,21 +9,18 @@
 
 package dev.sertan.android.ram.feature.training.domain.mapper
 
-import dev.sertan.android.ram.feature.training.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.domain.model.QuestionDto
 import dev.sertan.android.ram.feature.training.ui.model.Question
 import java.util.Locale
 import javax.inject.Inject
 
-internal class QuestionMapper @Inject constructor(
-    private val locale: Locale,
-    private val materialMapper: MaterialMapper
-) {
+internal class QuestionMapper @Inject constructor(private val locale: Locale) {
 
-    fun toUIModel(dto: QuestionDto, materials: List<MaterialDto>): Question = Question(
+    fun toUIModel(dto: QuestionDto, materials: List<Material>): Question = Question(
         uid = dto.uid,
         content = dto.content.replaceFirstChar { it.titlecase(locale) },
-        materials = materials.map(materialMapper::toUIModel),
+        materials = materials,
         correctMaterialUid = dto.correctMaterialUid
     )
 }

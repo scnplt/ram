@@ -7,10 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.domain.mapper
+package dev.sertan.android.ram.feature.material.domain.mapper
 
-import dev.sertan.android.ram.feature.training.domain.model.MaterialDto
-import dev.sertan.android.ram.feature.training.ui.model.Material
+import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.ui.Material
 import java.util.Locale
 import javax.inject.Inject
 

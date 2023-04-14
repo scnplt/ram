@@ -7,9 +7,9 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.domain.repository
+package dev.sertan.android.ram.feature.material.domain.repository
 
-import dev.sertan.android.ram.feature.training.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
 
 internal interface MaterialRepository {
 

@@ -7,23 +7,25 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.data.datasource.local.dao
+package dev.sertan.android.ram.feature.material.data.datasource.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import dev.sertan.android.ram.feature.training.data.datasource.local.model.QuestionEntity
 
 @Dao
-internal interface QuestionDao {
+internal interface MaterialDao {
 
-    @Query("SELECT * FROM questions")
-    suspend fun getAll(): List<QuestionEntity>
+    @Query("SELECT * FROM materials")
+    suspend fun getAll(): List<MaterialEntity>
 
-    @Query("DELETE FROM questions")
+    @Query("SELECT * FROM materials WHERE :materialUid == uid")
+    suspend fun getByUid(materialUid: String): MaterialEntity?
+
+    @Query("DELETE FROM materials")
     suspend fun deleteAll()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(questionEntity: QuestionEntity)
+    suspend fun insert(materialEntity: MaterialEntity)
 }

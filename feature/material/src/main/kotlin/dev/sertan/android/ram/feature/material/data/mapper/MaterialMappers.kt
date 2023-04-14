@@ -7,11 +7,11 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.data.mapper
+package dev.sertan.android.ram.feature.material.data.mapper
 
-import dev.sertan.android.ram.feature.training.data.datasource.local.model.MaterialEntity
-import dev.sertan.android.ram.feature.training.data.datasource.remote.model.NetworkMaterial
-import dev.sertan.android.ram.feature.training.domain.model.MaterialDto
+import dev.sertan.android.ram.feature.material.data.datasource.local.MaterialEntity
+import dev.sertan.android.ram.feature.material.data.datasource.remote.NetworkMaterial
+import dev.sertan.android.ram.feature.material.domain.model.MaterialDto
 
 internal fun MaterialEntity.toDto(): MaterialDto = MaterialDto(
     uid = uid,
