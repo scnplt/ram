@@ -15,4 +15,6 @@
     <string name="sounds">Sesler</string>
     <string name="audible_stimulus">Sesli Uyaran</string>
     <string name="audio_instruction_description">Ses duyduğunuzda, aşağıdaki butona basın.</string>
+    <string name="visual_stimulus">Görsel Uyaran</string>
+    <string name="visual_instruction_description">Aşağıda buton göründüğünde, üzerine basın.</string>
 </resources>

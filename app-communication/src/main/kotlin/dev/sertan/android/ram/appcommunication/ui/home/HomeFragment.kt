@@ -19,6 +19,7 @@ import dev.sertan.android.ram.appcommunication.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAudioInstructionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
+import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVisualInstructionFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
@@ -55,6 +56,9 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             aboutButton.setOnClickListener { navigateToOssLicenses() }
             attentionPracticeWithSoundButton.setOnClickListener {
                 navTo(actionHomeFragmentToAudioInstructionFragment())
+            }
+            attentionPracticeWithImageButton.setOnClickListener {
+                navTo(actionHomeFragmentToVisualInstructionFragment())
             }
             movementsButton.setOnClickListener {
                 doIfPermissionGranted(

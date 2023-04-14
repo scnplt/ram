@@ -22,9 +22,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+internal const val MS_PER_S = 1000L
 private const val MIN_DELAY_S = 2
 private const val MAX_DELAY_S = 5
-private const val MS_PER_S = 1000L
 private const val COUNT = 10
 private const val CLICK_DELAY_MS = 1000L
 private const val RESET_TINT_DELAY_MS = 400L
