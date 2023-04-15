@@ -17,6 +17,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import dev.sertan.android.ram.core.ui.fragment.SplashFragment
@@ -60,14 +61,21 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
         viewModel.runOnce(navigateAfterSplash)
     }
 
-    fun playSound(@RawRes soundResId: Int) {
+    fun playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit) {
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(this, soundResId)
+        mediaPlayer?.setOnCompletionListener { onCompleteListener() }
         mediaPlayer?.start()
     }
 
     override fun onPause() {
         super.onPause()
         viewModel.cancelJob()
+    }
+
+    companion object {
+        init {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
     }
 }
