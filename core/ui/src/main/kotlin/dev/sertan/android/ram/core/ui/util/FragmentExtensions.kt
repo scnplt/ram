@@ -49,8 +49,8 @@ fun Fragment.doIfPermissionGranted(
     resultLauncher.launch(permission)
 }
 
-fun Fragment.playSound(@RawRes soundResId: Int) {
-    (requireActivity() as? RamActivity)?.playSound(soundResId)
+fun Fragment.playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit = {}) {
+    (requireActivity() as? RamActivity)?.playSound(soundResId, onCompleteListener)
 }
 
 fun Fragment.playCorrectSound(): Unit = playSound(R.raw.correct)
