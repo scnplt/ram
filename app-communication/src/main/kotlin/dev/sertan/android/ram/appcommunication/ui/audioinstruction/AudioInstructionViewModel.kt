@@ -27,8 +27,8 @@ internal const val MS_PER_S = 1000L
 private const val MIN_DELAY_S = 2
 private const val MAX_DELAY_S = 5
 private const val COUNT = 10
-private const val CLICK_DELAY_MS = 1500L
-private const val RESET_TINT_DELAY_MS = 750L
+private const val CLICK_DELAY_MS = 1000L
+private const val RESET_TINT_DELAY_MS = 500L
 
 @HiltViewModel
 internal class AudioInstructionViewModel @Inject constructor() : ViewModel() {

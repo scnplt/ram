@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 private const val MIN_DELAY_S = 1
 private const val MAX_DELAY_S = 4
 private const val COUNT = 10
-private const val CLICK_DELAY_MS = 750L
+private const val CLICK_DELAY_MS = 500L
 
 @HiltViewModel
 internal class VisualInstructionViewModel @Inject constructor() : ViewModel() {
