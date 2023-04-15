@@ -15,7 +15,9 @@ internal data class ObjectRecognitionUiState(
     val material: Material?,
     val isEmptyListMessageVisible: Boolean,
     val isMicButtonVisible: Boolean,
-    val isFinished: Boolean
+    val isForwardButtonInvisible: Boolean,
+    val isFinishButtonVisible: Boolean,
+    val isBackButtonInvisible: Boolean
 ) {
 
     companion object {
@@ -24,14 +26,18 @@ internal data class ObjectRecognitionUiState(
             material = null,
             isEmptyListMessageVisible = false,
             isMicButtonVisible = false,
-            isFinished = false
+            isForwardButtonInvisible = true,
+            isFinishButtonVisible = false,
+            isBackButtonInvisible = true
         )
 
         fun getState(materials: List<Material>, index: Int) = ObjectRecognitionUiState(
             material = materials.getOrNull(index),
             isEmptyListMessageVisible = materials.isEmpty(),
             isMicButtonVisible = materials.isNotEmpty(),
-            isFinished = index >= materials.size
+            isForwardButtonInvisible = index >= materials.lastIndex,
+            isFinishButtonVisible = index >= materials.lastIndex,
+            isBackButtonInvisible = index == 0
         )
     }
 }

@@ -26,8 +26,8 @@ internal const val MS_PER_S = 1000L
 private const val MIN_DELAY_S = 2
 private const val MAX_DELAY_S = 5
 private const val COUNT = 10
-private const val CLICK_DELAY_MS = 1000L
-private const val RESET_TINT_DELAY_MS = 400L
+private const val CLICK_DELAY_MS = 1500L
+private const val RESET_TINT_DELAY_MS = 750L
 
 @HiltViewModel
 internal class AudioInstructionViewModel @Inject constructor() : ViewModel() {
@@ -51,7 +51,6 @@ internal class AudioInstructionViewModel @Inject constructor() : ViewModel() {
                 val randomDelay = (MIN_DELAY_S..MAX_DELAY_S).random() * MS_PER_S
                 delay(randomDelay)
 
-                catchJob?.cancel()
                 _uiState.update {
                     lastPlayedTimeMs = System.currentTimeMillis()
                     it.copy(isRingtonePlaying = true)

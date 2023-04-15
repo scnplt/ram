@@ -52,14 +52,14 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/about"
         android:paddingHorizontal="@dimen/small_gap_4"
-        android:paddingBottom="@dimen/small_gap_4"
+        android:paddingBottom="@dimen/small_gap_2"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintWidth_percent="0.2"
         app:srcCompat="@drawable/ic_adjust"
         app:tint="@android:color/black" />
 

@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appcommunication.ui.objectrecognition
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -37,11 +36,6 @@ internal class ObjectRecognitionFragment : Fragment(R.layout.fragment_object_rec
 
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect {
-            if (it.isFinished) {
-                Toast.makeText(requireContext(), "Finished", Toast.LENGTH_SHORT).show()
-                popBackStack()
-            }
-
             with(binding) {
                 it.material?.let { material ->
                     setAttributionView(attribution = material.attribution)
@@ -50,6 +44,9 @@ internal class ObjectRecognitionFragment : Fragment(R.layout.fragment_object_rec
                 contentGroup.isVisible = !it.isEmptyListMessageVisible
                 emptyListMessageTextView.isVisible = it.isEmptyListMessageVisible
                 micButton.isInvisible = !it.isMicButtonVisible
+                forwardButton.isInvisible = it.isForwardButtonInvisible
+                finishButton.isVisible = it.isFinishButtonVisible
+                backButton.isInvisible = it.isBackButtonInvisible
             }
         }
     }
@@ -93,5 +90,8 @@ internal class ObjectRecognitionFragment : Fragment(R.layout.fragment_object_rec
         viewModel.listener = micListener
         micButton.setOnClickListener { viewModel.listenMic() }
         exitButton.setOnClickListener { popBackStack() }
+        forwardButton.setOnClickListener { viewModel.goToNextObject() }
+        backButton.setOnClickListener { viewModel.goToPreviousObject() }
+        finishButton.setOnClickListener { popBackStack() }
     }
 }

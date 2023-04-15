@@ -37,15 +37,13 @@
         android:id="@+id/descriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_gap_8"
-        android:layout_marginHorizontal="@dimen/small_gap_4"
-        android:autoSizeTextType="uniform"
-        android:maxLines="10"
+        android:layout_margin="@dimen/small_gap_4"
+        android:maxLines="2"
         android:text="@string/object_recognition_description"
         android:textAlignment="center"
         android:textAppearance="?textAppearanceHeadlineMedium"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@id/materialConstraintLayout"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout" />
@@ -55,13 +53,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/small_gap_2"
-        android:layout_marginVertical="@dimen/small_gap_4"
         android:background="@drawable/bg_card_material"
-        android:paddingVertical="@dimen/small_gap_4"
+        android:paddingVertical="@dimen/small_gap_2"
         app:layout_constraintBottom_toTopOf="@id/micButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descriptionTextView">
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_percent="0.85">
 
         <ImageView
             android:id="@+id/mediaImageView"
@@ -82,9 +81,7 @@
             android:id="@+id/attributionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/small_gap_4"
-            android:layout_marginTop="@dimen/small_gap_4"
-            android:layout_marginBottom="@dimen/small_gap_8"
+            android:layout_margin="@dimen/small_gap_4"
             android:maxLines="2"
             android:textAlignment="center"
             android:textAppearance="?textAppearanceLabelSmall"
@@ -100,15 +97,16 @@
         style="@style/Widget.RAM.ImageButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/small_gap_4"
+        android:layout_marginTop="@dimen/small_gap_4"
         android:adjustViewBounds="true"
-        android:padding="@dimen/small_gap_4"
+        android:padding="@dimen/small_gap_2"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/forwardButton"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintTop_toBottomOf="@id/materialConstraintLayout"
+        app:layout_constraintWidth_percent="0.2"
         app:srcCompat="@drawable/ic_mic"
         tools:visibility="visible" />
 
@@ -123,6 +121,40 @@
         app:layout_constraintStart_toStartOf="@id/micButton"
         app:layout_constraintTop_toTopOf="@id/micButton"
         tools:visibility="invisible" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/forwardButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_forward"
+        app:buttonText="@string/next"
+        app:layout_constraintBottom_toTopOf="@id/backButton"
+        app:layout_constraintEnd_toEndOf="@id/materialConstraintLayout"
+        app:layout_constraintStart_toStartOf="@id/materialConstraintLayout" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/finishButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintEnd_toEndOf="@id/forwardButton"
+        app:layout_constraintBottom_toBottomOf="@id/forwardButton"
+        app:layout_constraintStart_toStartOf="@id/forwardButton"
+        app:layout_constraintTop_toTopOf="@id/forwardButton" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/backButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_back"
+        app:buttonText="@string/previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/forwardButton"
+        app:layout_constraintStart_toStartOf="@id/forwardButton" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/contentGroup"
@@ -143,5 +175,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

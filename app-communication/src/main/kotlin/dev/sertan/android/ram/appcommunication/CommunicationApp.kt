@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.appcommunication
 
-import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import dev.sertan.android.ram.core.ui.RamApplication
 
 @HiltAndroidApp
-internal class CommunicationApp : Application()
+internal class CommunicationApp : RamApplication()

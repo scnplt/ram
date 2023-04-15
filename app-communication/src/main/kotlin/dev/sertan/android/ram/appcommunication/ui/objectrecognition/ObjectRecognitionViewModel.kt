@@ -50,7 +50,7 @@ internal class ObjectRecognitionViewModel @Inject constructor(
                 val material = uiState.value.material ?: return@speechToTextUseCase
                 if (material.description.lowercase() == input) {
                     listener?.onCorrect()
-                    materialIndex.update { it.inc() }
+                    goToNextObject()
                 } else {
                     listener?.onWrong()
                 }
@@ -58,6 +58,14 @@ internal class ObjectRecognitionViewModel @Inject constructor(
             },
             onError = { errorCode -> listener?.onError(errorCode) }
         )
+    }
+
+    fun goToNextObject() {
+        materialIndex.update { it.inc() }
+    }
+
+    fun goToPreviousObject() {
+        materialIndex.update { it.dec() }
     }
 
     interface MicListener {
