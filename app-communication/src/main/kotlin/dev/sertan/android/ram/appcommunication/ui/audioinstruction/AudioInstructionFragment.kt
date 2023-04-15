@@ -36,7 +36,7 @@ internal class AudioInstructionFragment : Fragment(R.layout.fragment_audio_instr
                 startButton.isInvisible = it.isStartButtonInvisible
             }
 
-            if (it.isRingtonePlaying) playSound(R.raw.beep)
+            if (it.isRingtonePlaying.getDataIfNotHandled() == true) playSound(R.raw.beep)
 
             if (it.isFinished) {
                 Toast.makeText(requireContext(), "Finished", Toast.LENGTH_SHORT).show()

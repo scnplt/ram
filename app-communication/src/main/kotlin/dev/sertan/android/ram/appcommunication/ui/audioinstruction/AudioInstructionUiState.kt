@@ -11,11 +11,12 @@ package dev.sertan.android.ram.appcommunication.ui.audioinstruction
 
 import android.graphics.Color
 import androidx.annotation.ColorInt
+import dev.sertan.android.ram.core.common.Event
 
 internal data class AudioInstructionUiState(
     val isCatchButtonEnabled: Boolean,
     val isStartButtonInvisible: Boolean,
-    val isRingtonePlaying: Boolean,
+    val isRingtonePlaying: Event<Boolean>,
     val isFinished: Boolean,
     @ColorInt val catchButtonTint: Int
 ) {
@@ -25,7 +26,7 @@ internal data class AudioInstructionUiState(
         fun getInitialState(): AudioInstructionUiState = AudioInstructionUiState(
             isCatchButtonEnabled = false,
             isStartButtonInvisible = false,
-            isRingtonePlaying = false,
+            isRingtonePlaying = Event(false),
             isFinished = false,
             catchButtonTint = Color.BLACK
         )
@@ -33,7 +34,7 @@ internal data class AudioInstructionUiState(
         fun getFinishState(): AudioInstructionUiState = AudioInstructionUiState(
             isCatchButtonEnabled = false,
             isStartButtonInvisible = false,
-            isRingtonePlaying = false,
+            isRingtonePlaying = Event(false),
             isFinished = true,
             catchButtonTint = Color.BLACK
         )

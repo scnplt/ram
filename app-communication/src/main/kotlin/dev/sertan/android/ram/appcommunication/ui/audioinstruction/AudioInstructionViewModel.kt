@@ -13,6 +13,7 @@ import android.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.sertan.android.ram.core.common.Event
 import javax.inject.Inject
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -39,25 +40,17 @@ internal class AudioInstructionViewModel @Inject constructor() : ViewModel() {
     private var catchJob: Job? = null
 
     fun startGame() {
-        _uiState.update {
-            it.copy(
-                isCatchButtonEnabled = true,
-                isStartButtonInvisible = true
-            )
-        }
+        _uiState.update { it.copy(isCatchButtonEnabled = true, isStartButtonInvisible = true) }
         viewModelScope.launch {
             repeat(COUNT) {
-                _uiState.update { it.copy(isRingtonePlaying = false) }
-                val randomDelay = (MIN_DELAY_S..MAX_DELAY_S).random() * MS_PER_S
-                delay(randomDelay)
-
+                delay((MIN_DELAY_S..MAX_DELAY_S).random() * MS_PER_S)
                 _uiState.update {
                     lastPlayedTimeMs = System.currentTimeMillis()
-                    it.copy(isRingtonePlaying = true)
+                    it.copy(isRingtonePlaying = Event(true))
                 }
             }
 
-            delay(CLICK_DELAY_MS * 2)
+            delay(CLICK_DELAY_MS + RESET_TINT_DELAY_MS)
             catchJob?.cancel()
             _uiState.update { AudioInstructionUiState.getFinishState() }
         }
@@ -67,12 +60,7 @@ internal class AudioInstructionViewModel @Inject constructor() : ViewModel() {
         catchJob?.cancel()
         catchJob = viewModelScope.launch {
             val result = System.currentTimeMillis() - lastPlayedTimeMs < CLICK_DELAY_MS
-            _uiState.update {
-                it.copy(
-                    isRingtonePlaying = false,
-                    catchButtonTint = if (result) Color.GREEN else Color.RED
-                )
-            }
+            _uiState.update { it.copy(catchButtonTint = if (result) Color.GREEN else Color.RED) }
 
             delay(RESET_TINT_DELAY_MS)
             _uiState.update { it.copy(catchButtonTint = Color.BLACK) }
