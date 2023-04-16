@@ -75,7 +75,7 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
             objectButton.setOnClickListener {
                 doIfPermissionGranted(
                     resultLauncher = micRequestPermissionLauncher,
-                    permission = android.Manifest.permission.RECORD_AUDIO,
+                    permission = android.Manifest.permission.RECORD_AUDIO
                 ) { navTo(actionHomeFragmentToObjectRecognitionFragment()) }
             }
             movementsButton.setOnClickListener {
