@@ -53,6 +53,6 @@ fun Fragment.playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit =
     (requireActivity() as? RamActivity)?.playSound(soundResId, onCompleteListener)
 }
 
-fun Fragment.playNegativeSound() {
-    (requireActivity() as? RamActivity)?.playSound(R.raw.negative)
-}
+fun Fragment.playCorrectSound(): Unit = playSound(R.raw.correct)
+
+fun Fragment.playNegativeSound(): Unit = playSound(R.raw.negative)
