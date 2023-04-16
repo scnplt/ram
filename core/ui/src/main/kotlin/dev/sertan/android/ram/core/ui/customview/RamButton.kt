@@ -16,7 +16,7 @@ import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.CustomButtonBinding
 import dev.sertan.android.ram.core.ui.util.viewBinding
 
-private const val NO_RESOURCE = -1
+internal const val NO_RESOURCE = -1
 
 class RamButton @JvmOverloads constructor(
     context: Context,
