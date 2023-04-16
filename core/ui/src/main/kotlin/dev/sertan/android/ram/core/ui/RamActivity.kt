@@ -61,7 +61,7 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
         viewModel.runOnce(navigateAfterSplash)
     }
 
-    fun playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit) {
+    fun playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit = {}) {
         mediaPlayer?.release()
         mediaPlayer = MediaPlayer.create(this, soundResId)
         mediaPlayer?.setOnCompletionListener { onCompleteListener() }
