@@ -44,4 +44,5 @@
     <string name="camera_permission_denied">Bu işlem için kamera izni vermeniz gerekmektedir.</string>
     <string name="mic_permission_denied">Bu işlem için mikrofon izni vermeniz gerekmektedir.</string>
     <string name="unexpected_error">Beklenmedik bir hata oluştu.</string>
+    <string name="start">Başla</string>
 </resources>
