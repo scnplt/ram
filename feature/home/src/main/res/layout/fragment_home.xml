@@ -44,11 +44,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contentRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/small_gap_8"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout"
-        app:layout_constraintVertical_bias="0" />
+        tools:itemCount="10"
+        tools:listitem="@layout/list_item_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>

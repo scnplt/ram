@@ -34,7 +34,7 @@ internal class HomeFragment : BaseHomeFragment() {
             HomeListItem.TitleItem(title = requireContext().labelWithoutPrefix),
             HomeListItem.HeaderItem(iconResId = R.drawable.ic_splash),
             HomeListItem.ButtonItem(
-                buttonTextResId = R.string.start,
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.start,
                 buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_play,
                 onClicked = {
                     doIfPermissionGranted(
