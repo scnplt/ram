@@ -15,13 +15,13 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/projectInfoFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.ProjectInfoFragment"
         android:label="ProjectInfoFragment"
         tools:layout="@layout/fragment_project_info" />
 
@@ -42,8 +42,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appmovements.ui.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment"
