@@ -14,10 +14,10 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import dev.sertan.android.ram.core.ui.util.getColorList
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.setIconTint
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.getColorList
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.setIconTint
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import dev.sertan.android.ram.feature.drawing.databinding.FragmentDrawingBinding
 import kotlinx.coroutines.CoroutineScope
 

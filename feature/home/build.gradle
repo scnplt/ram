@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace "${configs.projectId}.core.ui"
+    namespace "${configs.projectId}.feature.home"
     compileSdk configs.compileSdk
 
     defaultConfig {
@@ -14,7 +14,6 @@ android {
         targetSdk configs.targetSdk
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -39,17 +38,12 @@ android {
 }
 
 dependencies {
-    implementation project(path: module.coreCommon)
+    implementation project(path: module.coreUi)
+    implementation project(path: module.coreDomain)
 
+    implementation libs.fragmentKtx
     implementation libs.material
-    implementation libs.multiDex
-    implementation libs.ossLicenses
-
-    implementation libs.navigationUiKtx
-    implementation libs.navigationFragmentKtx
-
-    kapt kapts.glide
-    implementation libs.glide
+    implementation libs.flexBox
 
     kapt kapts.hiltCompiler
     implementation libs.hiltAndroid

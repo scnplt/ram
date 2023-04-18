@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.fragment.texttospeechprovider
+package dev.sertan.android.ram.core.ui
 
 interface TextToSpeechProvider {
     fun onTextToSpeechStateChanged(isActive: Boolean)

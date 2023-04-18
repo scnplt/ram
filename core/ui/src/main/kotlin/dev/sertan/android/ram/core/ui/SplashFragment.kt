@@ -7,18 +7,16 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.fragment
+package dev.sertan.android.ram.core.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.core.ui.R
-import dev.sertan.android.ram.core.ui.RamActivity
 import dev.sertan.android.ram.core.ui.databinding.FragmentSplashBinding
-import dev.sertan.android.ram.core.ui.util.appNo
-import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.appNo
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import java.util.Locale
 import javax.inject.Inject
 
