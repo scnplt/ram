@@ -16,7 +16,8 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.CustomImageButtonBinding
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.Constants.NO_RESOURCE
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
 class RamImageButton(
     context: Context,

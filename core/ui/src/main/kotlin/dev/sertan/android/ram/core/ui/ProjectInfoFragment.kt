@@ -7,18 +7,15 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.fragment
+package dev.sertan.android.ram.core.ui
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.FragmentProjectInfoBinding
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.delay
-
-private const val DEFAULT_HALF_DURATION_MS = 3000L
 
 class ProjectInfoFragment : Fragment(R.layout.fragment_project_info) {
     private val binding by viewBinding(FragmentProjectInfoBinding::bind)
@@ -36,5 +33,9 @@ class ProjectInfoFragment : Fragment(R.layout.fragment_project_info) {
     private fun nextState(): Unit = with(binding) {
         firstLineTextView.text = getText(R.string.this_publication_has_been_produced)
         secondLineTextView.text = getText(R.string.publication_date_mm_yyyy)
+    }
+
+    companion object {
+        private const val DEFAULT_HALF_DURATION_MS = 3000L
     }
 }

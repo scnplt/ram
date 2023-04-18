@@ -15,10 +15,10 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.core.ui.util.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.popBackStack
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import dev.sertan.android.ram.feature.posedetection.R
 import dev.sertan.android.ram.feature.posedetection.databinding.FragmentPoseDetectionBinding
 import kotlinx.coroutines.CoroutineScope

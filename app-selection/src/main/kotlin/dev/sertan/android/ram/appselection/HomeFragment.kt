@@ -15,38 +15,41 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.appselection.HomeFragmentDirections.Companion.actionHomeFragmentToTrainingFragment
-import dev.sertan.android.ram.appselection.databinding.FragmentHomeBinding
-import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
-import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
-import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
-import dev.sertan.android.ram.core.ui.util.savedStateHandeListener
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
+import dev.sertan.android.ram.core.ui.util.extension.navTo
+import dev.sertan.android.ram.core.ui.util.extension.savedStateHandeListener
+import dev.sertan.android.ram.feature.home.BaseHomeFragment
+import dev.sertan.android.ram.feature.home.adapter.HomeListItem
 import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
 
 @AndroidEntryPoint
-internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
+internal class HomeFragment : BaseHomeFragment() {
 
-    private val binding by viewBinding(FragmentHomeBinding::bind)
-
-    override fun onTextToSpeechStateChanged(isActive: Boolean) {
-        binding.changeVoiceSupportButton.isActivated = isActive
-    }
+    override val items: List<HomeListItem>
+        get() = listOf(
+            HomeListItem.TitleItem(title = requireContext().labelWithoutPrefix),
+            HomeListItem.HeaderItem(iconResId = R.drawable.ic_splash),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.training,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_play,
+                onClicked = { navTo(actionHomeFragmentToTrainingFragment()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.practice,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_pen,
+                onClicked = { navTo(actionHomeFragmentToPracticeGraph()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_brush,
+                onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
+            )
+        )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
             if (it) navTo(actionHomeFragmentToPracticeGraph())
-        }
-
-        with(binding) {
-            titleTextView.text = requireContext().labelWithoutPrefix
-            changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
-            aboutButton.setOnClickListener { navigateToOssLicenses() }
-            drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
-            trainingButton.setOnClickListener { navTo(actionHomeFragmentToTrainingFragment()) }
-            practiceButton.setOnClickListener { navTo(actionHomeFragmentToPracticeGraph()) }
         }
     }
 }

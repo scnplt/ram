@@ -36,6 +36,7 @@ include ':core:ui'
 include ':core:data'
 include ':core:domain'
 
+include ':feature:home'
 include ':feature:drawing'
 include ':feature:material'
 include ':feature:training'
