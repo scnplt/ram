@@ -13,10 +13,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.popBackStack
-import dev.sertan.android.ram.core.ui.util.setRatingByPercent
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.navTo
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.setRatingByPercent
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import dev.sertan.android.ram.feature.training.R
 import dev.sertan.android.ram.feature.training.databinding.FragmentResultBinding
 import dev.sertan.android.ram.feature.training.ui.result.ResultFragmentDirections.Companion.actionResultFragmentToPracticeFragment

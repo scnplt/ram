@@ -29,7 +29,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:lineHeight="@dimen/text_line_height_s"
         android:maxLines="2"
         android:text="@string/this_project_is_financed"
         android:textAlignment="center"
@@ -40,7 +39,8 @@
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="@id/flagImageView"
         app:layout_constraintStart_toStartOf="@id/flagImageView"
-        app:layout_constraintTop_toBottomOf="@id/flagImageView" />
+        app:layout_constraintTop_toBottomOf="@id/flagImageView"
+        app:lineHeight="@dimen/text_line_height_s" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:id="@+id/middleImageLineFlow"

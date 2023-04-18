@@ -24,10 +24,6 @@ android {
         }
     }
 
-    buildFeatures {
-        viewBinding true
-    }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -36,14 +32,16 @@ android {
     kotlinOptions {
         jvmTarget = configs.jvmTarget
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation project(path: module.coreCommon)
-    implementation project(path: module.coreDomain)
 
     implementation libs.material
-    implementation libs.flexBox
     implementation libs.multiDex
     implementation libs.ossLicenses
 

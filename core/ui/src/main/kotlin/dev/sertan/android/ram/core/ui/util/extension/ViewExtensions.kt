@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.util
+package dev.sertan.android.ram.core.ui.util.extension
 
 import android.graphics.PorterDuff
 import android.view.View
@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
+import dev.sertan.android.ram.core.ui.util.GlideApp
 
 fun View.show() {
     if (visibility != View.VISIBLE) isVisible = true

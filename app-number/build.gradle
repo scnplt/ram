@@ -64,10 +64,9 @@ dependencies {
     implementation project(path: module.coreData)
     implementation project(path: module.coreDomain)
     implementation project(path: module.coreUi)
+    implementation project(path: module.featureHome)
     implementation project(path: module.featureDrawing)
     implementation project(path: module.featureTraining)
-
-    implementation libs.flexBox
 
     kapt kapts.roomCompiler
     implementation libs.roomKtx
