@@ -6,6 +6,10 @@ style:
   UnnecessaryAbstractClass:
     excludes: [ '**/di/*Module.kt' ]
 
+complexity:
+  TooManyFunctions:
+    excludes: [ '**/*Extensions.kt' ]
+
 naming:
   active: true
   BooleanPropertyNaming:
