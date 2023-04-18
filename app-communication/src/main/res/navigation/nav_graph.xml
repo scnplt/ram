@@ -65,6 +65,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_voiceImitationFragment"
+            app:destination="@id/voiceImitationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -96,6 +103,12 @@
         android:name="dev.sertan.android.ram.appcommunication.ui.objectrecognition.ObjectRecognitionFragment"
         android:label="fragment_object_recognition"
         tools:layout="@layout/fragment_object_recognition" />
+
+    <fragment
+        android:id="@+id/voiceImitationFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.voiceimitation.VoiceImitationFragment"
+        android:label="fragment_voice_imitation"
+        tools:layout="@layout/fragment_voice_imitation" />
 
     <action
         android:id="@+id/action_global_projectInfoFragment"

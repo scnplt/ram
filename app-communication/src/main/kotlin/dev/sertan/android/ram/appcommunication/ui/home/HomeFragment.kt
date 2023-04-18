@@ -21,6 +21,7 @@ import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Co
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToObjectRecognitionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVisualInstructionFragment
+import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVoiceImitationFragment
 import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
 import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
@@ -77,6 +78,12 @@ internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_hom
                     resultLauncher = micRequestPermissionLauncher,
                     permission = android.Manifest.permission.RECORD_AUDIO
                 ) { navTo(actionHomeFragmentToObjectRecognitionFragment()) }
+            }
+            voiceImitationButton.setOnClickListener {
+                doIfPermissionGranted(
+                    resultLauncher = micRequestPermissionLauncher,
+                    permission = android.Manifest.permission.RECORD_AUDIO
+                ) { navTo(actionHomeFragmentToVoiceImitationFragment()) }
             }
             movementsButton.setOnClickListener {
                 doIfPermissionGranted(

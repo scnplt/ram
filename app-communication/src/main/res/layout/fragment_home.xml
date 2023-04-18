@@ -117,6 +117,14 @@
                 app:buttonText="@string/object_recognition" />
 
             <dev.sertan.android.ram.core.ui.customview.RamButton
+                android:id="@+id/voiceImitationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_gap_5"
+                app:buttonIcon="@drawable/ic_mic"
+                app:buttonText="@string/sounds" />
+
+            <dev.sertan.android.ram.core.ui.customview.RamButton
                 android:id="@+id/movementsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

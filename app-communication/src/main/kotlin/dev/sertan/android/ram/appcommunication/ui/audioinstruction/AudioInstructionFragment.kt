@@ -19,7 +19,6 @@ import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentAudioInstructionBinding
 import dev.sertan.android.ram.core.ui.util.playSound
 import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.setIconTint
 import dev.sertan.android.ram.core.ui.util.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
