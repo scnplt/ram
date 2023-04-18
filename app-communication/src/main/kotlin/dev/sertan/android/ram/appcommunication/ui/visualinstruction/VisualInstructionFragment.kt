@@ -18,9 +18,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentVisualInstructionBinding
-import dev.sertan.android.ram.core.ui.util.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
 internal class VisualInstructionFragment : Fragment(R.layout.fragment_visual_instruction) {

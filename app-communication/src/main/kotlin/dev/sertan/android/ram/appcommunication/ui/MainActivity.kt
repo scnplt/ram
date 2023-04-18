@@ -14,7 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.NavGraphDirections.Companion.actionGlobalHomeFragment
 import dev.sertan.android.ram.appcommunication.NavGraphDirections.Companion.actionGlobalProjectInfoFragment
 import dev.sertan.android.ram.appcommunication.R
+import dev.sertan.android.ram.core.domain.usecase.GetApplicationConfigsUseCase
 import dev.sertan.android.ram.core.ui.RamActivity
+import javax.inject.Inject
 
 @AndroidEntryPoint
 internal class MainActivity : RamActivity(R.layout.activity_main) {
@@ -22,4 +24,7 @@ internal class MainActivity : RamActivity(R.layout.activity_main) {
     override val afterSplashDirection: NavDirections = actionGlobalHomeFragment()
     override val projectInformationDirection: NavDirections = actionGlobalProjectInfoFragment()
     override val appImageResId: Int = R.drawable.ic_splash
+
+    @Inject
+    lateinit var getApplicationConfigsUseCase: GetApplicationConfigsUseCase
 }

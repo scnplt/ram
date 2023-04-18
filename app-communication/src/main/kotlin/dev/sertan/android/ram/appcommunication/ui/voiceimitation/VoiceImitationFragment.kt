@@ -18,12 +18,12 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentVoiceImitationBinding
-import dev.sertan.android.ram.core.ui.util.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.playNegativeSound
-import dev.sertan.android.ram.core.ui.util.popBackStack
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.show
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.show
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint

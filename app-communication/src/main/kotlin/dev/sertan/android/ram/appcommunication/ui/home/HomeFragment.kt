@@ -9,89 +9,68 @@
 
 package dev.sertan.android.ram.appcommunication.ui.home
 
-import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.R
-import dev.sertan.android.ram.appcommunication.databinding.FragmentHomeBinding
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAudioInstructionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToObjectRecognitionFragment
-import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPoseDetectionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVisualInstructionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVoiceImitationFragment
-import dev.sertan.android.ram.core.ui.fragment.texttospeechprovider.TextToSpeechProviderFragment
-import dev.sertan.android.ram.core.ui.util.doIfPermissionGranted
-import dev.sertan.android.ram.core.ui.util.labelWithoutPrefix
-import dev.sertan.android.ram.core.ui.util.navTo
-import dev.sertan.android.ram.core.ui.util.navigateToOssLicenses
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.doIfPermissionGranted
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
+import dev.sertan.android.ram.core.ui.util.extension.navTo
+import dev.sertan.android.ram.core.ui.util.extension.resultLauncher
+import dev.sertan.android.ram.core.ui.util.extension.showToast
+import dev.sertan.android.ram.feature.home.BaseHomeFragment
+import dev.sertan.android.ram.feature.home.adapter.HomeListItem
 
 @AndroidEntryPoint
-internal class HomeFragment : TextToSpeechProviderFragment(R.layout.fragment_home) {
+internal class HomeFragment : BaseHomeFragment() {
 
-    private val binding by viewBinding(FragmentHomeBinding::bind)
+    private val micResultLauncher = resultLauncher(
+        onDenied = { showToast(dev.sertan.android.ram.core.ui.R.string.mic_permission_denied) }
+    )
 
-    private val cameraRequestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                navTo(actionHomeFragmentToPoseDetectionFragment())
-                return@registerForActivityResult
-            }
-
-            // TASK: Refactor - Use custom dialog
-            Toast.makeText(requireContext(), "Camera permission denied!", Toast.LENGTH_SHORT).show()
-        }
-
-    private val micRequestPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (it) {
-                navTo(actionHomeFragmentToObjectRecognitionFragment())
-                return@registerForActivityResult
-            }
-
-            // TASK: Refactor - Use custom dialog
-            Toast.makeText(requireContext(), "Mic permission denied!", Toast.LENGTH_SHORT).show()
-        }
-
-    override fun onTextToSpeechStateChanged(isActive: Boolean) {
-        binding.changeVoiceSupportButton.isActivated = isActive
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        with(binding) {
-            titleTextView.text = requireContext().labelWithoutPrefix
-            changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
-            aboutButton.setOnClickListener { navigateToOssLicenses() }
-            attentionPracticeWithSoundButton.setOnClickListener {
-                navTo(actionHomeFragmentToAudioInstructionFragment())
-            }
-            attentionPracticeWithImageButton.setOnClickListener {
-                navTo(actionHomeFragmentToVisualInstructionFragment())
-            }
-            objectButton.setOnClickListener {
-                doIfPermissionGranted(
-                    resultLauncher = micRequestPermissionLauncher,
-                    permission = android.Manifest.permission.RECORD_AUDIO
-                ) { navTo(actionHomeFragmentToObjectRecognitionFragment()) }
-            }
-            voiceImitationButton.setOnClickListener {
-                doIfPermissionGranted(
-                    resultLauncher = micRequestPermissionLauncher,
-                    permission = android.Manifest.permission.RECORD_AUDIO
-                ) { navTo(actionHomeFragmentToVoiceImitationFragment()) }
-            }
-            movementsButton.setOnClickListener {
-                doIfPermissionGranted(
-                    resultLauncher = cameraRequestPermissionLauncher,
-                    permission = android.Manifest.permission.CAMERA
-                ) { navTo(actionHomeFragmentToPoseDetectionFragment()) }
-            }
-            drawingButton.setOnClickListener { navTo(actionHomeFragmentToDrawingFragment()) }
-        }
-    }
+    override val items: List<HomeListItem>
+        get() = listOf(
+            HomeListItem.TitleItem(title = requireContext().labelWithoutPrefix),
+            HomeListItem.HeaderItem(iconResId = R.drawable.ic_splash),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.attention_practice,
+                buttonIconResId = R.drawable.ic_audiotrack,
+                onClicked = { navTo(actionHomeFragmentToAudioInstructionFragment()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.attention_practice,
+                buttonIconResId = R.drawable.ic_eye,
+                onClicked = { navTo(actionHomeFragmentToVisualInstructionFragment()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.object_recognition,
+                buttonIconResId = R.drawable.ic_diamond,
+                onClicked = {
+                    doIfPermissionGranted(
+                        resultLauncher = micResultLauncher,
+                        permission = android.Manifest.permission.RECORD_AUDIO,
+                        block = { navTo(actionHomeFragmentToObjectRecognitionFragment()) }
+                    )
+                }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.sounds,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_mic,
+                onClicked = {
+                    doIfPermissionGranted(
+                        resultLauncher = micResultLauncher,
+                        permission = android.Manifest.permission.RECORD_AUDIO,
+                        block = { navTo(actionHomeFragmentToVoiceImitationFragment()) }
+                    )
+                }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_brush,
+                onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
+            )
+        )
 }

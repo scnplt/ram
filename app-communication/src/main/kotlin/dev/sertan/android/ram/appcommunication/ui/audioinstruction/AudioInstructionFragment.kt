@@ -17,9 +17,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentAudioInstructionBinding
-import dev.sertan.android.ram.core.ui.util.playSound
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playSound
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
 internal class AudioInstructionFragment : Fragment(R.layout.fragment_audio_instruction) {

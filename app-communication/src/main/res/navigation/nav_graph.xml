@@ -15,31 +15,23 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/projectInfoFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.ProjectInfoFragment"
         android:label="ProjectInfoFragment"
         tools:layout="@layout/fragment_project_info" />
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appcommunication.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
+        android:label="fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_homeFragment_to_poseDetectionFragment"
-            app:destination="@id/poseDetectionFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -79,12 +71,6 @@
         android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
         android:label="DrawingFragment"
         tools:layout="@layout/fragment_drawing" />
-
-    <fragment
-        android:id="@+id/poseDetectionFragment"
-        android:name="dev.sertan.android.ram.feature.posedetection.ui.PoseDetectionFragment"
-        android:label="fragment_pose_detection"
-        tools:layout="@layout/fragment_pose_detection" />
 
     <fragment
         android:id="@+id/audioInstructionFragment"
