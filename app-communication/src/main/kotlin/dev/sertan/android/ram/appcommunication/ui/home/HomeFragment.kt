@@ -12,6 +12,7 @@ package dev.sertan.android.ram.appcommunication.ui.home
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToAudioInstructionFragment
+import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToBodyPartsFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToObjectRecognitionFragment
 import dev.sertan.android.ram.appcommunication.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToVisualInstructionFragment
@@ -66,6 +67,11 @@ internal class HomeFragment : BaseHomeFragment() {
                         block = { navTo(actionHomeFragmentToVoiceImitationFragment()) }
                     )
                 }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.body_parts,
+                buttonIconResId = R.drawable.ic_people,
+                onClicked = { navTo(actionHomeFragmentToBodyPartsFragment()) }
             ),
             HomeListItem.ButtonItem(
                 buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,

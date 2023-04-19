@@ -25,6 +25,14 @@
         android:label="ProjectInfoFragment"
         tools:layout="@layout/fragment_project_info" />
 
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appcommunication.ui.home.HomeFragment"
@@ -64,7 +72,24 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_bodyPartsFragment"
+            app:destination="@id/bodyPartsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
 
     <fragment
         android:id="@+id/drawingFragment"
@@ -96,21 +121,9 @@
         android:label="fragment_voice_imitation"
         tools:layout="@layout/fragment_voice_imitation" />
 
-    <action
-        android:id="@+id/action_global_projectInfoFragment"
-        app:destination="@id/projectInfoFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popUpTo="@id/nav_graph"
-        app:popUpToInclusive="true" />
-
-    <action
-        android:id="@+id/action_global_homeFragment"
-        app:destination="@id/homeFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/nav_graph"
-        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/bodyPartsFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.bodyparts.BodyPartsFragment"
+        android:label="BodyPartsFragment"
+        tools:layout="@layout/fragment_body_parts"/>
 </navigation>

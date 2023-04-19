@@ -19,4 +19,5 @@
     <string name="visual_instruction_description">Aşağıda buton göründüğünde, üzerine basın.</string>
     <string name="object_recognition_description">Mikrofona bastıktan sonra aşağıdaki nesnenin ismini söyleyin.</string>
     <string name="voice_imitation_description">Mikrofona bastıktan sonra duyduğun sesi tekrarla.</string>
+    <string name="body_parts">Vücut bölümleri</string>
 </resources>
