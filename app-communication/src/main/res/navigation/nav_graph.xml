@@ -125,5 +125,5 @@
         android:id="@+id/bodyPartsFragment"
         android:name="dev.sertan.android.ram.appcommunication.ui.bodyparts.BodyPartsFragment"
         android:label="BodyPartsFragment"
-        tools:layout="@layout/fragment_body_parts"/>
+        tools:layout="@layout/fragment_body_parts" />
 </navigation>

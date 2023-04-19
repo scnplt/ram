@@ -40,7 +40,7 @@ internal class BodyPartViewModel @Inject constructor(
             BodyPart(R.string.show_left_hand, 0.255f, 0.44f, 0.54f, 0.5f),
             BodyPart(R.string.show_right_hand, 0.82f, 0.4f, 0.975f, 0.47f),
             BodyPart(R.string.show_left_feet, 0.3f, 0.93f, 0.53f, 1f),
-            BodyPart(R.string.show_right_feet, 0.62f, 0.92f, 0.955f, 0.98f),
+            BodyPart(R.string.show_right_feet, 0.62f, 0.92f, 0.955f, 0.98f)
         )
     }
 
