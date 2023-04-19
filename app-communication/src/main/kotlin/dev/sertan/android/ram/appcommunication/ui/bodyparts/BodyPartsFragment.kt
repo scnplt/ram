@@ -36,6 +36,10 @@ internal class BodyPartsFragment :
     private val binding by viewBinding(FragmentBodyPartsBinding::bind)
     private val viewModel by viewModels<BodyPartViewModel>()
 
+    private val attributionText by lazy {
+        getString(dev.sertan.android.ram.appcommunication.R.string.man_image_attribution)
+    }
+
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect {
             with(binding) {
@@ -72,6 +76,7 @@ internal class BodyPartsFragment :
         exitButton.setOnClickListener { popBackStack() }
         finishButton.setOnClickListener { viewModel.goToNextPartOrElse { popBackStack() } }
         forwardButton.setOnClickListener { viewModel.goToNextQuestion() }
+        attributionTextView.text = getString(R.string.this_icon_was_created_by, attributionText)
         bodyImageView.setOnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 val xRatio = event.x / v.width
