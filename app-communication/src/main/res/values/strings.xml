@@ -20,4 +20,14 @@
     <string name="object_recognition_description">Mikrofona bastıktan sonra aşağıdaki nesnenin ismini söyleyin.</string>
     <string name="voice_imitation_description">Mikrofona bastıktan sonra duyduğun sesi tekrarla.</string>
     <string name="body_parts">Vücut bölümleri</string>
+    <string name="show_head">Kafayı göster</string>
+    <string name="show_left_hand">Sol eli göster</string>
+    <string name="show_right_hand">Sağ eli göster</string>
+    <string name="show_left_feet">Sol ayağı göster</string>
+    <string name="show_right_feet">Sağ ayağı göster</string>
+    <string name="show_left_eye">Sol gözü göster</string>
+    <string name="show_right_eye">Sağ gözü göster</string>
+    <string name="show_mouth">Ağzı göster</string>
+    <string name="show_nose">Burnu göster</string>
+    <string name="show_ears">Kulakları göster</string>
 </resources>

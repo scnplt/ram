@@ -9,40 +9,82 @@
 
 package dev.sertan.android.ram.appcommunication.ui.bodyparts
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
+import android.view.MotionEvent
 import android.view.View
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentBodyPartsBinding
+import dev.sertan.android.ram.core.ui.R
+import dev.sertan.android.ram.core.ui.util.extension.hide
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.show
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
+import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
-internal class BodyPartsFragment : Fragment(R.layout.fragment_body_parts) {
+internal class BodyPartsFragment :
+    Fragment(dev.sertan.android.ram.appcommunication.R.layout.fragment_body_parts) {
 
     private val binding by viewBinding(FragmentBodyPartsBinding::bind)
+    private val viewModel by viewModels<BodyPartViewModel>()
 
-/*    private val steps = mapOf(
-        R.drawable.full_body to listOf(
-            ,
-            BodyPart("Sol eli göster", 0.255f, 0.44f, 0.54f, 0.5f),
-            BodyPart("Sağ eli göster", 0.82f, 0.4f, 0.975f, 0.47f),
-            BodyPart("Sol ayağı göster", 0.3f, 0.93f, 0.53f, 1f),
-            BodyPart("Sağ ayağı göster", 0.62f, 0.92f, 0.955f, 0.98f),
-        ),
-    )*/
+    private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
+        viewModel.uiState.collect {
+            with(binding) {
+                answerStateImageView.hide()
+                it.bodyImageResId?.let { imageRes -> bodyImageView.setImageResource(imageRes) }
+                it.part?.let { part -> contentTextView.setText(part.contentResId) }
+                forwardButton.isInvisible = it.isForwardButtonInvisible
+                finishButton.isVisible = it.isFinishButtonVisible
+            }
+        }
+    }
+
+    private val answerListener = BodyPartViewModel.AnswerListener { isCorrect ->
+        showAnswerStateImageAndSetIcon(isCorrect)
+        if (isCorrect) playCorrectSound() else playNegativeSound()
+    }
+
+    private fun showAnswerStateImageAndSetIcon(isCorrect: Boolean) {
+        binding.answerStateImageView.apply {
+            val bgRes = if (isCorrect) R.drawable.ic_answer_correct else R.drawable.ic_answer_wrong
+            setImageResource(bgRes)
+        }.show()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.bodyImageView.setPart(BodyPart("Kafayı göster", 0.4785f, 0.044f, 0.7689f, 0.1385f))
-
-/*
-        steps.forEach { (resourceId, parts) ->
-            //binding.bodyImageView.setImageResource(resourceId)
-            parts.forEach { part -> binding.bodyImageView.insertPart(part) }
-        }*/
-
+        repeatOnLifecycleStarted(onLifecycleStarted)
+        viewModel.listener = answerListener
+        setUpComponents()
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setUpComponents(): Unit = with(binding) {
+        exitButton.setOnClickListener { popBackStack() }
+        finishButton.setOnClickListener { viewModel.goToNextPartOrElse { popBackStack() } }
+        forwardButton.setOnClickListener { viewModel.goToNextQuestion() }
+        bodyImageView.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                val xRatio = event.x / v.width
+                val yRatio = event.y / v.height
+                viewModel.checkTouchPoint(xRatio, yRatio)
+                return@setOnTouchListener true
+            }
+            false
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.stopSpeech()
+    }
 }

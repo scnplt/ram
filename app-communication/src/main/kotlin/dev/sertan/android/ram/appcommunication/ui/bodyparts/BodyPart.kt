@@ -9,8 +9,10 @@
 
 package dev.sertan.android.ram.appcommunication.ui.bodyparts
 
+import androidx.annotation.StringRes
+
 internal data class BodyPart(
-    val content: String,
+    @StringRes val contentResId: Int,
     val left: Float,
     val top: Float,
     val right: Float,

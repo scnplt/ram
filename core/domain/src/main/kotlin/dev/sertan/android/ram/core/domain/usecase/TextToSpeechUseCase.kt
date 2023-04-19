@@ -58,7 +58,11 @@ class TextToSpeechUseCase @Inject constructor(
     fun speak(@StringRes messageResId: Int?) = messageResId?.let { speak(resources.getString(it)) }
 
     suspend fun checkStateAndSpeak(message: String?) {
-        if (getCurrentState() == true) textToSpeechService.speak(message)
+        if (getCurrentState() == true) speak(message)
+    }
+
+    suspend fun checkStateAndSpeak(@StringRes messageResId: Int?) {
+        if (getCurrentState() == true) speak(messageResId)
     }
 
     fun stopSpeech(): Unit = textToSpeechService.stop()
