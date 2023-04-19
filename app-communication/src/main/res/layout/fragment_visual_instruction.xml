@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.visualinstruction.VisualInstructionFragment">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/visual_stimulus"
+        android:textAlignment="center"
+        android:textAppearance="?attr/textAppearanceDisplaySmall"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_8"
+        android:text="@string/visual_instruction_description"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceTitleLarge"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/catchButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamImageButton
+        android:id="@+id/catchButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/small_gap_10"
+        android:contentDescription="@string/about"
+        app:layout_constraintBottom_toTopOf="@id/startButton"
+        app:layout_constraintDimensionRatio="1:1"
+        android:paddingBottom="@dimen/small_gap_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+        app:layout_constraintWidth_percent="0.5"
+        app:icon="@drawable/ic_adjust"
+        app:tint="@android:color/black" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_gap_2"
+        android:layout_marginTop="@dimen/small_gap_5"
+        app:buttonIcon="@drawable/ic_play"
+        app:buttonText="@string/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

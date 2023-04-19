@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<resources>
+    <string name="app_name">RAM-7 İletişim Becerileri</string>
+    <string name="attention_practice">Dikkat alıştırması</string>
+    <string name="object_recognition">Nesne tanıma</string>
+    <string name="movements">Hareketler</string>
+    <string name="sounds">Sesler</string>
+    <string name="audible_stimulus">Sesli Uyaran</string>
+    <string name="audio_instruction_description">Ses duyduğunuzda, aşağıdaki butona basın.</string>
+    <string name="visual_stimulus">Görsel Uyaran</string>
+    <string name="visual_instruction_description">Aşağıda buton göründüğünde, üzerine basın.</string>
+    <string name="object_recognition_description">Mikrofona bastıktan sonra aşağıdaki nesnenin ismini söyleyin.</string>
+    <string name="voice_imitation_description">Mikrofona bastıktan sonra duyduğun sesi tekrarla.</string>
+    <string name="body_parts">Vücut bölümleri</string>
+    <string name="show_head">Kafayı göster</string>
+    <string name="show_left_hand">Sol eli göster</string>
+    <string name="show_right_hand">Sağ eli göster</string>
+    <string name="show_left_feet">Sol ayağı göster</string>
+    <string name="show_right_feet">Sağ ayağı göster</string>
+    <string name="show_left_eye">Sol gözü göster</string>
+    <string name="show_right_eye">Sağ gözü göster</string>
+    <string name="show_mouth">Ağzı göster</string>
+    <string name="show_nose">Burnu göster</string>
+    <string name="show_ears">Kulakları göster</string>
+    <string name="man_image_attribution">Wolfgang Eckert - Pixabay</string>
+</resources>

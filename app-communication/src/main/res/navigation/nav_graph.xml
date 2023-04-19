@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/projectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.ProjectInfoFragment"
+        android:label="ProjectInfoFragment"
+        tools:layout="@layout/fragment_project_info" />
+
+    <action
+        android:id="@+id/action_global_projectInfoFragment"
+        app:destination="@id/projectInfoFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.home.HomeFragment"
+        android:label="fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_drawingFragment"
+            app:destination="@id/drawingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_audioInstructionFragment"
+            app:destination="@id/audioInstructionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_visualInstructionFragment"
+            app:destination="@id/visualInstructionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_objectRecognitionFragment"
+            app:destination="@id/objectRecognitionFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_voiceImitationFragment"
+            app:destination="@id/voiceImitationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_bodyPartsFragment"
+            app:destination="@id/bodyPartsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/drawingFragment"
+        android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
+        android:label="DrawingFragment"
+        tools:layout="@layout/fragment_drawing" />
+
+    <fragment
+        android:id="@+id/audioInstructionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.audioinstruction.AudioInstructionFragment"
+        android:label="fragment_audio_instruction"
+        tools:layout="@layout/fragment_audio_instruction" />
+
+    <fragment
+        android:id="@+id/visualInstructionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.visualinstruction.VisualInstructionFragment"
+        android:label="fragment_visual_instruction"
+        tools:layout="@layout/fragment_visual_instruction" />
+
+    <fragment
+        android:id="@+id/objectRecognitionFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.objectrecognition.ObjectRecognitionFragment"
+        android:label="fragment_object_recognition"
+        tools:layout="@layout/fragment_object_recognition" />
+
+    <fragment
+        android:id="@+id/voiceImitationFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.voiceimitation.VoiceImitationFragment"
+        android:label="fragment_voice_imitation"
+        tools:layout="@layout/fragment_voice_imitation" />
+
+    <fragment
+        android:id="@+id/bodyPartsFragment"
+        android:name="dev.sertan.android.ram.appcommunication.ui.bodyparts.BodyPartsFragment"
+        android:label="BodyPartsFragment"
+        tools:layout="@layout/fragment_body_parts" />
+</navigation>
