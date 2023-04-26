@@ -17,13 +17,13 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.SplashFragment"
+        android:name="dev.sertan.android.ram.core.ui.SplashFragment"
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash" />
 
     <fragment
         android:id="@+id/projectInfoFragment"
-        android:name="dev.sertan.android.ram.core.ui.fragment.ProjectInfoFragment"
+        android:name="dev.sertan.android.ram.core.ui.ProjectInfoFragment"
         android:label="ProjectInfoFragment"
         tools:layout="@layout/fragment_project_info" />
 
@@ -36,8 +36,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="dev.sertan.android.ram.appletter.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
+        android:label="fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_drawingFragment"
             app:destination="@id/drawingFragment"
@@ -70,7 +69,7 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="dev.sertan.android.ram.feature.training.TrainingFragment"
+        android:name="dev.sertan.android.ram.feature.training.ui.training.TrainingFragment"
         android:label="TrainingFragment"
         tools:layout="@layout/fragment_training" />
 

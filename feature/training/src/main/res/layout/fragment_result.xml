@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ RAM (c) by Sertan Canpolat
+  ~
+  ~ RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+  ~
+  ~ You should have received a copy of the license along with this work.
+  ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/small_gap_2"
+    tools:context=".ui.result.ResultFragment">
+
+    <LinearLayout
+        android:id="@+id/scoreLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_card"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/small_gap_6"
+        app:layout_constraintBottom_toTopOf="@id/restartButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="4"
+            android:stepSize="0.1"
+            android:theme="@style/Widget.RAM.RatingBar"
+            tools:rating="2.4" />
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_gap_8"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceDisplayMedium"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            tools:text="Puan: 60/100" />
+    </LinearLayout>
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/restartButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_7"
+        app:buttonIcon="@drawable/ic_refresh"
+        app:buttonText="@string/try_again"
+        app:layout_constraintBottom_toTopOf="@id/finishButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreLinearLayout" />
+
+    <dev.sertan.android.ram.core.ui.customview.RamButton
+        android:id="@+id/finishButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap_4"
+        app:buttonIcon="@drawable/ic_done"
+        app:buttonText="@string/finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restartButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,11 +17,11 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.databinding.FragmentWriteBinding
-import dev.sertan.android.ram.core.ui.util.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.playNegativeSound
-import dev.sertan.android.ram.core.ui.util.popBackStack
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
@@ -41,13 +41,11 @@ internal class WriteFragment : Fragment(R.layout.fragment_write) {
     private val answerListener = object : WriteViewModel.AnswerListener {
 
         override fun onCorrect() {
-            context?.playCorrectSound()
+            playCorrectSound()
             binding.inputEditText.text?.clear()
         }
 
-        override fun onWrong() {
-            context?.playNegativeSound()
-        }
+        override fun onWrong(): Unit = playNegativeSound()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

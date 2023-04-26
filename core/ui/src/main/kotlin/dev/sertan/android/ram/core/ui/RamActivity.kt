@@ -9,15 +9,17 @@
 
 package dev.sertan.android.ram.core.ui
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import dev.sertan.android.ram.core.ui.fragment.SplashFragment
 import kotlinx.coroutines.delay
 
 abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layoutResId) {
@@ -30,6 +32,8 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
 
     private val viewModel by viewModels<RamActivityViewModel>()
     private val navController by lazy { findNavController(navHostFragmentId) }
+
+    private var mediaPlayer: MediaPlayer? = null
 
     private val navigateAfterSplash = suspend {
         delay(SplashFragment.DEFAULT_DURATION_MS)
@@ -56,8 +60,21 @@ abstract class RamActivity(@LayoutRes layoutResId: Int) : AppCompatActivity(layo
         viewModel.runOnce(navigateAfterSplash)
     }
 
+    fun playSound(@RawRes soundResId: Int, onCompleteListener: () -> Unit = {}) {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(this, soundResId)
+        mediaPlayer?.setOnCompletionListener { onCompleteListener() }
+        mediaPlayer?.start()
+    }
+
     override fun onPause() {
         super.onPause()
         viewModel.cancelJob()
+    }
+
+    companion object {
+        init {
+            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+        }
     }
 }

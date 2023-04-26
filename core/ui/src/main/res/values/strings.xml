@@ -41,4 +41,8 @@
     <string name="publication_date_mm_yyyy">MART - 2023</string>
     <string name="app_no">%1$d</string>
     <string name="about">Hakkında</string>
+    <string name="camera_permission_denied">Bu işlem için kamera izni vermeniz gerekmektedir.</string>
+    <string name="mic_permission_denied">Bu işlem için mikrofon izni vermeniz gerekmektedir.</string>
+    <string name="unexpected_error">Beklenmedik bir hata oluştu.</string>
+    <string name="start">Başla</string>
 </resources>

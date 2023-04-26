@@ -10,14 +10,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <supports-screens
-        android:largeScreens="true"
-        android:normalScreens="false"
-        android:smallScreens="false"
-        android:xlargeScreens="true" />
-
     <application
         android:name=".SelectionApp"
         android:allowBackup="true"
@@ -38,9 +30,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="firebase_performance_logcat_enabled"
-            android:value="${isPerformanceLogcatEnabled}" />
     </application>
 
 </manifest>

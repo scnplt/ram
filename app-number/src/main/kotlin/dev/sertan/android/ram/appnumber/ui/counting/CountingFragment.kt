@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appnumber.ui.counting
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -19,12 +18,13 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appnumber.R
 import dev.sertan.android.ram.appnumber.databinding.FragmentCountingBinding
-import dev.sertan.android.ram.core.ui.util.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.playNegativeSound
-import dev.sertan.android.ram.core.ui.util.popBackStack
-import dev.sertan.android.ram.core.ui.util.repeatOnLifecycleStarted
-import dev.sertan.android.ram.core.ui.util.show
-import dev.sertan.android.ram.core.ui.util.viewBinding
+import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
+import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.show
+import dev.sertan.android.ram.core.ui.util.extension.showToast
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
@@ -35,7 +35,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect {
             binding.contentLayout.isInvisible = it !is CountingUiState.Success
-            if (it == CountingUiState.Failure) showErrorMessage()
+            if (it == CountingUiState.Failure) {
+                showToast(dev.sertan.android.ram.core.ui.R.string.unexpected_error)
+            }
             if (it is CountingUiState.Success) {
                 showNumber(it)
                 viewModel.takeIf { binding.micButton.isVisible }?.speak(
@@ -53,13 +55,9 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
             progressIndicator.show()
         }
 
-        override fun onCorrect(newNumber: Int, step: Int) {
-            context?.playCorrectSound()
-        }
+        override fun onCorrect(newNumber: Int, step: Int): Unit = playCorrectSound()
 
-        override fun onWrong() {
-            context?.playNegativeSound()
-        }
+        override fun onWrong(): Unit = playNegativeSound()
 
         override fun onComplete(): Unit = stopLoadingAnimation()
 
@@ -83,11 +81,6 @@ internal class CountingFragment : Fragment(R.layout.fragment_counting) {
         nextSectionButton.setOnClickListener { viewModel.nextSection() }
         finishButton.setOnClickListener { popBackStack() }
         exitButton.setOnClickListener { popBackStack() }
-    }
-
-    private fun showErrorMessage() {
-        // TASK: Refactor this function and use the custom dialog for showing an error message
-        Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
     }
 
     private fun showNumber(state: CountingUiState.Success): Unit = with(binding) {

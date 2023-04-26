@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainingFragment">
+    tools:context=".ui.training.TrainingFragment">
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/buttonPanelFlexLayout"
@@ -39,7 +39,7 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="@dimen/small_gap_2"
         android:layout_marginTop="@dimen/small_gap_4"
-        android:background="@drawable/bg_card_training"
+        android:background="@drawable/bg_card_material"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toTopOf="@id/forwardButton"

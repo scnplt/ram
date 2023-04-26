@@ -11,12 +11,13 @@ package dev.sertan.android.ram.core.ui.customview
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import dev.sertan.android.ram.core.ui.R
 import dev.sertan.android.ram.core.ui.databinding.CustomButtonBinding
-import dev.sertan.android.ram.core.ui.util.viewBinding
-
-private const val NO_RESOURCE = -1
+import dev.sertan.android.ram.core.ui.util.Constants.NO_RESOURCE
+import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
 class RamButton @JvmOverloads constructor(
     context: Context,
@@ -25,7 +26,6 @@ class RamButton @JvmOverloads constructor(
 
     private val binding = viewBinding(CustomButtonBinding::inflate)
 
-    @Suppress("MemberVisibilityCanBePrivate")
     var buttonText: String
         get() = binding.textView.text.toString()
         set(value) {
@@ -35,11 +35,17 @@ class RamButton @JvmOverloads constructor(
     init {
         context.obtainStyledAttributes(attrs, R.styleable.RamButton).apply {
             buttonText = getText(R.styleable.RamButton_buttonText).toString()
-            getResourceId(R.styleable.RamButton_buttonIcon, NO_RESOURCE).also { iconResId ->
-                if (iconResId == NO_RESOURCE) return@apply
-                binding.buttonIconImageView.setImageResource(iconResId)
-            }
+            getResourceId(R.styleable.RamButton_buttonIcon, NO_RESOURCE)
+                .also { iconResId -> if (iconResId != NO_RESOURCE) setButtonIcon(iconResId) }
         }.recycle()
         setBackgroundResource(R.drawable.bg_button)
+    }
+
+    fun setButtonIcon(@DrawableRes iconResId: Int) {
+        binding.buttonIconImageView.setImageResource(iconResId)
+    }
+
+    fun setButtonText(@StringRes textResId: Int) {
+        binding.textView.setText(textResId)
     }
 }

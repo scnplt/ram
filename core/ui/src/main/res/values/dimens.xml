@@ -25,6 +25,9 @@
     <dimen name="gap_2">64dp</dimen>
 
     <!-- Widget -->
+
+    <dimen name="item_home_header_height">200dp</dimen>
+
     <dimen name="divider_height">3dp</dimen>
 
     <dimen name="button_icon_size">32dp</dimen>

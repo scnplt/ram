@@ -16,7 +16,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 
 @Suppress("MagicNumber")
-fun percent(value: Float, total: Float): Float = if (total == 0f) 0f else value / total * 100
+fun calculatePercentage(part: Float, total: Float): Float {
+    return if (total == 0f) 0f else part / total * 100
+}
 
 fun Context.getAppModuleName(): String = packageName.split(".").last()
 

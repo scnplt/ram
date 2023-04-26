@@ -13,13 +13,9 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import dev.sertan.android.ram.core.common.log.RamLogger
-import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import javax.inject.Inject
 
 abstract class RamApplication : Application() {
-
-    @Inject
-    lateinit var textToSpeechUseCase: TextToSpeechUseCase
 
     @Inject
     lateinit var ramLogger: RamLogger

@@ -14,7 +14,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_splash"
     android:padding="@dimen/small_gap_2"
-    tools:context=".fragment.ProjectInfoFragment">
+    tools:context=".ProjectInfoFragment">
 
     <include layout="@layout/layout_base_for_splash" />
 
