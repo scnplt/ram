@@ -1,0 +1,20 @@
+/*
+ * RAM (c) by Sertan Canpolat
+ *
+ * RAM is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.
+ *
+ * You should have received a copy of the license along with this work.
+ * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
+ */
+
+package dev.sertan.android.ram.appreading.ui
+
+import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.feature.home.BaseHomeFragment
+import dev.sertan.android.ram.feature.home.adapter.HomeListItem
+
+@AndroidEntryPoint
+internal class HomeFragment : BaseHomeFragment() {
+
+    override val items: List<HomeListItem> = listOf()
+}
