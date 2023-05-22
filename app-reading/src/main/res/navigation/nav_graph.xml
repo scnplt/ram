@@ -13,6 +13,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+    <include app:graph="@navigation/practice_graph" />
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="dev.sertan.android.ram.core.ui.SplashFragment"
@@ -45,6 +47,20 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_practice_graph"
+            app:destination="@id/practice_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <action
@@ -62,4 +78,11 @@
         android:name="dev.sertan.android.ram.feature.drawing.DrawingFragment"
         android:label="DrawingFragment"
         tools:layout="@layout/fragment_drawing" />
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="dev.sertan.android.ram.feature.training.ui.training.TrainingFragment"
+        android:label="TrainingFragment"
+        tools:layout="@layout/fragment_training" />
+
 </navigation>

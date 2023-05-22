@@ -48,12 +48,21 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs += 'build/generated/source/navigation-args'
+            }
+        }
+    }
 }
 
 dependencies {
     implementation project(path: module.coreUi)
     implementation project(path: module.featureHome)
     implementation project(path: module.featureDrawing)
+    implementation project(path: module.featureTraining)
 
     implementation libs.navigationUiKtx
     implementation libs.navigationFragmentKtx

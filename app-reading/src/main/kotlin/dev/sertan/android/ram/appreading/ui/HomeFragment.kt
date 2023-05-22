@@ -9,12 +9,40 @@
 
 package dev.sertan.android.ram.appreading.ui
 
+import androidx.core.os.bundleOf
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appreading.R
+import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
+import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
+import dev.sertan.android.ram.core.ui.util.extension.navTo
 import dev.sertan.android.ram.feature.home.BaseHomeFragment
 import dev.sertan.android.ram.feature.home.adapter.HomeListItem
+import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment.Companion.SHUFFLE_KEY
 
 @AndroidEntryPoint
 internal class HomeFragment : BaseHomeFragment() {
 
-    override val items: List<HomeListItem> = listOf()
+    override val items: List<HomeListItem>
+        get() = listOf(
+            HomeListItem.TitleItem(title = requireContext().labelWithoutPrefix),
+            HomeListItem.HeaderItem(iconResId = R.drawable.ic_splash),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.training,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_play,
+                onClicked = {
+                    navTo(destinationResId = R.id.trainingFragment, bundleOf(SHUFFLE_KEY to false))
+                }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.practice,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_pen,
+                onClicked = { navTo(actionHomeFragmentToPracticeGraph()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,
+                buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_brush,
+                onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
+            )
+        )
 }
