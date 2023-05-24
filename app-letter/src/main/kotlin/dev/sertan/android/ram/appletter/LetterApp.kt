@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appletter
 
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.core.ui.RamApplication
+import dev.sertan.android.ram.feature.training.TrainingApplication
 
 @HiltAndroidApp
-internal class LetterApp : RamApplication()
+internal class LetterApp : TrainingApplication()

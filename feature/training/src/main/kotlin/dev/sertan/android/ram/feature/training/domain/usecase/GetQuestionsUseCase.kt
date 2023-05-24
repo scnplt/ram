@@ -15,7 +15,7 @@ import dev.sertan.android.ram.feature.training.domain.repository.QuestionReposit
 import dev.sertan.android.ram.feature.training.ui.model.Question
 import javax.inject.Inject
 
-internal class GetQuestionsUseCase @Inject constructor(
+class GetQuestionsUseCase @Inject internal constructor(
     private val questionRepository: QuestionRepository,
     private val getMaterialsUseCase: GetMaterialsUseCase,
     private val questionMapper: QuestionMapper
