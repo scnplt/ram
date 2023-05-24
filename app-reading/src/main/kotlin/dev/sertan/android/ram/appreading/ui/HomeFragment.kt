@@ -9,6 +9,8 @@
 
 package dev.sertan.android.ram.appreading.ui
 
+import android.os.Bundle
+import android.view.View
 import androidx.core.os.bundleOf
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appreading.R
@@ -16,8 +18,10 @@ import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.act
 import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.navTo
+import dev.sertan.android.ram.core.ui.util.extension.savedStateHandeListener
 import dev.sertan.android.ram.feature.home.BaseHomeFragment
 import dev.sertan.android.ram.feature.home.adapter.HomeListItem
+import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
 import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment.Companion.SHUFFLE_KEY
 
 @AndroidEntryPoint
@@ -45,4 +49,11 @@ internal class HomeFragment : BaseHomeFragment() {
                 onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
             )
         )
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
+            if (it) navTo(actionHomeFragmentToPracticeGraph())
+        }
+    }
 }
