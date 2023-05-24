@@ -11,6 +11,7 @@ package dev.sertan.android.ram.appreading
 
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.core.ui.RamApplication
+import dev.sertan.android.ram.feature.training.TrainingApplication
 
 @HiltAndroidApp
-internal class ReadingApplication : RamApplication()
+internal class ReadingApplication : TrainingApplication()
