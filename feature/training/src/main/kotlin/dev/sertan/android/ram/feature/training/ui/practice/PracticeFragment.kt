@@ -59,6 +59,7 @@ class PracticeFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter.listener = this
+        arguments?.getBoolean(SHUFFLE_KEY)?.let { savedInstanceState?.putBoolean(SHUFFLE_KEY, it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -108,5 +109,9 @@ class PracticeFragment :
     private fun changeContentVisibility(isVisible: Boolean): Unit = with(binding) {
         contentGroup.isVisible = isVisible
         emptyListMessageTextView.isVisible = !isVisible
+    }
+
+    companion object {
+        const val SHUFFLE_KEY = "shuffle-question"
     }
 }

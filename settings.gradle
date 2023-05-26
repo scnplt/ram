@@ -30,6 +30,7 @@ include ':app-number'
 include ':app-letter'
 include ':app-movements'
 include ':app-communication'
+include ':app-reading'
 
 include ':core:common'
 include ':core:ui'
