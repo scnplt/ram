@@ -11,8 +11,8 @@ package dev.sertan.android.ram.appreading.ui
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appreading.R
 import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
 import dev.sertan.android.ram.appreading.ui.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
@@ -20,6 +20,8 @@ import dev.sertan.android.ram.core.ui.util.extension.navTo
 import dev.sertan.android.ram.core.ui.util.extension.savedStateHandeListener
 import dev.sertan.android.ram.feature.home.BaseHomeFragment
 import dev.sertan.android.ram.feature.home.adapter.HomeListItem
+import dev.sertan.android.ram.feature.training.R
+import dev.sertan.android.ram.feature.training.ui.practice.PracticeFragment.Companion.SHUFFLE_KEY
 import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
 
 @AndroidEntryPoint
@@ -28,11 +30,18 @@ internal class HomeFragment : BaseHomeFragment() {
     override val items: List<HomeListItem>
         get() = listOf(
             HomeListItem.TitleItem(title = requireContext().labelWithoutPrefix),
-            HomeListItem.HeaderItem(iconResId = R.drawable.ic_splash),
+            HomeListItem.HeaderItem(
+                iconResId = dev.sertan.android.ram.appreading.R.drawable.ic_splash
+            ),
             HomeListItem.ButtonItem(
                 buttonTextResId = dev.sertan.android.ram.core.ui.R.string.start,
                 buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_play,
-                onClicked = { navTo(actionHomeFragmentToPracticeGraph()) }
+                onClicked = {
+                    navTo(
+                        destinationResId = R.id.practice_graph,
+                        bundleOf(SHUFFLE_KEY to false)
+                    )
+                }
             ),
             HomeListItem.ButtonItem(
                 buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,
