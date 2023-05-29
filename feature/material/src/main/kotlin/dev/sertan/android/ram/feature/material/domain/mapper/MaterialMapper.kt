@@ -20,6 +20,7 @@ internal class MaterialMapper @Inject constructor(private val locale: Locale) {
         uid = dto.uid,
         description = dto.description.replaceFirstChar { it.titlecase(locale) },
         mediaUrl = dto.mediaUrl,
-        attribution = dto.attribution
+        attribution = dto.attribution,
+        isShownByDefault = dto.isShownByDefault
     )
 }
