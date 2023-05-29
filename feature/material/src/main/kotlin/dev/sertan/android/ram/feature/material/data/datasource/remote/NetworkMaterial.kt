@@ -16,5 +16,6 @@ internal data class NetworkMaterial(
     val uid: String? = null,
     val description: String? = null,
     val mediaUrl: String? = null,
-    val attribution: String? = null
+    val attribution: String? = null,
+    val shownByDefault: Boolean? = null
 )

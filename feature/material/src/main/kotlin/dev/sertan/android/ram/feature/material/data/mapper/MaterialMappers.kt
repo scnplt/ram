@@ -17,19 +17,22 @@ internal fun MaterialEntity.toDto(): MaterialDto = MaterialDto(
     uid = uid,
     description = description,
     mediaUrl = mediaUrl,
-    attribution = attribution
+    attribution = attribution,
+    isShownByDefault = isShownByDefault
 )
 
 internal fun MaterialDto.toEntity(): MaterialEntity = MaterialEntity(
     uid = uid,
     description = description,
     mediaUrl = mediaUrl,
-    attribution = attribution
+    attribution = attribution,
+    isShownByDefault = isShownByDefault
 )
 
 internal fun NetworkMaterial.toEntity(): MaterialEntity = MaterialEntity(
     uid = uid!!,
     description = description!!,
     mediaUrl = mediaUrl!!,
-    attribution = attribution
+    attribution = attribution,
+    isShownByDefault = shownByDefault ?: true
 )
