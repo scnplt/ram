@@ -35,6 +35,7 @@ internal class TrainingViewModel @Inject constructor(
 
     val uiState: StateFlow<TrainingUiState> = flow {
         val materials = getMaterialsUseCase(shuffle = savedStateHandle[SHUFFLE_KEY])
+            .filter { it.isShownByDefault }
         materialIndex.collect { index ->
             textToSpeechUseCase.checkStateAndSpeak(materials.getOrNull(index)?.description)
             emit(TrainingUiState.getState(materials, index))

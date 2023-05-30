@@ -7,12 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.material.domain.model
+package dev.sertan.android.ram.appreading
 
-internal data class MaterialDto(
-    val uid: String,
-    val description: String,
-    val mediaUrl: String,
-    val attribution: String?,
-    val isShownByDefault: Boolean
-)
+import dagger.hilt.android.HiltAndroidApp
+import dev.sertan.android.ram.feature.training.TrainingApplication
+
+@HiltAndroidApp
+internal class ReadingApplication : TrainingApplication()
