@@ -7,10 +7,12 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmemory
+package dev.sertan.android.ram.appmemory.gapfilling.domain.model
 
-import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.feature.training.TrainingApplication
-
-@HiltAndroidApp
-internal class MemoryApp : TrainingApplication()
+internal data class GapFillingQuestionDto(
+    val uid: String,
+    val content: String,
+    val materialUidList: List<String>,
+    val correctMaterialUid: String,
+    val contentMaterialUid: String
+)

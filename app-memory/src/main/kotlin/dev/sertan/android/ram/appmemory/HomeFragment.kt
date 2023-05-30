@@ -7,12 +7,12 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmemory.ui
+package dev.sertan.android.ram.appmemory
 
 import dagger.hilt.android.AndroidEntryPoint
-import dev.sertan.android.ram.appmemory.R
-import dev.sertan.android.ram.appmemory.ui.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
-import dev.sertan.android.ram.appmemory.ui.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
+import dev.sertan.android.ram.appmemory.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
+import dev.sertan.android.ram.appmemory.HomeFragmentDirections.Companion.actionHomeFragmentToMatchingFragment
+import dev.sertan.android.ram.appmemory.HomeFragmentDirections.Companion.actionHomeFragmentToPracticeGraph
 import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.navTo
 import dev.sertan.android.ram.feature.home.BaseHomeFragment
@@ -29,6 +29,11 @@ internal class HomeFragment : BaseHomeFragment() {
                 buttonTextResId = R.string.puzzle,
                 buttonIconResId = dev.sertan.android.ram.core.ui.R.drawable.ic_play,
                 onClicked = { navTo(actionHomeFragmentToPracticeGraph()) }
+            ),
+            HomeListItem.ButtonItem(
+                buttonTextResId = R.string.gap_filling,
+                buttonIconResId = R.drawable.ic_apps,
+                onClicked = { navTo(actionHomeFragmentToMatchingFragment()) }
             ),
             HomeListItem.ButtonItem(
                 buttonTextResId = dev.sertan.android.ram.core.ui.R.string.drawing,

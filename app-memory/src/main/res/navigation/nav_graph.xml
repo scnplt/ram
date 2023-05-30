@@ -43,9 +43,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home"
-        android:name="dev.sertan.android.ram.appmemory.ui.HomeFragment"
-        android:label="HomeFragment">
+        android:name="dev.sertan.android.ram.appmemory.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_practice_graph"
             app:destination="@id/practice_graph"
@@ -60,6 +60,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_matchingFragment"
+            app:destination="@id/gapFillingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <action
@@ -70,4 +77,9 @@
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/nav_graph" />
+    <fragment
+        android:id="@+id/gapFillingFragment"
+        android:name="dev.sertan.android.ram.appmemory.gapfilling.ui.GapFillingFragment"
+        android:label="fragment_matching"
+        tools:layout="@layout/fragment_gap_filling" />
 </navigation>
