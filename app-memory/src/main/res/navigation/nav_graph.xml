@@ -42,23 +42,10 @@
         tools:layout="@layout/fragment_drawing" />
 
     <fragment
-        android:id="@+id/trainingFragment"
-        android:name="dev.sertan.android.ram.feature.training.ui.training.TrainingFragment"
-        android:label="TrainingFragment"
-        tools:layout="@layout/fragment_training" />
-
-    <fragment
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
         android:name="dev.sertan.android.ram.appmemory.ui.HomeFragment"
         android:label="HomeFragment">
-        <action
-            android:id="@+id/action_homeFragment_to_trainingFragment"
-            app:destination="@id/trainingFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_homeFragment_to_practice_graph"
             app:destination="@id/practice_graph"

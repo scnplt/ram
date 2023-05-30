@@ -11,6 +11,7 @@ package dev.sertan.android.ram.appmemory
 
 import dagger.hilt.android.HiltAndroidApp
 import dev.sertan.android.ram.core.ui.RamApplication
+import dev.sertan.android.ram.feature.training.TrainingApplication
 
 @HiltAndroidApp
-internal class MemoryApp : RamApplication()
+internal class MemoryApp : TrainingApplication()
