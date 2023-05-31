@@ -22,11 +22,11 @@ internal fun MatchingQuestionEntity.toDto(): MatchingQuestionDto = MatchingQuest
 internal fun MatchingQuestionDto.toEntity(): MatchingQuestionEntity = MatchingQuestionEntity(
     uid = uid,
     content = content,
-    materialUidList = materialUidList,
+    materialUidList = materialUidList
 )
 
 internal fun NetworkMatchingQuestion.toEntity(): MatchingQuestionEntity = MatchingQuestionEntity(
     uid = uid!!,
     content = content!!,
-    materialUidList = materialUidList!!,
+    materialUidList = materialUidList!!
 )

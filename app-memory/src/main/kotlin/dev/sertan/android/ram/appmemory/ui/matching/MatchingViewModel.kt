@@ -71,8 +71,7 @@ internal class MatchingViewModel @Inject constructor(
     }
 
     fun checkAnswerState(selectedMaterial: Material): Boolean? {
-        if (!isValidationActive) return null
-        if (lastSelectedMaterialUid == null) {
+        if (lastSelectedMaterialUid == null || !isValidationActive) {
             lastSelectedMaterialUid = selectedMaterial.uid
             return null
         }

@@ -23,6 +23,6 @@ internal class MatchingQuestionMapper @Inject constructor(private val locale: Lo
     ): MatchingQuestion = MatchingQuestion(
         uid = dto.uid,
         content = dto.content.replaceFirstChar { it.titlecase(locale) },
-        materials = materials,
+        materials = materials
     )
 }

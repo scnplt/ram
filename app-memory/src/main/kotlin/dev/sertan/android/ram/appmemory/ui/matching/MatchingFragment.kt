@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appmemory.ui.matching
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
