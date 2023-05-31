@@ -13,7 +13,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.ram.appmemory.domain.usecase.MatchingQuestionsUseCase
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListItem
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListItem.MaterialItem
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListItem.TitleItem
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
+import dev.sertan.android.ram.feature.material.ui.Material
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -28,19 +32,29 @@ internal class MatchingViewModel @Inject constructor(
     private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
-    var isValidationActive = true
     private val questionIndex = MutableStateFlow(0)
+    private var lastSelectedMaterialUid: String? = null
+    var isValidationActive = true
 
     val uiState: StateFlow<MatchingUiState> = flow {
         val questions = getMatchingQuestionsUseCase()
+        if (questions.isEmpty()) {
+            emit(MatchingUiState.initialState().copy(isEmptyListMessageVisible = true))
+            return@flow
+        }
         questionIndex.collect { index ->
-            val question = questions.getOrNull(index)
+            val contentItems = arrayListOf<MatchingListItem>()
+            questions.getOrNull(index)?.let { question ->
+                contentItems.add(TitleItem(titleText = question.content))
+                question.materials.forEach { material -> contentItems.add(MaterialItem(material)) }
+            }
+
             emit(
                 MatchingUiState(
-                    matchingQuestion = question,
-                    isForwardButtonVisible = index in 0 until questions.lastIndex,
+                    contentItems = contentItems,
+                    isNextButtonInvisible = index !in 0 until questions.lastIndex,
                     isFinishButtonVisible = index == questions.lastIndex,
-                    isEmptyListMessageVisible = questions.isEmpty()
+                    isEmptyListMessageVisible = null
                 )
             )
         }
@@ -52,11 +66,18 @@ internal class MatchingViewModel @Inject constructor(
 
     fun goToNextQuestion() {
         questionIndex.update { it.inc() }
+        lastSelectedMaterialUid = null
         isValidationActive = true
     }
 
-    fun speakCurrentQuestionContent(): Unit =
-        textToSpeechUseCase.speak(uiState.value.matchingQuestion?.content)
+    fun checkAnswerState(selectedMaterial: Material): Boolean? {
+        if (!isValidationActive) return null
+        if (lastSelectedMaterialUid == null) {
+            lastSelectedMaterialUid = selectedMaterial.uid
+            return null
+        }
+        return lastSelectedMaterialUid == selectedMaterial.uid
+    }
 
     fun stopSpeech(): Unit = textToSpeechUseCase.stopSpeech()
 }

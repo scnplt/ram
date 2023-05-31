@@ -7,10 +7,8 @@
   ~ If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
   -->
 
-<resources>
-    <string name="app_name">RAM-10 Öğrenmeye Destek</string>
-    <string name="puzzle">Bulmaca</string>
-    <string name="gap_filling">Boşluk Doldurma</string>
-    <string name="matching">Eşleştirme</string>
-    <string name="attribution">Atıf</string>
-</resources>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <solid android:color="@android:color/white" />
+</shape>

@@ -17,11 +17,12 @@ import javax.inject.Inject
 
 internal class MatchingQuestionMapper @Inject constructor(private val locale: Locale) {
 
-    fun toUIModel(dto: MatchingQuestionDto, materials: List<Material>): MatchingQuestion =
-        MatchingQuestion(
-            uid = dto.uid,
-            content = dto.content.replaceFirstChar { it.titlecase(locale) },
-            materials = materials,
-            correctAnswerUid = dto.correctAnswerUid
-        )
+    fun toUIModel(
+        dto: MatchingQuestionDto,
+        materials: List<Material>
+    ): MatchingQuestion = MatchingQuestion(
+        uid = dto.uid,
+        content = dto.content.replaceFirstChar { it.titlecase(locale) },
+        materials = materials,
+    )
 }

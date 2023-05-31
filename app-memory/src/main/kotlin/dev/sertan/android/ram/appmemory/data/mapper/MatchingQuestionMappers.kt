@@ -16,20 +16,17 @@ import dev.sertan.android.ram.appmemory.domain.model.MatchingQuestionDto
 internal fun MatchingQuestionEntity.toDto(): MatchingQuestionDto = MatchingQuestionDto(
     uid = uid,
     content = content,
-    materialUidList = materialUidList,
-    correctAnswerUid = correctAnswerUid
+    materialUidList = materialUidList
 )
 
 internal fun MatchingQuestionDto.toEntity(): MatchingQuestionEntity = MatchingQuestionEntity(
     uid = uid,
     content = content,
     materialUidList = materialUidList,
-    correctAnswerUid = correctAnswerUid
 )
 
 internal fun NetworkMatchingQuestion.toEntity(): MatchingQuestionEntity = MatchingQuestionEntity(
     uid = uid!!,
     content = content!!,
     materialUidList = materialUidList!!,
-    correctAnswerUid = correctAnswerUid!!
 )

@@ -12,6 +12,5 @@ package dev.sertan.android.ram.appmemory.domain.model
 internal data class MatchingQuestionDto(
     val uid: String,
     val content: String,
-    val materialUidList: List<String>,
-    val correctAnswerUid: String
+    val materialUidList: List<String>
 )

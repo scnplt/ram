@@ -9,43 +9,71 @@
 
 package dev.sertan.android.ram.appmemory.ui.matching
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appmemory.R
 import dev.sertan.android.ram.appmemory.databinding.FragmentMatchingBinding
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListAdapter
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MaterialItemListener
 import dev.sertan.android.ram.core.ui.util.extension.hide
 import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
 import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
+import dev.sertan.android.ram.core.ui.util.extension.show
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
+import dev.sertan.android.ram.feature.material.ui.Material
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
-internal class MatchingFragment : Fragment(R.layout.fragment_matching) {
+internal class MatchingFragment :
+    Fragment(R.layout.fragment_matching),
+    MaterialItemListener {
 
     private val viewModel by viewModels<MatchingViewModel>()
     private val binding by viewBinding(FragmentMatchingBinding::bind)
 
+    @Inject
+    lateinit var adapter: MatchingListAdapter
+
+    private val layoutManager by lazy {
+        GridLayoutManager(requireContext(), 2).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int = if (position == 0) 2 else 1
+            }
+        }
+    }
+
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect { uiState ->
             with(binding) {
-                uiState.matchingQuestion?.apply {
-                    contentTextView.text = content
-//                    mediaImageView.loadFromUrl(contentMaterial.mediaUrl)
-//                    setAttributionView(contentMaterial.attribution)
-//                    adapter.submitList(materials)
-                }
-                finishButton.isInvisible = !uiState.isFinishButtonVisible
-                nextButton.isInvisible = !uiState.isForwardButtonVisible
-                uiState.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
+                adapter.submitList(uiState.contentItems)
+                nextButton.isInvisible = uiState.isNextButtonInvisible
+                finishButton.isVisible = uiState.isFinishButtonVisible
+                uiState.isEmptyListMessageVisible?.let { setContentVisibility(isVisible = !it) }
             }
         }
+    }
+
+    private fun setContentVisibility(isVisible: Boolean): Unit = with(binding) {
+        contentRecyclerView.isVisible = isVisible
+        nextButton.isVisible = isVisible
+        finishButton.isVisible = isVisible
+        emptyListMessageTextView.isVisible = !isVisible
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter.listener = this
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,15 +82,18 @@ internal class MatchingFragment : Fragment(R.layout.fragment_matching) {
         repeatOnLifecycleStarted(onLifecycleStarted)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setUpComponents(): Unit = with(binding) {
-//      materialsRecyclerView.adapter = adapter
+        contentRecyclerView.layoutManager = layoutManager
+        contentRecyclerView.adapter = adapter
+        attributionInfoButton.setOnClickListener { TODO("Not yet implemented") }
         nextButton.setOnClickListener {
             answerStateImageView.hide()
             viewModel.goToNextQuestion()
+            adapter.notifyDataSetChanged()
         }
-        contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
-        exitButton.setOnClickListener { popBackStack() }
         finishButton.setOnClickListener { popBackStack() }
+        exitButton.setOnClickListener { popBackStack() }
     }
 
     private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
@@ -78,8 +109,13 @@ internal class MatchingFragment : Fragment(R.layout.fragment_matching) {
         viewModel.stopSpeech()
     }
 
-    private fun changeContentVisibility(isVisible: Boolean): Unit = with(binding) {
-        contentGroup.isVisible = isVisible
-        emptyListMessageTextView.isVisible = !isVisible
+    override fun onMaterialClicked(material: Material) {
+        val isCorrect = viewModel.checkAnswerState(selectedMaterial = material) ?: return
+        val bgResId = playAnswerSoundAndGetIconRes(isCorrect)
+        with(binding) {
+            answerStateImageView.setImageResource(bgResId)
+            answerStateImageView.show()
+            viewModel.isValidationActive = false
+        }
     }
 }

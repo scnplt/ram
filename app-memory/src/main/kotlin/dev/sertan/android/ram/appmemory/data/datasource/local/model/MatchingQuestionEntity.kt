@@ -18,6 +18,5 @@ import androidx.room.PrimaryKey
 internal data class MatchingQuestionEntity(
     @PrimaryKey val uid: String,
     val content: String,
-    val materialUidList: List<String>,
-    val correctAnswerUid: String
+    val materialUidList: List<String>
 )

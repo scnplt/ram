@@ -9,19 +9,19 @@
 
 package dev.sertan.android.ram.appmemory.ui.matching
 
-import dev.sertan.android.ram.appmemory.ui.model.MatchingQuestion
+import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListItem
 
 internal data class MatchingUiState(
-    val matchingQuestion: MatchingQuestion?,
-    val isForwardButtonVisible: Boolean,
+    val contentItems: List<MatchingListItem>,
+    val isNextButtonInvisible: Boolean,
     val isFinishButtonVisible: Boolean,
     val isEmptyListMessageVisible: Boolean?
 ) {
 
     companion object {
         fun initialState(): MatchingUiState = MatchingUiState(
-            matchingQuestion = null,
-            isForwardButtonVisible = false,
+            contentItems = emptyList(),
+            isNextButtonInvisible = true,
             isFinishButtonVisible = false,
             isEmptyListMessageVisible = null
         )

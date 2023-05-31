@@ -14,6 +14,5 @@ import dev.sertan.android.ram.feature.material.ui.Material
 internal data class MatchingQuestion(
     val uid: String,
     val content: String,
-    val materials: List<Material>,
-    val correctAnswerUid: String
+    val materials: List<Material>
 )

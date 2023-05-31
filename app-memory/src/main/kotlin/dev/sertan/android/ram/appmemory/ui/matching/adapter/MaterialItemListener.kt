@@ -7,13 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmemory.data.datasource.remote.model
+package dev.sertan.android.ram.appmemory.ui.matching.adapter
 
-import androidx.annotation.Keep
+import dev.sertan.android.ram.feature.material.ui.Material
 
-@Keep
-internal data class NetworkMatchingQuestion(
-    val uid: String? = null,
-    val content: String? = null,
-    val materialUidList: List<String>? = null
-)
+internal fun interface MaterialItemListener {
+    fun onMaterialClicked(material: Material)
+}
