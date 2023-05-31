@@ -33,7 +33,7 @@ import javax.inject.Singleton
 @Retention(AnnotationRetention.RUNTIME)
 annotation class Collection(val type: CollectionType)
 
-enum class CollectionType { MATERIAL, QUESTION, SECTION, FILLING }
+enum class CollectionType { MATERIAL, QUESTION, SECTION, FILLING, MATCHING }
 
 internal fun CollectionType.getReferenceName(context: Context): String =
     "${BuildConfig.BUILD_TYPE}/${context.getAppModuleName()}/${name.lowercase()}"
@@ -87,6 +87,14 @@ internal class FirebaseModule {
         @ApplicationContext context: Context,
         firestore: FirebaseFirestore
     ): CollectionReference = firestore.collection(CollectionType.FILLING.getReferenceName(context))
+
+    @Provides
+    @Singleton
+    @Collection(CollectionType.MATCHING)
+    fun provideMatchingCollectionReference(
+        @ApplicationContext context: Context,
+        firestore: FirebaseFirestore
+    ): CollectionReference = firestore.collection(CollectionType.MATCHING.getReferenceName(context))
 
     @Provides
     @Singleton

@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gapfilling.GapFillingFragment">
+    tools:context=".ui.matching.MatchingFragment">
 
     <FrameLayout
         android:id="@+id/buttonPanel"
@@ -35,77 +35,44 @@
             app:tint="@android:color/holo_red_dark" />
     </FrameLayout>
 
-    <TextView
-        android:id="@+id/contentTextView"
+    <ScrollView
+        android:id="@+id/contentScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_gap_2"
-        android:layout_marginTop="@dimen/small_gap_2"
-        android:gravity="center"
-        android:maxLines="2"
-        android:textAppearance="?textAppearanceBodyLarge"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@id/contentMaterialLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@tools:sample/lorem[200]" />
-
-    <FrameLayout
-        android:id="@+id/contentMaterialLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/small_gap_2"
-        android:background="@drawable/bg_card_material"
-        app:layout_constraintBottom_toTopOf="@id/attributionTextView"
-        app:layout_constraintDimensionRatio="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contentTextView"
-        app:layout_constraintWidth_percent="0.6">
-
-        <ImageView
-            android:id="@+id/mediaImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/small_gap_4"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/material_image"
-            tools:ignore="ImageContrastCheck"
-            tools:src="@tools:sample/avatars" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/attributionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_gap_2"
-        android:maxLines="2"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        app:autoSizeTextType="uniform"
+        android:layout_marginTop="@dimen/small_gap_4"
         app:layout_constraintBottom_toTopOf="@id/materialsRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contentMaterialLayout"
-        tools:text="@tools:sample/lorem/random" />
+        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <TextView
+            android:id="@+id/contentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/small_gap_2"
+            android:gravity="center"
+            android:maxLines="3"
+            android:textAppearance="?textAppearanceDisplaySmall"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            tools:text="@tools:sample/lorem[200]" />
+    </ScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/materialsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/small_gap_1"
+        android:layout_marginTop="@dimen/small_gap_4"
+        android:layout_marginBottom="@dimen/small_gap_2"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/attributionTextView"
+        app:layout_constraintTop_toBottomOf="@id/contentScrollView"
         app:spanCount="2"
-        tools:itemCount="6"
+        tools:itemCount="10"
         tools:listitem="@layout/item_question_material" />
 
     <dev.sertan.android.ram.core.ui.customview.RamButton
@@ -138,7 +105,7 @@
         android:layout_height="0dp"
         android:visibility="gone"
         app:constraint_referenced_ids="
-            contentMaterialLayout,
+            contentScrollView,
             materialsRecyclerView"
         tools:visibility="visible" />
 
@@ -156,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonPanel"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/answerStateImageView"
@@ -171,8 +138,7 @@
         app:layout_constraintDimensionRatio="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonPanel"
+        app:layout_constraintTop_toTopOf="@id/materialsRecyclerView"
         tools:srcCompat="@drawable/ic_answer_wrong"
-        tools:visibility="gone" />
-
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>
