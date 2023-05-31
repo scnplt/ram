@@ -9,30 +9,13 @@
 
 package dev.sertan.android.ram.core.ui.adapter
 
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 
-abstract class BaseListAdapter<I : BaseListItem<I>> : RecyclerView.Adapter<BaseViewHolder<I>>() {
+abstract class BaseListAdapter<I : BaseListItem<I>> :
+    ListAdapter<I, BaseViewHolder<I>>(BaseListItemDiffUtil()) {
 
-    private val diffUtil = object : DiffUtil.ItemCallback<I>() {
-        override fun areItemsTheSame(oldItem: I, newItem: I): Boolean =
-            oldItem.areItemsTheSame(newItem)
+    override fun getItemViewType(position: Int): Int = getItem(position).viewType
 
-        override fun areContentsTheSame(oldItem: I, newItem: I): Boolean =
-            oldItem.areContentsTheSame(newItem)
-    }
-
-    private val asyncListDiffer by lazy { AsyncListDiffer(this, diffUtil) }
-
-    var items: List<I>
-        get() = asyncListDiffer.currentList
-        set(value) = asyncListDiffer.submitList(value)
-
-    override fun getItemCount(): Int = items.size
-
-    override fun getItemViewType(position: Int): Int = items[position].viewType
-
-    override fun onBindViewHolder(holder: BaseViewHolder<I>, position: Int) =
-        holder.bind(items[position])
+    override fun onBindViewHolder(holder: BaseViewHolder<I>, position: Int): Unit =
+        holder.bind(getItem(position))
 }
