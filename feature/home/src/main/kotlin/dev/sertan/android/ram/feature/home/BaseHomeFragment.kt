@@ -56,7 +56,7 @@ abstract class BaseHomeFragment : Fragment(R.layout.fragment_home), TextToSpeech
             aboutButton.setOnClickListener { navigateToOssLicenses() }
             changeVoiceSupportButton.setOnClickListener { changeTextToSpeechState() }
             contentRecyclerView.adapter = adapter
-            adapter.items = items
+            adapter.submitList(items)
         }
     }
 
