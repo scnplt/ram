@@ -14,6 +14,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
+private const val COLLECTION_GROUP_NAME_KEY = "collection-group-name-key"
+
 fun SharedPreferences.getStringAsStream(dataKey: String): Flow<String?> = callbackFlow {
     trySend(getString(dataKey, null))
     val sharedPrefListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPref, key ->
@@ -22,3 +24,9 @@ fun SharedPreferences.getStringAsStream(dataKey: String): Flow<String?> = callba
     registerOnSharedPreferenceChangeListener(sharedPrefListener)
     awaitClose { unregisterOnSharedPreferenceChangeListener(sharedPrefListener) }
 }
+
+fun SharedPreferences.getSavedCollectionGroupName(): String? =
+    getString(COLLECTION_GROUP_NAME_KEY, null)
+
+fun SharedPreferences.setCollectionGroupName(newName: String): Unit =
+    edit().putString(COLLECTION_GROUP_NAME_KEY, newName).apply()

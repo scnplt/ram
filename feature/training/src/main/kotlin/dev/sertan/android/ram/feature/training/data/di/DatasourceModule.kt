@@ -11,18 +11,24 @@ package dev.sertan.android.ram.feature.training.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import dev.sertan.android.ram.core.data.FirestoreDataReceiver
+import dev.sertan.android.ram.core.data.di.CollectionPath
 import dev.sertan.android.ram.feature.training.data.datasource.local.QuestionDao
 import dev.sertan.android.ram.feature.training.data.datasource.local.RamDatabase
+import dev.sertan.android.ram.feature.training.data.datasource.remote.NetworkQuestion
 import javax.inject.Singleton
+
+private const val QUESTION_SUFFIX = "question"
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object DatabaseModule {
+internal object DatasourceModule {
 
     @Provides
     @Singleton
@@ -32,4 +38,15 @@ internal object DatabaseModule {
     @Provides
     @Singleton
     fun provideQuestionDao(database: RamDatabase): QuestionDao = database.questionDao()
+
+    @Provides
+    @Singleton
+    fun provideFirestoreQuestionDataReceiver(
+        @CollectionPath collectionPath: String,
+        firestore: FirebaseFirestore
+    ): FirestoreDataReceiver<NetworkQuestion> = FirestoreDataReceiver(
+        firestore = firestore,
+        collectionName = "$collectionPath/$QUESTION_SUFFIX",
+        dataClass = NetworkQuestion::class.java
+    )
 }

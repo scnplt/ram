@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.data.database.model
+package dev.sertan.android.ram.appnumber.data.datasource.local
 
 import androidx.annotation.Keep
 import androidx.room.Entity
