@@ -74,6 +74,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_trainingFragment"
+            app:destination="@id/trainingFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <action
@@ -96,4 +103,10 @@
         android:name="dev.sertan.android.ram.appmemory.ui.matching.MatchingFragment"
         android:label="fragment_matching"
         tools:layout="@layout/fragment_matching" />
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        tools:layout="@layout/fragment_training"
+        android:name="dev.sertan.android.ram.feature.training.ui.training.TrainingFragment"
+        android:label="TrainingFragment" />
 </navigation>
