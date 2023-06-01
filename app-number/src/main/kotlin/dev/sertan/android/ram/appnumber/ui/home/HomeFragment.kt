@@ -9,9 +9,8 @@
 
 package dev.sertan.android.ram.appnumber.ui.home
 
-import android.os.Bundle
-import android.view.View
 import androidx.core.os.bundleOf
+import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appnumber.R
 import dev.sertan.android.ram.appnumber.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToCountingFragment
@@ -21,15 +20,15 @@ import dev.sertan.android.ram.core.ui.util.extension.doIfPermissionGranted
 import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.navTo
 import dev.sertan.android.ram.core.ui.util.extension.resultLauncher
-import dev.sertan.android.ram.core.ui.util.extension.savedStateHandeListener
 import dev.sertan.android.ram.core.ui.util.extension.showToast
-import dev.sertan.android.ram.feature.home.BaseHomeFragment
 import dev.sertan.android.ram.feature.home.adapter.HomeListItem
-import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
+import dev.sertan.android.ram.feature.training.TrainingHomeFragment
 import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment.Companion.SHUFFLE_KEY
 
 @AndroidEntryPoint
-internal class HomeFragment : BaseHomeFragment() {
+internal class HomeFragment : TrainingHomeFragment() {
+
+    override var directionAfterFinished: NavDirections? = actionHomeFragmentToPracticeGraph()
 
     private val micResultLauncher = resultLauncher(
         onGranted = { navTo(actionHomeFragmentToCountingFragment()) },
@@ -69,11 +68,4 @@ internal class HomeFragment : BaseHomeFragment() {
                 onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
             )
         )
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
-            if (it) navTo(actionHomeFragmentToPracticeGraph())
-        }
-    }
 }

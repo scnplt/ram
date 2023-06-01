@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.core.data.di
 
 import android.content.Context
-import com.google.firebase.firestore.CollectionReference
+import android.content.SharedPreferences
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -26,19 +26,15 @@ import dev.sertan.android.ram.core.common.BuildConfig
 import dev.sertan.android.ram.core.common.getAppModuleName
 import dev.sertan.android.ram.core.data.service.remoteconfig.FirebaseRemoteConfigService
 import dev.sertan.android.ram.core.data.service.remoteconfig.RemoteConfigService
+import dev.sertan.android.ram.core.data.util.getSavedCollectionGroupName
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class Collection(val type: CollectionType)
-
-enum class CollectionType { MATERIAL, QUESTION, SECTION }
-
-internal fun CollectionType.getReferenceName(context: Context): String =
-    "${BuildConfig.BUILD_TYPE}/${context.getAppModuleName()}/${name.lowercase()}"
-
 private const val CONFIG_MIN_FETCH_INTERVAL_SEC = 3600L
+
+@Qualifier
+@Retention
+annotation class CollectionPath
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -58,31 +54,18 @@ internal class FirebaseModule {
 
     @Provides
     @Singleton
-    @Collection(CollectionType.MATERIAL)
-    fun provideMaterialCollectionReference(
-        @ApplicationContext context: Context,
-        firestore: FirebaseFirestore
-    ): CollectionReference = firestore.collection(CollectionType.MATERIAL.getReferenceName(context))
-
-    @Provides
-    @Singleton
-    @Collection(CollectionType.QUESTION)
-    fun provideQuestionCollectionReference(
-        @ApplicationContext context: Context,
-        firestore: FirebaseFirestore
-    ): CollectionReference = firestore.collection(CollectionType.QUESTION.getReferenceName(context))
-
-    @Provides
-    @Singleton
-    @Collection(CollectionType.SECTION)
-    fun provideSectionCollectionReference(
-        @ApplicationContext context: Context,
-        firestore: FirebaseFirestore
-    ): CollectionReference = firestore.collection(CollectionType.SECTION.getReferenceName(context))
-
-    @Provides
-    @Singleton
     fun providerRemoteConfigService(
         service: FirebaseRemoteConfigService
     ): RemoteConfigService = service
+
+    @Provides
+    @Singleton
+    @CollectionPath
+    fun provideCollectionPath(
+        @ApplicationContext context: Context,
+        sharePref: SharedPreferences
+    ): String {
+        val groupName = sharePref.getSavedCollectionGroupName() ?: context.getAppModuleName()
+        return "${BuildConfig.BUILD_TYPE}/$groupName"
+    }
 }

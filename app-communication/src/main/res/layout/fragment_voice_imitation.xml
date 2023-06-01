@@ -104,9 +104,9 @@
         android:layout_marginVertical="@dimen/small_gap_2"
         app:buttonIcon="@drawable/ic_forward"
         app:buttonText="@string/next"
-        app:layout_constraintStart_toStartOf="@id/currentSoundTextView"
+        app:layout_constraintBottom_toTopOf="@id/backButton"
         app:layout_constraintEnd_toEndOf="@id/currentSoundTextView"
-        app:layout_constraintBottom_toTopOf="@id/backButton" />
+        app:layout_constraintStart_toStartOf="@id/currentSoundTextView" />
 
     <dev.sertan.android.ram.core.ui.customview.RamButton
         android:id="@+id/finishButton"

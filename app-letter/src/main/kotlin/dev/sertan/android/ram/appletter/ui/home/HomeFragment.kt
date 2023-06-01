@@ -9,8 +9,7 @@
 
 package dev.sertan.android.ram.appletter.ui.home
 
-import android.os.Bundle
-import android.view.View
+import androidx.navigation.NavDirections
 import dagger.hilt.android.AndroidEntryPoint
 import dev.sertan.android.ram.appletter.R
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToDrawingFragment
@@ -19,13 +18,13 @@ import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion
 import dev.sertan.android.ram.appletter.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToWriteFragment
 import dev.sertan.android.ram.core.ui.util.extension.labelWithoutPrefix
 import dev.sertan.android.ram.core.ui.util.extension.navTo
-import dev.sertan.android.ram.core.ui.util.extension.savedStateHandeListener
-import dev.sertan.android.ram.feature.home.BaseHomeFragment
 import dev.sertan.android.ram.feature.home.adapter.HomeListItem
-import dev.sertan.android.ram.feature.training.ui.training.TrainingFragment
+import dev.sertan.android.ram.feature.training.TrainingHomeFragment
 
 @AndroidEntryPoint
-internal class HomeFragment : BaseHomeFragment() {
+internal class HomeFragment : TrainingHomeFragment() {
+
+    override var directionAfterFinished: NavDirections? = actionHomeFragmentToPracticeGraph()
 
     override val items: List<HomeListItem>
         get() = listOf(
@@ -52,11 +51,4 @@ internal class HomeFragment : BaseHomeFragment() {
                 onClicked = { navTo(actionHomeFragmentToDrawingFragment()) }
             )
         )
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        savedStateHandeListener<Boolean>(TrainingFragment.KEY_FINISHED) {
-            if (it) navTo(actionHomeFragmentToPracticeGraph())
-        }
-    }
 }

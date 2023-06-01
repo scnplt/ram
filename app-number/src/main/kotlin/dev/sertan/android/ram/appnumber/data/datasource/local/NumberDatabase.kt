@@ -7,12 +7,10 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.data.database
+package dev.sertan.android.ram.appnumber.data.datasource.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import dev.sertan.android.ram.appnumber.data.database.dao.SectionDao
-import dev.sertan.android.ram.appnumber.data.database.model.SectionEntity
 
 @Database(
     version = 1,

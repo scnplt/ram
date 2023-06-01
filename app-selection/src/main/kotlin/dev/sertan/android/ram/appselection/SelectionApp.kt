@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appselection
 
 import dagger.hilt.android.HiltAndroidApp
-import dev.sertan.android.ram.feature.training.TrainingApplication
+import dev.sertan.android.ram.core.ui.RamApplication
 
 @HiltAndroidApp
-internal class SelectionApp : TrainingApplication()
+internal class SelectionApp : RamApplication()
