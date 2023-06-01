@@ -10,8 +10,8 @@
 package dev.sertan.android.ram.feature.training.domain.usecase
 
 import dev.sertan.android.ram.feature.material.domain.usecase.GetMaterialsUseCase
+import dev.sertan.android.ram.feature.training.data.repository.QuestionRepository
 import dev.sertan.android.ram.feature.training.domain.mapper.QuestionMapper
-import dev.sertan.android.ram.feature.training.domain.repository.QuestionRepository
 import dev.sertan.android.ram.feature.training.ui.model.Question
 import javax.inject.Inject
 

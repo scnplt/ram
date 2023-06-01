@@ -7,10 +7,14 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appnumber.data.service
+package dev.sertan.android.ram.appnumber.data.datasource.remote
 
-import dev.sertan.android.ram.appnumber.data.service.model.NetworkSection
+import androidx.annotation.Keep
 
-internal interface SectionService {
-    suspend fun getSections(): List<NetworkSection>
-}
+@Keep
+internal data class NetworkSection(
+    val uid: String? = null,
+    val minNumber: Int? = null,
+    val maxNumber: Int? = null,
+    val step: Int? = null
+)

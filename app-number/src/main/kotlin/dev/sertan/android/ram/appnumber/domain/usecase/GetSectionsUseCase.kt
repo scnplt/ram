@@ -9,9 +9,9 @@
 
 package dev.sertan.android.ram.appnumber.domain.usecase
 
+import dev.sertan.android.ram.appnumber.data.repository.SectionRepository
 import dev.sertan.android.ram.appnumber.domain.mapper.toUIModel
 import dev.sertan.android.ram.appnumber.domain.model.SectionDto
-import dev.sertan.android.ram.appnumber.domain.repository.SectionRepository
 import dev.sertan.android.ram.appnumber.ui.model.Section
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
