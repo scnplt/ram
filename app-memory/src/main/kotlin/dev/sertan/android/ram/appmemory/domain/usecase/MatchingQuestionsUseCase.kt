@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.appmemory.domain.usecase
 
+import dev.sertan.android.ram.appmemory.data.repository.MatchingQuestionRepository
 import dev.sertan.android.ram.appmemory.domain.mapper.MatchingQuestionMapper
-import dev.sertan.android.ram.appmemory.domain.repository.MatchingQuestionRepository
 import dev.sertan.android.ram.appmemory.ui.model.MatchingQuestion
 import dev.sertan.android.ram.feature.material.domain.usecase.GetMaterialsUseCase
 import javax.inject.Inject

@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.appmemory.domain.usecase
 
+import dev.sertan.android.ram.appmemory.data.repository.GapFillingQuestionRepository
 import dev.sertan.android.ram.appmemory.domain.mapper.GapFillingQuestionMapper
-import dev.sertan.android.ram.appmemory.domain.repository.GapFillingQuestionRepository
 import dev.sertan.android.ram.appmemory.ui.model.GapFillingQuestion
 import dev.sertan.android.ram.feature.material.domain.usecase.GetMaterialsUseCase
 import javax.inject.Inject

@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appmemory.data.mapper
 
 import dev.sertan.android.ram.appmemory.data.datasource.local.model.MatchingQuestionEntity
-import dev.sertan.android.ram.appmemory.data.datasource.remote.model.NetworkMatchingQuestion
+import dev.sertan.android.ram.appmemory.data.datasource.remote.NetworkMatchingQuestion
 import dev.sertan.android.ram.appmemory.domain.model.MatchingQuestionDto
 
 internal fun MatchingQuestionEntity.toDto(): MatchingQuestionDto = MatchingQuestionDto(

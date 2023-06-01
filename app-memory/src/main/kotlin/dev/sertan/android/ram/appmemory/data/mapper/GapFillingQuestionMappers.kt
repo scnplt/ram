@@ -10,7 +10,7 @@
 package dev.sertan.android.ram.appmemory.data.mapper
 
 import dev.sertan.android.ram.appmemory.data.datasource.local.model.GapFillingQuestionEntity
-import dev.sertan.android.ram.appmemory.data.datasource.remote.model.NetworkGapFillingQuestion
+import dev.sertan.android.ram.appmemory.data.datasource.remote.NetworkGapFillingQuestion
 import dev.sertan.android.ram.appmemory.domain.model.GapFillingQuestionDto
 
 internal fun GapFillingQuestionEntity.toDto(): GapFillingQuestionDto = GapFillingQuestionDto(

@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.appmemory.data.datasource.remote.model
+package dev.sertan.android.ram.appmemory.data.datasource.remote
 
 import androidx.annotation.Keep
 
