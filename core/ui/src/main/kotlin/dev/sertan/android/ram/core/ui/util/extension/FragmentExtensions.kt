@@ -87,3 +87,11 @@ fun Fragment.resultLauncher(
 
 fun Fragment.showToast(@StringRes messageResId: Int) =
     Toast.makeText(requireContext(), messageResId, Toast.LENGTH_SHORT).show()
+
+fun Fragment.playAnswerSoundAndGetStateIconRes(isCorrect: Boolean): Int = if (isCorrect) {
+    playCorrectSound()
+    R.drawable.ic_answer_correct
+} else {
+    playNegativeSound()
+    R.drawable.ic_answer_wrong
+}

@@ -7,7 +7,7 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.feature.training.ui.practice
+package dev.sertan.android.ram.appmemory.ui.gapfilling
 
 import android.os.Bundle
 import android.view.View
@@ -16,29 +16,28 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import dev.sertan.android.ram.appmemory.R
+import dev.sertan.android.ram.appmemory.databinding.FragmentGapFillingBinding
 import dev.sertan.android.ram.core.ui.util.extension.hide
-import dev.sertan.android.ram.core.ui.util.extension.navTo
+import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
 import dev.sertan.android.ram.core.ui.util.extension.playAnswerSoundAndGetStateIconRes
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.extension.show
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import dev.sertan.android.ram.feature.material.ui.Material
-import dev.sertan.android.ram.feature.training.R
-import dev.sertan.android.ram.feature.training.databinding.FragmentPracticeBinding
-import dev.sertan.android.ram.feature.training.ui.practice.PracticeFragmentDirections.Companion.actionPracticeFragmentToResultFragment
 import dev.sertan.android.ram.feature.training.ui.practice.adapter.QuestionMaterialAdapter
 import dev.sertan.android.ram.feature.training.ui.practice.adapter.QuestionMaterialViewHolder
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 
 @AndroidEntryPoint
-class PracticeFragment :
-    Fragment(R.layout.fragment_practice),
+internal class GapFillingFragment :
+    Fragment(R.layout.fragment_gap_filling),
     QuestionMaterialViewHolder.MaterialListener {
 
-    private val viewModel by viewModels<PracticeViewModel>()
-    private val binding by viewBinding(FragmentPracticeBinding::bind)
+    private val viewModel by viewModels<GapFillingViewModel>()
+    private val binding by viewBinding(FragmentGapFillingBinding::bind)
 
     @Inject
     lateinit var adapter: QuestionMaterialAdapter
@@ -46,10 +45,14 @@ class PracticeFragment :
     private val onLifecycleStarted: suspend CoroutineScope.() -> Unit = {
         viewModel.uiState.collect { uiState ->
             with(binding) {
-                contentTextView.text = uiState.question?.content
+                uiState.gapFillingQuestion?.apply {
+                    contentTextView.text = content
+                    mediaImageView.loadFromUrl(contentMaterial.mediaUrl)
+                    setAttributionView(contentMaterial.attribution)
+                    adapter.submitList(materials)
+                }
                 finishButton.isInvisible = !uiState.isFinishButtonVisible
                 nextButton.isInvisible = !uiState.isForwardButtonVisible
-                adapter.submitList(uiState.question?.materials)
                 uiState.isEmptyListMessageVisible?.let { changeContentVisibility(isVisible = !it) }
             }
         }
@@ -58,7 +61,6 @@ class PracticeFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter.listener = this
-        arguments?.getBoolean(SHUFFLE_KEY)?.let { savedInstanceState?.putBoolean(SHUFFLE_KEY, it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -75,17 +77,13 @@ class PracticeFragment :
         }
         contentTextView.setOnClickListener { viewModel.speakCurrentQuestionContent() }
         exitButton.setOnClickListener { popBackStack() }
-        finishButton.setOnClickListener {
-            navTo(actionPracticeFragmentToResultFragment(score = viewModel.score))
-        }
+        finishButton.setOnClickListener { popBackStack() }
     }
 
     override fun onMaterialClicked(material: Material, isCorrect: Boolean) {
         val bgResId = playAnswerSoundAndGetStateIconRes(isCorrect)
         binding.answerStateImageView.setImageResource(bgResId)
         binding.answerStateImageView.show()
-
-        viewModel.updateScore(isCorrect)
         viewModel.isValidationActive = false
     }
 
@@ -102,7 +100,11 @@ class PracticeFragment :
         emptyListMessageTextView.isVisible = !isVisible
     }
 
-    companion object {
-        const val SHUFFLE_KEY = "shuffle-question"
+    private fun setAttributionView(attribution: String?): Unit = with(binding) {
+        attributionTextView.isInvisible = attribution == null
+        attributionTextView.text = getString(
+            dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
+            attribution
+        )
     }
 }

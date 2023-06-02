@@ -31,6 +31,7 @@ include ':app-letter'
 include ':app-movements'
 include ':app-communication'
 include ':app-reading'
+include ':app-memory'
 
 include ':core:common'
 include ':core:ui'
