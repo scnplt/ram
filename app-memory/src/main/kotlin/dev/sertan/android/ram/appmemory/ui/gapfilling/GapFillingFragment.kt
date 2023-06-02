@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appmemory.ui.gapfilling
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -21,8 +20,7 @@ import dev.sertan.android.ram.appmemory.R
 import dev.sertan.android.ram.appmemory.databinding.FragmentGapFillingBinding
 import dev.sertan.android.ram.core.ui.util.extension.hide
 import dev.sertan.android.ram.core.ui.util.extension.loadFromUrl
-import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.playAnswerSoundAndGetStateIconRes
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.extension.show
@@ -83,18 +81,10 @@ internal class GapFillingFragment :
     }
 
     override fun onMaterialClicked(material: Material, isCorrect: Boolean) {
-        val bgResId = playAnswerSoundAndGetIconRes(isCorrect)
+        val bgResId = playAnswerSoundAndGetStateIconRes(isCorrect)
         binding.answerStateImageView.setImageResource(bgResId)
         binding.answerStateImageView.show()
         viewModel.isValidationActive = false
-    }
-
-    private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
-        playCorrectSound()
-        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_correct
-    } else {
-        playNegativeSound()
-        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_wrong
     }
 
     override fun isMaterialCorrect(material: Material): Boolean? =
@@ -111,7 +101,7 @@ internal class GapFillingFragment :
     }
 
     private fun setAttributionView(attribution: String?): Unit = with(binding) {
-        attributionTextView.isGone = attribution.isNullOrEmpty().also { if (it) return@with }
+        attributionTextView.isInvisible = attribution == null
         attributionTextView.text = getString(
             dev.sertan.android.ram.core.ui.R.string.this_icon_was_created_by,
             attribution

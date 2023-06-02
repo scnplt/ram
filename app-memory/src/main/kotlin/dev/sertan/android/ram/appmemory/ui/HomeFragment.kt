@@ -37,7 +37,7 @@ internal class HomeFragment : TrainingHomeFragment() {
                 onClicked = { navTo(actionHomeFragmentToTrainingFragment()) }
             ),
             HomeListItem.ButtonItem(
-                buttonTextResId = R.string.gap_filling,
+                buttonTextResId = R.string.gap_filling_and_sorting,
                 buttonIconResId = R.drawable.ic_apps,
                 onClicked = { navTo(actionHomeFragmentToGapFillingFragment()) }
             ),

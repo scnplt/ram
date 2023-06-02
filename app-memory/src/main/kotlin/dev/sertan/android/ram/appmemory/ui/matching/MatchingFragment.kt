@@ -23,8 +23,7 @@ import dev.sertan.android.ram.appmemory.databinding.FragmentMatchingBinding
 import dev.sertan.android.ram.appmemory.ui.matching.adapter.MatchingListAdapter
 import dev.sertan.android.ram.appmemory.ui.matching.adapter.MaterialItemListener
 import dev.sertan.android.ram.core.ui.util.extension.hide
-import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
-import dev.sertan.android.ram.core.ui.util.extension.playNegativeSound
+import dev.sertan.android.ram.core.ui.util.extension.playAnswerSoundAndGetStateIconRes
 import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.extension.show
@@ -95,14 +94,6 @@ internal class MatchingFragment :
         exitButton.setOnClickListener { popBackStack() }
     }
 
-    private fun playAnswerSoundAndGetIconRes(isCorrect: Boolean): Int = if (isCorrect) {
-        playCorrectSound()
-        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_correct
-    } else {
-        playNegativeSound()
-        dev.sertan.android.ram.core.ui.R.drawable.ic_answer_wrong
-    }
-
     override fun onStop() {
         super.onStop()
         viewModel.stopSpeech()
@@ -110,7 +101,7 @@ internal class MatchingFragment :
 
     override fun onMaterialClicked(material: Material) {
         val isCorrect = viewModel.checkAnswerState(selectedMaterial = material) ?: return
-        val bgResId = playAnswerSoundAndGetIconRes(isCorrect)
+        val bgResId = playAnswerSoundAndGetStateIconRes(isCorrect)
         with(binding) {
             answerStateImageView.setImageResource(bgResId)
             answerStateImageView.show()

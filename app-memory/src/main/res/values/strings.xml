@@ -10,7 +10,7 @@
 <resources>
     <string name="app_name">RAM-10 Öğrenmeye Destek</string>
     <string name="puzzle">Bulmaca</string>
-    <string name="gap_filling">Boşluk Doldurma</string>
+    <string name="gap_filling_and_sorting">Boşluk Doldurma\n&amp; Sıralama</string>
     <string name="matching">Eşleştirme</string>
     <string name="attribution">Atıf</string>
 </resources>
