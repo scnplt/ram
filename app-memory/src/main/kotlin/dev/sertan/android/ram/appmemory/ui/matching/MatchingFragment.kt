@@ -84,7 +84,6 @@ internal class MatchingFragment :
     private fun setUpComponents(): Unit = with(binding) {
         contentRecyclerView.layoutManager = layoutManager
         contentRecyclerView.adapter = adapter
-        attributionInfoButton.setOnClickListener { TODO("Not yet implemented") }
         nextButton.setOnClickListener {
             answerStateImageView.hide()
             viewModel.goToNextQuestion()
