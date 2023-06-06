@@ -14,7 +14,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.matching.MatchingFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <FrameLayout
         android:id="@+id/buttonPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,33 +25,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/attributionInfoButton"
-            style="@style/Widget.RAM.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/small_gap_4"
-            android:contentDescription="@string/attribution"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/exitButton"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_info"
-            app:tint="@android:color/holo_red_dark" />
-
-        <ImageButton
             android:id="@+id/exitButton"
             style="@style/Widget.RAM.ImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
             android:contentDescription="@string/exit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/attributionInfoButton"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close"
             app:tint="@android:color/holo_red_dark" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contentRecyclerView"

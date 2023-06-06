@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_square_button"
+        app:srcCompat="@drawable/bg_button_catch"
         tools:ignore="ContentDescription" />
 
     <ImageView

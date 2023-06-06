@@ -11,13 +11,13 @@ package dev.sertan.android.ram.appcommunication.ui.audioinstruction
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentAudioInstructionBinding
 import dev.sertan.android.ram.core.ui.util.extension.playSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
@@ -34,12 +34,8 @@ internal class AudioInstructionFragment : Fragment(R.layout.fragment_audio_instr
                 catchButton.setIconTint(it.catchButtonTint)
                 startButton.isInvisible = it.isStartButtonInvisible
             }
-
             if (it.isRingtonePlaying.getDataIfNotHandled() == true) playSound(R.raw.beep)
-
-            if (it.isFinished) {
-                Toast.makeText(requireContext(), "Finished", Toast.LENGTH_SHORT).show()
-            }
+            if (it.isFinished) popBackStack()
         }
     }
 
@@ -49,6 +45,7 @@ internal class AudioInstructionFragment : Fragment(R.layout.fragment_audio_instr
         with(binding) {
             startButton.setOnClickListener { viewModel.startGame() }
             catchButton.setOnClickListener { viewModel.catch() }
+            exitButton.setOnClickListener { popBackStack() }
         }
     }
 }
