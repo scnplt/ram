@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.appnumber.data.mapper
 
-import dev.sertan.android.ram.appnumber.data.database.model.SectionEntity
-import dev.sertan.android.ram.appnumber.data.service.model.NetworkSection
+import dev.sertan.android.ram.appnumber.data.datasource.local.SectionEntity
+import dev.sertan.android.ram.appnumber.data.datasource.remote.NetworkSection
 import dev.sertan.android.ram.appnumber.domain.model.SectionDto
 
 internal fun SectionEntity.toDto(): SectionDto = SectionDto(

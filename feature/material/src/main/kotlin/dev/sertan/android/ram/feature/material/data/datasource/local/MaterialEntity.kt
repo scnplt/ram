@@ -19,5 +19,6 @@ internal data class MaterialEntity(
     @PrimaryKey val uid: String,
     val description: String,
     val mediaUrl: String,
-    val attribution: String?
+    val attribution: String?,
+    val isShownByDefault: Boolean
 )

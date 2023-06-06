@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseViewHolder<I : BaseListItem<I>>(
-    binding: ViewBinding
+    private val binding: ViewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    abstract fun bind(item: I)
+    open fun bind(item: I): Unit = Unit
 }

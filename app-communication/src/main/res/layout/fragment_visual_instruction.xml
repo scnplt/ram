@@ -14,6 +14,25 @@
     android:layout_height="match_parent"
     tools:context=".ui.visualinstruction.VisualInstructionFragment">
 
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/buttonPanelFlexLayout"
+        style="@style/Widget.RAM.FlexboxLayout.Row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexDirection="row_reverse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/exitButton"
+            style="@style/Widget.RAM.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/exit"
+            app:srcCompat="@drawable/ic_close" />
+    </com.google.android.flexbox.FlexboxLayout>
+
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
@@ -26,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@id/descriptionTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonPanelFlexLayout"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -43,20 +62,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
-    <dev.sertan.android.ram.core.ui.customview.RamImageButton
+    <dev.sertan.android.ram.appcommunication.ui.customview.RamCatchButton
         android:id="@+id/catchButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/small_gap_10"
         android:contentDescription="@string/about"
+        android:paddingBottom="@dimen/small_gap_2"
+        app:icon="@drawable/ic_adjust"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintDimensionRatio="1:1"
-        android:paddingBottom="@dimen/small_gap_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
         app:layout_constraintWidth_percent="0.5"
-        app:icon="@drawable/ic_adjust"
         app:tint="@android:color/black" />
 
     <dev.sertan.android.ram.core.ui.customview.RamButton

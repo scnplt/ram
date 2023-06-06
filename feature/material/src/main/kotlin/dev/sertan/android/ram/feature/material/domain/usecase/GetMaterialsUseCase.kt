@@ -9,8 +9,8 @@
 
 package dev.sertan.android.ram.feature.material.domain.usecase
 
+import dev.sertan.android.ram.feature.material.data.repository.MaterialRepository
 import dev.sertan.android.ram.feature.material.domain.mapper.MaterialMapper
-import dev.sertan.android.ram.feature.material.domain.repository.MaterialRepository
 import dev.sertan.android.ram.feature.material.ui.Material
 import javax.inject.Inject
 

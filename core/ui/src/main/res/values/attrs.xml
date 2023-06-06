@@ -14,9 +14,4 @@
         <attr name="buttonText" format="string" />
     </declare-styleable>
 
-    <declare-styleable name="RamImageButton">
-        <attr name="icon" format="reference" />
-        <attr name="tint" format="color" />
-    </declare-styleable>
-
 </resources>

@@ -9,6 +9,7 @@
 
 package dev.sertan.android.ram.feature.training.ui.practice
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +17,7 @@ import dev.sertan.android.ram.core.common.calculatePercentage
 import dev.sertan.android.ram.core.domain.usecase.TextToSpeechUseCase
 import dev.sertan.android.ram.feature.material.ui.Material
 import dev.sertan.android.ram.feature.training.domain.usecase.GetQuestionsUseCase
+import dev.sertan.android.ram.feature.training.ui.practice.PracticeFragment.Companion.SHUFFLE_KEY
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -27,6 +29,7 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 internal class PracticeViewModel @Inject constructor(
     getQuestionsUseCase: GetQuestionsUseCase,
+    savedStateHandle: SavedStateHandle,
     private val textToSpeechUseCase: TextToSpeechUseCase
 ) : ViewModel() {
 
@@ -42,7 +45,7 @@ internal class PracticeViewModel @Inject constructor(
         )
 
     val uiState: StateFlow<PracticeUiState> = flow {
-        val questions = getQuestionsUseCase()
+        val questions = getQuestionsUseCase(shuffle = savedStateHandle[SHUFFLE_KEY])
         questionIndex.collect { index ->
             textToSpeechUseCase.checkStateAndSpeak(questions.getOrNull(index)?.content)
             emit(PracticeUiState.getState(questions, index))

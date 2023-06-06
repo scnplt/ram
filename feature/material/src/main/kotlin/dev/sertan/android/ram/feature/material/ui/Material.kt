@@ -13,5 +13,6 @@ data class Material(
     val uid: String,
     val description: String,
     val mediaUrl: String,
-    val attribution: String?
+    val attribution: String?,
+    val isShownByDefault: Boolean
 )

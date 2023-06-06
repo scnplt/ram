@@ -11,7 +11,6 @@ package dev.sertan.android.ram.appcommunication.ui.visualinstruction
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -19,6 +18,7 @@ import androidx.fragment.app.viewModels
 import dev.sertan.android.ram.appcommunication.R
 import dev.sertan.android.ram.appcommunication.databinding.FragmentVisualInstructionBinding
 import dev.sertan.android.ram.core.ui.util.extension.playCorrectSound
+import dev.sertan.android.ram.core.ui.util.extension.popBackStack
 import dev.sertan.android.ram.core.ui.util.extension.repeatOnLifecycleStarted
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 import kotlinx.coroutines.CoroutineScope
@@ -34,10 +34,7 @@ internal class VisualInstructionFragment : Fragment(R.layout.fragment_visual_ins
                 catchButton.isInvisible = it.isCatchButtonInvisible
                 startButton.isInvisible = it.isStartButtonInvisible
             }
-
-            if (it.isFinished) {
-                Toast.makeText(requireContext(), "Finished", Toast.LENGTH_SHORT).show()
-            }
+            if (it.isFinished) popBackStack()
         }
     }
 
@@ -51,6 +48,7 @@ internal class VisualInstructionFragment : Fragment(R.layout.fragment_visual_ins
                 viewModel.catch()
                 playCorrectSound()
             }
+            exitButton.setOnClickListener { popBackStack() }
         }
     }
 }
