@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
-    <dev.sertan.android.ram.core.ui.customview.RamImageButton
+    <dev.sertan.android.ram.appcommunication.ui.customview.RamCatchButton
         android:id="@+id/catchButton"
         android:layout_width="0dp"
         android:layout_height="0dp"

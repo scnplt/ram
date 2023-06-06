@@ -9,6 +9,6 @@
 
 package dev.sertan.android.ram.core.ui.util
 
-internal object Constants {
+object Constants {
     const val NO_RESOURCE = -1
 }

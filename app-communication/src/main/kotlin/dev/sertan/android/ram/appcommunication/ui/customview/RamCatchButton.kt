@@ -7,30 +7,30 @@
  * If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
  */
 
-package dev.sertan.android.ram.core.ui.customview
+package dev.sertan.android.ram.appcommunication.ui.customview
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
-import dev.sertan.android.ram.core.ui.R
-import dev.sertan.android.ram.core.ui.databinding.CustomImageButtonBinding
+import dev.sertan.android.ram.appcommunication.R
+import dev.sertan.android.ram.appcommunication.databinding.CustomButtonCatchBinding
 import dev.sertan.android.ram.core.ui.util.Constants.NO_RESOURCE
 import dev.sertan.android.ram.core.ui.util.extension.viewBinding
 
-class RamImageButton(
+class RamCatchButton(
     context: Context,
     attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs) {
 
-    private val binding = viewBinding(CustomImageButtonBinding::inflate)
+    private val binding = viewBinding(CustomButtonCatchBinding::inflate)
 
     init {
-        context.obtainStyledAttributes(attrs, R.styleable.RamImageButton).apply {
-            getColor(R.styleable.RamImageButton_tint, NO_RESOURCE)
+        context.obtainStyledAttributes(attrs, R.styleable.RamCatchButton).apply {
+            getColor(R.styleable.RamCatchButton_tint, NO_RESOURCE)
                 .also { colorInt -> if (colorInt != NO_RESOURCE) setIconTint(colorInt) }
-            getResourceId(R.styleable.RamImageButton_icon, NO_RESOURCE)
+            getResourceId(R.styleable.RamCatchButton_icon, NO_RESOURCE)
                 .also { iconResId -> if (iconResId != NO_RESOURCE) setIcon(iconResId) }
         }.recycle()
     }
