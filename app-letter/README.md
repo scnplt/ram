@@ -1,1 +1,0 @@
-![dependencies](./app-letter.png)

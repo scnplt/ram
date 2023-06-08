@@ -1,1 +1,0 @@
-![dependencies](./feature-training.png)

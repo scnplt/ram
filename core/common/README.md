@@ -1,1 +1,0 @@
-![dependencies](./core-common.png)
