@@ -1,0 +1,170 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: android
+workflows:
+  alpha:
+    description: |
+      Deploys app using [Deploy to bitrise.io Step](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html#deploying-an-android-app-to-bitrise-io-53056).
+
+      Next steps:
+      - Check out [Getting started with Android apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html) for signing and deployment options.
+      - [Set up code signing with *Android Sign* Step](https://devcenter.bitrise.io/en/code-signing/android-code-signing/android-code-signing-using-the-android-sign-step.html).
+    steps:
+    - activate-ssh-key@4:
+        inputs:
+        - verbose: 'true'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - script@1:
+        title: Environment
+        inputs:
+        - content: |
+            #!/usr/bin/env bash
+            set -ex
+
+            MODULE=$(grep -Eo '^app-[a-z]+' <<< "$BITRISE_GIT_TAG")
+            envman add --key XMODULE --value "$MODULE"
+            envman add --key XAPK_DIR --value "$PROJECT_LOCATION/$XMODULE/alpha/"
+
+            VERSION_NAME=$(grep -Po 'v([1-9]\d+|\d)\.([1-9]\d+|\d)\.([1-9]\d+|\d)-alpha([1-9]\d+|\d)' <<< "$BITRISE_GIT_TAG")
+            MAJOR_VERSION=$(grep -Po '(?<=v)([1-9]\d+|\d)(?=\.)' <<< "$VERSION_NAME")
+            MINOR_VERSION=$(grep -Po '(?<=\.)\d+(?=\.)' <<< "$VERSION_NAME")
+            PATCH_VERSION=$(grep -Po '(?<=\.)\d+(?=-alpha)' <<< "$VERSION_NAME")
+            BUILD_NUMBER=$(grep -Po '(?<=alpha)\d*' <<< "$VERSION_NAME")
+            CODE=$(("100$MAJOR_VERSION$MINOR_VERSION$PATCH_VERSION$BUILD_NUMBER"))
+
+            envman add --key XVERSION_NAME --value "$VERSION_NAME"
+            envman add --key XVERSION_CODE --value "$CODE"
+    - script@1:
+        title: Download google-services.json
+        inputs:
+        - is_debug: 'yes'
+        - content: |-
+            #!/bin/bash
+            set -ex
+            wget -O "$PROJECT_LOCATION/$XMODULE/google-services.json" "$BITRISEIO_GOOGLE_JSON_URL"
+    - install-missing-android-tools@3: {}
+    - change-android-versioncode-and-versionname@1:
+        inputs:
+        - version_code_offset: ''
+        - new_version_name: "$XVERSION_NAME"
+        - new_version_code: "$XVERSION_CODE"
+        - build_gradle_path: "$PROJECT_LOCATION/$XMODULE/build.gradle"
+    - android-build@1:
+        inputs:
+        - module: "$XMODULE"
+        - variant: "$VARIANT"
+        - project_location: "$PROJECT_LOCATION"
+    - sign-apk@1:
+        inputs:
+        - keystore_password: "$KEYSTORE_PWD"
+        - keystore_alias: "$KEYSTORE_ALIAS"
+        - private_key_password: "$KEYSTORE_PRIVATE_KEY"
+        - use_apk_signer: 'true'
+        - debuggable_permitted: 'false'
+        - android_app: "$BITRISE_APK_PATH_LIST"
+    - script@1:
+        inputs:
+        - is_debug: 'yes'
+        - content: |-
+            #!/bin/bash
+            set -exf
+            mkdir -p "$XAPK_DIR"
+            apklist=($(echo "$BITRISE_SIGNED_APK_PATH_LIST" | tr '|' '\n'))
+            for i in "${!apklist[@]}"; do mv "${apklist[i]}" "$XAPK_DIR"; done
+        title: Move all .APK to same directory
+    - deploy-to-bitrise-io@2:
+        inputs:
+        - notify_user_groups: none
+        - debug_mode: 'true'
+        - public_install_page_url_map_format: "{{range $index, $element := .}}{{if
+            $index}}\\n\\n{{end}}{{$element.File}}: {{$element.URL}}{{end}}"
+        - permanent_download_url_map_format: "{{range $index, $element := .}}{{if
+            $index}}\\n\\n{{end}}{{$element.File}}: {{$element.URL}}{{end}}"
+        - deploy_path: "$XAPK_DIR"
+    - cache-push@2: {}
+    - script@1:
+        title: Send Telegram Message
+        inputs:
+        - content: "#!/usr/bin/env bash\nset -ex\n\nSTATUS=\"\U0001F6AB Fail\"\nif
+            [ $BITRISE_BUILD_STATUS -eq 0 ]; then STATUS=\"✅ Successful\"; fi\n\nMESSAGE=\"Build
+            Status: $STATUS\nWorkflow: $BITRISE_TRIGGERED_WORKFLOW_TITLE\nModule:
+            $XMODULE\nVersion Name: $ANDROID_VERSION_NAME\nVersion Code: $ANDROID_VERSION_CODE\n\n============================\n\n$BITRISE_PUBLIC_INSTALL_PAGE_URL_MAP\"\n\ncurl
+            -X POST -H \"Content-Type: application/json\" --data '\n        {\"chat_id\":\"'\"$TELEGRAM_CHAT_ID\"'\",\n
+            \       \"text\":\"'\"$MESSAGE\"'\",\n        \"parse_mode\":\"html\",\n
+            \       \"disable_web_page_preview\":true\n        }' \"https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage\"
+            -w \"\\n\""
+        is_always_run: true
+    envs:
+    - opts:
+        is_expand: false
+      VERSION_CODE_OFFSET: '100'
+    - opts:
+        is_expand: false
+      VARIANT: release
+  default:
+    description: |
+      Runs tests.
+
+      Next steps:
+      - Check out [Getting started with Android apps](https://devcenter.bitrise.io/en/getting-started/getting-started-with-android-apps.html).
+    steps:
+    - activate-ssh-key@4:
+        inputs:
+        - verbose: 'true'
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - script@1:
+        title: Download google-services.json
+        inputs:
+        - is_debug: 'yes'
+        - content: |-
+            #!/bin/bash
+            set -ex
+
+            cd "$PROJECT_LOCATION"
+            export json_path="./google-services.json"
+            wget -O "$json_path" "$BITRISEIO_GOOGLE_JSON_URL"
+
+            for appFolder in [app]*; do cp "$json_path" "$appFolder/google-services.json"; done
+    - install-missing-android-tools@3:
+        inputs:
+        - gradlew_path: "$PROJECT_LOCATION/gradlew"
+    - android-unit-test@1:
+        inputs:
+        - project_location: "$PROJECT_LOCATION"
+        - is_debug: 'true'
+        - variant: "$VARIANT"
+    - android-build@1:
+        inputs:
+        - variant: "$VARIANT"
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@2:
+        inputs:
+        - is_enable_public_page: 'false'
+        - debug_mode: 'true'
+        - notify_user_groups: none
+meta:
+  bitrise.io:
+    stack: linux-docker-android-20.04
+app:
+  envs:
+  - opts:
+      is_expand: false
+    PROJECT_LOCATION: "."
+  - opts:
+      is_expand: false
+    VARIANT: debug
+  - opts:
+      is_expand: false
+    GRADLEW_PATH: "./gradlew"
+trigger_map:
+- pull_request_source_branch: "*"
+  workflow: default
+  pull_request_target_branch: dev
+- pull_request_source_branch: "*"
+  workflow: default
+  pull_request_target_branch: main
+- tag: app-*_v*.*.*-alpha*
+  workflow: alpha
